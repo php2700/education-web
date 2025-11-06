@@ -1,7 +1,7 @@
 import { Banner } from "./banner";
 import { OfferAndTrust } from "./offer";
 import SubjectsAndServices from "./service";
-import PricingAndHowItWorks from "./transparent";
+import Pricing from "./transparent";
 import WhyChooseUs from "./whychoose";
 import HowItWorks from "./work";
 
@@ -11,8 +11,8 @@ export const Home = () => {
       <WhyChooseUs />
       <SubjectsAndServices />
       <OfferAndTrust />
-      <PricingAndHowItWorks />
-      {/* <HowItWorks /> */}
+      <Pricing />
+      <HowItWorks />
     </>
   );
 };

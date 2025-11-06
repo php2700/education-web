@@ -6,6 +6,16 @@ import {
   FaChalkboardTeacher,
 } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
+import trust1 from "../../assets/trust-1.png";
+import trust2 from "../../assets/trust-2.png";
+import trust3 from "../../assets/trust-3.png";
+import trust4 from "../../assets/trust-4.png";
+import sarah from "../../assets/sarah.png";
+import michel from "../../assets/michel.png";
+import david from "../../assets/david.png";
+import latestImg from "../../assets/latest.png";
+import star from "../../assets/starImg.png";
+import backgroundImage from "../../assets/work-bg.png";
 
 export const OfferAndTrust = () => {
   const offers = [
@@ -35,39 +45,42 @@ export const OfferAndTrust = () => {
       role: "Parent of a 7th Grader",
       text: "My daughter’s confidence in math has skyrocketed. The tutor was patient, knowledgeable, and made learning fun. We couldn’t be happier!",
       rating: 5,
+      icon: sarah,
     },
     {
       name: "Michael P.",
       role: "High School Student",
       text: "I finally understood chemistry! The 1-on-1 sessions helped me tackle difficult topics at my own pace. I went from a C to an A-.",
       rating: 5,
+      icon: michel,
     },
     {
       name: "David Chen",
       role: "Parent of two",
       text: "The scheduling flexibility is a lifesaver for our busy family. Setting up sessions is easy, and the progress reports are incredibly helpful.",
       rating: 5,
+      icon: david,
     },
   ];
 
   const stats = [
     {
-      icon: <FaUserGraduate size={30} />,
+      icon: trust1,
       value: "500+",
       label: "Active Students",
     },
     {
-      icon: <FaChalkboardTeacher size={30} />,
+      icon: trust2,
       value: "100+",
       label: "Expert Tutors",
     },
     {
-      icon: <BsStars size={30} />,
+      icon: trust3,
       value: "50,000+",
       label: "Sessions Completed",
     },
     {
-      icon: <FaRegSmile size={30} />,
+      icon: trust4,
       value: "99%",
       label: "Satisfaction Rate",
     },
@@ -78,8 +91,9 @@ export const OfferAndTrust = () => {
       {/* Offers Section */}
       <section className="py-16 px-4">
         <div className="container max-w-7xl mx-auto text-center">
-          <button className="px-4 py-1 bg-white rounded-full text-gray-700 text-sm border mb-3 shadow-sm">
-            🔔 Latest Updates
+          <button className="px-4 py-1 bg-white rounded-full flex mx-auto gap-2  text-gray-700 text-sm  mb-3 shadow-sm">
+            <img src={latestImg} />
+            Latest Updates
           </button>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Offers & News</h2>
           <p className="text-gray-600 mb-10">
@@ -101,7 +115,7 @@ export const OfferAndTrust = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{offer.desc}</p>
-                <button className="text-blue-600 font-medium text-sm hover:underline">
+                <button className=" font-medium bg-blue-50  text-sm   w-full p-2 rounded-lg">
                   Learn More →
                 </button>
               </div>
@@ -136,7 +150,9 @@ export const OfferAndTrust = () => {
                 </div>
                 <p className="text-gray-700 italic mb-4">“{review.text}”</p>
                 <div className="flex items-center gap-3 mt-4">
-                  <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                  <div className="w-10 h-10 rounded-full bg-gray-200">
+                    <img src={review?.icon} />
+                  </div>
                   <div>
                     <p className="font-semibold">{review.name}</p>
                     <p className="text-sm text-gray-500">{review.role}</p>
@@ -149,7 +165,14 @@ export const OfferAndTrust = () => {
       </section>
 
       {/* Trust & Credibility Section */}
-      <section className="py-16 px-4 bg-white relative overflow-hidden">
+      <section
+        className="py-16 px-4 bg-white relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="max-w-7xl container mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Trust & Credibility
@@ -161,7 +184,9 @@ export const OfferAndTrust = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center">
-                <div className="text-blue-600 mb-2">{stat.icon}</div>
+                <div className="text-blue-600 mb-2  border border-gray-200 rounded-xl shadow-xl">
+                  <img src={stat.icon} className="p-2" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900">
                   {stat.value}
                 </h3>
