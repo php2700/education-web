@@ -35,12 +35,13 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-16 px-6 sm:px-10 lg:px-12" 
-    style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+    <section
+      className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}
     >
       {/* Heading */}
       <div className="text-center mb-12">

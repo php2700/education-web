@@ -46,7 +46,7 @@ const PricingAndHowItWorks = () => {
   ];
 
   return (
-    <div className="bg-[#f5f8ff] text-gray-900">
+    <div className="bg-[#F0F8FF] text-gray-900">
       {/* Transparent Pricing Section */}
       <section className="py-20 px-5 text-center">
         <div className="max-w-6xl mx-auto">

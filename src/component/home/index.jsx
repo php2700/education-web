@@ -2,6 +2,7 @@ import { Banner } from "./banner";
 import { OfferAndTrust } from "./offer";
 import SubjectsAndServices from "./service";
 import Pricing from "./transparent";
+import { Trust } from "./trust";
 import WhyChooseUs from "./whychoose";
 import HowItWorks from "./work";
 
@@ -11,6 +12,7 @@ export const Home = () => {
       <WhyChooseUs />
       <SubjectsAndServices />
       <OfferAndTrust />
+      <Trust/>
       <Pricing />
       <HowItWorks />
     </>

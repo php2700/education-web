@@ -6,15 +6,12 @@ import {
   FaChalkboardTeacher,
 } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
-import trust1 from "../../assets/trust-1.png";
-import trust2 from "../../assets/trust-2.png";
-import trust3 from "../../assets/trust-3.png";
-import trust4 from "../../assets/trust-4.png";
+
 import sarah from "../../assets/sarah.png";
 import michel from "../../assets/michel.png";
 import david from "../../assets/david.png";
 import latestImg from "../../assets/latest.png";
-import star from "../../assets/starImg.png";
+import star from "../../assets/starimg.png";
 import backgroundImage from "../../assets/work-bg.png";
 
 export const OfferAndTrust = () => {
@@ -63,31 +60,10 @@ export const OfferAndTrust = () => {
     },
   ];
 
-  const stats = [
-    {
-      icon: trust1,
-      value: "500+",
-      label: "Active Students",
-    },
-    {
-      icon: trust2,
-      value: "100+",
-      label: "Expert Tutors",
-    },
-    {
-      icon: trust3,
-      value: "50,000+",
-      label: "Sessions Completed",
-    },
-    {
-      icon: trust4,
-      value: "99%",
-      label: "Satisfaction Rate",
-    },
-  ];
+ 
 
   return (
-    <div className="bg-blue-50 text-gray-900">
+    <div className="bg-[#F0F8FF] text-gray-900">
       {/* Offers Section */}
       <section className="py-16 px-4">
         <div className="container max-w-7xl mx-auto text-center">
@@ -115,7 +91,7 @@ export const OfferAndTrust = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{offer.desc}</p>
-                <button className=" font-medium bg-blue-50  text-sm   w-full p-2 rounded-lg">
+                <button className=" font-medium bg-[#F0F8FF]  text-sm   w-full p-2 rounded-lg">
                   Learn More →
                 </button>
               </div>
@@ -165,37 +141,7 @@ export const OfferAndTrust = () => {
       </section>
 
       {/* Trust & Credibility Section */}
-      <section
-        className="py-16 px-4 bg-white relative overflow-hidden"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="max-w-7xl container mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            Trust & Credibility
-          </h2>
-          <p className="text-gray-600 mb-10">
-            Join Our Growing Community of Successful Learners
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <div className="text-blue-600 mb-2  border border-gray-200 rounded-xl shadow-xl">
-                  <img src={stat.icon} className="p-2" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  {stat.value}
-                </h3>
-                <p className="text-gray-600 text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+   
     </div>
   );
 };

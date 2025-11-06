@@ -17,6 +17,7 @@ import whatsapp from "../../assets/whatsapp.png";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 
+
 const slides = [
   {
     image: heroBanner,
@@ -190,7 +191,7 @@ export const HeaderBanner = () => {
         </div>
       </div>
 
-      <div className=" flex justify-center items-center gap-3">
+      <div className=" flex bg-[#F0F8FF] justify-center items-center gap-3 ">
         {slides.map((slide, index) => (
           <div
             key={index}

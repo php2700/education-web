@@ -16,10 +16,10 @@ const steps = [
 const HowItWorks = () => {
   return (
     <section
-      className="relative bg-blue-50 py-20"
+      className="relative bg-[#F0F8FF] py-20"
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
       }}
     >
@@ -57,11 +57,7 @@ const HowItWorks = () => {
                 />
                 {/* Arrow (only on desktop except last step) */}
                 {index < steps.length - 1 && (
-                  <img
-                    src={arrow}
-                    alt="arrow"
-                    className="hidden md:block "
-                  />
+                  <img src={arrow} alt="arrow" className="hidden md:block " />
                 )}
               </div>
 
