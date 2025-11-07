@@ -1,6 +1,6 @@
-
 import heroBanner from "../../assets/heroBanner.jpg";
 import arrow from "../../assets/arrow_forward.png";
+import { Link } from "react-router-dom";
 
 import {
   FaPhoneAlt,
@@ -20,6 +20,8 @@ import whatsapp from "../../assets/whatsapp.png";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 import book from "../../assets/books.png";
+import rocket from "../../assets/rocketB.png";
+import cfl from "../../assets/cflB.png";
 
 const slides = [
   {
@@ -112,14 +114,24 @@ export const HeaderBanner = () => {
             </div>
 
             {/* Desktop Navigation (visible lg and above) */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-10  text-gray-700 font-medium">
+            {/* <div className="hidden lg:flex items-center gap-4 xl:gap-10  text-gray-700 font-medium">
               {[
                 "Home",
                 "About Us",
-                "Courses",
-                "Pricing",
+                <Link
+                  to="/Courses"
+                  className="hover:text-blue-600 transition-colors duration-200"
+                >
+                  Courses
+                </Link>,
+                <Link
+                  to="/pricing"
+                  className="hover:text-blue-600 transition-colors duration-200"
+                >
+                  Pricing
+                </Link>,
                 "Our Management",
-                "Test Imotional",
+                // "Test Imotional",
                 "Blog",
               ].map((item) => (
                 <a key={item} href="#" className="hover:text-blue-600">
@@ -130,7 +142,64 @@ export const HeaderBanner = () => {
               <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
                 Contact us
               </button>
-            </div>
+            </div> */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-10 text-gray-700 font-medium relative">
+  {[
+    { name: "Home", link: "/" },
+    { name: "About Us", link: "/about" },
+    { name: "Courses", dropdown: true },
+    { name: "Pricing", link: "/pricing" },
+    { name: "Our Management", link: "/management" },
+    { name: "Blog", link: "/blog" },
+  ].map((item) =>
+    item.dropdown ? (
+      <div key={item.name} className="relative group">
+        <button className="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
+          {item.name}
+          <svg
+            className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
+          {[
+            { name: "Mathematics", link: "/courses/maths" },
+            { name: "Science", link: "/courses/science" },
+            { name: "English", link: "/courses/english" },
+            { name: "Programming", link: "/courses/programming" },
+          ].map((subItem) => (
+            <Link
+              key={subItem.name}
+              to={subItem.link}
+              className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              {subItem.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <Link
+        key={item.name}
+        to={item.link}
+        className="hover:text-blue-600 transition-colors duration-200"
+      >
+        {item.name}
+      </Link>
+    )
+  )}
+
+  <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+    Contact us
+  </button>
+</div>
+
           </div>
 
           {/* Mobile Dropdown Menu (only below lg) */}
@@ -167,9 +236,24 @@ export const HeaderBanner = () => {
 
         {/* Banner Text */}
         <div className="absolute inset-0 flex flex-col justify-center items-start px-4 sm:px-8 md:px-20 text-left z-20">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
+          {/* <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
             Personalized Online
-          </h1>
+          </h1> */}
+          <div className="relative">
+            {/* <img src={rocket} alt="rocket" className="absolute -left-12 sm:-left-16 top-0 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
+              Personalized{" "}
+              <span className="relative inline-block">
+                Online
+                {/* <img src={cfl} alt="bulb" className="absolute -top-12 sm:-top-10 -left-2 sm:-left-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
+                <img
+                  src={cfl}
+                  alt="bulb"
+                  className="absolute -top-12 sm:-top-14 left-2 sm:left-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]"
+                />
+              </span>
+            </h1>
+          </div>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-3">
             Tutoring <span className="text-blue-500">Anytime,</span>
           </h1>
@@ -180,11 +264,22 @@ export const HeaderBanner = () => {
             Connect with expert tutors for math, science, languages, and more —
             tailored to your goals.
           </p>
-        
-          <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
+
+          {/* <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
             Start Free Trial
             <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
-          </button>
+          </button> */}
+          <div className="flex items-center gap-4">
+            <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
+              Start Free Trial
+              <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
+            </button>
+            <img
+              src={book}
+              alt="book"
+              style={{ width: "100px", height: "100px" }}
+            />
+          </div>
         </div>
 
         <div className="absolute bottom-0 md:-bottom-24 right-4 md:right-10 z-30 ">

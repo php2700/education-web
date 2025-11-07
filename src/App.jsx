@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {  HeaderBanner } from "./component/common/header";
 import  Footer  from "./component/common/footer";
 import { Home } from "./component/home";
+import PricingPage from "./component/pricing/pricing"
+import Courses from "./component/courses/courses";
 
 function App() {
       return (
@@ -14,6 +16,10 @@ function App() {
                         <HeaderBanner />
                         <Routes>
                               <Route path="/" index element={<Home />} />
+                              <Route path="/pricing" index element={<PricingPage />} />
+                              <Route path="/courses/maths" index element={<Courses />} />
+
+
                         </Routes>
                         <Footer />
                   </BrowserRouter>

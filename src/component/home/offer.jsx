@@ -98,7 +98,7 @@ export const OfferAndTrust = () => {
             ))}
           </div>
 
-          <button className="mt-10 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+          <button className="mt-10 bg-[#305CDE] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
             View All Updates →
           </button>
         </div>
