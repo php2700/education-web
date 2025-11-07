@@ -7,7 +7,11 @@ import mathIcon from "../../assets/math-icon.png";
 import engIcon from "../../assets/eng-icon.png";
 import kIcon from "../../assets/k-12.png";
 import lpIcon from "../../assets/lp-icon.png";
-import boost from "../../assets/boost.png";
+// import boost from "../../assets/boost.png";
+import boost from "../../assets/plane3.png";
+import boost2 from "../../assets/leftplane3.png";
+
+
 import book from "../../assets/book.png";
 import editImg from "../../assets/editImg.png";
 import ideaImg from "../../assets/ideaImg.png";
@@ -45,9 +49,10 @@ const SubjectsAndCourses = () => {
       <div className="absolute top-30 left-20">
         <img src={ideaImg} className="text-gray-200"/>
       </div>
-       <div className="absolute top-30 right-20">
+       <div className="absolute top-10 right-50">
         <img src={boost} className="bg-red-400" />
       </div>
+      
 
       <div className="max-w-7xl container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">

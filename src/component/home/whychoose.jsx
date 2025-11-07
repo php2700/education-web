@@ -4,6 +4,7 @@ import icon3 from "../../assets/icon-container-3.png";
 import icon4 from "../../assets/icon-container-4.png";
 import icon5 from "../../assets/icon-container-5.png";
 import backgroundImage from "../../assets/work-bg.png";
+import editImg from "../../assets/editImg.png";
 
 const WhyChooseUs = () => {
   const items = [
@@ -36,16 +37,18 @@ const WhyChooseUs = () => {
 
   return (
     <section
-      className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12"
+      className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "contain",
         backgroundPosition: "center",
       }}
     >
+
+      <div className="absolute top-0 left-40 "><img src={editImg} /></div>
       {/* Heading */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+        <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center">
           Why Choose Us?
         </h2>
         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">

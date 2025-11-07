@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaWhatsapp,
 } from "react-icons/fa";
+import arrow from "../../assets/arrownext.png";
 import { IoIosArrowForward } from "react-icons/io";
 import footerImg from "../../assets/footer.png";
 import logo from "../../assets/logo.png";
@@ -30,8 +31,9 @@ const Footer = () => {
           </p>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 hover:bg-blue-700 transition">
-              Get Started <IoIosArrowForward />
+            <button className="bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3  transition">
+              Get Started
+               <img src={arrow} alt="Get Started Arrow" className="w-3 h-3  " />
             </button>
             <button className="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-700 transition">
               Talk to an Advisor

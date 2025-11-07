@@ -1,4 +1,7 @@
+
 import heroBanner from "../../assets/heroBanner.jpg";
+import arrow from "../../assets/arrow_forward.png";
+
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -16,7 +19,7 @@ import instagram from "../../assets/inst.png";
 import whatsapp from "../../assets/whatsapp.png";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
-
+import book from "../../assets/books.png";
 
 const slides = [
   {
@@ -177,16 +180,18 @@ export const HeaderBanner = () => {
             Connect with expert tutors for math, science, languages, and more —
             tailored to your goals.
           </p>
-          <button className="bg-blue-600 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg">
+        
+          <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
             Start Free Trial
+            <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
           </button>
         </div>
 
-        <div className="absolute -bottom-16  md:-bottom-24 right-1 md:right-10 ">
+        <div className="absolute bottom-0 md:-bottom-24 right-4 md:right-10 z-30 ">
           <img
             src={moneyImg}
             alt="Money Icon"
-            className="w-28 md:w-48 lg:w-60"
+            className="w-28 md:w-48 lg:w-60 drop-shadow-lg"
           />
         </div>
       </div>

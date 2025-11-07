@@ -1,5 +1,7 @@
 import heroBanner from "../../assets/heroBanner.jpg";
 
+
+
 export const Banner = () => {
       return (
             <>
@@ -21,7 +23,7 @@ export const Banner = () => {
                               Connect with expert tutors for math, science,
                               languages, and more — tailored to your goals.
                         </div>
-                        <button>Start Free Trial </button>
+                        <button className="text-[#305CDE]">Start Free Trial </button>
             </>
       );
 };

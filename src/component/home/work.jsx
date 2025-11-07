@@ -25,10 +25,10 @@ const HowItWorks = () => {
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">
+        <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
           How It Works
         </h2>
-        <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+        <p className=" text-center text-[#4B5563] mb-16 max-w-2xl mx-auto">
           Getting started with your personalized learning journey is simple.
           Follow these four easy steps.
         </p>
@@ -44,7 +44,7 @@ const HowItWorks = () => {
               className="relative flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/4 mb-12 md:mb-0 px-4"
             >
               {/* Step Number */}
-              <div className="absolute -top-8 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 bg-white border-2 border-blue-600 text-blue-600 font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md">
+              <div className="absolute -top-8 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 bg-white border-2 border-blue-600 text-[#000000] font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md">
                 {step.id}
               </div>
 
@@ -62,7 +62,10 @@ const HowItWorks = () => {
               </div>
 
               {/* Text */}
-              <p className="text-gray-900 font-semibold text-base md:text-lg leading-snug max-w-[180px] md:max-w-none mx-auto md:mx-0">
+              {/* <p className="text-gray-900 font-semibold text-base md:text-lg leading-snug max-w-[180px] md:max-w-none mx-auto md:mx-0">
+                {step.text}
+              </p> */}
+                         <p className="text-black font-semibold text-lg md:text-xl leading-tight text-center">
                 {step.text}
               </p>
             </div>
