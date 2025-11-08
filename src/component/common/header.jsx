@@ -144,62 +144,65 @@ export const HeaderBanner = () => {
               </button>
             </div> */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-10 text-gray-700 font-medium relative">
-  {[
-    { name: "Home", link: "/" },
-    { name: "About Us", link: "/about" },
-    { name: "Courses", dropdown: true },
-    { name: "Pricing", link: "/pricing" },
-    { name: "Our Management", link: "/management" },
-    { name: "Blog", link: "/blog" },
-  ].map((item) =>
-    item.dropdown ? (
-      <div key={item.name} className="relative group">
-        <button className="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
-          {item.name}
-          <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+              {[
+                { name: "Home", link: "/" },
+                { name: "About Us", link: "/about" },
+                { name: "Courses", dropdown: true },
+                { name: "Pricing", link: "/pricing" },
+                { name: "Our Management", link: "/management" },
+                { name: "Blog", link: "/blog" },
+              ].map((item) =>
+                item.dropdown ? (
+                  <div key={item.name} className="relative group">
+                    <button className="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
+                      {item.name}
+                      <svg
+                        className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
 
-        <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
-          {[
-            { name: "Mathematics", link: "/courses/maths" },
-            { name: "Science", link: "/courses/science" },
-            { name: "English", link: "/courses/english" },
-            { name: "Programming", link: "/courses/programming" },
-          ].map((subItem) => (
-            <Link
-              key={subItem.name}
-              to={subItem.link}
-              className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
-            >
-              {subItem.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-    ) : (
-      <Link
-        key={item.name}
-        to={item.link}
-        className="hover:text-blue-600 transition-colors duration-200"
-      >
-        {item.name}
-      </Link>
-    )
-  )}
+                    <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
+                      {[
+                        { name: "Mathematics", link: "/courses/maths" },
+                        { name: "Science", link: "/courses/science" },
+                        { name: "English", link: "/courses/english" },
+                        { name: "Programming", link: "/courses/programming" },
+                      ].map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.link}
+                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.link}
+                    className="hover:text-blue-600 transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
 
-  <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
-    Contact us
-  </button>
-</div>
-
+              <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+                Contact us
+              </button>
+            </div>
           </div>
 
           {/* Mobile Dropdown Menu (only below lg) */}

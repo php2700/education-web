@@ -44,8 +44,9 @@ const WhyChooseUs = () => {
         backgroundPosition: "center",
       }}
     >
-
-      <div className="absolute top-0 left-40 "><img src={editImg} /></div>
+      <div className="absolute top-0 left-40 ">
+        <img src={editImg} />
+      </div>
       {/* Heading */}
       <div className="text-center mb-12">
         <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center">
