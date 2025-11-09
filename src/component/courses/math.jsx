@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import backgroundImage from "../../assets/work-bg.png";
+import backgroundImage from "../../assets/math-bg.png";
+import aboutImage from "../../assets/about-bg-2.png";
+
 import algebra from "../../assets/algebra.png";
 import algebra2 from "../../assets/algebra2.png";
 import amcImg from "../../assets/amc.png";
@@ -68,15 +70,14 @@ const Courses = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "contain",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-8">
+        <div className="container mx-auto ">
+          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">
             At GGES we offer online one to one tutoring for the following K-12
             Math courses and Math test preps:
           </h1>
-          <div className="max-w-4xl mx-auto space-y-8 text-lg text-gray-700">
+          <div className=" space-y-8 text-lg text-gray-700">
             <p>
               GGES Math tutoring works on math standards focus on learning math
               skills and concepts in the context of solving real-world problems.
@@ -101,11 +102,11 @@ const Courses = () => {
               topics, we are ready to teach all.
             </p>
           </div>
-          <div className="mt-12">
-            <p className="text-xl font-semibold text-gray-800 mb-4">
+          <div className="mt-12 text-center">
+            <p className="text-xl font-semibold  text-gray-800 mb-4">
               Click here to schedule a Free Trial Class for any subject
             </p>
-            <button className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out">
+            <button className="inline-flex  items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out">
               Start Free Trial{" "}
               <svg
                 className="ml-3 -mr-1 h-5 w-5"
@@ -157,12 +158,21 @@ const Courses = () => {
           </div>
         </div>
 
-        <div
+        {/* <div
           className="relative bg-[#F0F8FF] rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12"
           style={{
             backgroundImage: `url(${algebra})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        > */}
+        <div
+          className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12 bg-[#F0F8FF]"
+          style={{
+            backgroundImage: `url(${algebra})`,
+            backgroundSize: "cover",
+            backgroundPosition: "right center",
             backgroundRepeat: "no-repeat",
           }}
         >
@@ -220,12 +230,21 @@ const Courses = () => {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 overflow-hidden"
           style={{
             backgroundImage: `url(${algebra2})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        > */}
+        <div
+          className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 overflow-hidden"
+          style={{
+            backgroundImage: `url(${algebra2})`,
+            backgroundSize: "cover",
+            backgroundPosition: "left center",
             backgroundRepeat: "no-repeat",
           }}
         >
@@ -297,7 +316,6 @@ const Courses = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "contain",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="max-w-7xl container mx-auto text-center mb-12">
@@ -341,7 +359,7 @@ const Courses = () => {
               Geometry Chapters Included in our Geometry tutoring are as
               follows:
             </h3>
-            <div className="relative">
+            {/* <div className="relative">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
                 {chapters?.map((chapter) => (
                   <div
@@ -394,6 +412,73 @@ const Courses = () => {
                   </svg>
                 </button>
               </div>
+            </div> */}
+
+            <div className="relative w-full px-4 sm:px-6 lg:px-10 py-6">
+              {/* Chapters Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 text-center">
+                {chapters?.map((chapter) => (
+                  <div
+                    key={chapter.num}
+                    className="flex flex-row justify-start sm:justify-center items-center gap-3 sm:gap-4"
+                  >
+                    <div
+                      className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white font-bold text-base sm:text-lg ${chapter.color}`}
+                    >
+                      {chapter.num}
+                    </div>
+
+                    <div className="flex flex-col text-left">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-900">
+                        {chapter.title}
+                      </h4>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        {chapter.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Left Arrow */}
+              <div className="absolute inset-y-0 left-2 sm:left-4 flex items-center">
+                <button
+                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Previous"
+                >
+                  <svg
+                    className="h-6 w-6 sm:h-8 sm:w-8"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Right Arrow */}
+              <div className="absolute inset-y-0 right-2 sm:right-4 flex items-center">
+                <button
+                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Next"
+                >
+                  <svg
+                    className="h-6 w-6 sm:h-8 sm:w-8"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <p className="text-gray-700 text-center mt-8">
@@ -429,15 +514,7 @@ const Courses = () => {
       {/* End of K-12 Tutoring - Geometry section */}
 
       {/* New section: ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions) Test */}
-      <section
-        className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto  mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">
             ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions)
@@ -469,9 +546,17 @@ const Courses = () => {
             </button>
           </div>
         </div>
+      </section>
 
-        {/* About AMC Preparations section */}
-        <div className="relative max-w-7xl mx-auto  p-8 mt-12 overflow-hidden">
+      <div
+        className="relative bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8"
+        style={{
+          backgroundImage: `url(${aboutImage})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="relative container mx-auto  p-8 mt-12 overflow-hidden">
           <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
             ABOUT AMC TEST
           </h3>
@@ -539,13 +624,16 @@ const Courses = () => {
             </div>
           </div>
         </div>
-
+      </div>
+      <div className="bg-[#F0F8FF]">
         <Completion />
-        <Prep />
+      </div>
+      <Prep />
 
-        <TestStructure />
+      <TestStructure />
 
-        <div className="container mx-auto max-w-7xl mx-auto">
+      <div className="bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto mx-auto">
           <div className="text-4xl font-semibold text-center my-4">
             ABOUT COMMON CORE – SCIENCE
           </div>
@@ -571,8 +659,8 @@ const Courses = () => {
             </button>
           </div>
         </div>
-        <TopicPage />
-      </section>
+      </div>
+      <TopicPage />
     </>
   );
 };

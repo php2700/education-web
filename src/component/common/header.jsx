@@ -173,10 +173,10 @@ export const HeaderBanner = () => {
 
                     <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
                       {[
-                        { name: "Mathematics", link: "/courses/maths" },
-                        { name: "Science", link: "/courses/science" },
+                        { name: "Math", link: "/courses/maths" },
+                        { name: "k-12", link: "/courses/k-12" },
                         { name: "English", link: "/courses/english" },
-                        { name: "Programming", link: "/courses/programming" },
+                        { name: "Test Prep", link: "/courses/test" },
                       ].map((subItem) => (
                         <Link
                           key={subItem.name}

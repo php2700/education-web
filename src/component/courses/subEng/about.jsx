@@ -8,19 +8,25 @@ import {
   Lightbulb,
   PenTool,
 } from "lucide-react";
+import backgroundImage from "../../../assets/about-bg.png";
 
 export const AboutInfoPage = () => {
   return (
-    <div>
-      {/* Header */}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div
+      className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <h1 className="text-3xl font-extrabold text-center  flex items-center justify-center gap-3">
           ALL YOU NEED TO KNOW ABOUT ELA
         </h1>
       </div>
 
-      <main className=" px-4 sm:px-6 lg:px-8 space-y-12">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Intro Paragraph */}
 
         <p className="text-sm text-gray-800 leading-relaxed ">
@@ -61,8 +67,8 @@ export const AboutInfoPage = () => {
           </p>
         </section>
 
-        <section className=" p-8">
-          <h3 className="text-2xl font-bold  mb-4 flex items-center gap-2">
+        <section>
+          <h3 className="text-2xl font-bold  mb-4 text-center gap-2">
             What is on the test?
           </h3>
           <h4 className="text-xl font-semibold  mb-4 flex items-center gap-2">

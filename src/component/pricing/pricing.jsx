@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundImage from "../../assets/work-bg.png";
+import backgroundImage from "../../assets/price-bg.png";
 import female1 from "../../assets/pricing1.png";
 import female12 from "../../assets/student2.png";
 import female13 from "../../assets/student3.png";
@@ -7,17 +7,17 @@ import dotted from "../../assets/dotted.png";
 
 const PricingPage = () => {
   return (
-<div
-  className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 h-full"
-  style={{
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "contain",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
-
-
+    <div
+      className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 h-full"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+        // backgroundRepeat: "no-repeat",
+        // width:'100%'
+        //  height: "100%"
+      }}
+    >
       <main className="container max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-center text-4xl font-bold mb-16 text-gray-900">
           OUR PRICING
@@ -276,7 +276,7 @@ const PricingPage = () => {
 
         <div className="my-4">
           {" "}
-          <img  src={dotted} />
+          <img src={dotted} />
         </div>
 
         <div className="flex justify-center mt-10">

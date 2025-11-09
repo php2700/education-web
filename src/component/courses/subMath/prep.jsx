@@ -14,16 +14,13 @@ import {
 export const Prep = () => {
   return (
     <>
-      <div className="container mx-auto max-w-7xl mx-auto">
+      <div className="bg-[#F0F8FF]">
         {/* Header */}
 
-        <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight">
+        <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
+          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
             WHY TO TAKE IT?
           </h1>
-        </div>
-
-        <main className="space-y-16">
           <section className="text-gray-600 text-[16px] font-semibold">
             <p className=" leading-relaxed mb-6">
               The main purpose of the AMC 10/12 is to spur interest in
@@ -66,36 +63,9 @@ export const Prep = () => {
               </button>
             </div>
           </section>
-
-          <section>
-            {/* Left: Text */}
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-center my-2 text-gray-800">
-                MATH KANGAROO TEST PREP
-              </h2>
-              <p className="text-md font-semibold text-gray-500 leading-relaxed">
-                Mathematical Kangaroo is an international mathematical
-                competition with more than 50 countries that take an active part
-                in it. There are twelve levels of participation from grade 1 to
-                grade 12. We take pride in organizing this event. We have
-                specialized mathematics tutors who prepare students for this
-                competition. We provide past year papers, mock tests, and
-                topic-wise prep .
-              </p>
-              <p className="text-xl text-center font-bold text-gray-700 leading-relaxed mt-4">
-                So why wait? To avail a Free Trial Class for Math Kangaroo Test
-                Prep Online Tutoring
-              </p>
-            </div>
-
-            <div className="text-center my-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
-                Start Free Trial
-              </button>
-            </div>
-          </section>
-        </main>
+        </div>
       </div>
+    
     </>
   );
 };

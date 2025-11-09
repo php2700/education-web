@@ -2,13 +2,13 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export const Completion = () => {
   return (
-    <div className="container mx-auto max-w-7xl">
-      <div className="text-center flex justify-between mb-10">
+    <div className="container mx-auto">
+      <div className="text-center flex-col md:flex-row  flex justify-between mb-10">
         <h2 className="text-2xl sm:text-3xl font-semibold flex items-center justify-center gap-2">
           What are the different MAA AMC competitions?
         </h2>
 
-        <div className=" flex gap-3">
+        <div className=" flex gap-3 justify-between px-2">
           <button className="bg-white border border-gray-300 shadow-sm rounded-full p-2 hover:bg-blue-50 transition">
             <FaArrowLeft className="text-blue-600" />
           </button>
@@ -19,7 +19,7 @@ export const Completion = () => {
       </div>
 
       {/* Main Card */}
-      <div className="relative max-w-7xl mx-auto bg-[#D7E9FF] shadow-md rounded-2xl p-6 sm:p-10 text-gray-700 border border-blue-100">
+      <div className="relative  mx-auto bg-[#D7E9FF] shadow-md rounded-2xl p-6 sm:p-10 text-gray-700 border border-blue-100">
         <h3 className="text-xl sm:text-2xl font-bold  mb-3">AMC 8</h3>
 
         <p className="mb-4 text-gray-600 text-[16px] font-semibold leading-relaxed">

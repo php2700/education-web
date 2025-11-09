@@ -12,10 +12,47 @@ import {
 import featureImg from "../../../assets/feature.png";
 import generalImg from "../../../assets/general.png";
 import scoringImg from "../../../assets/scoring.png";
+import testBgImg from "../../../assets/test-bg.png";
 
 export const TestStructure = () => {
   return (
-    <div className="container mx-auto max-w-7xl mx-auto">
+    <div
+      className="relative bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8"
+      style={{
+        backgroundImage: `url(${testBgImg})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
+        <section>
+          {/* Left: Text */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center my-2 text-gray-800">
+              MATH KANGAROO TEST PREP
+            </h2>
+            <p className="text-md font-semibold text-gray-500 leading-relaxed">
+              Mathematical Kangaroo is an international mathematical competition
+              with more than 50 countries that take an active part in it. There
+              are twelve levels of participation from grade 1 to grade 12. We
+              take pride in organizing this event. We have specialized
+              mathematics tutors who prepare students for this competition. We
+              provide past year papers, mock tests, and topic-wise prep .
+            </p>
+            <p className="text-xl text-center font-bold text-gray-700 leading-relaxed mt-4">
+              So why wait? To avail a Free Trial Class for Math Kangaroo Test
+              Prep Online Tutoring
+            </p>
+          </div>
+
+          <div className="text-center my-4">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+              Start Free Trial
+            </button>
+          </div>
+        </section>
+ 
+
       {/* Header */}
       <div className=" py-4">
         <h1 className="text-3xl font-bold text-center">TEST STRUCTURE</h1>
@@ -38,9 +75,9 @@ export const TestStructure = () => {
         </p>
       </div>
 
-      <main className=" mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+      <main className=" py-8 space-y-12">
         {/* Features Section */}
-        <section className="p-8">
+        <section >
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
             Features
           </h2>
@@ -73,7 +110,7 @@ export const TestStructure = () => {
         </section>
 
         {/* General Rules Section */}
-        <section className=" p-8">
+        <section>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <img src={generalImg} alt="Students reading" className="w-full" />
@@ -126,7 +163,7 @@ export const TestStructure = () => {
           </div>
         </section>
 
-        <section className="p-8">
+        <section >
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
             Scoring
           </h2>
@@ -160,6 +197,7 @@ export const TestStructure = () => {
           Kangaroo.
         </div>
       </main>
+           </div>
     </div>
   );
 };
