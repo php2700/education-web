@@ -67,9 +67,6 @@ const WhyChooseUs = () => {
               flex 
               items-start 
               bg-white 
-              rounded-xl 
-              shadow-sm 
-              hover:shadow-md 
               transition-all 
               p-5 
               w-full 

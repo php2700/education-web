@@ -56,12 +56,8 @@ const SubjectsAndCourses = () => {
 
   return (
     <section className="bg-[#F0F8FF] py-16 relative">
-      <div className="absolute top-30 left-20">
-        <img src={ideaImg} className="text-gray-200" />
-      </div>
-      <div className="absolute top-10 right-50">
-        <img src={boost} className="bg-red-400" />
-      </div>
+ 
+  
 
       <div className="max-w-7xl container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">

@@ -22,6 +22,12 @@ import youtube from "../../assets/youtube.png";
 import book from "../../assets/books.png";
 import rocket from "../../assets/rocketB.png";
 import cfl from "../../assets/cflB.png";
+import callImg from "../../assets/call.png";
+import mail from "../../assets/mail.png";
+import slide2 from "../../assets/slide-2.jpg";
+import slide3 from "../../assets/slide-3.jpg";
+import slide4 from "../../assets/slide-4.jpg";
+import slide5 from "../../assets/slide-5.jpg";
 
 const slides = [
   {
@@ -30,15 +36,34 @@ const slides = [
     description: "Discover amazing services and offers here.",
   },
   {
-    image: heroBanner,
+    image: slide2,
     title: "Your Next Adventure",
     description: "Explore our new destinations today.",
   },
   {
-    image: heroBanner,
+    image: slide3,
     title: "Join Our Community",
     description: "Connect with people and grow together.",
   },
+  {
+    image: slide4,
+    title: "Join Our Community",
+    description: "Connect with people and grow together.",
+  },
+  {
+    image: slide5,
+    title: "Join Our Community",
+    description: "Connect with people and grow together.",
+  },
+];
+
+const headerData = [
+  { name: "Home", link: "/" },
+  { name: "About Us", link: "/about" },
+  { name: "Courses", dropdown: true },
+  { name: "Pricing", link: "/pricing" },
+  { name: "Our Management", link: "/management" },
+  { name: "Blog", link: "/blog" },
 ];
 
 export const HeaderBanner = () => {
@@ -71,13 +96,13 @@ export const HeaderBanner = () => {
             {/* Left Side */}
             <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-2">
-                <FaPhoneAlt className="text-blue-400" />
+                <img src={callImg} className="text-blue-400" />
                 <a href="tel:+911234567890" className="hover:underline">
                   +91 12345 67890
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <FaEnvelope className="text-blue-400" />
+                <img src={mail} className="text-blue-400" />
                 <a href="mailto:info@example.com" className="hover:underline">
                   info@example.com
                 </a>
@@ -143,18 +168,11 @@ export const HeaderBanner = () => {
                 Contact us
               </button>
             </div> */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-10 text-gray-700 font-medium relative">
-              {[
-                { name: "Home", link: "/" },
-                { name: "About Us", link: "/about" },
-                { name: "Courses", dropdown: true },
-                { name: "Pricing", link: "/pricing" },
-                { name: "Our Management", link: "/management" },
-                { name: "Blog", link: "/blog" },
-              ].map((item) =>
+            <div className="hidden lg:flex items-center gap-4 lg:gap-10 text-gray-700 font-medium relative">
+              {headerData?.map((item) =>
                 item.dropdown ? (
                   <div key={item.name} className="relative group">
-                    <button className="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
+                    <button className="hover:text-blue-600 transition-colors text-lg duration-200 flex items-center gap-1">
                       {item.name}
                       <svg
                         className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
@@ -192,14 +210,14 @@ export const HeaderBanner = () => {
                   <Link
                     key={item.name}
                     to={item.link}
-                    className="hover:text-blue-600 transition-colors duration-200"
+                    className="hover:text-blue-600 text-lg transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
                 )
               )}
 
-              <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
+              <button className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition ">
                 Contact us
               </button>
             </div>
@@ -209,22 +227,14 @@ export const HeaderBanner = () => {
           {menuOpen && (
             <nav className="lg:hidden bg-white rounded-xl mt-2 text-gray-700 font-medium shadow-md">
               <ul className="flex flex-col text-center py-2">
-                {[
-                  "Home",
-                  "About Us",
-                  "Courses",
-                  "Pricing",
-                  "Our Management",
-                  "Test Imotional",
-                  "Blog",
-                ].map((item) => (
+                {headerData?.map((item) => (
                   <li key={item}>
-                    <a
-                      href="#"
+                    <Link
+                      to={item?.link}
                       className="block py-2 hover:bg-gray-100 hover:text-blue-600"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
                 <li>

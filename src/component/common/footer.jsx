@@ -9,6 +9,8 @@ import arrow from "../../assets/arrownext.png";
 import { IoIosArrowForward } from "react-icons/io";
 import footerImg from "../../assets/footer.png";
 import logo from "../../assets/logo.png";
+import callImg from "../../assets/call.png";
+import mail from "../../assets/mail.png";
 
 const Footer = () => {
   return (
@@ -33,7 +35,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <button className="bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3  transition">
               Get Started
-               <img src={arrow} alt="Get Started Arrow" className="w-3 h-3  " />
+              <img src={arrow} alt="Get Started Arrow" className="w-3 h-3  " />
             </button>
             <button className="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-700 transition">
               Talk to an Advisor
@@ -44,13 +46,13 @@ const Footer = () => {
 
       {/* Footer Section */}
       <section className="bg-blue-700 text-white py-12 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
           {/* Left About Section */}
           <div>
             <div className="flex justify-center md:justify-start">
               <img src={logo} />
             </div>
-            <p className="text-sm leading-relaxed my-5">
+            <p className="text-md leading-relaxed my-5">
               Personalized online tutoring to help students achieve their
               academic goals.
             </p>
@@ -85,7 +87,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-md">
               <li>
                 <a href="#" className="hover:underline">
                   About
@@ -117,7 +119,7 @@ const Footer = () => {
           {/* Support Links */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Support</h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-md">
               <li>
                 <a href="#" className="hover:underline">
                   Help Center
@@ -144,9 +146,15 @@ const Footer = () => {
           {/* Contact Section */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm">
-              <li>📧 info@xyz.com</li>
-              <li>📞 +91-1234 56 7890</li>
+            <ul className="space-y-2 text-md">
+              <li className="flex items-center gap-2">
+                <img src={mail} alt="Mail" className="w-4 h-4" />
+                <span>info@xyz.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <img src={callImg} alt="Call" className="w-4 h-4" />
+                <span>+91-1234 56 7890</span>
+              </li>
               <li>
                 <button className="bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition">
                   Live Chat
@@ -155,10 +163,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
         {/* Bottom Footer */}
-        <div className="mt-10 text-center text-sm text-blue-100 pt-6">
-          © 2024 <span className="font-semibold">Name</span>. All rights
+        <div className="mt-10 text-center text-md text-blue-100 pt-6">
+          © 2025 <span className="font-semibold">Name</span>. All rights
           reserved.
         </div>
       </section>

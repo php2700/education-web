@@ -41,15 +41,15 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={step.id}
-              className="relative flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/4 mb-12 md:mb-0 px-4"
+              className="relative flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/4 mb-18 md:mb-0 px-4"
             >
               {/* Step Number */}
-              <div className="absolute -top-8 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 bg-white border-2 border-blue-600 text-[#000000] font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md">
+              <div className="absolute   -top-10 md:-top-8  left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 bg-white border-2 border-blue-600 text-[#000000] font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md">
                 {step.id}
               </div>
 
               {/* Icon */}
-              <div className="flex items-center justify-center md:justify-start mb-5">
+              <div className="flex items-center justify-center md:justify-start ">
                 <img
                   src={step.img}
                   alt={step.text}
@@ -65,7 +65,7 @@ const HowItWorks = () => {
               {/* <p className="text-gray-900 font-semibold text-base md:text-lg leading-snug max-w-[180px] md:max-w-none mx-auto md:mx-0">
                 {step.text}
               </p> */}
-                         <p className="text-black font-semibold text-lg md:text-xl leading-tight text-center">
+              <p className="text-black font-semibold text-lg md:text-xl leading-tight text-center">
                 {step.text}
               </p>
             </div>
