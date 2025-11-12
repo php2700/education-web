@@ -82,9 +82,9 @@ export const HeaderBanner = () => {
   // }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
       {/* Banner Section */}
-      <div className="relative w-full max-h-[100vh] flex items-center justify-center overflow-hidden ">
+      <div className="relative w-full max-h-[100vh] flex items-center justify-center overflow-visible lg:overflow-hidden ">
         <img
           src={slides[0].image}
           alt={slides[0].title}
@@ -95,7 +95,7 @@ export const HeaderBanner = () => {
 
         <header className="absolute top-0 left-0 w-full flex flex-col px-4 sm:px-8 md:px-16 py-4 z-50 gap-3">
           {/* Top Contact & Social */}
-          <div className="flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
+          <div className="hidden sm:flex  flex-col  sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
             {/* Left Side */}
             <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-2">
@@ -171,7 +171,7 @@ export const HeaderBanner = () => {
                 Contact us
               </button>
             </div> */}
-            <div className="hidden lg:flex items-center gap-4 lg:gap-10 text-gray-700 font-medium relative">
+            <div className="hidden lg:flex items-center  gap-4 lg:gap-10 text-gray-700 font-medium relative">
               {headerData?.map((item) =>
                 item.dropdown ? (
                   <div key={item.name} className="relative group">
@@ -227,7 +227,7 @@ export const HeaderBanner = () => {
           </div>
 
           {menuOpen && (
-            <nav className="lg:hidden bg-white rounded-xl mt-1 mx-3 mb-3 text-gray-700 font-medium shadow-md border border-gray-100">
+            <nav className="lg:hidden  bg-white rounded-xl mt-1 mx-3 mb-3  text-gray-700 font-medium shadow-md border border-gray-100">
               <ul className="flex flex-col text-center py-2">
                 {headerData.map((item) =>
                   item.dropdown ? (
@@ -296,7 +296,7 @@ export const HeaderBanner = () => {
           <img
             src={moneyImg}
             alt="Money Icon"
-            className="w-28 md:w-48 lg:w-60 drop-shadow-lg"
+            className="w-20 md:w-40 lg:w-60 drop-shadow-lg"
           />
         </div>
       </div>
