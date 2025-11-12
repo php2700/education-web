@@ -1,4 +1,8 @@
-import heroBanner from "../../assets/heroBanner.jpg";
+// import heroBanner from "../../assets/heroBanner.jpg";
+// import heroBanner from "../../assets/homebanner.png";
+// import heroBanner from "../../assets/home-1.jpg";
+import heroBanner from "../../assets/home-2.jpg";
+
 import arrow from "../../assets/arrow_forward.png";
 import { Link } from "react-router-dom";
 
@@ -35,26 +39,26 @@ const slides = [
     title: "Welcome to Our Website",
     description: "Discover amazing services and offers here.",
   },
-  {
-    image: slide2,
-    title: "Your Next Adventure",
-    description: "Explore our new destinations today.",
-  },
-  {
-    image: slide3,
-    title: "Join Our Community",
-    description: "Connect with people and grow together.",
-  },
-  {
-    image: slide4,
-    title: "Join Our Community",
-    description: "Connect with people and grow together.",
-  },
-  {
-    image: slide5,
-    title: "Join Our Community",
-    description: "Connect with people and grow together.",
-  },
+  // {
+  //   image: slide2,
+  //   title: "Your Next Adventure",
+  //   description: "Explore our new destinations today.",
+  // },
+  // {
+  //   image: slide3,
+  //   title: "Join Our Community",
+  //   description: "Connect with people and grow together.",
+  // },
+  // {
+  //   image: slide4,
+  //   title: "Join Our Community",
+  //   description: "Connect with people and grow together.",
+  // },
+  // {
+  //   image: slide5,
+  //   title: "Join Our Community",
+  //   description: "Connect with people and grow together.",
+  // },
 ];
 
 const headerData = [
@@ -70,26 +74,25 @@ export const HeaderBanner = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prev) => (prev + 1) % slides.length);
+  //   }, 2000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="relative w-full">
       {/* Banner Section */}
-      <div className="relative w-full h-[90vh] sm:h-[80vh] md:h-screen ">
-        {/* Background Image */}
+      <div className="relative w-full max-h-[100vh] flex items-center justify-center overflow-hidden ">
         <img
-          src={slides[currentIndex].image}
-          alt={slides[currentIndex].title}
-          className="w-full h-full object-cover transition-all duration-700"
+          src={slides[0].image}
+          alt={slides[0].title}
+          className="w-full max-h-full object-cover object-center  rounded-xl transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* HEADER */}
+        {/* <div className="absolute inset-0 bg-black/40"></div> */}
+
         <header className="absolute top-0 left-0 w-full flex flex-col px-4 sm:px-8 md:px-16 py-4 z-50 gap-3">
           {/* Top Contact & Social */}
           <div className="flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
@@ -223,120 +226,73 @@ export const HeaderBanner = () => {
             </div>
           </div>
 
-
-        {menuOpen && (
-        <nav className="lg:hidden bg-white rounded-xl mt-1 mx-3 mb-3 text-gray-700 font-medium shadow-md border border-gray-100">
-          <ul className="flex flex-col text-center py-2">
-            {headerData.map((item) =>
-              item.dropdown ? (
-                <details key={item.name} className="group border-t last:border-b">
-                  <summary className="py-2 cursor-pointer text-lg flex justify-center items-center gap-1 hover:text-blue-600">
-                    {item.name}
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-open:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
+          {menuOpen && (
+            <nav className="lg:hidden bg-white rounded-xl mt-1 mx-3 mb-3 text-gray-700 font-medium shadow-md border border-gray-100">
+              <ul className="flex flex-col text-center py-2">
+                {headerData.map((item) =>
+                  item.dropdown ? (
+                    <details
+                      key={item.name}
+                      className="group border-t last:border-b"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </summary>
-                  <div className="bg-gray-50 border-t">
-                    {[
-                      { name: "Math", link: "/courses/maths" },
-                      { name: "K-12", link: "/courses/k-12" },
-                      { name: "English", link: "/courses/english" },
-                      { name: "Test Prep", link: "/courses/test" },
-                    ].map((subItem) => (
+                      <summary className="py-2 cursor-pointer text-lg flex justify-center items-center gap-1 hover:text-blue-600">
+                        {item.name}
+                        <svg
+                          className="w-4 h-4 transition-transform duration-300 group-open:rotate-180"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </summary>
+                      <div className="bg-gray-50 border-t">
+                        {[
+                          { name: "Math", link: "/courses/maths" },
+                          { name: "K-12", link: "/courses/k-12" },
+                          { name: "English", link: "/courses/english" },
+                          { name: "Test Prep", link: "/courses/test" },
+                        ].map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.link}
+                            className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <li key={item.name} className="border-t last:border-b">
                       <Link
-                        key={subItem.name}
-                        to={subItem.link}
-                        className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
+                        to={item.link}
+                        className="block py-2 hover:bg-gray-100 hover:text-blue-600"
+                        onClick={() => setMenuOpen(false)}
                       >
-                        {subItem.name}
+                        {item.name}
                       </Link>
-                    ))}
-                  </div>
-                </details>
-              ) : (
-                <li key={item.name} className="border-t last:border-b">
-                  <Link
-                    to={item.link}
-                    className="block py-2 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              )
-            )}
+                    </li>
+                  )
+                )}
 
-            {/* Contact Button */}
-            <li className="py-3">
-              <button className="bg-blue-600 text-white w-4/5 mx-auto py-2 rounded-lg hover:bg-blue-700">
-                Contact Us
-              </button>
-            </li>
-          </ul>
-        </nav>
-      )}
-   
+                {/* Contact Button */}
+                <li className="py-3">
+                  <button className="bg-blue-600 text-white w-4/5 mx-auto py-2 rounded-lg hover:bg-blue-700">
+                    Contact Us
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          )}
         </header>
 
-        {/* Banner Text */}
-        <div className="absolute inset-0 flex flex-col justify-center items-start px-4 sm:px-8 md:px-20 text-left z-20">
-          {/* <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
-            Personalized Online
-          </h1> */}
-          <div className="relative">
-            {/* <img src={rocket} alt="rocket" className="absolute -left-12 sm:-left-16 top-0 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
-              Personalized{" "}
-              <span className="relative inline-block">
-                Online
-                {/* <img src={cfl} alt="bulb" className="absolute -top-12 sm:-top-10 -left-2 sm:-left-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
-                <img
-                  src={cfl}
-                  alt="bulb"
-                  className="absolute -top-12 sm:-top-14 left-2 sm:left-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]"
-                />
-              </span>
-            </h1>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-3">
-            Tutoring <span className="text-blue-500">Anytime,</span>
-          </h1>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-500 mb-5">
-            Anywhere
-          </h1>
-          <p className="text-white text-sm sm:text-lg md:text-xl mb-6 max-w-xl sm:max-w-2xl">
-            Connect with expert tutors for math, science, languages, and more —
-            tailored to your goals.
-          </p>
-
-          {/* <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
-            Start Free Trial
-            <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
-          </button> */}
-          <div className="flex items-center gap-4">
-            <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
-              Start Free Trial
-              <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
-            </button>
-            <img
-              src={book}
-              alt="book"
-              style={{ width: "100px", height: "100px" }}
-            />
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 md:-bottom-24 right-4 md:right-10 z-30 ">
+        <div className="absolute -bottom-4 md:-bottom-8 right-4 md:right-10 z-50 ">
           <img
             src={moneyImg}
             alt="Money Icon"
@@ -345,6 +301,50 @@ export const HeaderBanner = () => {
         </div>
       </div>
 
+      <div className=" flex flex-col justify-center text-center px-4 sm:px-8 md:px-20 my-4 ">
+        <div className="relative">
+          {/* <img src={rocket} alt="rocket" className="absolute -left-12 sm:-left-16 top-0 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold  leading-tight ">
+            Personalized{" "}
+            <span className="relative inline-block">
+              Online
+              {/* <img src={cfl} alt="bulb" className="absolute -top-12 sm:-top-10 -left-2 sm:-left-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" /> */}
+              {/* <img
+                  src={cfl}
+                  alt="bulb"
+                  className=" w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]"
+                /> */}
+            </span>
+          </h1>
+        </div>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold  mb-3">
+          Tutoring <span className="text-blue-500">Anytime,</span>
+        </h1>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-500 mb-5">
+          Anywhere
+        </h1>
+        <p className=" text-sm sm:text-lg md:text-xl mb-6 mx-auto max-w-xl sm:max-w-2xl">
+          Connect with expert tutors for math, science, languages, and more —
+          tailored to your goals.
+        </p>
+
+        {/* <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
+            Start Free Trial
+            <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
+          </button> */}
+        <div className="flex justify-center items-center gap-4">
+          <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
+            Start Free Trial
+            <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
+          </button>
+          {/* <img
+              src={book}
+              alt="book"
+              style={{ width: "100px", height: "100px" }}
+            /> */}
+        </div>
+      </div>
+      {/* 
       <div className=" flex bg-[#F0F8FF] justify-center items-center gap-3 ">
         {slides.map((slide, index) => (
           <div
@@ -361,7 +361,7 @@ export const HeaderBanner = () => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
