@@ -168,15 +168,10 @@ const Courses = () => {
           }}
         > */}
         <div
-          className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12 bg-[#F0F8FF]"
-          style={{
-            backgroundImage: `url(${algebra})`,
-            backgroundSize: "cover",
-            backgroundPosition: "right center",
-            backgroundRepeat: "no-repeat",
-          }}
+          className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12 bg-[#AEA4DE] "
+        
         >
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 sm:gap-8 text-white">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 sm:gap-8 text-white ">
             <div className="w-full lg:w-1/2 text-left">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                 ALGEBRA 1
@@ -240,16 +235,16 @@ const Courses = () => {
           }}
         > */}
         <div
-          className="relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 overflow-hidden"
-          style={{
-            backgroundImage: `url(${algebra2})`,
-            backgroundSize: "cover",
-            backgroundPosition: "left center",
-            backgroundRepeat: "no-repeat",
-          }}
+          className="relative bg-[#F0B6C2] rounded-lg shadow-xl p-6 sm:p-8 md:p-10 overflow-hidden"
+          // style={{
+          //   backgroundImage: `url(${algebra2})`,
+          //   backgroundSize: "cover",
+          //   backgroundPosition: "left center",
+          //   backgroundRepeat: "no-repeat",
+          // }}
         >
           <div className="flex flex-col lg:flex-row items-center lg:items-end gap-6 sm:gap-8 text-white">
-            <div className="hidden lg:block w-1/2"></div>
+          
 
             <div className="w-full lg:w-1/2 text-left  lg:bg-transparent rounded-lg p-4 sm:p-6">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">

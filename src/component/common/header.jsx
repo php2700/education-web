@@ -223,28 +223,69 @@ export const HeaderBanner = () => {
             </div>
           </div>
 
-          {/* Mobile Dropdown Menu (only below lg) */}
-          {menuOpen && (
-            <nav className="lg:hidden bg-white rounded-xl mt-2 text-gray-700 font-medium shadow-md">
-              <ul className="flex flex-col text-center py-2">
-                {headerData?.map((item) => (
-                  <li key={item}>
-                    <Link
-                      to={item?.link}
-                      className="block py-2 hover:bg-gray-100 hover:text-blue-600"
+
+        {menuOpen && (
+        <nav className="lg:hidden bg-white rounded-xl mt-1 mx-3 mb-3 text-gray-700 font-medium shadow-md border border-gray-100">
+          <ul className="flex flex-col text-center py-2">
+            {headerData.map((item) =>
+              item.dropdown ? (
+                <details key={item.name} className="group border-t last:border-b">
+                  <summary className="py-2 cursor-pointer text-lg flex justify-center items-center gap-1 hover:text-blue-600">
+                    {item.name}
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
                     >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button className="bg-blue-600 text-white w-4/5 mx-auto mt-2 py-2 rounded-lg hover:bg-blue-700">
-                    Contact us
-                  </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div className="bg-gray-50 border-t">
+                    {[
+                      { name: "Math", link: "/courses/maths" },
+                      { name: "K-12", link: "/courses/k-12" },
+                      { name: "English", link: "/courses/english" },
+                      { name: "Test Prep", link: "/courses/test" },
+                    ].map((subItem) => (
+                      <Link
+                        key={subItem.name}
+                        to={subItem.link}
+                        className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <li key={item.name} className="border-t last:border-b">
+                  <Link
+                    to={item.link}
+                    className="block py-2 hover:bg-gray-100 hover:text-blue-600"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
                 </li>
-              </ul>
-            </nav>
-          )}
+              )
+            )}
+
+            {/* Contact Button */}
+            <li className="py-3">
+              <button className="bg-blue-600 text-white w-4/5 mx-auto py-2 rounded-lg hover:bg-blue-700">
+                Contact Us
+              </button>
+            </li>
+          </ul>
+        </nav>
+      )}
+   
         </header>
 
         {/* Banner Text */}
