@@ -322,7 +322,7 @@ const PricingPage = () => {
       />
     </div>
 
-        <div className="bg-white rounded-lg  border border-gray-200 w-full   mx-auto">
+        <div className="bg-white rounded-lg p-6  border border-gray-200 w-full   mx-auto">
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 rounded-lg text-sm">
                 <thead>
@@ -393,9 +393,9 @@ const PricingPage = () => {
 
  
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10 ">
-        <div className="bg-white rounded-lg  border border-gray-200 w-full  mx-auto order-2 lg:order-1">
+        <div className="bg-white p-6 rounded-lg  border border-gray-200 w-full  mx-auto order-2 lg:order-1">
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white rounded-lg">
+              <table className="min-w-full bg-white text-sm rounded-lg">
                 <thead>
                   <tr>
                     <th className="py-3 px-4">
@@ -488,7 +488,7 @@ const PricingPage = () => {
 
          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full mx-auto">
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white rounded-lg">
+              <table className="min-w-full bg-white text-sm rounded-lg">
                 <thead>
                   <tr>
                     <th className="py-3 px-4">
