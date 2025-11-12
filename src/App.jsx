@@ -9,6 +9,7 @@ import { Home } from "./component/home";
 import PricingPage from "./component/pricing/pricing";
 import Courses from "./component/courses/math";
 import { EnglishCourse } from "./component/courses/english";
+import { Blog } from "./component/blog";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <HeaderBanner />
         <Routes>
           <Route path="/" index element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/courses/maths" element={<Courses />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
