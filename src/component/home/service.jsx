@@ -50,7 +50,6 @@ const SubjectsAndCourses = () => {
   ];
 
   const handleUrl = (pageUrl) => {
-    console.log(handleUrl, "ghghghghghghghghghgh");
     navigate(`${pageUrl}`);
   };
 

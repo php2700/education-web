@@ -10,10 +10,13 @@ import PricingPage from "./component/pricing/pricing";
 import Courses from "./component/courses/math";
 import { EnglishCourse } from "./component/courses/english";
 import { Blog } from "./component/blog";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <BrowserRouter>
         <HeaderBanner />
         <Routes>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Brain,
   Calculator,
@@ -14,7 +14,9 @@ import reading from "../../../assets/reading.png";
 import mathematics from "../../../assets/mathmatics.png";
 import essay from "../../../assets/essay.png";
 
+
 export const Measure = () => {
+ 
   return (
     <>
       <div className="bg-[#F0F8FF]">

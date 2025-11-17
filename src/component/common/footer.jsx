@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -11,26 +11,48 @@ import footerImg from "../../assets/footer.png";
 import logo from "../../assets/logo.png";
 import callImg from "../../assets/call.png";
 import mail from "../../assets/mail.png";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Footer = () => {
+  const [bannerData, setBannerData] = useState([]);
+
+  const getBannerData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/footer-banner`
+      );
+      setBannerData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getBannerData();
+  }, []);
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
       <section
         className="relative py-24 px-6 text-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${footerImg})`,
+          backgroundImage: `url(${import.meta.env.VITE_APP_URL}${
+            bannerData?.image
+          })`,
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>{" "}
         <div className="relative max-w-4xl mx-auto z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
-            Ready to Start Your Learning Journey?
+            {bannerData?.title}
           </h2>
-          <p className="text-gray-200 mb-8">
-            Join thousands of students already achieving their academic goals
-            with personalized online tutoring.
-          </p>
+          <p className="text-gray-200 mb-8">{bannerData?.description}</p>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <button className="bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3  transition">

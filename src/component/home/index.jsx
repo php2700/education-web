@@ -12,7 +12,7 @@ export const Home = () => {
       <WhyChooseUs />
       <SubjectsAndServices />
       <OfferAndTrust />
-      <Trust/>
+      <Trust />
       <Pricing />
       <HowItWorks />
     </>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ArrowRight,
   Brain,
@@ -10,8 +10,11 @@ import {
   CheckCircle,
   Star,
 } from "lucide-react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const Prep = () => {
+ 
   return (
     <>
       <div className="bg-[#F0F8FF]">

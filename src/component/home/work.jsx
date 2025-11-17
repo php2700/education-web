@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import arrow from "../../assets/work-arrow.png";
 import backgroundImage from "../../assets/work-bg.png";
 import subject from "../../assets/subject.png";
 import rightImg from "../../assets/right-tutorial.png";
 import session from "../../assets/session.png";
 import progress from "../../assets/progress.png";
+
 
 const steps = [
   { id: 1, img: subject, text: "Choose a subject" },
@@ -14,6 +15,7 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+
   return (
     <section
       className="relative bg-[#F0F8FF] py-20"

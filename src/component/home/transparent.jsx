@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   FaCheckCircle,
   FaBookOpen,
@@ -8,9 +9,12 @@ import {
   FaCheck,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PricingAndHowItWorks = () => {
   const navigate = useNavigate();
+  const [transparentData, setTransparentData] = useState([]);
+
   const plans = [
     {
       name: "Starter",
@@ -51,6 +55,26 @@ const PricingAndHowItWorks = () => {
     },
   ];
 
+  const getTrsansparentData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/plan`
+      );
+      setTransparentData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getTrsansparentData();
+  }, []);
+
   const handleUrl = () => {
     navigate("/pricing");
   };
@@ -70,7 +94,7 @@ const PricingAndHowItWorks = () => {
 
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-8">
-            {plans.map((plan, i) => (
+            {transparentData?.map((plan, i) => (
               <div
                 key={i}
                 className={`relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all border ${
@@ -86,7 +110,7 @@ const PricingAndHowItWorks = () => {
                   {plan.name}
                 </h3>
                 <p className="text-4xl font-bold mb-1 flex items-center justify-center">
-                  {plan.price}
+                  {plan.amount}
                   <span className="text-[#4B5563] text-xl font-normal">
                     /month
                   </span>
@@ -94,7 +118,7 @@ const PricingAndHowItWorks = () => {
                 {/* <p className="text-[#4B5563] mb-6">/month</p> */}
 
                 <ul className="text-left mb-6 space-y-2">
-                  {plan.features.map((feature, idx) => (
+                  {plan.feature?.map((feature, idx) => (
                     <li
                       key={idx}
                       className="flex items-center gap-2 text-gray-700"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BookOpen,
   Users,
@@ -9,8 +9,43 @@ import {
   PenTool,
 } from "lucide-react";
 import backgroundImage from "../../../assets/about-bg.png";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AboutInfoPage = () => {
+  const [current, setCurrent] = useState(0);
+  const [aboutData, setAboutData] = useState([]);
+
+  const getAboutData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/about-ela`
+      );
+      setAboutData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getAboutData();
+  }, []);
+
+  useEffect(() => {
+    if (!aboutData?.questionType || aboutData.questionType.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % aboutData.questionType.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [aboutData]);
+
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
@@ -27,19 +62,13 @@ export const AboutInfoPage = () => {
       </div>
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Intro Paragraph */}
-
         <p className="text-sm text-gray-800 leading-relaxed ">
-          At GOES, ELA is tutored by expert teachers who have tons of experience
-          in ELA test prep tutoring. As a language it becomes important to
-          provide a strong base to students through ELA, so we are determined to
-          do so.
+          {aboutData?.description}
         </p>
 
-        {/* Test Title */}
         <div className="text-start">
           <h2 className="text-3xl font-bold text-gray-900">
-            (New York State English Language Arts (ELA) Test)
+            {aboutData?.heading}
           </h2>
         </div>
 
@@ -54,16 +83,7 @@ export const AboutInfoPage = () => {
             Standards (CCLS).
           </p>
           <p className="text-gray-500 font-semibold leading-relaxed">
-            An ELA (English Language Arts) test is a standardized assessment
-            that measures a student's proficiency in reading, writing,
-            listening, speaking, and language skills, often aligned with
-            academic standards like the Common Core. These tests typically
-            involve reading passages and answering multiple-choice,
-            short-answer, or essay questions to evaluate comprehension,
-            analytical thinking, and the ability to construct wellorganized
-            written responses. ELA tests help identify a student's strengths and
-            weaknesses in literacy, providing crucial data for guiding
-            instruction and evaluating college and career readiness.
+            {aboutData.whoTake}
           </p>
         </section>
 
@@ -81,35 +101,24 @@ export const AboutInfoPage = () => {
               </h3>
 
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                {/* Left: Icon + Text */}
                 <div className="flex-1 text-center md:text-left">
                   <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
-                    Tests feature a mix of selected-response (multiple-choice),{" "}
-                    short-answer, and long-form essay prompts that require
-                    students to analyze texts and use evidence.
+                    {aboutData?.questionType?.[current]}
                   </p>
                 </div>
-
-                {/* Right: Student Image */}
-                {/* <div className="flex-1 flex justify-center">
-                  <div className="relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1497638578946-5d31c97a1b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                      alt="Student holding books"
-                      className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl shadow-lg border-4 border-white"
-                    />
-                    <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full opacity-20 blur-xl"></div>
-                  </div>
-                </div> */}
               </div>
 
-              {/* Decorative Progress Bar */}
               <div className="mt-10 flex justify-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
-                  <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-blue-300 rounded-full"></div>
-                  <div className="w-3 h-3 bg-blue-200 rounded-full"></div>
+                <div className="flex items-center gap-3">
+                  {aboutData?.questionType?.map((_, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setCurrent(index)}
+                      className={`h-3 w-3 rounded-full cursor-pointer transition-all duration-300 ${
+                        current === index ? "bg-blue-600 w-8" : "bg-blue-300"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

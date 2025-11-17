@@ -1,10 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rocket, Sun, Pencil } from "lucide-react";
 import backgroundImage from "../../../assets/work-bg.png";
+import axios from "axios";
 
 export const Structure = () => {
+  const [structureData, setStructureData] = useState([]);
+
+  const getStructureData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/registration`
+      );
+      setStructureData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getStructureData();
+  }, []);
   return (
     <>
       <div
@@ -22,20 +44,14 @@ export const Structure = () => {
               Test Structure
             </h1>
             <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
-              REGISTRATION DETAILS
+              {structureData?.title}
             </h2>
           </div>
 
           {/* Description Paragraph */}
           <div className="mb-12">
             <p className="text-gray-700 text-base leading-relaxed  mx-auto">
-              Students may take the ISEE at approved ERB member school test
-              sites, Prometric locations, or ERB's New York City office. Note
-              that Prometric sites offer online administration and are available
-              only for students entering grades 5-12. Registration is available
-              online, by mail, and by phone. ISEE test dates vary by year and
-              location. The registration fee varies depending on the methods for
-              registration and testing.
+              {structureData?.description}
             </p>
           </div>
 
