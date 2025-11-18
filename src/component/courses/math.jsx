@@ -43,45 +43,6 @@ const Courses = () => {
     }
   };
 
-  const chapters = [
-    {
-      num: "01",
-      title: "Chapter 1",
-      desc: "Basics of Geometry",
-      color: "bg-blue-500",
-    },
-    {
-      num: "02",
-      title: "Chapter 2",
-      desc: "Reasoning and Proofs",
-      color: "bg-red-500",
-    },
-    {
-      num: "03",
-      title: "Chapter 3",
-      desc: "Parallel and Perpendicular Lines",
-      color: "bg-purple-500",
-    },
-    {
-      num: "04",
-      title: "Chapter 4",
-      desc: "Transformations",
-      color: "bg-pink-500",
-    },
-    {
-      num: "05",
-      title: "Chapter 5",
-      desc: "Congruent Triangles",
-      color: "bg-indigo-500",
-    },
-    {
-      num: "06",
-      title: "Chapter 6",
-      desc: "Relationships within Triangles",
-      color: "bg-cyan-500",
-    },
-  ];
-
   return (
     <>
       <section

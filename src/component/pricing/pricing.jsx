@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import backgroundImage from "../../assets/price-bg.png";
 import female1 from "../../assets/pricing1.png";
 import female12 from "../../assets/student2.png";
 import female13 from "../../assets/student3.png";
 import dotted from "../../assets/dotted.png";
 import line from "../../assets/divider-line.png";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const PricingPage = () => {
+  const [pricingData, setPricingData] = useState();
+
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  const fetchAllData = async () => {
+    try {
+      const [pricingRes] = await Promise.all([
+        axios.get(`${import.meta.env.VITE_APP_URL}api/user/pricing`),
+      ]);
+      setPricingData(pricingRes?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 h-full"
@@ -24,251 +47,181 @@ const PricingPage = () => {
         <div className="hidden lg:block absolute left-1/2 top-40 bottom-40 transform -translate-x-1/2 z-0">
           <img src={line} alt="Vertical Line" className="h-full w-auto" />
         </div>
+        {/* {pricingData?.map((ele) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
+            <div className="flex justify-center">
+              <img
+                src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+                alt="Student 1"
+                className="rounded-lg shadow-xl w-full"
+              />
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
-          <div className="flex justify-center">
-            <img
-              src={female1}
-              alt="Student 1"
-              className="rounded-lg shadow-xl w-full"
-            />
-          </div>
+            <div className="bg-white rounded-lg p-6  border border-gray-200 w-full   mx-auto">
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-200 rounded-lg text-sm">
+                  <thead>
+                    <tr>
+                      <th className="py-3 px-4">
+                        <h3 className="text-xl font-bold text-gray-800">
+                          Compare plans{" "}
+                          <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
+                            {ele.off}%
+                          </span>
+                        </h3>
+                        <p className="text-gray-500 my-4">
+                          Choose your plan according to you
+                        </p>
+                      </th>
+                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                        {ele.className}
+                        <div className="mt-2">
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
+                            Choose This Plan
+                          </button>
+                        </div>
+                      </th>
+                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                        5 CLASS
+                        <div className="mt-2">
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
+                            Choose This Plan
+                          </button>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
 
-          <div className="bg-white rounded-lg p-6  border border-gray-200 w-full   mx-auto">
-            <div className="overflow-x-auto">
-              <table className="min-w-full border border-gray-200 rounded-lg text-sm">
-                <thead>
-                  <tr>
-                    <th className="py-3 px-4">
-                      <h3 className="text-xl font-bold text-gray-800">
-                        Compare plans{" "}
-                        <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
-                          40% Off
-                        </span>
-                      </h3>
-                      <p className="text-gray-500 my-4">
-                        Choose your plan according to you
-                      </p>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      1 CLASS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      5 CLASS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-3 px-4 text-gray-700 font-medium">
-                      Fees
-                    </td>
-                    <td className="py-3 px-4 text-center text-gray-600">$25</td>
-                    <td className="py-3 px-4 text-center text-gray-600">
-                      $115
-                    </td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-3 px-4 text-gray-700 font-medium">
-                      Fees Per Hour
-                    </td>
-                    <td className="py-3 px-4 text-center text-gray-600">
-                      PER HOUR – $25
-                    </td>
-                    <td className="py-3 px-4 text-center text-gray-600">
-                      PER HOUR – $23
-                    </td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-3 px-4 text-gray-700 font-medium">
-                      Saving In Offers
-                    </td>
-                    <td className="py-3 px-4 text-center text-gray-600">-</td>
-                    <td className="py-3 px-4 text-center text-gray-600">-</td>
-                  </tr>
-                </tbody>
-              </table>
+                  <tbody>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Fees
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        $25
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        $115
+                        {ele?.fees}
+                      </td>
+                    </tr>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Fees Per Hour
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        PER HOUR – ${ele?.feesPerHour}
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        PER HOUR – $23
+                      </td>
+                    </tr>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Saving In Offers
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">-</td>
+                      <td className="py-3 px-4 text-center text-gray-600">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
+        ))} */}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10 ">
-          <div className="bg-white p-6 rounded-lg  border border-gray-200 w-full  mx-auto order-2 lg:order-1">
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white text-sm rounded-lg">
-                <thead>
-                  <tr>
-                    <th className="py-3 px-4">
-                      <h3 className="text-xl font-bold text-gray-800">
-                        Compare plans{" "}
-                        <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
-                          45% Off
-                        </span>
-                      </h3>
-                      <p className="text-gray-500 my-4">
-                        Choose your plan according to you
-                      </p>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      10 CLASS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      15 CLASS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">
-                      Fees
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      $210
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      $285
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">
-                      Per Hour
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      PER HOUR - $21
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      PER HOUR - $19
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 text-sm text-gray-700 font-medium">
-                      Savings in Offers
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      SAVINGS - $40
-                    </td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-600">
-                      SAVINGS - $90
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        {pricingData?.map((ele, index) => (
+          <div
+            key={ele.id}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10"
+          >
+            <div
+              className={`flex justify-center ${
+                index % 2 !== 0 ? "lg:order-2" : "lg:order-1"
+              }`}
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+                alt="Student 1"
+                className="rounded-lg shadow-xl w-full"
+              />
+            </div>
+
+            <div
+              className={`bg-white rounded-lg p-6 border border-gray-200 w-full mx-auto ${
+                index % 2 !== 0 ? "lg:order-1" : "lg:order-2"
+              }`}
+            >
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-200 rounded-lg text-sm">
+                  <thead>
+                    <tr>
+                      <th className="py-3 px-4">
+                        <h3 className="text-xl font-bold text-gray-800">
+                          Compare plans{" "}
+                          <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
+                            {ele.off}%
+                          </span>
+                        </h3>
+                        <p className="text-gray-500 my-4">
+                          Choose your plan according to you
+                        </p>
+                      </th>
+                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                        {ele.className}
+                        <div className="mt-2">
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
+                            Choose This Plan
+                          </button>
+                        </div>
+                      </th>
+                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                        5 CLASS
+                        <div className="mt-2">
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
+                            Choose This Plan
+                          </button>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Fees
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        ${ele?.fees}
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        $25
+                      </td>
+                    </tr>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Fees Per Hour
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        PER HOUR – ${ele?.feesPerHour}
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        PER HOUR – $23
+                      </td>
+                    </tr>
+                    <tr className="border-t border-gray-200">
+                      <td className="py-3 px-4 text-gray-700 font-medium">
+                        Saving In Offers
+                      </td>
+                      <td className="py-3 px-4 text-center text-gray-600">-</td>
+                      <td className="py-3 px-4 text-center text-gray-600">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-
-          {/* Image Right */}
-          <div className="flex justify-center order-1 lg:order-2">
-            <img
-              src={female12}
-              alt="Student 2"
-              className="rounded-lg shadow-xl w-full"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10 ">
-          <div className="flex justify-center">
-            <img
-              src={female13}
-              alt="Student 3"
-              className="rounded-lg shadow-xl w-full"
-            />
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full mx-auto">
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white text-sm rounded-lg">
-                <thead>
-                  <tr>
-                    <th className="py-3 px-4">
-                      <h3 className="text-xl font-bold text-gray-800">
-                        Compare plans{" "}
-                        <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
-                          45% Off
-                        </span>
-                      </h3>
-                      <p className="text-gray-500 my-4">
-                        Choose your plan according to you
-                      </p>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      20 CLASS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                    <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                      PRECALCULUS
-                      <div className="mt-2">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                          Choose This Plan
-                        </button>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-2 text-sm text-gray-700 font-medium">
-                      Fees
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      $350
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      5 CLASSES - $150
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-2 text-sm text-gray-700 font-medium">
-                      Per Hour
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      PER HOUR - $17.5
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      10 CLASSES - $270
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-2 text-sm text-gray-700 font-medium">
-                      Saving in Offers
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      SAVINGS - $150
-                    </td>
-                    <td className="py-3 px-2 text-center text-sm text-gray-600">
-                      15 CLASSES - $375
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        ))}
 
         <div className="my-8">
           <img src={dotted} alt="Dotted Line" />

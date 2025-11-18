@@ -29,7 +29,6 @@ export const Blog = () => {
     getBlogData();
   }, []);
 
-
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
@@ -49,11 +48,23 @@ export const Blog = () => {
             key={blog.id}
             className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
           >
-            <img
-              src={`${import.meta.env.VITE_APP_URL}${blog.image}`}
-              alt={blog.title}
-              className="w-full h-52 object-cover"
-            />
+            {blog.type === "image" && blog.image ? (
+              <img
+                src={`${import.meta.env.VITE_APP_URL}${blog.image}`}
+                alt={blog.title}
+                className="w-full h-52 object-cover"
+              />
+            ) : blog.type === "video" && blog.video ? (
+              <video
+                src={`${import.meta.env.VITE_APP_URL}${blog.video}`}
+                className="w-full h-52 object-cover"
+                controls
+              />
+            ) : (
+              <div className="w-full h-52 flex items-center justify-center bg-gray-200 text-gray-500">
+                No Media
+              </div>
+            )}
 
             <div className="p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">

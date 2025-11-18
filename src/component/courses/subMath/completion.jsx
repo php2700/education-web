@@ -56,20 +56,14 @@ export const Completion = () => {
             ABOUT AMC TEST
           </h3>
           <p className="text-gray-700  mb-10  mx-auto">
-            The AMC contests are designed to engage students and teachers in
-            effective mathematical problem-solving that is consistent with
-            curricular goals, and to promote excitement in learning. We motivate
-            students to excel and further develop their interest in mathematics.
-            It also recognizes outstanding students, schools, and teachers for
-            succeeding in mathematics in postsecondary education and careers.
-            We're truly preparing today's students to solve tomorrow's
-            challenges.
+            {completionData?.description}
+            
           </p>
 
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mt-12">
             <div className="lg:w-1/2 text-left">
               <h4 className="text-2xl font-bold text-gray-900 mb-6">
-                Who can participate in the MAA AMC?
+                {completionData?.title}
               </h4>
               <p className="text-gray-700 mb-6">
                 The MAA AMC proudly engages students with a dedicated group of
@@ -77,36 +71,19 @@ export const Completion = () => {
                 community:
               </p>
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+                {completionData?.condition?.map((ele,index)=>(
+                     <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0 flex items-center justify-center  text-black font-bold text-lg">
-                    01
+                    {index+1}
                   </div>
                   <div>
                     <p className="text-gray-700">
-                      Students: Calling all middle and high school students
-                      looking to engage in an exciting problem-solving
-                      experience! Challenge your peers and represent your school
-                      by participating in the AMC 8, the AMC 10, and/or the AMC
-                      12, depending on your grade level.
+                      {ele}
+                      
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 flex items-center justify-center  text-black font-bold text-lg">
-                    02
-                  </div>
-                  <div>
-                    <p className="text-gray-700">
-                      Educators: We seek teachers at accredited middle/high
-                      schools, colleges/universities, math circles, and learning
-                      centers to serve as competition managers administering the
-                      AMC 8, AMC 10, and AMC 12 to interested students. A
-                      competition manager enrolls students, administers the
-                      contest, collects the solutions, and shares scores and
-                      awards with participants after the competition.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="lg:w-1/2 flex justify-center lg:justify-end">

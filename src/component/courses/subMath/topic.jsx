@@ -93,10 +93,11 @@ export const TopicPage = () => {
               {commonScienceData?.tutorDescription}
             </p>
 
-            {commonDetail?.map((ele, index) => (
+            {/* {commonDetail?.map((ele, index) => (
               <section
                 className={`grid grid-cols-1 lg:grid-cols-2  gap-10 items-center`}
               >
+              
                 <div className="bg-[#AEE5FF] rounded-2xl p-8 shadow-lg border border-blue-200">
                   <div className="flex items-center mb-4">
                     <h2 className="text-2xl font-bold ">{ele.title}</h2>
@@ -120,6 +121,49 @@ export const TopicPage = () => {
                     <img
                       src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
                       className="cover"
+                    />
+                  </div>
+                </div>
+              </section>
+            ))} */}
+
+            {commonDetail?.map((ele, index) => (
+              <section
+                key={index}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+              >
+                <div
+                  className={`bg-[#AEE5FF] rounded-2xl p-8 shadow-lg border border-blue-200 
+        ${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}
+                >
+                  <div className="flex items-center mb-4">
+                    <h2 className="text-2xl font-bold">{ele.title}</h2>
+                  </div>
+
+                  <p className="text-gray-700 leading-relaxed">
+                    {ele.description}
+                  </p>
+                  <div className="mt-6 flex items-center text-blue-600 font-medium">
+                    <ArrowLeft className="h-5 w-5 mr-2" />
+                    <ArrowRight className="h-5 w-5 mr-2" />
+                  </div>
+                </div>
+
+                <div
+                  className={`space-y-6 ${
+                    index % 2 !== 0 ? "lg:order-1" : "lg:order-2"
+                  }`}
+                >
+                  <h2 className="text-2xl text-center font-semibold mb-4">
+                    {ele.heading}
+                  </h2>
+
+                  <hr />
+
+                  <div className="flex justify-center">
+                    <img
+                      src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+                      className="object-contain max-h-[350px]"
                     />
                   </div>
                 </div>

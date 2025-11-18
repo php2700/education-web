@@ -84,30 +84,37 @@ export const TestStructure = () => {
         </div>
 
         <main className=" py-8 space-y-12">
-          {mathDetailData?.map((ele) => (
-            <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                {ele?.title}
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <ul className="space-y-4 text-gray-700">
-                  {ele?.description.map((item, idx) => (
-                    <li key={idx} className="flex gap-2">
-                      <span className="font-bold">{idx + 1}.</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex justify-center">
-                  <img
-                    src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
-                    alt="Student studying"
-                    className=" w-full"
-                  />
-                </div>
-              </div>
-            </section>
+         {mathDetailData?.map((ele, index) => (
+  <section key={index}>
+    <div className="grid md:grid-cols-2 gap-8">
+
+      <div className={`${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          {ele?.title}
+        </h2>
+        <ul className="space-y-4 text-gray-700">
+          {ele?.description.map((item, idx) => (
+            <li key={idx} className="flex gap-2">
+              <span className="font-bold">{idx + 1}.</span>
+              <span>{item}</span>
+            </li>
           ))}
+        </ul>
+      </div>
+
+      {/* IMAGE COLUMN */}
+      <div className={`${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}`}>
+        <img
+          src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+          alt="Student studying"
+          className="w-full"
+        />
+      </div>
+
+    </div>
+  </section>
+))}
+
 
           <div className="mt-4 text-[16px] font-semibold text-gray-600">
             We have the best content and specialized tutors available for Math
