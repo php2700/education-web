@@ -75,7 +75,7 @@ export const Testimonial = () => {
           }}
      >
     <div className="max-w-6xl mx-auto py-16 px-6 text-center">
-      <h2 className="text-3xl font-bold text-gray-800 mb-10">
+      <h2 className="text-3xl md:text-4xl font-bold mb-10">
         What Our Clients Say
       </h2>
 
@@ -130,11 +130,11 @@ export const Testimonial = () => {
                   “{review.text}”
                 </p>
                 <div className="flex items-center gap-3 mt-4">
-                  {/* <div className="w-10 h-10 rounded-full bg-gray-200">
+                  <div className="w-10 h-10 rounded-full bg-gray-200">
                     <img
                       src={review?.icon}
                     />
-                  </div> */}
+                  </div>
                   <div>
                     <p className="font-semibold">{review.name}</p>
                     <p className="text-sm text-gray-500">

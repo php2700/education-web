@@ -93,8 +93,8 @@ export const Faqs = () => {
     <div className="bg-[#F8FBFF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0E1D3E] mb-12 text-center">
-          FREQUENTLY ASKED QUESTIONS
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-[#0E1D3E] mb-12">
+          Frequently Asked Questions
         </h1>
 
         {/* FAQ Accordion */}

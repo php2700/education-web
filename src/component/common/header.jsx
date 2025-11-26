@@ -89,6 +89,10 @@ export const HeaderBanner = () => {
   const handleUrl = () => {
     navigate("/contact");
   };
+
+  const handleHome=()=>{
+    navigate('/')
+  }
   return (
     <>
       <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
@@ -138,6 +142,7 @@ export const HeaderBanner = () => {
                   <img
                     src={logo}
                     alt="Logo"
+                    onClick={()=>handleHome()}
                     className="h-8 sm:h-10 w-auto object-contain"
                   />
                 </div>

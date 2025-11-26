@@ -19,8 +19,8 @@ export const About = () => {
           backgroundPosition: "center",
         }}
       >
-        <p className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center mb-16">
-          ABOUT US
+        <p className="text-3xl md:text-4xl font-bold  text-center mb-16">
+          About Us
         </p>
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           {/* LEFT IMAGE */}
@@ -84,8 +84,8 @@ export const About = () => {
       {/* WHY US SECTION */}
       <section className="py-10 bg-white px-6 sm:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center mb-16">
-            WHY US?
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            Why Us?
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -112,8 +112,8 @@ export const About = () => {
       {/* HOW ARE WE DIFFERENT */}
       <section className="py-24 bg-[#F8FBFF] px-6 sm:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center mb-16">
-            HOW ARE WE DIFFERENT?
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            How Are We Diffrent?
           </h2>
 
           <div className="grid md:grid-cols-2 gap-10 text-gray-700 text-lg leading-relaxed">
@@ -157,8 +157,8 @@ export const About = () => {
 
           {/* SAFETY SECTION */}
           <div className="mt-20">
-            <h3 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center mb-16">
-              SAFETY
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              Safety
             </h3>
 
             <div className="grid md:grid-cols-2 gap-10">
@@ -181,8 +181,8 @@ export const About = () => {
 
           {/* TUTORS SECTION */}
           <div className="mt-20">
-            <h3 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#1A202C] text-center mb-16">
-              TUTORS
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              Tutors
             </h3>
 
             <div className="bg-white p-6 shadow-lg rounded-xl text-gray-700 text-lg leading-relaxed">
