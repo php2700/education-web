@@ -13,8 +13,10 @@ import callImg from "../../assets/call.png";
 import mail from "../../assets/mail.png";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate=useNavigate();
   const [bannerData, setBannerData] = useState([]);
 
   const getBannerData = async () => {
@@ -36,6 +38,10 @@ const Footer = () => {
   useEffect(() => {
     getBannerData();
   }, []);
+
+  const handleUrl=(url)=>{
+    navigate(url)
+  }
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
@@ -111,9 +117,9 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2 text-md">
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/about')}} className="hover:underline">
                   About
-                </a>
+                </div>
               </li>
               <li>
                 <a href="#" className="hover:underline">
@@ -121,19 +127,19 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/pricing')}} className="hover:underline">
                   Pricing
-                </a>
+                </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/blog')}}  className="hover:underline">
                   Blog
-                </a>
+                </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/faq')}} className="hover:underline">
                   FAQ
-                </a>
+                </div>
               </li>
             </ul>
           </div>
@@ -171,11 +177,11 @@ const Footer = () => {
             <ul className="space-y-2 text-md">
               <li className="flex items-center gap-2">
                 <img src={mail} alt="Mail" className="w-4 h-4" />
-                <span>info@xyz.com</span>
+                <span>info@mygges.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <img src={callImg} alt="Call" className="w-4 h-4" />
-                <span>+91-1234 56 7890</span>
+                <span>+91-886-029-6060</span>
               </li>
               <li>
                 <button className="bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition">

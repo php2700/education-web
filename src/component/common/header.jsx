@@ -4,7 +4,7 @@
 import heroBanner from "../../assets/home-2.jpg";
 
 import arrow from "../../assets/arrow_forward.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   FaPhoneAlt,
@@ -49,10 +49,12 @@ const headerData = [
   { name: "Courses", dropdown: true },
   { name: "Pricing", link: "/pricing" },
   { name: "Our Management", link: "/management" },
+  { name: "Testimonial", link: "/testimonial" },
   { name: "Blog", link: "/blog" },
 ];
 
 export const HeaderBanner = () => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [bannerData, setBannerData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,6 +85,10 @@ export const HeaderBanner = () => {
   useEffect(() => {
     getBannerData();
   }, []);
+
+  const handleUrl = () => {
+    navigate("/contact");
+  };
   return (
     <>
       <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
@@ -223,7 +229,10 @@ export const HeaderBanner = () => {
                   )
                 )}
 
-                <button className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition ">
+                <button
+                  onClick={() => handleUrl("/contact")}
+                  className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition "
+                >
                   Contact us
                 </button>
               </div>
