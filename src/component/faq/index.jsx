@@ -43,7 +43,7 @@ export const Faqs = () => {
       answer: (
         <>
           <p>
-          Only what you need is an internet connection, Skype application and our interactive application which will be provided by us. Having a Pen Tablet will be an added advantage 
+         Only what you need is just an internet connection and a laptop. Having a Pen tablet is an added advantage.
           </p>
           <p className="mt-3">
             For more details{" "}

@@ -42,6 +42,12 @@ const Footer = () => {
   const handleUrl=(url)=>{
     navigate(url)
   }
+
+  const handleWhatsApp=(e)=>{
+     const phoneNumber = "919876543210"; 
+  const url = `https://wa.me/${phoneNumber}`;
+  window.open(url, "_blank");
+  }
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
@@ -183,11 +189,12 @@ const Footer = () => {
                 <img src={callImg} alt="Call" className="w-4 h-4" />
                 <span>+91-886-029-6060</span>
               </li>
-              <li>
-                <button className="bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition">
-                  Live Chat
-                </button>
-              </li>
+          <li>
+  <button  onClick={handleWhatsApp}  className="cursor-pointer bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition flex items-center gap-2">
+    <FaWhatsapp className="text-green-500 text-xl" />
+    Live Chat
+  </button>
+</li>
             </ul>
           </div>
         </div>

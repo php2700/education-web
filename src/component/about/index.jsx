@@ -1,6 +1,6 @@
 import React from "react";
 import backgroundImage from "../../assets/price-bg.png";
-import aboutImg from "../../assets/topic.png";
+import aboutImg from "../../assets/about.jpg";
 
 // Sample images (remove if not needed)
 import team1 from "../../assets/michel.png";

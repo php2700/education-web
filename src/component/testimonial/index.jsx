@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import michel from "../../assets/michel.png"
+import image2 from "../../assets/client2.png"
+import image3 from "../../assets/client3.png"
+import image4 from "../../assets/client4.png"
+import image5 from "../../assets/client5.png"
+import image7 from "../../assets/client7.avif"
+import image8 from "../../assets/client8.avif"
+import image9 from "../../assets/client9.avif"
+import image10 from "../../assets/client10.avif"
+
+
+
 import backgroundImage from "../../assets/work-bg.png";
 
 const testimonials = [
@@ -14,43 +25,43 @@ const testimonials = [
     text: "Thank you guys. I want to share with you that Emily has got selected in one of the best colleges. A big thank to Hitaishi who made this possible with her best tutoring. Thanks again.",
     name: "Kyle Madgen",
     role: "New York",
-      icon:michel
+      icon:image10
   },
   {
     text: "I've had many great experiences with GGES. My tutor was very intelligent and helped me by adopting a flexible approach which helped me in understanding concepts very easily. I was very impressed and recommend GGES to all those who need perfection. Thanks Raj for being such a support.",
     name: "Gary Lawson",
     role: "California.",
-      icon:michel
+      icon:image3
   },
     {
     text: "GGES helped me complete my homework and understand them as well. Just by using their services my grades went up. I really thank GGES for everything.",
     name: "Agasthya",
     role: "Singapore.",
-      icon:michel
+      icon:image4
   },
   {
     text: "I feel more confident at school after taking tutoring from GGES and my grades have drastically improved and are still improving.",
     name: "Tuen Ki Mun",
     role: "Hongkong.",
-      icon:michel
+      icon:image5
   },
   {
     text: "Raj is probably the best turor I've gotten so far.  He explained thing to me in a way I understood and he didnt give me the answer he made me work for it, It helped to me understand the problem a lot better. Really liked his approach Thank you Raj !",
     name: "Richard May",
     role: "Sydney.",
-      icon:michel
+      icon:image7
   },
   {
     text: "PSAT qualification could not have been possible for me without GGES. They were at best in all my sessions with them. Work sheets and practice modules helped me in measuring myself which helped my qualifying my test with great grades. Raj and Hitaishi  thanks a lot for your guidance and help.",
     name: "Craig Simpson",
     role: "California.",
-      icon:michel
+      icon:image8
   },
    {
     text: "Hitaishi thank you so much for helping Mysha in qualifying for Maths Kanagaroo. She has secured top grades and is really happy with you guys. She specially wanted to thank you for your guidance. I wish you guys prosper to new heights.",
     name: "Asha Sharma",
     role: "New Jersy.",
-      icon:michel
+      icon:image9
   },
 ];
 
@@ -130,7 +141,7 @@ export const Testimonial = () => {
                   “{review.text}”
                 </p>
                 <div className="flex items-center gap-3 mt-4">
-                  <div className="w-10 h-10 rounded-full bg-gray-200">
+                  <div className="w-10 h-10 ">
                     <img
                       src={review?.icon}
                     />
