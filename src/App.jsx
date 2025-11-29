@@ -17,25 +17,30 @@ import { Testimonial } from "./component/testimonial";
 import { Faqs } from "./component/faq";
 import ScrollToTop from "./component/scroll";
 import { Contact } from "./component/contact";
-
+import { TermPage } from "./component/privacy/term";
+import PrivacyPolicy from "./component/privacy";
+import { HelpCenterPage } from "./component/privacy/help";
 
 function App() {
   return (
     <>
       <ToastContainer />
       <BrowserRouter>
-      <ScrollToTop/>
+        <ScrollToTop />
         <HeaderBanner />
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/about" element={<About/>} />
+          <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
-            <Route path="/testimonial" element={<Testimonial />} />
-            <Route path="/faq" element={<Faqs />} />
+          <Route path="/testimonial" element={<Testimonial />} />
+          <Route path="/faq" element={<Faqs />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/courses/maths" element={<Courses />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
+          <Route path="/term-service" element={<TermPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/help" element={<HelpCenterPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

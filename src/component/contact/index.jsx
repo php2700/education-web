@@ -1,7 +1,70 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export const Contact = () => {
+  const [error, setError] = useState();
+  const [contactTextData, setContactTextData] = useState();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
+
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/contact`
+      );
+      setContactTextData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  const handleform = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_APP_URL}api/user/contact`,
+        form
+      );
+      if (res?.data) {
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+          mobile: "",
+        });
+        toast.success("Form submitted", {
+          position: "top-right",
+        });
+      }
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.message ||
+          "something went wrong"
+      );
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="bg-[#F0F8FF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -16,6 +79,7 @@ export const Contact = () => {
           </h1>
 
           <p className="text-gray-600 mt-4 text-lg leading-relaxed">
+            {contactTextData?.description}
             Have questions about our tutoring services, demo sessions, or
             pricing? We’d love to help you. Fill out the form or reach us
             directly through phone or email.
@@ -26,21 +90,21 @@ export const Contact = () => {
             <div className="flex items-center gap-4">
               <FaPhone className="text-blue-600 text-2xl" />
               <p className="text-lg text-gray-700 font-medium">
-                +91-886-029-6060
+                {contactTextData?.mobile}
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <FaEnvelope className="text-blue-600 text-2xl" />
               <p className="text-lg text-gray-700 font-medium">
-                info@mygges.com
+                {contactTextData?.email}
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <FaMapMarkerAlt className="text-blue-600 text-2xl" />
               <p className="text-lg text-gray-700 font-medium">
-                Global Growing Education Services (GGES)
+                {contactTextData?.address}
               </p>
             </div>
           </div>
@@ -48,13 +112,16 @@ export const Contact = () => {
 
         {/* RIGHT SIDE — Form */}
         <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label classname="block text-gray-700 font-medium">
                 Your Name
               </label>
               <input
                 type="text"
+                name="name"
+                onChange={handleform}
+                value={form?.name}
                 placeholder="Enter your name"
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               />
@@ -64,6 +131,9 @@ export const Contact = () => {
               <label className="block text-gray-700 font-medium">Email</label>
               <input
                 type="email"
+                name="email"
+                value={form?.email}
+                onChange={handleform}
                 placeholder="Your email address"
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               />
@@ -75,6 +145,9 @@ export const Contact = () => {
               </label>
               <input
                 type="text"
+                name="mobile"
+                value={form?.mobile}
+                onChange={handleform}
                 placeholder="Your phone number"
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               />
@@ -84,6 +157,9 @@ export const Contact = () => {
               <label className="block text-gray-700 font-medium">Message</label>
               <textarea
                 rows="4"
+                name="message"
+                value={form?.message}
+                onChange={handleform}
                 placeholder="Write your message..."
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               ></textarea>

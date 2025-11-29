@@ -1,5 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Faqs = () => {
   const faqs = [
@@ -88,7 +90,27 @@ export const Faqs = () => {
       ),
     },
   ];
+  const [faqData, setFaqData] = useState([]);
 
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/faq`
+      );
+      setFaqData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <div className="bg-[#F8FBFF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
@@ -98,25 +120,39 @@ export const Faqs = () => {
         </h1>
 
         {/* FAQ Accordion */}
-        <div className="space-y-6">
-          {faqs.map((faq, index) => (
-            <details
-              key={index}
-              className="group bg-white shadow-md rounded-xl p-6 cursor-pointer"
-            >
-              <summary className="flex justify-between items-center text-xl font-semibold text-[#0572E6]">
-                {faq.question}
-                <span className="transition-transform duration-300 group-open:rotate-180">
-                  ▼
-                </span>
-              </summary>
+      <div className="space-y-6">
+  {faqData.map((faq, index) => (
+    <details
+      key={faq._id || index}
+      className="group bg-white shadow-md rounded-xl p-6 cursor-pointer"
+    >
+      {/* Title */}
+      <summary className="flex justify-between items-center text-xl font-semibold text-[#0572E6]">
+        {faq.title}
+        <span className="transition-transform duration-300 group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
 
-              <div className="mt-4 text-gray-700 text-lg leading-relaxed">
-                {faq.answer}
-              </div>
-            </details>
-          ))}
+      {/* Description */}
+      {faq.description && (
+        <div className="mt-4 text-gray-700 text-lg leading-relaxed">
+          {faq.description}
         </div>
+      )}
+
+      {/* Points List */}
+      {faq.points?.length > 0 && (
+        <ul className="mt-3 list-disc ml-6 text-gray-700 text-lg space-y-1">
+          {faq.points.map((ele, i) => (
+            <li key={i}>{ele}</li>
+          ))}
+        </ul>
+      )}
+    </details>
+  ))}
+</div>
+
 
         {/* More Queries Section */}
         <p className="text-center text-lg mt-10 text-gray-600">

@@ -155,19 +155,19 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Support</h4>
             <ul className="space-y-2 text-md">
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/help')}}  className="hover:underline">
                   Help Center
-                </a>
+                </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/term-service')}} className="hover:underline">
                   Terms of Service
-                </a>
+                </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div onClick={()=>{handleUrl('/privacy-policy')}} className="hover:underline">
                   Privacy Policy
-                </a>
+                </div>
               </li>
               <li>
                 <a href="#" className="hover:underline">
