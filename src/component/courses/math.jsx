@@ -53,7 +53,7 @@ const Courses = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="container mx-auto ">
+        <div id='math' className="container mx-auto ">
           <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">
             {mathAboutData?.title}
           </h1>
@@ -86,7 +86,7 @@ const Courses = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
+      <section id='algebra' className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
             {tutoringData?.heading}
@@ -164,7 +164,7 @@ const Courses = () => {
         ))}
       </section>
 
-      <section
+      <section id='geometry'
         className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]"
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -305,7 +305,7 @@ const Courses = () => {
       {/* End of K-12 Tutoring - Geometry section */}
 
       {/* New section: ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions) Test */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
+      <section id='amc' className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto  mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">
             ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions)
@@ -343,8 +343,12 @@ const Courses = () => {
 
       {/* <Prep /> */}
 
+<div id='kangaroo'>
       <TestStructure />
+      </div>
+      <div id='science'>
       <TopicPage />
+      </div>
     </>
   );
 };

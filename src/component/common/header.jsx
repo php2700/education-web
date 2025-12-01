@@ -4,7 +4,7 @@
 import heroBanner from "../../assets/home-2.jpg";
 
 import arrow from "../../assets/arrow_forward.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
   FaPhoneAlt,
@@ -53,11 +53,64 @@ const headerData = [
   { name: "Blog", link: "/blog" },
 ];
 
+const sections = [
+  {
+    name: "Math",
+    link: "/courses/maths",
+    courses: [
+      {
+        name: "Common Core Math",
+        link: "/courses/maths#math",
+      },
+      { name: "Math Algebra", link: "/courses/maths#algebra" },
+      {
+        name: "Geometry",
+        link: "/courses/maths#geometry",
+      },
+      {
+        name: "Math Amc",
+        link: "/courses/maths#amc",
+      },
+      {
+        name: "Math Kangaroo",
+        link: "/courses/maths#kangaroo",
+      },
+      {
+        name: "Common Core Science",
+        link: "/courses/maths#science",
+      },
+    ],
+  },
+  { name: "k-12", link: "/courses/k-12" },
+  {
+    name: "English",
+    link: "/courses/english",
+    courses: [
+      {
+        name: "Common Core English",
+        link: "/courses/english#common",
+      },
+      { name: "ELA Test Prep", link: "/courses/english#ela" },
+      {
+        name: "ISEE Test Prep",
+        link: "/courses/english#isee",
+      },
+    ],
+  },
+  { name: "Test Prep", link: "/courses/test" },
+];
+
 export const HeaderBanner = () => {
+  const { hash } = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [bannerData, setBannerData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleSubItem = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -65,6 +118,16 @@ export const HeaderBanner = () => {
   //   }, 2000);
   //   return () => clearInterval(interval);
   // }, []);
+
+  console.log(hash, "dd");
+  useEffect(() => {
+    if (hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
 
   const getBannerData = async () => {
     try {
@@ -90,9 +153,9 @@ export const HeaderBanner = () => {
     navigate("/contact");
   };
 
-  const handleHome=()=>{
-    navigate('/')
-  }
+  const handleHome = () => {
+    navigate("/");
+  };
   return (
     <>
       <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
@@ -142,7 +205,7 @@ export const HeaderBanner = () => {
                   <img
                     src={logo}
                     alt="Logo"
-                    onClick={()=>handleHome()}
+                    onClick={() => handleHome()}
                     className="h-8 sm:h-10 w-auto object-contain"
                   />
                 </div>
@@ -207,19 +270,30 @@ export const HeaderBanner = () => {
                       </button>
 
                       <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
-                        {[
-                          { name: "Math", link: "/courses/maths" },
-                          { name: "k-12", link: "/courses/k-12" },
-                          { name: "English", link: "/courses/english" },
-                          { name: "Test Prep", link: "/courses/test" },
-                        ].map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            to={subItem.link}
-                            className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
-                          >
-                            {subItem.name}
-                          </Link>
+                        {sections?.map((subItem) => (
+                          <>
+                            <Link
+                              key={subItem.name}
+                              to={subItem.link}
+                              className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                            >
+                              {subItem.name}
+                            </Link>
+
+                            {subItem?.courses && (
+                              <div className="hidden group-hover:block ml-6 bg-white border-l border-blue-200">
+                                {subItem?.courses.map((course) => (
+                                  <Link
+                                    key={course.name}
+                                    to={course.link}
+                                    className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                                  >
+                                    {course.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </>
                         ))}
                       </div>
                     </div>
@@ -242,7 +316,6 @@ export const HeaderBanner = () => {
                 </button>
               </div>
             </div>
-
             {menuOpen && (
               <nav className="lg:hidden  bg-white rounded-xl mt-1 mx-3 mb-3  text-gray-700 font-medium shadow-md border border-gray-100">
                 <ul className="flex flex-col text-center py-2">
@@ -269,19 +342,29 @@ export const HeaderBanner = () => {
                           </svg>
                         </summary>
                         <div className="bg-gray-50 border-t">
-                          {[
-                            { name: "Math", link: "/courses/maths" },
-                            { name: "K-12", link: "/courses/k-12" },
-                            { name: "English", link: "/courses/english" },
-                            { name: "Test Prep", link: "/courses/test" },
-                          ].map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              to={subItem.link}
-                              className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
-                            >
-                              {subItem.name}
-                            </Link>
+                          {sections?.map((subItem) => (
+                            <>
+                              <Link
+                                key={subItem.name}
+                                to={subItem.link}
+                                className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
+                              >
+                                {subItem.name}
+                              </Link>
+                              {subItem?.courses && (
+                                <div className="hidden group-hover:block ml-6 bg-white border-l border-blue-200">
+                                  {subItem?.courses.map((course) => (
+                                    <Link
+                                      key={course.name}
+                                      to={course.link}
+                                      className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                                    >
+                                      {course.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </>
                           ))}
                         </div>
                       </details>

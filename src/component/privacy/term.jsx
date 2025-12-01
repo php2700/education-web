@@ -3,127 +3,185 @@ import { FaCheckCircle, FaShieldAlt, FaHeadset } from "react-icons/fa";
 
 export const TermPage = () => {
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white min-h-screen py-12 px-4 md:px-12 lg:px-24">
-      {/* Header */}
-      <header className="max-w-4xl mx-auto text-center mb-10">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 leading-tight">
-          Terms & Services
-        </h1>
-        <p className="mt-3 text-gray-600 text-base md:text-lg">
-          Learn how we work, what we promise, and how we keep your learning journey secure and reliable.
-        </p>
-      </header>
+    <div className="bg-gray-50 min-h-screen py-12 px-4 md:px-12 lg:px-24">
+      <div className="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-xl">
+        <header className="text-center mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-blue-600">
+            Term & Service
+          </h1>
+        </header>
 
-      <main className="max-w-6xl mx-auto grid gap-10">
-        {/* Top Info Cards */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-start gap-4">
-            <div className="p-3 bg-blue-50 rounded-lg inline-flex">
-              <FaCheckCircle className="text-blue-600 text-2xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800">Services & Specialties</h3>
-            <p className="text-gray-600 text-sm">
-              Test preps (SAT, ACT, ISEE, etc.), K-12 tutoring, language courses (French, German, Hindi...) and more.
-            </p>
-          </div>
+        <section className="space-y-2 text-gray-700 leading-relaxed">
+          <p className="my-2">
+            By Accessing and using this GGES Website you agree the following
+            terms and conditions. These terms and conditions govern your use of
+            our website; by using our website, you accept these terms and
+            conditions in full. If you disagree with these terms and conditions
+            or any part of these terms and conditions, you must not use our
+            website.
+          </p>
+          <p className="my-4">
+            GGES reserves the right to change the Terms of Use provided herein
+            at our sole discretion with or without notice to you. The most
+            current version of these Terms of Use can be reviewed by clicking on
+            the "Terms of Use" located at the bottom of the pages of the GGES
+            Web site.
+          </p>
+          <h3 className="text-xl font-semibold text-gray-800">AGREEMENT</h3>
+          <p className="mb-4">
+            To use our services, you will need to sign up on the mygges.com
+            website, pay the applicable fees, and obtain an account, and
+            password. You are solely responsible for maintaining the
+            confidentiality of your account and password and for all activities
+            and liabilities associated with or occurring under your account, and
+            password. You agree to provide true and accurate registration data
+            and keep it current and updated. 
+          </p>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-start gap-4">
-            <div className="p-3 bg-blue-50 rounded-lg inline-flex">
-              <FaShieldAlt className="text-blue-600 text-2xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800">Quality & Safety</h3>
-            <p className="text-gray-600 text-sm">
-              Our tutors are vetted and trained. We follow best practices in pedagogy and student safety.
-            </p>
-          </div>
+          <h3 className="text-xl font-semibold text-gray-800">CONTENT</h3>
+          <p className="mb-4">
+            The Web Site may provide links to other web sites, which are not
+            under the control of GGES. So GGES shall not be responsible any way
+            of the content of such other webs sites. GGES provides such links
+            only as a convenience, and the inclusion of any such web sites does
+            not imply endorsement by GGES of the content of such sites.
+          </p>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-start gap-4">
-            <div className="p-3 bg-blue-50 rounded-lg inline-flex">
-              <FaHeadset className="text-blue-600 text-2xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800">24/7 Support</h3>
-            <p className="text-gray-600 text-sm">
-              Our support team is available around the clock to help with scheduling, billing and technical issues.
-            </p>
-          </div>
-        </section>
+          <h3 className="text-xl font-semibold text-gray-800">
+            FEES AND PAYMENTS
+          </h3>
+          <p className="mb-4">
+            The billing process will be under the control of GGES who shall send
+            an invoice (on demand) as soon as the Client has agreed on a tuition
+            session or series of tuition sessions unless alternate arrangements
+            have been mutually agreed upon. 100% payment must be made to GGES to
+            confirm the agreement before the session/s starts.
+          </p>
+          <p className="mb-4">
+            We have a <strong> 100% Money Back Guarantee </strong> in place. But
+            please note that No refunds will be issued if you cancel your
+            account after your first tutoring session. Refunds requests will be
+            required by email after you message us on our Whatsapp Number at
+            +91-8860296060.
+          </p>
 
-        {/* Core Terms Card */}
-        <section className="bg-white rounded-3xl shadow-xl p-8 space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">Core Terms</h2>
+          <h3 className="text-xl font-semibold text-gray-800">SCHEDULING</h3>
+          <p className="mb-4">
+            We strongly believe in On-Time deliverables and thus make sure to
+            provide all our services on time. But we do understand that some
+            circumstances may be beyond human control. So we are flexible too.
+            In case client needs a rescheduling then he is expected to update
+            GGES by mail at{" "}
+            <span className="text-blue-600">info@mygges.com </span> at least 12
+            hours before. In any urgent scenario we can accommodate any change
+            in rescheduling only twice in 30 days. Failing aforesaid we will
+            consider the scheduled session to be a Missed Session and that will
+            be counted as a session. Vice versa at times you may not always get
+            a tutoring session at your preferred time because of
+            non-availability of tutors or due to other technological/operational
+            issues. So GGES may communicate the reason of non-availability of
+            your session to you either by email, phone, or any other means and
+            reschedule that session at your any other preferred time.
+          </p>
 
-          <div className="space-y-4 text-gray-700">
-            <p>
-              By using GGES services, you agree to our terms. These terms set out
-              the contractual relationship between you and GGES (Global Group of Education Services).
-            </p>
+          <h3 className="text-xl font-semibold text-gray-800">
+            NON SOLICITATION
+          </h3>
+          <p className="mb-4">
+            The Parent or tutor is not permitted to make private arrangements
+            for tuition with a Tutor introduced by GGES. Should a Client or
+            tutor breach this obligation, they will be liable to account to GGES
+            for all sums paid to the Tutor without deduction and GGES shall be
+            entitled to obtain an injunction against a Client or Tutor to
+            prevent further breaches. This obligation shall continue
+            notwithstanding termination of this agreement.
+          </p>
 
-            <ul className="list-disc ml-6 space-y-2">
-              <li><strong>Service provision:</strong> We provide online and in-person educational services per agreement.</li>
-              <li><strong>Payments & refunds:</strong> All fees are charged as per plan. Refunds follow our refund policy (see below).</li>
-              <li><strong>Account responsibility:</strong> Keep your account credentials secure. You are responsible for activity under your account.</li>
-              <li><strong>Cancellation:</strong> You may cancel according to the cancellation terms on your invoice/plan.</li>
-            </ul>
-          </div>
+          <h3 className="text-xl font-semibold text-gray-800">LIABILITY</h3>
+          <p className="mb-4">
+            Under no circumstances shall GGES, its Directors or any employees be
+            held liable for any loss or damage caused by your reliance on
+            information obtained through the GGES Web site or Tutor. It is your
+            responsibility to evaluate the information, opinion, advice, or
+            other content provided by Tutor and GGES Web site as in today’s
+            dynamic world information keeps changing quickly.
+          </p>
+          <p className="mb-4">
+            GGES do not accept any liability for any claims by the Client
+            arising out of or related to the carrying out of the tutoring by a
+            Tutor introduced by GGES. However we make sure that safety is at its
+            best in all environments.
+          </p>
+          <p className="mb-4">
+            GGES uses many proprietary and licensed third-party technologies,
+            products, and services. As these products and services do not belong
+            to GGES, So GGES cannot guarantee the uptime of these products.
+            There is possibility that these products at times may have down time
+            or stop functioning and GGES may delay its service delivery. However
+            we will try our best to use alternatives in such situations.
+          </p>
+          <p className="mb-4">
+            You agree to indemnify, defend and hold harmless us, and our
+            affiliates, officers, directors, agents, partners, employees,
+            licensors, representatives and third party providers (including our
+            affiliates' respective officers, directors, agents, partners,
+            employees, licensors, representatives, and third party providers),
+            from and against all losses, expenses, damages, costs, claims and
+            demands, including reasonable attorney's fees and related costs and
+            expenses, due to or arising out of any User Content you submit, post
+            to, email, or otherwise transmit to us or through the Services, your
+            use of the Services, the Company Content or any portion thereof,
+            your connection to the Services, or your breach of these Terms. We
+            reserve the right, at our own expense, to assume the exclusive
+            defense and control of any matter otherwise subject to
+            indemnification by you, and in such case, you agree to fully
+            cooperate with such defense and in asserting any available
+            defenses. 
+          </p>
 
-          {/* Accordion-like details for more terms */}
-          <div className="mt-4 space-y-3">
-            <details className="group bg-gray-50 rounded-xl p-4 open:shadow-md">
-              <summary className="cursor-pointer font-medium text-gray-900">Refund & Cancellation</summary>
-              <div className="mt-3 text-gray-700">
-                Refunds are processed based on the plan and usage. For subscription cancellations, partial refunds may apply depending on time used.
-              </div>
-            </details>
+          <h3 className="text-xl font-semibold text-gray-800">GENERAL</h3>
+          <p className="mb-4">
+            GGES reserves the right to alter these terms and conditions. Unless
+            otherwise agreed in writing by a Director(s) of GGES, these terms
+            and conditions shall prevail over any other terms of business or
+            conditions put forward by the Client. No variation or alteration of
+            these terms and conditions shall be valid unless approved in writing
+            by a Director(s) of GGES.
+          </p>
+          <p className="mb-4">
+            These Terms and Conditions shall be governed by, construed and
+            enforced in accordance with the laws of India applicable to
+            contracts executed and performed entirely therein, and the courts in
+            shall have exclusive jurisdiction.
+          </p>
 
-            <details className="group bg-gray-50 rounded-xl p-4 open:shadow-md">
-              <summary className="cursor-pointer font-medium text-gray-900">Student Code of Conduct</summary>
-              <div className="mt-3 text-gray-700">
-                Students are expected to maintain respectful behavior. Disruptive behavior may lead to suspension of services.
-              </div>
-            </details>
+          <h3 className="text-xl font-semibold text-gray-800">
+            SESSION VALIDITY
+          </h3>
+          <p className="mb-4">
+            Any sessions purchased by the buyer holds a validity period.
+            “Validity” here means the number of days starting from the date when
+            the payment received, till the last day of validity expiry as stated
+            below. Validity of sessions purchased is as follows:
+          </p>
 
-            <details className="group bg-gray-50 rounded-xl p-4 open:shadow-md">
-              <summary className="cursor-pointer font-medium text-gray-900">Intellectual Property</summary>
-              <div className="mt-3 text-gray-700">
-                Course materials and content are the intellectual property of GGES or its licensors. They are for your personal use only.
-              </div>
-            </details>
-          </div>
-        </section>
-
-        {/* Vision & Support */}
-        <section className="bg-gradient-to-r from-blue-50 to-white rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-blue-600">Our Commitment to Quality</h3>
-            <p className="text-gray-700 mt-2">
-              We combine modern pedagogy, experienced tutors and technology to provide results-oriented learning experiences.
-            </p>
-            <ul className="mt-4 list-none space-y-2">
-              <li className="flex items-start gap-3">
-                <span className="text-blue-600 text-xl">✓</span>
-                <span className="text-gray-700">Personalized learning plans</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-blue-600 text-xl">✓</span>
-                <span className="text-gray-700">Trackable progress & reporting</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="flex-1 text-center md:text-right">
-            <p className="text-gray-600">Need help or have questions?</p>
-            <a href="/contact" className="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition">
-              Contact Support
+          <h3 className="text-xl font-semibold text-gray-800">Contact</h3>
+          <p>
+            If you have questions about this policy, contact us at{" "}
+            <a
+              href="mailto:support@gges.com"
+              className="text-blue-600 underline"
+            >
+              support@gges.com
             </a>
-          </div>
+            .
+          </p>
         </section>
 
-        {/* Footer small legal */}
-        <footer className="text-sm text-gray-500 text-center pt-4 pb-8">
-          <p>© {new Date().getFullYear()} GGES — All rights reserved.</p>
-          <p className="mt-1">By using our service you agree to our <a href="/privacy" className="text-blue-600 underline">Privacy Policy</a>.</p>
+        <footer className="text-sm text-gray-500 mt-8">
+          <p>© {new Date().getFullYear()} GGES. All rights reserved.</p>
         </footer>
-      </main>
+      </div>
     </div>
   );
 };

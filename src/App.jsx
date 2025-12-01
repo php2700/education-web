@@ -20,6 +20,7 @@ import { Contact } from "./component/contact";
 import { TermPage } from "./component/privacy/term";
 import PrivacyPolicy from "./component/privacy";
 import { HelpCenterPage } from "./component/privacy/help";
+import { Management } from "./component/management";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/courses/maths" element={<Courses />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
+          <Route path="/management" element={<Management/>} />
           <Route path="/term-service" element={<TermPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/help" element={<HelpCenterPage />} />

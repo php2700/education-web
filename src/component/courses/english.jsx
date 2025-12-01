@@ -83,7 +83,7 @@ export const EnglishCourse = () => {
 
   return (
     <section>
-      <div
+      <div id="common"
         className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -148,7 +148,7 @@ export const EnglishCourse = () => {
         </div>
       </div>
 
-      <div className="bg-[#F0F8FF]">
+      <div id='ela' className="bg-[#F0F8FF] ">
         <div className="container mx-auto p-10   ">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
@@ -193,7 +193,9 @@ export const EnglishCourse = () => {
         </div>
       </div>
       <AboutInfoPage />
+      <div id='isee'>
       <TestPage />
+      </div>
       <Measure />
       <Structure />
     </section>
