@@ -21,6 +21,7 @@ import { TermPage } from "./component/privacy/term";
 import PrivacyPolicy from "./component/privacy";
 import { HelpCenterPage } from "./component/privacy/help";
 import { Management } from "./component/management";
+import { Test } from "./component/courses/test";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/faq" element={<Faqs />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/courses/maths" element={<Courses />} />
+          <Route path="/courses/test" element={<Test/>} />
           <Route path="/courses/english" element={<EnglishCourse />} />
           <Route path="/management" element={<Management/>} />
           <Route path="/term-service" element={<TermPage />} />

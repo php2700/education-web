@@ -97,7 +97,26 @@ const sections = [
       },
     ],
   },
-  { name: "Test Prep", link: "/courses/test" },
+  {
+    name: "Test Prep",
+    link: "/courses/test",
+    courses: [
+      { name: "SAT Prep", link: "/courses/test#sat" },
+      { name: "PSAT Prep", link: "/courses/test#psat" },
+      { name: "SSAT  Prep", link: "/courses/test#ssat" },
+      { name: "SHSAT Prep", link: "/courses/test#shsat" },
+      { name: "ISEE Prep", link: "/courses/test#isee" },
+      { name: "ELA Prep", link: "/courses/test#ela" },
+      { name: "SCAT Prep", link: "/courses/test#scat" },
+      { name: "AMC Prep", link: "/courses/test#amc" },
+      { name: "KANGAROO Prep", link: "/courses/test#kangaroo" },
+      { name: "ACT Prep", link: "/courses/test#act" },
+      { name: "COGAT Prep", link: "/courses/test#cogat" },
+      { name: "SBAC Prep", link: "/courses/test#sbac" },
+      { name: "LACER Prep", link: "/courses/test#lacer" },
+      { name: "STB Prep", link: "/courses/test#stb" },
+    ],
+  },
 ];
 
 export const HeaderBanner = () => {
@@ -107,19 +126,17 @@ export const HeaderBanner = () => {
   const [bannerData, setBannerData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openIndex, setOpenIndex] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
+
+  const handleToggle = (sectionName) => {
+    setOpenSection(openSection === sectionName ? null : sectionName);
+  };
 
   const toggleSubItem = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev + 1) % slides.length);
-  //   }, 2000);
-  //   return () => clearInterval(interval);
-  // }, []);
 
-  console.log(hash, "dd");
   useEffect(() => {
     if (hash) {
       const section = document.querySelector(hash);
@@ -218,37 +235,7 @@ export const HeaderBanner = () => {
                 </div>
               </div>
 
-              {/* Desktop Navigation (visible lg and above) */}
-              {/* <div className="hidden lg:flex items-center gap-4 xl:gap-10  text-gray-700 font-medium">
-              {[
-                "Home",
-                "About Us",
-                <Link
-                  to="/Courses"
-                  className="hover:text-blue-600 transition-colors duration-200"
-                >
-                  Courses
-                </Link>,
-                <Link
-                  to="/pricing"
-                  className="hover:text-blue-600 transition-colors duration-200"
-                >
-                  Pricing
-                </Link>,
-                "Our Management",
-                // "Test Imotional",
-                "Blog",
-              ].map((item) => (
-                <a key={item} href="#" className="hover:text-blue-600">
-                  {item}
-                </a>
-              ))}
-
-              <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
-                Contact us
-              </button>
-            </div> */}
-              <div className="hidden lg:flex items-center  gap-4 lg:gap-10 text-gray-700 font-medium relative">
+              <div className="hidden lg:flex items-center gap-4 lg:gap-10 text-gray-700 font-medium relative">
                 {headerData?.map((item) =>
                   item.dropdown ? (
                     <div key={item.name} className="relative group">
@@ -269,31 +256,50 @@ export const HeaderBanner = () => {
                         </svg>
                       </button>
 
-                      <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
+                      <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
                         {sections?.map((subItem) => (
-                          <>
-                            <Link
-                              key={subItem.name}
-                              to={subItem.link}
-                              className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
-                            >
-                              {subItem.name}
-                            </Link>
+                          <div key={subItem.name} className="relative">
+                            <div className="flex items-center justify-between px-4 py-2">
+                              {/* Main link */}
+                              <Link
+                                to={subItem.link}
+                                className="text-gray-700 hover:text-blue-600 transition"
+                              >
+                                {subItem.name}
+                              </Link>
 
-                            {subItem?.courses && (
-                              <div className="hidden group-hover:block ml-6 bg-white border-l border-blue-200">
-                                {subItem?.courses.map((course) => (
-                                  <Link
-                                    key={course.name}
-                                    to={course.link}
-                                    className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                              {subItem?.courses &&
+                                subItem.courses.length > 0 && (
+                                  <button
+                                    onClick={() => handleToggle(subItem.name)}
+                                    className="text-gray-500 hover:text-blue-600 focus:outline-none"
                                   >
-                                    {course.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            )}
-                          </>
+                                    {/* Use any icon here, for example a simple arrow */}
+                                    {openSection === subItem.name ? (
+                                      <span>&#9650;</span> // Up arrow
+                                    ) : (
+                                      <span>&#9660;</span> // Down arrow
+                                    )}
+                                  </button>
+                                )}
+                            </div>
+
+                            {/* Courses list */}
+                            {subItem?.courses &&
+                              openSection === subItem.name && (
+                                <div className="ml-6 bg-white border-l border-blue-200">
+                                  {subItem.courses.map((course) => (
+                                    <Link
+                                      key={course.name}
+                                      to={course.link}
+                                      className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                                    >
+                                      {course.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -310,14 +316,25 @@ export const HeaderBanner = () => {
 
                 <button
                   onClick={() => handleUrl("/contact")}
-                  className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition "
+                  className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition"
                 >
                   Contact us
                 </button>
               </div>
             </div>
             {menuOpen && (
-              <nav className="lg:hidden  bg-white rounded-xl mt-1 mx-3 mb-3  text-gray-700 font-medium shadow-md border border-gray-100">
+              <nav
+                className="
+      lg:hidden
+      bg-white/95 backdrop-blur-md
+      rounded-2xl
+      mt-2 mx-3 mb-4
+      text-gray-700 font-medium
+      shadow-xl
+      border border-gray-200
+      animate-slideDown
+    "
+              >
                 <ul className="flex flex-col text-center py-2">
                   {headerData.map((item) =>
                     item.dropdown ? (
@@ -325,10 +342,20 @@ export const HeaderBanner = () => {
                         key={item.name}
                         className="group border-t last:border-b"
                       >
-                        <summary className="py-2 cursor-pointer text-lg flex justify-center items-center gap-1 hover:text-blue-600">
+                        <summary
+                          className="
+                py-3 cursor-pointer
+                text-lg font-semibold
+                flex justify-center items-center gap-2
+                text-gray-800
+                hover:text-blue-600
+                transition
+              "
+                        >
                           {item.name}
+
                           <svg
-                            className="w-4 h-4 transition-transform duration-300 group-open:rotate-180"
+                            className="w-5 h-5 transition-transform duration-300 group-open:rotate-180 text-blue-500"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
@@ -341,30 +368,90 @@ export const HeaderBanner = () => {
                             />
                           </svg>
                         </summary>
-                        <div className="bg-gray-50 border-t">
+
+                        <div className="bg-gray-50 border-t py-2">
                           {sections?.map((subItem) => (
-                            <>
-                              <Link
-                                key={subItem.name}
-                                to={subItem.link}
-                                className="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600"
+                            <div
+                              key={subItem.name}
+                              className="
+                    mx-2 my-1
+                    rounded-xl
+                    bg-white
+                    border
+                    shadow-sm
+                    overflow-hidden
+                  "
+                            >
+                              <div
+                                className="
+                      flex items-center justify-between
+                      px-4 py-3
+                      bg-white
+                      hover:bg-blue-50
+                      transition
+                      rounded-xl
+                    "
                               >
-                                {subItem.name}
-                              </Link>
-                              {subItem?.courses && (
-                                <div className="hidden group-hover:block ml-6 bg-white border-l border-blue-200">
-                                  {subItem?.courses.map((course) => (
-                                    <Link
-                                      key={course.name}
-                                      to={course.link}
-                                      className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                                <Link
+                                  to={subItem.link}
+                                  className="font-medium tracking-wide"
+                                  onClick={() => setMenuOpen(false)}
+                                >
+                                  {subItem.name}
+                                </Link>
+
+                                {subItem?.courses &&
+                                  subItem.courses.length > 0 && (
+                                    <button
+                                      onClick={() => handleToggle(subItem.name)}
+                                      className="
+                          w-8 h-8
+                          flex items-center justify-center
+                          rounded-full
+                          bg-blue-100
+                          text-blue-600
+                          hover:bg-blue-600 hover:text-white
+                          transition
+                        "
                                     >
-                                      {course.name}
-                                    </Link>
-                                  ))}
-                                </div>
-                              )}
-                            </>
+                                      {openSection === subItem.name ? "▲" : "▼"}
+                                    </button>
+                                  )}
+                              </div>
+
+                              {subItem?.courses &&
+                                openSection === subItem.name && (
+                                  <div
+                                    className="
+                          mx-3 mb-3 mt-1
+                          rounded-xl
+                          bg-gradient-to-br from-white to-blue-50
+                          border border-blue-100
+                          shadow-inner
+                          overflow-hidden
+                          animate-slideDown
+                        "
+                                  >
+                                    {subItem.courses.map((course) => (
+                                      <Link
+                                        key={course.name}
+                                        to={course.link}
+                                        className="
+                              block
+                              px-4 py-2
+                              text-sm font-medium
+                              hover:bg-blue-600
+                              hover:text-white
+                              transition
+                            "
+                                        onClick={() => setMenuOpen(false)}
+                                      >
+                                        {course.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                            </div>
                           ))}
                         </div>
                       </details>
@@ -372,7 +459,12 @@ export const HeaderBanner = () => {
                       <li key={item.name} className="border-t last:border-b">
                         <Link
                           to={item.link}
-                          className="block py-2 hover:bg-gray-100 hover:text-blue-600"
+                          className="
+                block py-3
+                hover:bg-gray-100
+                hover:text-blue-600
+                transition
+              "
                           onClick={() => setMenuOpen(false)}
                         >
                           {item.name}
@@ -383,7 +475,15 @@ export const HeaderBanner = () => {
 
                   {/* Contact Button */}
                   <li className="py-3">
-                    <button className="bg-blue-600 text-white w-4/5 mx-auto py-2 rounded-lg hover:bg-blue-700">
+                    <button
+                      className="
+            bg-blue-600 text-white
+            w-4/5 mx-auto
+            py-2 rounded-xl
+            hover:bg-blue-700
+            transition
+          "
+                    >
                       Contact Us
                     </button>
                   </li>
@@ -400,25 +500,6 @@ export const HeaderBanner = () => {
             />
           </div>
         </div>
-
-        {/* 
-      <div className=" flex bg-[#F0F8FF] justify-center items-center gap-3 ">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`my-2 rounded-full  cursor-pointer  transition-all duration-300 ${
-              currentIndex === index ? "bg-blue-500 scale-110 " : " opacity-60 "
-            }`}
-          >
-            <img
-              src={slideImg}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-      </div> */}
       </div>
       <div className=" flex flex-col justify-center text-center px-4 sm:px-8 md:px-20 my-4 ">
         <div className="relative">
