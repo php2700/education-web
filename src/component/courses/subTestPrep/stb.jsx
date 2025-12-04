@@ -246,11 +246,11 @@ const STBPrep = () => {
       {/* ABOUT STB */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-3xl font-bold mb-6 break-all">
             {data?.aboutHeading || "About the STB"}
           </h2>
           {/* whitespace-pre-wrap ensures paragraphs from admin textarea are preserved */}
-          <div className="text-lg mb-4 whitespace-pre-wrap">
+          <div className="text-lg mb-4 whitespace-pre-wrap break-all">
             {data?.aboutDescription}
           </div>
         </div>

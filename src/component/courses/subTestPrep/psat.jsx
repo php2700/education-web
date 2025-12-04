@@ -191,7 +191,7 @@ const PsatTestPrep = () => {
           {/* LEFT CONTENT */}
           <div className="text-left space-y-4">
             {/* Using whitespace-pre-wrap to handle paragraphs from Admin Textarea */}
-            <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+            <div className="text-gray-700 leading-relaxed whitespace-pre-wrap break-all">
               {data?.heroDescription || (
                 <>
                   <p className="mb-4">
@@ -221,10 +221,10 @@ const PsatTestPrep = () => {
               Why Choose GGES for PSAT?
             </h3>
 
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-gray-700 break-all">
               {data?.features?.length > 0 ? (
                 data.features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2">
+                  <li key={index} className="flex items-center gap-2 break-all">
                     {/* Hardcoding checkmark as per style */}
                     <span>✅</span> 
                     {feature}
@@ -249,7 +249,7 @@ const PsatTestPrep = () => {
             {data?.aboutHeading || "ALL ABOUT PSAT"}
           </h2>
 
-          <p className="text-gray-700 mb-8 text-center max-w-4xl mx-auto whitespace-pre-wrap">
+          <p className="text-gray-700 mb-8 text-center max-w-4xl mx-auto whitespace-pre-wrap break-all">
             {data?.aboutDescription || "The PSAT/NMSQT is a preparatory exam for the SAT and ACT..."}
           </p>
 
