@@ -167,10 +167,10 @@ const SatTestPrep = () => {
         
         {/* ===== 1. HERO SECTION ===== */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4 break-all">
             {data.heroTitle || "SAT TEST PREP"}
           </h1>
-          <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto">
+          <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto break-all">
             {data.heroSubtitle}
           </p>
         </div>
@@ -180,7 +180,7 @@ const SatTestPrep = () => {
           
           {/* LEFT: Description */}
           <div className="text-left space-y-4">
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+            <p className="text-gray-700 leading-relaxed whitespace-pre-line break-all">
               {data.heroDescription}
             </p>
 
@@ -199,7 +199,7 @@ const SatTestPrep = () => {
               Why Choose GGES?
             </h3>
 
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-gray-700 break-all">
               {data.features && data.features.length > 0 ? (
                 data.features.map((feature, index) => (
                   feature && <li key={index}>✅ {feature}</li>
@@ -213,11 +213,11 @@ const SatTestPrep = () => {
 
         {/* ===== 3. ABOUT & TABLE SECTION ===== */}
         <div className="mt-16 bg-gray-50 p-8 rounded-xl shadow-inner">
-          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 uppercase">
+          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 uppercase break-all">
             {data.aboutHeading || "ALL ABOUT SAT"}
           </h2>
 
-          <p className="text-gray-700 mb-6 text-center max-w-4xl mx-auto whitespace-pre-line">
+          <p className="text-gray-700 mb-6 text-center max-w-4xl mx-auto whitespace-pre-line break-all">
             {data.aboutDescription}
           </p>
 

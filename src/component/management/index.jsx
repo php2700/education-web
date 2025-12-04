@@ -207,7 +207,7 @@ export const Management = () => {
                 {member.role}
               </p>
 
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-all">
                 {member.description}
               </p>
             </div>
