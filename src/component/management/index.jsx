@@ -118,13 +118,16 @@
 
 
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef } from "react";
 import axios from "axios";
 import { FaLinkedinIn } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 export const Management = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
+   const headingRef = useRef(null); // Reference create kiya
+  const { pathname } = useLocation(); // URL track karne ke liye
 
   // Backend URL (.env se)
   const API_URL = import.meta.env.VITE_APP_URL || "http://localhost:3007/";
@@ -146,6 +149,23 @@ export const Management = () => {
 
     fetchMembers();
   }, [API_URL]);
+  
+
+   useEffect(() => {
+    // Agar loading chal raha hai to ruk jao, kyunki tab tak Ref wala element screen par nahi hai
+    if (loading) return;
+
+    // Thoda delay dete hain taaki DOM update ho jaye
+    const timer = setTimeout(() => {
+      if (headingRef.current) {
+        headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer); // Cleanup
+  }, [pathname, loading]);
 
   if (loading) {
     return (
@@ -162,7 +182,7 @@ export const Management = () => {
         <h2 className="text-blue-600 font-bold tracking-wide uppercase text-sm">
           Our Leadership
         </h2>
-        <h1 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+        <h1  ref={headingRef} className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
           Meet the Management Team
         </h1>
         <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
@@ -207,7 +227,7 @@ export const Management = () => {
                 {member.role}
               </p>
 
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-all">
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-words">
                 {member.description}
               </p>
             </div>

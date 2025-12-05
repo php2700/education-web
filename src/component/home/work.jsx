@@ -40,38 +40,47 @@ const HowItWorks = () => {
           {/* Connecting Line (Desktop Only) */}
           <div className="hidden md:block absolute top-16 left-0 w-full h-[2px] bg-gray-300 -z-10"></div>
 
-          {steps.map((step, index) => (
-            <div
-              key={step.id}
-              className="relative flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/4 mb-18 md:mb-0 px-4"
-            >
-              {/* Step Number */}
-              <div className="absolute   -top-10 md:-top-8  left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 bg-white border-2 border-blue-600 text-[#000000] font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md">
-                {step.id}
-              </div>
+         {steps.map((step, index) => (
+  <div
+    key={step.id}
+    // CHANGE 1: 'md:items-start' aur 'md:text-left' hata diya.
+    // Ab mobile aur desktop dono par 'items-center' aur 'text-center' rahega.
+    className="relative flex flex-col items-center text-center w-full md:w-1/4 mb-12 md:mb-0 px-2"
+  >
+    {/* Step Number */}
+    {/* CHANGE 2: Number ko bilkul center (left-1/2) kar diya */}
+    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white border-2 border-blue-600 text-[#000000] font-bold rounded-full w-9 h-9 flex items-center justify-center text-sm shadow-md z-10">
+      {step.id}
+    </div>
 
-              {/* Icon */}
-              <div className="flex items-center justify-center md:justify-start ">
-                <img
-                  src={step.img}
-                  alt={step.text}
-                  className="object-contain"
-                />
-                {/* Arrow (only on desktop except last step) */}
-                {index < steps.length - 1 && (
-                  <img src={arrow} alt="arrow" className="hidden md:block " />
-                )}
-              </div>
+    {/* Icon Container */}
+    {/* CHANGE 3: 'relative' add kiya taaki arrow ko absolute kar sakein */}
+    <div className="flex items-center justify-center relative w-full mb-4">
+      <img
+        src={step.img}
+        alt={step.text}
+        className="object-contain z-10"
+      />
 
-              {/* Text */}
-              {/* <p className="text-gray-900 font-semibold text-base md:text-lg leading-snug max-w-[180px] md:max-w-none mx-auto md:mx-0">
-                {step.text}
-              </p> */}
-              <p className="text-black font-semibold text-lg md:text-xl leading-tight text-center">
-                {step.text}
-              </p>
-            </div>
-          ))}
+      {/* Arrow */}
+      {/* CHANGE 4: Arrow ko 'absolute' kar diya. Ab ye icon ko dhakka nahi maarega */}
+      {index < steps.length - 1 && (
+        <img
+          src={arrow}
+          alt="arrow"
+          // Arrow ko right side me fix kar diya
+          className="hidden md:block absolute -right-8 top-1/2 transform -translate-y-1/2 z-0"
+        />
+      )}
+    </div>
+
+    {/* Text */}
+    {/* CHANGE 5: Text ko center align rakha aur thoda margin (mt-2) diya */}
+    <p className="text-black font-semibold text-lg md:text-xl leading-tight text-center mt-2 px-1">
+      {step.text}
+    </p>
+  </div>
+))}
         </div>
       </div>
     </section>

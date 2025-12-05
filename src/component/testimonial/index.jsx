@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef } from "react";
 import { motion } from "framer-motion";
 import michel from "../../assets/michel.png";
 import image2 from "../../assets/client2.png";
@@ -9,6 +9,7 @@ import image7 from "../../assets/client7.avif";
 import image8 from "../../assets/client8.avif";
 import image9 from "../../assets/client9.avif";
 import image10 from "../../assets/client10.avif";
+import { useLocation } from "react-router-dom";
 
 import backgroundImage from "../../assets/work-bg.png";
 import axios from "axios";
@@ -67,6 +68,8 @@ const testimonials = [
 
 export const Testimonial = () => {
   const [testImonialData, setTestImonialData] = useState([]);
+   const headingRef = useRef(null); // Reference create kiya
+  const { pathname } = useLocation(); // URL track karne ke liye
 
   const [index, setIndex] = useState(0);
 
@@ -78,6 +81,20 @@ export const Testimonial = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // --- YE CODE ADD KAREIN ---
+  useEffect(() => {
+    if (headingRef.current) {
+      // Ye function page ko scroll karke heading par le aayega
+      headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   const getData = async () => {
     try {
@@ -109,7 +126,7 @@ export const Testimonial = () => {
       }}
     >
       <div className="max-w-6xl mx-auto py-16 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10">
+        <h2  ref={headingRef} className="text-3xl md:text-4xl font-bold mb-10">
           What Our Clients Say
         </h2>
 
