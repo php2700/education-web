@@ -166,6 +166,8 @@ export const HeaderBanner = () => {
     getBannerData();
   }, []);
 
+ 
+
   const handleUrl = () => {
     navigate("/contact");
   };
@@ -194,13 +196,13 @@ export const HeaderBanner = () => {
                 <div className="flex items-center gap-2">
                   <img src={callImg} className="text-blue-400" />
                   <a href="tel:+911234567890" className="hover:underline">
-                    +91 12345 67890
+                    +91-886-029-6060
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <img src={mail} className="text-blue-400" />
                   <a href="mailto:info@example.com" className="hover:underline">
-                    info@example.com
+                    info@mygges.com
                   </a>
                 </div>
               </div>

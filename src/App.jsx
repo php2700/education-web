@@ -17,13 +17,13 @@ import { Testimonial } from "./component/testimonial";
 import { Faqs } from "./component/faq";
 import ScrollToTop from "./component/scroll";
 import { Contact } from "./component/contact";
+import { PrivacyPolicy } from "./component/privacy/term";
+import {TermCondition} from "./component/privacy/index"
+
 import { HelpCenterPage } from "./component/privacy/help";
 import { Management } from "./component/management";
 import { Test } from "./component/courses/test";
-import { ContactSupport } from "./component/support";
-import {PrivacyPolicy} from "./component/privacy/term"
-import {TermCondition} from "./component/privacy/index"
-
+import K12Page from './component/courses/k12'
 
 function App() {
   return (
@@ -43,11 +43,12 @@ function App() {
           <Route path="/courses/maths" element={<Courses />} />
           <Route path="/courses/test" element={<Test />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
-          <Route path="/management" element={<Management />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy/>}  />
+          <Route path="/management" element={<Management/>} />
           <Route path="/term-condition" element={<TermCondition />} />
-          <Route path="/help" element={<HelpCenterPage />} />
-          <Route path="/contact-support" element={<ContactSupport />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/help" element={<HelpCenterPage />} />
+            <Route path="/courses/k-12" element={<K12Page />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
