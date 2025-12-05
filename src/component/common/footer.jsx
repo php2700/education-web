@@ -195,7 +195,8 @@ const Footer = () => {
               <li>
                 <div
                   onClick={() => {
-                    handleUrl("/help");
+                    // handleUrl("/help");
+                     handleUrl("/faq");
                   }}
                   className="hover:underline"
                 >

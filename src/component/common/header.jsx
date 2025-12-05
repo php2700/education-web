@@ -136,7 +136,6 @@ export const HeaderBanner = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-
   useEffect(() => {
     if (hash) {
       const section = document.querySelector(hash);
@@ -166,8 +165,6 @@ export const HeaderBanner = () => {
     getBannerData();
   }, []);
 
- 
-
   const handleUrl = () => {
     navigate("/contact");
   };
@@ -175,6 +172,29 @@ export const HeaderBanner = () => {
   const handleHome = () => {
     navigate("/");
   };
+
+  const handleWhatsApp = (e) => {
+    const phoneNumber = "919876543210";
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, "_blank");
+  };
+
+  const handleFacebook = () => {
+    window.open(`${import.meta.env.VITE_APP_FACEBOOk}`, "_blank");
+  };
+
+  const handleInst = () => {
+    window.open(`${import.meta.env.VITE_APP_INSTA}`, "_blank");
+  };
+
+  const handleYoutube = () => {
+    window.open(`${import.meta.env.VITE_APP_YOUTUBE}`, "_blank");
+  };
+
+  const handleLinkedIn = () => {
+    window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
+  };
+
   return (
     <>
       <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
@@ -209,10 +229,26 @@ export const HeaderBanner = () => {
 
               {/* Right Side */}
               <div className="flex items-center gap-4 mt-2 sm:mt-0">
-                <img src={instagram} className="cursor-pointer " />
-                <img src={facebook} className="cursor-pointer" />
-                <img src={whatsapp} className="cursor-pointer" />
-                <img src={youtube} className="cursor-pointer" />
+                <img
+                  onClick={() => handleInst()}
+                  src={instagram}
+                  className="cursor-pointer "
+                />
+                <img
+                  onClick={() => handleFacebook()}
+                  src={facebook}
+                  className="cursor-pointer"
+                />
+                <img
+                  onClick={() => handleWhatsApp()}
+                  src={whatsapp}
+                  className="cursor-pointer"
+                />
+                <img
+                  onClick={() => handleYoutube()}
+                  src={youtube}
+                  className="cursor-pointer"
+                />
               </div>
             </div>
 
