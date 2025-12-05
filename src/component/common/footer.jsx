@@ -4,6 +4,8 @@ import {
   FaTwitter,
   FaInstagram,
   FaWhatsapp,
+  FaYoutube,
+  FaLinkedin,
 } from "react-icons/fa";
 import arrow from "../../assets/arrownext.png";
 import { IoIosArrowForward } from "react-icons/io";
@@ -16,7 +18,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [bannerData, setBannerData] = useState([]);
 
   const getBannerData = async () => {
@@ -39,15 +41,31 @@ const Footer = () => {
     getBannerData();
   }, []);
 
-  const handleUrl=(url)=>{
-    navigate(url)
-  }
+  const handleUrl = (url) => {
+    navigate(url);
+  };
 
-  const handleWhatsApp=(e)=>{
-     const phoneNumber = "919876543210"; 
-  const url = `https://wa.me/${phoneNumber}`;
-  window.open(url, "_blank");
-  }
+  const handleWhatsApp = (e) => {
+    const phoneNumber = "919876543210";
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, "_blank");
+  };
+
+  const handleFacebook = () => {
+    window.open(`${import.meta.env.VITE_APP_FACEBOOk}`, "_blank");
+  };
+
+  const handleInst = () => {
+    window.open(`${import.meta.env.VITE_APP_INSTA}`, "_blank");
+  };
+
+  const handleYoutube = () => {
+    window.open(`${import.meta.env.VITE_APP_YOUTUBE}`, "_blank");
+  };
+
+  const handleLinkedIn = () => {
+    window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
+  };
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
@@ -91,30 +109,30 @@ const Footer = () => {
               academic goals.
             </p>
             <div className="flex justify-center md:justify-start gap-3">
-              <a
-                href="#"
+              <div
+                onClick={() => handleFacebook()}
                 className="bg-blue-500 p-2 rounded-full hover:bg-blue-600 transition"
               >
                 <FaFacebookF />
-              </a>
-              <a
-                href="#"
+              </div>
+              <div
+                onClick={() => handleYoutube()}
                 className="bg-blue-500 p-2 rounded-full hover:bg-blue-600 transition"
               >
-                <FaTwitter />
-              </a>
-              <a
-                href="#"
+                <FaYoutube />
+              </div>
+              <div
+                onClick={() => handleInst()}
                 className="bg-blue-500 p-2 rounded-full hover:bg-blue-600 transition"
               >
                 <FaInstagram />
-              </a>
-              <a
-                href="#"
+              </div>
+              <div
+                onClick={() => handleLinkedIn()}
                 className="bg-blue-500 p-2 rounded-full hover:bg-blue-600 transition"
               >
-                <FaWhatsapp />
-              </a>
+                <FaLinkedin />
+              </div>
             </div>
           </div>
 
@@ -123,7 +141,12 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2 text-md">
               <li>
-                <div onClick={()=>{handleUrl('/about')}} className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/about");
+                  }}
+                  className="hover:underline"
+                >
                   About
                 </div>
               </li>
@@ -133,17 +156,32 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <div onClick={()=>{handleUrl('/pricing')}} className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/pricing");
+                  }}
+                  className="hover:underline"
+                >
                   Pricing
                 </div>
               </li>
               <li>
-                <div onClick={()=>{handleUrl('/blog')}}  className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/blog");
+                  }}
+                  className="hover:underline"
+                >
                   Blog
                 </div>
               </li>
               <li>
-                <div onClick={()=>{handleUrl('/faq')}} className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/faq");
+                  }}
+                  className="hover:underline"
+                >
                   FAQ
                 </div>
               </li>
@@ -155,24 +193,42 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Support</h4>
             <ul className="space-y-2 text-md">
               <li>
-                <div onClick={()=>{handleUrl('/help')}}  className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/help");
+                  }}
+                  className="hover:underline"
+                >
                   Help Center
                 </div>
               </li>
               <li>
-                <div onClick={()=>{handleUrl('/term-service')}} className="hover:underline">
-                  Terms of Service
-                </div>
-              </li>
-              <li>
-                <div onClick={()=>{handleUrl('/privacy-policy')}} className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/privacy-policy");
+                  }}
+                  className="hover:underline"
+                >
                   Privacy Policy
                 </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <div
+                  onClick={() => {
+                    handleUrl("/term-condition");
+                  }}
+                  className="hover:underline"
+                >
+                  Term & Condition
+                </div>
+              </li>
+              <li>
+                <div
+                  onClick={() => handleUrl("/contact-support")}
+                  className="hover:underline"
+                >
                   Contact Support
-                </a>
+                </div>
               </li>
             </ul>
           </div>
@@ -189,12 +245,15 @@ const Footer = () => {
                 <img src={callImg} alt="Call" className="w-4 h-4" />
                 <span>+91-886-029-6060</span>
               </li>
-          <li>
-  <button  onClick={handleWhatsApp}  className="cursor-pointer bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition flex items-center gap-2">
-    <FaWhatsapp className="text-green-500 text-xl" />
-    Live Chat
-  </button>
-</li>
+              <li>
+                <button
+                  onClick={handleWhatsApp}
+                  className="cursor-pointer bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition flex items-center gap-2"
+                >
+                  <FaWhatsapp className="text-green-500 text-xl" />
+                  Live Chat
+                </button>
+              </li>
             </ul>
           </div>
         </div>

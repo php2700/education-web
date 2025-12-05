@@ -17,8 +17,9 @@ import { Testimonial } from "./component/testimonial";
 import { Faqs } from "./component/faq";
 import ScrollToTop from "./component/scroll";
 import { Contact } from "./component/contact";
-import { TermPage } from "./component/privacy/term";
-import PrivacyPolicy from "./component/privacy";
+import { PrivacyPolicy } from "./component/privacy/term";
+import {TermCondition} from "./component/privacy/index"
+
 import { HelpCenterPage } from "./component/privacy/help";
 import { Management } from "./component/management";
 import { Test } from "./component/courses/test";
@@ -40,10 +41,10 @@ function App() {
           <Route path="/faq" element={<Faqs />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/courses/maths" element={<Courses />} />
-          <Route path="/courses/test" element={<Test/>} />
+          <Route path="/courses/test" element={<Test />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
           <Route path="/management" element={<Management/>} />
-          <Route path="/term-service" element={<TermPage />} />
+          <Route path="/term-condition" element={<TermCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/help" element={<HelpCenterPage />} />
             <Route path="/courses/k-12" element={<K12Page />} />
