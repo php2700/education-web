@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef} from "react";
 import backgroundImage from "../../assets/price-bg.png";
 import female1 from "../../assets/pricing1.png";
 import female12 from "../../assets/student2.png";
@@ -7,13 +7,25 @@ import dotted from "../../assets/dotted.png";
 import line from "../../assets/divider-line.png";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 const PricingPage = () => {
   const [pricingData, setPricingData] = useState();
+    const headingRef = useRef(null); // Reference create kiya
+  const { pathname } = useLocation(); // URL track karne ke liye
+  
 
   useEffect(() => {
     fetchAllData();
   }, []);
+   useEffect(() => {
+    if (headingRef.current) {
+      // Ye function page ko scroll karke heading par le aayega
+      headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]); // Jab bhi URL badlega ye chalega
 
   const fetchAllData = async () => {
     try {
@@ -40,7 +52,7 @@ const PricingPage = () => {
       }}
     >
       <main className="container max-w-7xl mx-auto px-4 py-12 relative">
-        <h1 className="text-center text-4xl font-bold mb-16 text-gray-900">
+        <h1 ref={headingRef} className="text-center text-4xl font-bold mb-16 text-gray-900">
           OUR PRICING
         </h1>
 

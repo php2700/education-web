@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef } from "react";
 import backgroundImage from "../../assets/price-bg.png";
 import aboutImg from "../../assets/about.jpg";
+import { useLocation } from "react-router-dom";
 
 // Sample images (remove if not needed)
 import team1 from "../../assets/michel.png";
@@ -10,7 +11,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const About = () => {
+  
   const [aboutData, setAboutData] = useState([]);
+    const headingRef = useRef(null); // Reference create kiya
+  const { pathname } = useLocation(); // URL track karne ke liye
 
   const getData = async () => {
     try {
@@ -31,6 +35,14 @@ export const About = () => {
   useEffect(() => {
     getData();
   }, []);
+   useEffect(() => {
+    if (headingRef.current) {
+      // Ye function page ko scroll karke heading par le aayega
+      headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]); // Jab bhi URL badlega ye chalega
   return (
     <>
       {/* HERO SECTION */}
@@ -42,7 +54,7 @@ export const About = () => {
           backgroundPosition: "center",
         }}
       >
-        <p className="text-3xl md:text-4xl font-bold  text-center mb-16">
+        <p  ref={headingRef} className="text-3xl md:text-4xl font-bold  text-center mb-16">
           About Us
         </p>
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
