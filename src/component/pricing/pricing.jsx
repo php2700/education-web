@@ -158,28 +158,15 @@ const PricingPage = () => {
                     <tr>
                       <th className="py-3 px-4">
                         <h3 className="text-xl font-bold text-gray-800">
-                          Compare plans{" "}
-                          <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
-                            {ele.off}%
-                          </span>
+                          Plan Name{" "}
                         </h3>
-                        <p className="text-gray-500 my-4">
-                          Choose your plan according to you
-                        </p>
+                        <p className="text-gray-500 my-4">{ele?.planName}</p>
                       </th>
                       <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                        {ele.className}
+                        Classes
                         <div className="mt-2">
                           <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                            Choose This Plan
-                          </button>
-                        </div>
-                      </th>
-                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                        5 CLASS
-                        <div className="mt-2">
-                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                            Choose This Plan
+                            {ele.className}
                           </button>
                         </div>
                       </th>
@@ -187,34 +174,33 @@ const PricingPage = () => {
                   </thead>
 
                   <tbody>
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Fees
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        ${ele?.fees}
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        $25
-                      </td>
-                    </tr>
+                    {ele?.fees?.map((ele) => (
+                      <tr className="border-t border-gray-200">
+                        <td className="py-3 px-4 text-gray-700 font-medium">
+                          {ele?.label}
+                        </td>
+                        <td className="py-3 px-4 text-center text-gray-600">
+                          {/* ${ele?.fees} */}
+                          {ele?.price}
+                        </td>
+                      </tr>
+                    ))}
                     <tr className="border-t border-gray-200">
                       <td className="py-3 px-4 text-gray-700 font-medium">
                         Fees Per Hour
                       </td>
                       <td className="py-3 px-4 text-center text-gray-600">
-                        PER HOUR – ${ele?.feesPerHour}
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        PER HOUR – $23
+                        {ele?.feesPerHour ? ele?.feesPerHour : "-"}
                       </td>
                     </tr>
                     <tr className="border-t border-gray-200">
                       <td className="py-3 px-4 text-gray-700 font-medium">
                         Saving In Offers
                       </td>
-                      <td className="py-3 px-4 text-center text-gray-600">-</td>
-                      <td className="py-3 px-4 text-center text-gray-600">-</td>
+                      <td className="py-3 px-4 text-center text-gray-600">
+                        {" "}
+                        {ele?.off ? ele?.off : "-"}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
