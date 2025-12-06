@@ -234,6 +234,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import bgImage from "../../../assets/Elaback.png"; 
 
 // Accordion Component (Same as before)
 const AccordionItem = ({ title, children }) => {
@@ -307,7 +308,9 @@ const ElaPage = () => {
   };
 
   return (
-    <main className="bg-white min-h-screen py-12 px-4" id='ela'>
+    <main  className="min-h-screen py-12 px-4 relative bg-cover bg-center bg-fixed" 
+  id='ela'
+  style={{ backgroundImage: `url(${bgImage})` }}>
       <div className="max-w-7xl mx-auto">
 
         {/* ===== 1. HERO SECTION ===== */}

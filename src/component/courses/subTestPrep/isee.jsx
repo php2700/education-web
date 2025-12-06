@@ -238,7 +238,7 @@ const ISEE = () => {
   const safeData = data || {};
 
   return (
-    <div className="bg-gray-50 py-14 px-4" id='isee'>
+    <div className="bg-[#F0F8FF] py-14 px-4" id='isee'>
       <div className="max-w-7xl mx-auto">
 
         {/* ===== 1. HERO SECTION ===== */}
