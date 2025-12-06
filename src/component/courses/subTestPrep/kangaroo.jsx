@@ -104,6 +104,8 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import bgImage from "../../../assets/Elaback.png"; 
+
 
 const MathKangarooTestPrep = () => {
   const [data, setData] = useState(null);
@@ -154,7 +156,7 @@ const MathKangarooTestPrep = () => {
 
   // --- 3. Main Content ---
   return (
-    <div className="w-full bg-white text-gray-800" id='kangaroo'>
+    <div  style={{ backgroundImage: `url(${bgImage})` }} className="w-full bg-white text-gray-800" id='kangaroo'>
 
       {/* HERO SECTION */}
       <section className="bg-[#0f172a] text-white py-20 px-4">

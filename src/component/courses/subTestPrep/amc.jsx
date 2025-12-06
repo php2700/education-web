@@ -130,6 +130,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import bgImage from "../../../assets/Elaback.png"; 
 
 const AmcTestPrep = () => {
   const [data, setData] = useState(null);
@@ -181,7 +182,10 @@ const AmcTestPrep = () => {
 
   // 3. MAIN CONTENT (Dynamic)
   return (
-    <div className="w-full bg-white text-gray-800" id='amc'>
+    <div 
+      style={{ 
+        backgroundImage: `url(${bgImage})` // Yahan imported image variable use karein
+      }}className="w-full bg-white text-gray-800" id='amc'>
       
       {/* HERO SECTION */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
