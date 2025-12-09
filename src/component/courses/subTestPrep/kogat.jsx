@@ -154,6 +154,224 @@
 
 // export default CogatTestPrep;
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+
+// const CogatTestPrep = () => {
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(false);
+
+//   // --- API Call ---
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         // API Endpoint: /api/cogat-test
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/cogat-test`);
+        
+//         // Validation: Check if data exists
+//         if (response.data && response.data.data) {
+//           setData(response.data.data);
+//         } else {
+//           setData(null);
+//         }
+//       } catch (err) {
+//         console.error("Error fetching CogAT data:", err);
+//         setError(true);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   // --- 1. Loading State ---
+//   if (loading) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-white">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
+//       </div>
+//     );
+//   }
+
+//   // --- 2. Error State ---
+//   if (error) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
+//         <p>Unable to load content. Please try again later.</p>
+//       </div>
+//     );
+//   }
+
+//   // --- 3. Main Content ---
+//   return (
+//     <div className="w-full bg-white text-gray-800" id='cogat'>
+
+//       {/* HERO SECTION */}
+//       <section className="bg-[#0f172a] text-white py-20 px-4">
+//         <div className="max-w-7xl mx-auto text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
+//             {data?.heroTitle || "COGAT TEST PREP"}
+//           </h1>
+//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+//             {data?.heroDescription || "The Cognitive Abilities Test (CogAT) measures reasoning skills..."}
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
+//           >
+//             Book Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//       {/* ABOUT COGAT */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.aboutHeading || "About the CogAT Test"}
+//           </h2>
+//           <div className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.aboutDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* TEST SECTIONS (STRUCTURE TABLE) */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.structureHeading || "CogAT Test Structure"}
+//           </h2>
+//           <p className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.structureDescription}
+//           </p>
+          
+//           <div className="overflow-x-auto">
+//             <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
+//               <thead>
+//                 <tr className="bg-gray-200">
+//                   <th className="border border-gray-300 px-4 py-2">Verbal Battery</th>
+//                   <th className="border border-gray-300 px-4 py-2">Quantitative Battery</th>
+//                   <th className="border border-gray-300 px-4 py-2">Non-Verbal Battery</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {/* Validation: Check if table data exists and is not empty */}
+//                 {data?.structureTable?.length > 0 ? (
+//                   data.structureTable.map((row, index) => (
+//                     <tr key={index}>
+//                       <td className="border border-gray-300 px-4 py-2">{row.verbal}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.quantitative}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.nonVerbal}</td>
+//                     </tr>
+//                   ))
+//                 ) : (
+//                   <tr>
+//                     <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center">
+//                       No structure data available.
+//                     </td>
+//                   </tr>
+//                 )}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* LEVELS AND TIMING (LEVELS TABLE) */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.levelsHeading || "CogAT Levels & Timing"}
+//           </h2>
+//           <p className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.levelsDescription}
+//           </p>
+
+//           <div className="overflow-x-auto">
+//             <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
+//               <thead>
+//                 <tr className="bg-gray-200">
+//                   <th className="border border-gray-300 px-4 py-2">Grade</th>
+//                   <th className="border border-gray-300 px-4 py-2">CogAT Level</th>
+//                   <th className="border border-gray-300 px-4 py-2">Questions</th>
+//                   <th className="border border-gray-300 px-4 py-2">Test Time</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {/* Validation for Levels Table */}
+//                 {data?.levelsTable?.length > 0 ? (
+//                   data.levelsTable.map((row, index) => (
+//                     <tr key={index}>
+//                       <td className="border border-gray-300 px-4 py-2">{row.grade}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.level}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.questions}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.testTime}</td>
+//                     </tr>
+//                   ))
+//                 ) : (
+//                   <tr>
+//                     <td colSpan="4" className="border border-gray-300 px-4 py-2 text-center">
+//                       No levels data available.
+//                     </td>
+//                   </tr>
+//                 )}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* SCORING */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.scoringHeading || "How CogAT is Scored"}
+//           </h2>
+//           <div className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.scoringDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* LOCATIONS */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.locationHeading || "Where is the CogAT Given?"}
+//           </h2>
+//           <div className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.locationDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA (Static - Keeping style consistent) */}
+//       <section className="bg-[#0f172a] py-16 px-4 text-center">
+//         <div className="max-w-7xl mx-auto text-white">
+//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
+//             Start Your CogAT Prep Today!
+//           </h2>
+//           <p className="mb-8 text-lg">
+//             Take a Free Trial Online Tutoring class for CogAT Test Prep and give your child the edge in reasoning skills.
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+//           >
+//             Get Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//     </div>
+//   );
+// };
+
+// export default CogatTestPrep;
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -166,10 +384,9 @@ const CogatTestPrep = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // API Endpoint: /api/cogat-test
         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/cogat-test`);
         
-        // Validation: Check if data exists
+        // Validation
         if (response.data && response.data.data) {
           setData(response.data.data);
         } else {
@@ -204,19 +421,33 @@ const CogatTestPrep = () => {
     );
   }
 
+  // Safe Data Object
+  const safeData = data || {};
+
   // --- 3. Main Content ---
   return (
     <div className="w-full bg-white text-gray-800" id='cogat'>
 
       {/* HERO SECTION */}
+      {/* Background and Button always visible */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {data?.heroTitle || "COGAT TEST PREP"}
-          </h1>
-          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-            {data?.heroDescription || "The Cognitive Abilities Test (CogAT) measures reasoning skills..."}
-          </p>
+          
+          {/* Title: Visible only if data exists */}
+          {safeData.heroTitle && (
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {safeData.heroTitle}
+              </h1>
+          )}
+
+          {/* Description: Visible only if data exists */}
+          {safeData.heroDescription && (
+              <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+                {safeData.heroDescription}
+              </p>
+          )}
+
+          {/* BUTTON: Always Visible (Default) */}
           <a
             href="/free-trial"
             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
@@ -227,128 +458,153 @@ const CogatTestPrep = () => {
       </section>
 
       {/* ABOUT COGAT */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.aboutHeading || "About the CogAT Test"}
-          </h2>
-          <div className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.aboutDescription}
-          </div>
-        </div>
-      </section>
+      {/* Section renders only if Heading or Description exists */}
+      {(safeData.aboutHeading || safeData.aboutDescription) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.aboutHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.aboutHeading}
+                </h2>
+            )}
+            
+            {safeData.aboutDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.aboutDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* TEST SECTIONS (STRUCTURE TABLE) */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.structureHeading || "CogAT Test Structure"}
-          </h2>
-          <p className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.structureDescription}
-          </p>
-          
-          <div className="overflow-x-auto">
-            <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="border border-gray-300 px-4 py-2">Verbal Battery</th>
-                  <th className="border border-gray-300 px-4 py-2">Quantitative Battery</th>
-                  <th className="border border-gray-300 px-4 py-2">Non-Verbal Battery</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Validation: Check if table data exists and is not empty */}
-                {data?.structureTable?.length > 0 ? (
-                  data.structureTable.map((row, index) => (
-                    <tr key={index}>
-                      <td className="border border-gray-300 px-4 py-2">{row.verbal}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.quantitative}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.nonVerbal}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center">
-                      No structure data available.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      {/* Section renders only if Heading, Desc or Table Data exists */}
+      {(safeData.structureHeading || safeData.structureDescription || (safeData.structureTable && safeData.structureTable.length > 0)) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.structureHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.structureHeading}
+                </h2>
+            )}
+
+            {safeData.structureDescription && (
+                <p className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.structureDescription}
+                </p>
+            )}
+            
+            {safeData.structureTable && safeData.structureTable.length > 0 && (
+                <div className="overflow-x-auto">
+                    <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
+                    <thead>
+                        <tr className="bg-gray-200">
+                        <th className="border border-gray-300 px-4 py-2">Verbal Battery</th>
+                        <th className="border border-gray-300 px-4 py-2">Quantitative Battery</th>
+                        <th className="border border-gray-300 px-4 py-2">Non-Verbal Battery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {safeData.structureTable.map((row, index) => (
+                            <tr key={index}>
+                                <td className="border border-gray-300 px-4 py-2">{row.verbal}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.quantitative}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.nonVerbal}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* LEVELS AND TIMING (LEVELS TABLE) */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.levelsHeading || "CogAT Levels & Timing"}
-          </h2>
-          <p className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.levelsDescription}
-          </p>
+      {(safeData.levelsHeading || safeData.levelsDescription || (safeData.levelsTable && safeData.levelsTable.length > 0)) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.levelsHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.levelsHeading}
+                </h2>
+            )}
 
-          <div className="overflow-x-auto">
-            <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="border border-gray-300 px-4 py-2">Grade</th>
-                  <th className="border border-gray-300 px-4 py-2">CogAT Level</th>
-                  <th className="border border-gray-300 px-4 py-2">Questions</th>
-                  <th className="border border-gray-300 px-4 py-2">Test Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Validation for Levels Table */}
-                {data?.levelsTable?.length > 0 ? (
-                  data.levelsTable.map((row, index) => (
-                    <tr key={index}>
-                      <td className="border border-gray-300 px-4 py-2">{row.grade}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.level}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.questions}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.testTime}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="4" className="border border-gray-300 px-4 py-2 text-center">
-                      No levels data available.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+            {safeData.levelsDescription && (
+                <p className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.levelsDescription}
+                </p>
+            )}
+
+            {safeData.levelsTable && safeData.levelsTable.length > 0 && (
+                <div className="overflow-x-auto">
+                    <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
+                    <thead>
+                        <tr className="bg-gray-200">
+                        <th className="border border-gray-300 px-4 py-2">Grade</th>
+                        <th className="border border-gray-300 px-4 py-2">CogAT Level</th>
+                        <th className="border border-gray-300 px-4 py-2">Questions</th>
+                        <th className="border border-gray-300 px-4 py-2">Test Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {safeData.levelsTable.map((row, index) => (
+                            <tr key={index}>
+                                <td className="border border-gray-300 px-4 py-2">{row.grade}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.level}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.questions}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.testTime}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* SCORING */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.scoringHeading || "How CogAT is Scored"}
-          </h2>
-          <div className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.scoringDescription}
-          </div>
-        </div>
-      </section>
+      {(safeData.scoringHeading || safeData.scoringDescription) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.scoringHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.scoringHeading}
+                </h2>
+            )}
+            
+            {safeData.scoringDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.scoringDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* LOCATIONS */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.locationHeading || "Where is the CogAT Given?"}
-          </h2>
-          <div className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.locationDescription}
-          </div>
-        </div>
-      </section>
+      {(safeData.locationHeading || safeData.locationDescription) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.locationHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.locationHeading}
+                </h2>
+            )}
+            
+            {safeData.locationDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.locationDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
-      {/* CTA (Static - Keeping style consistent) */}
+      {/* CTA (Always Visible - Default) */}
       <section className="bg-[#0f172a] py-16 px-4 text-center">
         <div className="max-w-7xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
