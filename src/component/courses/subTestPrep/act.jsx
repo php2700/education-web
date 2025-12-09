@@ -94,6 +94,158 @@
 // export default ActTestPrep;
 
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+
+// const ActTestPrep = () => {
+//   // State management
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(false);
+
+//   // API Call
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         // Backend URL: Adjust base URL if needed
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/act-test`);
+        
+//         // Validation: Check if data object exists
+//         if (response.data && response.data.data) {
+//           setData(response.data.data);
+//         } else {
+//           setData(null);
+//         }
+//       } catch (err) {
+//         console.error("Error fetching ACT data:", err);
+//         setError(true);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   // 1. Loading State
+//   if (loading) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-white">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
+//       </div>
+//     );
+//   }
+
+//   // 2. Error State
+//   if (error) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
+//         <p>Unable to load content. Please refresh or try again later.</p>
+//       </div>
+//     );
+//   }
+
+//   // 3. Main Content
+//   return (
+//     <div className="w-full bg-white text-gray-800" id='act'>
+
+//       {/* HERO SECTION */}
+//       <section className="bg-[#0f172a] text-white py-20 px-4">
+//         <div className="max-w-7xl mx-auto text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
+//             {data?.heroTitle || "ACT TEST PREP"}
+//           </h1>
+//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+//             {data?.heroDescription || "At GGES, we have the best tutors..."}
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
+//           >
+//             Book Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//       {/* ABOUT ACT */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.aboutHeading || "All About ACT"}
+//           </h2>
+//           {/* whitespace-pre-wrap ensures new lines from admin textarea are shown */}
+//           <div className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.aboutDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* TEST STRUCTURE */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.structureHeading || "ACT Test Structure"}
+//           </h2>
+//           <ul className="list-disc pl-6 space-y-3 text-lg">
+//             {/* Validation: Check array length */}
+//             {data?.structurePoints?.length > 0 ? (
+//               data.structurePoints.map((point, index) => (
+//                 <li key={index}>{point}</li>
+//               ))
+//             ) : (
+//               <li>Structure details coming soon.</li>
+//             )}
+//           </ul>
+//         </div>
+//       </section>
+
+//       {/* NEW ACT 2025 */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.changesHeading || "New ACT Changes in 2025"}
+//           </h2>
+//           <ol className="list-decimal pl-6 space-y-4 text-lg">
+//              {/* Validation: Check array length */}
+//             {data?.changesPoints?.length > 0 ? (
+//               data.changesPoints.map((point, index) => (
+//                 <li key={index}>
+//                    {/* DangerouslySetInnerHTML can be used if Admin allows bold tags, 
+//                        otherwise plain text is safer */}
+//                    {point}
+//                 </li>
+//               ))
+//             ) : (
+//               <li>Updates regarding ACT 2025 will be listed here.</li>
+//             )}
+//           </ol>
+//         </div>
+//       </section>
+
+//       {/* CTA SECTION - Static (Best for consistency) */}
+//       <section className="bg-[#0f172a] py-16 px-4 text-center">
+//         <div className="max-w-7xl mx-auto text-white">
+//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
+//             Start Your ACT Prep Today!
+//           </h2>
+//           <p className="mb-8 text-lg">
+//             Take a Free Trial Online Tutoring class for ACT or SAT test preparation and boost your confidence.
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+//           >
+//             Get Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//     </div>
+//   );
+// };
+
+// export default ActTestPrep;
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -145,19 +297,33 @@ const ActTestPrep = () => {
     );
   }
 
+  // Safe Data Object
+  const safeData = data || {};
+
   // 3. Main Content
   return (
     <div className="w-full bg-white text-gray-800" id='act'>
 
       {/* HERO SECTION */}
+      {/* Background and Button always visible */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {data?.heroTitle || "ACT TEST PREP"}
-          </h1>
-          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-            {data?.heroDescription || "At GGES, we have the best tutors..."}
-          </p>
+          
+          {/* Title: Only visible if data exists */}
+          {safeData.heroTitle && (
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {safeData.heroTitle}
+            </h1>
+          )}
+
+          {/* Description: Only visible if data exists */}
+          {safeData.heroDescription && (
+            <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+                {safeData.heroDescription}
+            </p>
+          )}
+
+          {/* BUTTON: Always Visible (Default) */}
           <a
             href="/free-trial"
             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
@@ -168,61 +334,72 @@ const ActTestPrep = () => {
       </section>
 
       {/* ABOUT ACT */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.aboutHeading || "All About ACT"}
-          </h2>
-          {/* whitespace-pre-wrap ensures new lines from admin textarea are shown */}
-          <div className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.aboutDescription}
-          </div>
-        </div>
-      </section>
+      {/* Section renders only if Heading or Description exists */}
+      {(safeData.aboutHeading || safeData.aboutDescription) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.aboutHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.aboutHeading}
+                </h2>
+            )}
+            
+            {safeData.aboutDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.aboutDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* TEST STRUCTURE */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.structureHeading || "ACT Test Structure"}
-          </h2>
-          <ul className="list-disc pl-6 space-y-3 text-lg">
-            {/* Validation: Check array length */}
-            {data?.structurePoints?.length > 0 ? (
-              data.structurePoints.map((point, index) => (
-                <li key={index}>{point}</li>
-              ))
-            ) : (
-              <li>Structure details coming soon.</li>
+      {/* Section renders only if Heading or Points exist */}
+      {(safeData.structureHeading || (safeData.structurePoints && safeData.structurePoints.length > 0)) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.structureHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.structureHeading}
+                </h2>
             )}
-          </ul>
-        </div>
-      </section>
+
+            {safeData.structurePoints && safeData.structurePoints.length > 0 && (
+                <ul className="list-disc pl-6 space-y-3 text-lg">
+                    {safeData.structurePoints.map((point, index) => (
+                        point ? <li key={index}>{point}</li> : null
+                    ))}
+                </ul>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* NEW ACT 2025 */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.changesHeading || "New ACT Changes in 2025"}
-          </h2>
-          <ol className="list-decimal pl-6 space-y-4 text-lg">
-             {/* Validation: Check array length */}
-            {data?.changesPoints?.length > 0 ? (
-              data.changesPoints.map((point, index) => (
-                <li key={index}>
-                   {/* DangerouslySetInnerHTML can be used if Admin allows bold tags, 
-                       otherwise plain text is safer */}
-                   {point}
-                </li>
-              ))
-            ) : (
-              <li>Updates regarding ACT 2025 will be listed here.</li>
+      {/* Section renders only if Heading or Points exist */}
+      {(safeData.changesHeading || (safeData.changesPoints && safeData.changesPoints.length > 0)) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.changesHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.changesHeading}
+                </h2>
             )}
-          </ol>
-        </div>
-      </section>
 
-      {/* CTA SECTION - Static (Best for consistency) */}
+            {safeData.changesPoints && safeData.changesPoints.length > 0 && (
+                <ol className="list-decimal pl-6 space-y-4 text-lg">
+                    {safeData.changesPoints.map((point, index) => (
+                        point ? <li key={index}>{point}</li> : null
+                    ))}
+                </ol>
+            )}
+            </div>
+        </section>
+      )}
+
+      {/* CTA SECTION - Always Visible (Default) */}
       <section className="bg-[#0f172a] py-16 px-4 text-center">
         <div className="max-w-7xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">

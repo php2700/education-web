@@ -128,6 +128,181 @@
 
 // export default AmcTestPrep;
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import bgImage from "../../../assets/Elaback.png"; 
+
+// const AmcTestPrep = () => {
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(false);
+
+//   // API Call to fetch AMC Data
+//   useEffect(() => {
+//     const fetchAmcData = async () => {
+//       try {
+//         // URL ko apne backend prefix ke hisaab se adjust karein (e.g., /api/amc-test)
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/amc-test`);
+        
+//         // Validation: Check if data exists in response
+//         if (response.data && response.data.data) {
+//           setData(response.data.data);
+//         } else {
+//           // Fallback logic if needed or just empty state
+//           setData(null);
+//         }
+//       } catch (err) {
+//         console.error("Error fetching AMC data:", err);
+//         setError(true);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchAmcData();
+//   }, []);
+
+//   // 1. LOADING STATE
+//   if (loading) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-white">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
+//       </div>
+//     );
+//   }
+
+//   // 2. ERROR STATE or NO DATA
+//   if (error || !data) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
+//         <p>Something went wrong or no data available. Please try again later.</p>
+//       </div>
+//     );
+//   }
+
+//   // 3. MAIN CONTENT (Dynamic)
+//   return (
+//     <div 
+//       style={{ 
+//         backgroundImage: `url(${bgImage})` // Yahan imported image variable use karein
+//       }}className="w-full bg-white text-gray-800" id='amc'>
+      
+//       {/* HERO SECTION */}
+//       <section className="bg-[#0f172a] text-white py-20 px-4">
+//         <div className="max-w-7xl mx-auto text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
+//             {data?.heroTitle || "AMC TEST PREP"}
+//           </h1>
+//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+//             {data?.heroDescription || "At GGES, we have expert AMC tutors..."}
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
+//           >
+//             Book Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//       {/* ABOUT AMC */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.aboutHeading || "About AMC Test"}
+//           </h2>
+//           <p className="text-lg mb-6 whitespace-pre-wrap">
+//             {data?.aboutDescription}
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* PARTICIPANTS */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.participationHeading || "Who Can Participate?"}
+//           </h2>
+//           <ul className="list-disc pl-6 space-y-3 text-lg">
+//             {/* Validation: Check array length before mapping */}
+//             {data?.participationPoints?.length > 0 ? (
+//               data.participationPoints.map((point, index) => (
+//                 <li key={index}>
+//                   {/* Admin input is plain text, displaying as is */}
+//                   {point}
+//                 </li>
+//               ))
+//             ) : (
+//               <li>Information regarding participation will be updated soon.</li>
+//             )}
+//           </ul>
+//         </div>
+//       </section>
+
+//       {/* AMC COMPETITIONS */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.competitionsHeading || "Different AMC Competitions"}
+//           </h2>
+
+//           <div className="grid md:grid-cols-3 gap-10">
+//             {/* Dynamic Cards Mapping */}
+//             {data?.competitionCards?.length > 0 && 
+//              data.competitionCards.map((card, index) => (
+//               <div key={index} className="bg-white p-6 rounded-xl shadow h-full">
+//                 <h3 className="text-2xl font-semibold mb-4">{card.title}</h3>
+//                 <p className="mb-2 whitespace-pre-wrap">{card.description}</p>
+//                 {/* Conditional rendering checking if text exists */}
+//                 {card.whenText && (
+//                   <p className="mb-2"><strong>When:</strong> {card.whenText}</p>
+//                 )}
+//                 {card.whoText && (
+//                   <p className="mb-2"><strong>Who:</strong> {card.whoText}</p>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* WHY TAKE AMC */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.whyHeading || "Why Take AMC?"}
+//           </h2>
+//           <div className="text-lg mb-4 whitespace-pre-wrap">
+//              {data?.whyDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA SECTION - Keep Static or make dynamic if needed */}
+//       <section className="bg-[#0f172a] py-16 px-4 text-center">
+//         <div className="max-w-7xl mx-auto text-white">
+//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
+//             Ready To Start AMC Preparation?
+//           </h2>
+//           <p className="mb-8 text-lg">
+//             Enroll now for our FREE trial class and experience the GGES difference.
+//           </p>
+
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+//           >
+//             Get Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//     </div>
+//   );
+// };
+
+// export default AmcTestPrep;
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import bgImage from "../../../assets/Elaback.png"; 
@@ -141,14 +316,12 @@ const AmcTestPrep = () => {
   useEffect(() => {
     const fetchAmcData = async () => {
       try {
-        // URL ko apne backend prefix ke hisaab se adjust karein (e.g., /api/amc-test)
         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/amc-test`);
         
         // Validation: Check if data exists in response
         if (response.data && response.data.data) {
           setData(response.data.data);
         } else {
-          // Fallback logic if needed or just empty state
           setData(null);
         }
       } catch (err) {
@@ -171,31 +344,46 @@ const AmcTestPrep = () => {
     );
   }
 
-  // 2. ERROR STATE or NO DATA
-  if (error || !data) {
+  // 2. ERROR STATE (Only if API fails, not if data is empty)
+  if (error) {
     return (
       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
-        <p>Something went wrong or no data available. Please try again later.</p>
+        <p>Something went wrong. Please try again later.</p>
       </div>
     );
   }
+
+  // Safe Data Object (Taaki agar data null ho to crash na ho)
+  const safeData = data || {};
 
   // 3. MAIN CONTENT (Dynamic)
   return (
     <div 
       style={{ 
-        backgroundImage: `url(${bgImage})` // Yahan imported image variable use karein
-      }}className="w-full bg-white text-gray-800" id='amc'>
+        backgroundImage: `url(${bgImage})` 
+      }}
+      className="w-full bg-white text-gray-800" id='amc'
+    >
       
       {/* HERO SECTION */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {data?.heroTitle || "AMC TEST PREP"}
-          </h1>
-          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-            {data?.heroDescription || "At GGES, we have expert AMC tutors..."}
-          </p>
+          
+          {/* Title: Sirf tab dikhega jab data ho */}
+          {safeData.heroTitle && (
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {safeData.heroTitle}
+            </h1>
+          )}
+
+          {/* Description: Sirf tab dikhega jab data ho */}
+          {safeData.heroDescription && (
+            <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+                {safeData.heroDescription}
+            </p>
+          )}
+
+          {/* BUTTON: Hamesha dikhega (Default) */}
           <a
             href="/free-trial"
             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
@@ -206,79 +394,98 @@ const AmcTestPrep = () => {
       </section>
 
       {/* ABOUT AMC */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.aboutHeading || "About AMC Test"}
-          </h2>
-          <p className="text-lg mb-6 whitespace-pre-wrap">
-            {data?.aboutDescription}
-          </p>
-        </div>
-      </section>
+      {(safeData.aboutHeading || safeData.aboutDescription) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.aboutHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.aboutHeading}
+                </h2>
+            )}
+            {safeData.aboutDescription && (
+                <p className="text-lg mb-6 whitespace-pre-wrap">
+                    {safeData.aboutDescription}
+                </p>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* PARTICIPANTS */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.participationHeading || "Who Can Participate?"}
-          </h2>
-          <ul className="list-disc pl-6 space-y-3 text-lg">
-            {/* Validation: Check array length before mapping */}
-            {data?.participationPoints?.length > 0 ? (
-              data.participationPoints.map((point, index) => (
-                <li key={index}>
-                  {/* Admin input is plain text, displaying as is */}
-                  {point}
-                </li>
-              ))
-            ) : (
-              <li>Information regarding participation will be updated soon.</li>
+      {(safeData.participationHeading || (safeData.participationPoints && safeData.participationPoints.length > 0)) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.participationHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.participationHeading}
+                </h2>
             )}
-          </ul>
-        </div>
-      </section>
+
+            {safeData.participationPoints && safeData.participationPoints.length > 0 && (
+                <ul className="list-disc pl-6 space-y-3 text-lg">
+                    {safeData.participationPoints.map((point, index) => (
+                        point ? <li key={index}>{point}</li> : null
+                    ))}
+                </ul>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* AMC COMPETITIONS */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.competitionsHeading || "Different AMC Competitions"}
-          </h2>
+      {(safeData.competitionsHeading || (safeData.competitionCards && safeData.competitionCards.length > 0)) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.competitionsHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.competitionsHeading}
+                </h2>
+            )}
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Dynamic Cards Mapping */}
-            {data?.competitionCards?.length > 0 && 
-             data.competitionCards.map((card, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow h-full">
-                <h3 className="text-2xl font-semibold mb-4">{card.title}</h3>
-                <p className="mb-2 whitespace-pre-wrap">{card.description}</p>
-                {/* Conditional rendering checking if text exists */}
-                {card.whenText && (
-                  <p className="mb-2"><strong>When:</strong> {card.whenText}</p>
-                )}
-                {card.whoText && (
-                  <p className="mb-2"><strong>Who:</strong> {card.whoText}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {safeData.competitionCards && safeData.competitionCards.length > 0 && (
+                <div className="grid md:grid-cols-3 gap-10">
+                    {safeData.competitionCards.map((card, index) => (
+                        <div key={index} className="bg-white p-6 rounded-xl shadow h-full">
+                            {card.title && <h3 className="text-2xl font-semibold mb-4">{card.title}</h3>}
+                            {card.description && <p className="mb-2 whitespace-pre-wrap">{card.description}</p>}
+                            
+                            {card.whenText && (
+                                <p className="mb-2"><strong>When:</strong> {card.whenText}</p>
+                            )}
+                            {card.whoText && (
+                                <p className="mb-2"><strong>Who:</strong> {card.whoText}</p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* WHY TAKE AMC */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.whyHeading || "Why Take AMC?"}
-          </h2>
-          <div className="text-lg mb-4 whitespace-pre-wrap">
-             {data?.whyDescription}
-          </div>
-        </div>
-      </section>
+      {(safeData.whyHeading || safeData.whyDescription) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.whyHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.whyHeading}
+                </h2>
+            )}
 
-      {/* CTA SECTION - Keep Static or make dynamic if needed */}
+            {safeData.whyDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap">
+                    {safeData.whyDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
+
+      {/* CTA SECTION - Always Visible (Default) */}
       <section className="bg-[#0f172a] py-16 px-4 text-center">
         <div className="max-w-7xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">

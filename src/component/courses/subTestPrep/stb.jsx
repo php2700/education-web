@@ -170,6 +170,182 @@
 
 // export default STBPrep;
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+
+// const STBPrep = () => {
+//   // --- State Management ---
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(false);
+
+//   // --- API Call ---
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         // API Endpoint: /api/stb-test
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/stb-test`);
+        
+//         // Validation: Check if data exists
+//         if (response.data && response.data.data) {
+//           setData(response.data.data);
+//         } else {
+//           setData(null);
+//         }
+//       } catch (err) {
+//         console.error("Error fetching STB data:", err);
+//         setError(true);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   // --- 1. Loading State ---
+//   if (loading) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-white">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
+//       </div>
+//     );
+//   }
+
+//   // --- 2. Error State ---
+//   if (error) {
+//     return (
+//       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
+//         <p>Unable to load content. Please try again later.</p>
+//       </div>
+//     );
+//   }
+
+//   // --- 3. Main Content ---
+//   return (
+//     <div className="w-full bg-white text-gray-800" id='stb'>
+
+//       {/* HERO SECTION */}
+//       <section className="bg-[#0f172a] text-white py-20 px-4">
+//         <div className="max-w-7xl mx-auto text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
+//             {data?.heroTitle || "STB TEST PREP"}
+//           </h1>
+//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+//             {data?.heroDescription || "At GGES, we provide expert STB Test Prep tutoring..."}
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
+//           >
+//             Book Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//       {/* ABOUT STB */}
+//       <section className="py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6 break-all">
+//             {data?.aboutHeading || "About the STB"}
+//           </h2>
+//           {/* whitespace-pre-wrap ensures paragraphs from admin textarea are preserved */}
+//           <div className="text-lg mb-4 whitespace-pre-wrap break-all">
+//             {data?.aboutDescription}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* STB SUBTESTS & TABLE SECTION */}
+//       <section className="bg-gray-100 py-16 px-4">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-bold mb-6">
+//             {data?.subtestHeading || "STB Subtests"}
+//           </h2>
+
+//           {/* Dynamic Subtests List */}
+//           {data?.subtests?.length > 0 ? (
+//             data.subtests.map((subtest, index) => (
+//               <div key={index} className="mb-4">
+//                 <h3 className="text-2xl font-semibold mb-3">{subtest.title}</h3>
+//                 <p className="text-lg mb-4 whitespace-pre-wrap">
+//                   {subtest.content}
+//                 </p>
+//               </div>
+//             ))
+//           ) : (
+//             <p className="text-lg mb-4">Subtest information coming soon.</p>
+//           )}
+
+//           {/* IMPORTANT TEST INFORMATION */}
+//           <h3 className="text-2xl font-bold mb-3 mt-8">
+//             {data?.infoHeading || "Important Testing Information"}
+//           </h3>
+//           <p className="text-lg mb-4 whitespace-pre-wrap">
+//             {data?.infoDescription}
+//           </p>
+
+//           {/* Dynamic Timing Table */}
+//           <div className="overflow-x-auto">
+//             <table className="w-full text-left border-collapse border border-gray-300 mb-6">
+//               <thead>
+//                 <tr className="bg-gray-200">
+//                   <th className="border border-gray-300 px-4 py-2">Subtest + Tutorial</th>
+//                   <th className="border border-gray-300 px-4 py-2">5th/6th Graders: Time Allowed</th>
+//                   <th className="border border-gray-300 px-4 py-2">7th Graders and Older: Time Allowed</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {/* Validation: Check if table data exists */}
+//                 {data?.timeTable?.length > 0 ? (
+//                   data.timeTable.map((row, index) => (
+//                     <tr 
+//                       key={index} 
+//                       // Zebra Striping Logic: Odd indexes get gray background
+//                       className={index % 2 !== 0 ? "bg-gray-50" : ""}
+//                     >
+//                       <td className="border border-gray-300 px-4 py-2">{row.activity}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.time5th6th}</td>
+//                       <td className="border border-gray-300 px-4 py-2">{row.time7thPlus}</td>
+//                     </tr>
+//                   ))
+//                 ) : (
+//                   <tr>
+//                     <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center">
+//                       No timing data available.
+//                     </td>
+//                   </tr>
+//                 )}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA (Static) */}
+//       <section className="bg-[#0f172a] py-16 px-4 text-center">
+//         <div className="max-w-7xl mx-auto text-white">
+//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
+//             Start Your STB Test Prep Today!
+//           </h2>
+//           <p className="mb-8 text-lg">
+//             Take a Free Trial Online Tutoring class for STB Test Prep and enhance your visual-spatial skills.
+//           </p>
+//           <a
+//             href="/free-trial"
+//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+//           >
+//             Get Free Trial Class
+//           </a>
+//         </div>
+//       </section>
+
+//     </div>
+//   );
+// };
+
+// export default STBPrep;
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -221,19 +397,33 @@ const STBPrep = () => {
     );
   }
 
+  // Safe Data Object
+  const safeData = data || {};
+
   // --- 3. Main Content ---
   return (
     <div className="w-full bg-white text-gray-800" id='stb'>
 
       {/* HERO SECTION */}
+      {/* Background and Button always visible */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {data?.heroTitle || "STB TEST PREP"}
-          </h1>
-          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-            {data?.heroDescription || "At GGES, we provide expert STB Test Prep tutoring..."}
-          </p>
+          
+          {/* Title: Visible only if data exists */}
+          {safeData.heroTitle && (
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {safeData.heroTitle}
+              </h1>
+          )}
+
+          {/* Description: Visible only if data exists */}
+          {safeData.heroDescription && (
+              <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
+                {safeData.heroDescription}
+              </p>
+          )}
+
+          {/* BUTTON: Always Visible (Default) */}
           <a
             href="/free-trial"
             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
@@ -244,85 +434,97 @@ const STBPrep = () => {
       </section>
 
       {/* ABOUT STB */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 break-all">
-            {data?.aboutHeading || "About the STB"}
-          </h2>
-          {/* whitespace-pre-wrap ensures paragraphs from admin textarea are preserved */}
-          <div className="text-lg mb-4 whitespace-pre-wrap break-all">
-            {data?.aboutDescription}
-          </div>
-        </div>
-      </section>
+      {/* Section renders only if content exists */}
+      {(safeData.aboutHeading || safeData.aboutDescription) && (
+        <section className="py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            {safeData.aboutHeading && (
+                <h2 className="text-3xl font-bold mb-6 break-all">
+                    {safeData.aboutHeading}
+                </h2>
+            )}
+            
+            {safeData.aboutDescription && (
+                <div className="text-lg mb-4 whitespace-pre-wrap break-all">
+                    {safeData.aboutDescription}
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
       {/* STB SUBTESTS & TABLE SECTION */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            {data?.subtestHeading || "STB Subtests"}
-          </h2>
+      {/* Section renders if Heading, Subtests, Info, or Table exists */}
+      {(safeData.subtestHeading || (safeData.subtests && safeData.subtests.length > 0) || safeData.infoHeading || (safeData.timeTable && safeData.timeTable.length > 0)) && (
+        <section className="bg-gray-100 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+            
+            {safeData.subtestHeading && (
+                <h2 className="text-3xl font-bold mb-6">
+                    {safeData.subtestHeading}
+                </h2>
+            )}
 
-          {/* Dynamic Subtests List */}
-          {data?.subtests?.length > 0 ? (
-            data.subtests.map((subtest, index) => (
-              <div key={index} className="mb-4">
-                <h3 className="text-2xl font-semibold mb-3">{subtest.title}</h3>
+            {/* Dynamic Subtests List */}
+            {safeData.subtests && safeData.subtests.length > 0 && (
+                <div>
+                    {safeData.subtests.map((subtest, index) => (
+                        <div key={index} className="mb-4">
+                            {subtest.title && <h3 className="text-2xl font-semibold mb-3">{subtest.title}</h3>}
+                            {subtest.content && (
+                                <p className="text-lg mb-4 whitespace-pre-wrap">
+                                    {subtest.content}
+                                </p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* IMPORTANT TEST INFORMATION */}
+            {safeData.infoHeading && (
+                <h3 className="text-2xl font-bold mb-3 mt-8">
+                    {safeData.infoHeading}
+                </h3>
+            )}
+            
+            {safeData.infoDescription && (
                 <p className="text-lg mb-4 whitespace-pre-wrap">
-                  {subtest.content}
+                    {safeData.infoDescription}
                 </p>
-              </div>
-            ))
-          ) : (
-            <p className="text-lg mb-4">Subtest information coming soon.</p>
-          )}
+            )}
 
-          {/* IMPORTANT TEST INFORMATION */}
-          <h3 className="text-2xl font-bold mb-3 mt-8">
-            {data?.infoHeading || "Important Testing Information"}
-          </h3>
-          <p className="text-lg mb-4 whitespace-pre-wrap">
-            {data?.infoDescription}
-          </p>
+            {/* Dynamic Timing Table */}
+            {safeData.timeTable && safeData.timeTable.length > 0 && (
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse border border-gray-300 mb-6">
+                    <thead>
+                        <tr className="bg-gray-200">
+                        <th className="border border-gray-300 px-4 py-2">Subtest + Tutorial</th>
+                        <th className="border border-gray-300 px-4 py-2">5th/6th Graders: Time Allowed</th>
+                        <th className="border border-gray-300 px-4 py-2">7th Graders and Older: Time Allowed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {safeData.timeTable.map((row, index) => (
+                            <tr 
+                                key={index} 
+                                className={index % 2 !== 0 ? "bg-gray-50" : ""}
+                            >
+                                <td className="border border-gray-300 px-4 py-2">{row.activity}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.time5th6th}</td>
+                                <td className="border border-gray-300 px-4 py-2">{row.time7thPlus}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                </div>
+            )}
+            </div>
+        </section>
+      )}
 
-          {/* Dynamic Timing Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse border border-gray-300 mb-6">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="border border-gray-300 px-4 py-2">Subtest + Tutorial</th>
-                  <th className="border border-gray-300 px-4 py-2">5th/6th Graders: Time Allowed</th>
-                  <th className="border border-gray-300 px-4 py-2">7th Graders and Older: Time Allowed</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Validation: Check if table data exists */}
-                {data?.timeTable?.length > 0 ? (
-                  data.timeTable.map((row, index) => (
-                    <tr 
-                      key={index} 
-                      // Zebra Striping Logic: Odd indexes get gray background
-                      className={index % 2 !== 0 ? "bg-gray-50" : ""}
-                    >
-                      <td className="border border-gray-300 px-4 py-2">{row.activity}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.time5th6th}</td>
-                      <td className="border border-gray-300 px-4 py-2">{row.time7thPlus}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center">
-                      No timing data available.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA (Static) */}
+      {/* CTA (Static - Always Visible - Default) */}
       <section className="bg-[#0f172a] py-16 px-4 text-center">
         <div className="max-w-7xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">

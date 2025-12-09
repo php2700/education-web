@@ -130,6 +130,195 @@
 // export default SHSAT;
 
 
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// const SHSAT = () => {
+//   const navigate = useNavigate();
+  
+//   // State Management
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const fetchShsatData = async () => {
+//       try {
+//         // API URL Construction
+//         // import.meta.env.VITE_APP_URL ke end me '/' hota hai, isliye 'api/user/...' direct joda
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/shsat-test`);
+        
+//         console.log("SHSAT API Data:", response.data);
+
+//         if (response.data) {
+//           // Admin panel usually wraps data in 'data' key
+//           let apiData = response.data.data || response.data;
+
+//           // Agar data array hai to first object lein, nahi to direct object
+//           if (Array.isArray(apiData)) {
+//             setData(apiData[0]);
+//           } else {
+//             setData(apiData);
+//           }
+//         }
+//         setLoading(false);
+//       } catch (err) {
+//         console.error("Error fetching SHSAT data:", err);
+//         setError("Failed to load content.");
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchShsatData();
+//   }, []);
+
+//   // Loading State
+//   if (loading) return <div className="text-center py-20 font-bold text-gray-500">Loading SHSAT Prep...</div>;
+//   if (error) return <div className="text-center py-20 text-red-500">{error}</div>;
+
+//   // Safe Data Object (Validation) - Crash se bachne ke liye
+//   const safeData = data || {};
+
+//   return (
+//     <div className="bg-gray-50 py-14 px-4 md:px-20" id='shsat'>
+//        <div className="max-w-7xl mx-auto">
+      
+//       {/* ===== HERO TITLE ===== */}
+//       <h1 className="text-4xl font-bold text-center text-blue-900 mb-10">
+//         {safeData.heroTitle || "SHSAT Test Prep "}
+//       </h1>
+
+//       {/* ===== INTRO / HERO DESCRIPTION ===== */}
+//       <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+//         <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+//             {/* 
+//                Admin Panel ka 'heroDescription' yahan aayega.
+//                whitespace-pre-line use kiya hai taaki paragraphs alag dikhein.
+//             */}
+//             {safeData.heroDescription || (
+//                 <>
+//                 <p className="mb-4">
+//                     At <strong>GGES</strong>, our SHSAT online tutoring programs are
+//                     research-based and specifically designed to help students score
+//                     higher on the SHSAT test.
+//                 </p>
+//                 <p>
+//                     We emphasize maximizing a student’s available study time with the right strategies.
+//                 </p>
+//                 </>
+//             )}
+//         </div>
+
+//         <button
+//           onClick={() => navigate("/free-trial")}
+//           className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
+//         >
+//           Click Here for Free Trial Class
+//         </button>
+//       </div>
+
+//       {/* ===== ALL ABOUT SHSAT (Dynamic Section) ===== */}
+//       <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+//         <h2 className="text-2xl font-semibold mb-4 text-blue-800">
+//           {safeData.aboutMainHeading || "All About SHSAT"}
+//         </h2>
+
+//         {/* Dynamic Mapping for About Items */}
+//         {safeData.aboutItems && safeData.aboutItems.length > 0 ? (
+//             safeData.aboutItems.map((item, index) => (
+//                 <div key={index} className="mb-6 last:mb-0">
+//                     {/* Agar Title hai tabhi dikhao (H3 style) */}
+//                     {item.title && (
+//                         <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
+//                             {item.title}
+//                         </h3>
+//                     )}
+//                     {/* Content (Description) */}
+//                     <p className="text-gray-700 leading-7 whitespace-pre-line">
+//                         {item.content}
+//                     </p>
+//                 </div>
+//             ))
+//         ) : (
+//             // FALLBACK STATIC CONTENT (Validation)
+//             <>
+//                 <p className="text-gray-700 leading-7 mb-4">
+//                 The <strong>Specialized High Schools Admissions Test (SHSAT)</strong> is
+//                 an exam that 8th and 9th graders take for admission to Specialized
+//                 High Schools in New York City.
+//                 </p>
+
+//                 <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
+//                 Where do you take the SHSAT?
+//                 </h3>
+//                 <p className="text-gray-700 leading-7">
+//                 The test is administered at students’ home schools.
+//                 </p>
+//             </>
+//         )}
+//       </div>
+
+//       {/* ===== SHSAT STRUCTURE ===== */}
+//       <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+//         <h2 className="text-2xl font-semibold mb-6 text-blue-800">
+//           {safeData.structureHeading || "SHSAT Test Structure"}
+//         </h2>
+
+//         <ul className="list-disc ml-6 text-gray-700 space-y-2">
+//             {/* Dynamic List Mapping */}
+//             {safeData.structurePoints && safeData.structurePoints.length > 0 ? (
+//                 safeData.structurePoints.map((point, index) => (
+//                     // Filter empty points
+//                     point && <li key={index}>{point}</li>
+//                 ))
+//             ) : (
+//                 // Fallback Static Content
+//                 <>
+//                     <li>2 Sections: English Language Arts (ELA) & Math</li>
+//                     <li>57 questions in each section</li>
+//                     <li>Total duration: 3 hours (180 minutes)</li>
+//                     <li>Only score from these sections is used for admission</li>
+//                 </>
+//             )}
+//         </ul>
+
+//         {/* External Link (Static) */}
+//         <div className="mt-6">
+//           <a
+//             href="https://www.princetonreview.com/k12/shsat-format?ceid=article-about-shsat"
+//             target="_blank"
+//             rel="noreferrer"
+//             className="text-blue-600 underline hover:text-blue-800"
+//           >
+//             Refer official SHSAT Format
+//           </a>
+//         </div>
+//       </div>
+
+//       {/* ===== CTA (Static - usually global) ===== */}
+//       <div className="bg-blue-900 text-white p-10 rounded-2xl text-center">
+//         <h2 className="text-2xl font-bold mb-4">
+//           Get started with GGES SHSAT Test Prep
+//         </h2>
+//         <p className="mb-6">
+//           Our expert tutors and strategic plan help you score higher and
+//           secure admission to top specialized high schools.
+//         </p>
+//         <button
+//           onClick={() => navigate("/free-trial")}
+//           className="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition"
+//         >
+//           Book Free Trial Class
+//         </button>
+//       </div>
+//             </div>
+//     </div>
+//   );
+// };
+
+// export default SHSAT;
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -145,21 +334,20 @@ const SHSAT = () => {
   useEffect(() => {
     const fetchShsatData = async () => {
       try {
-        // API URL Construction
-        // import.meta.env.VITE_APP_URL ke end me '/' hota hai, isliye 'api/user/...' direct joda
         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/shsat-test`);
         
-        console.log("SHSAT API Data:", response.data);
-
         if (response.data) {
-          // Admin panel usually wraps data in 'data' key
           let apiData = response.data.data || response.data;
 
           // Agar data array hai to first object lein, nahi to direct object
           if (Array.isArray(apiData)) {
-            setData(apiData[0]);
+             // Check valid object
+             if (apiData.length > 0) setData(apiData[0]);
+             else setData(null);
           } else {
-            setData(apiData);
+             // Check valid object keys
+             if (apiData && Object.keys(apiData).length > 0) setData(apiData);
+             else setData(null);
           }
         }
         setLoading(false);
@@ -177,7 +365,8 @@ const SHSAT = () => {
   if (loading) return <div className="text-center py-20 font-bold text-gray-500">Loading SHSAT Prep...</div>;
   if (error) return <div className="text-center py-20 text-red-500">{error}</div>;
 
-  // Safe Data Object (Validation) - Crash se bachne ke liye
+  // Safe Data Object
+  // Agar data null hai tab bhi hum empty object dete hain taaki buttons render ho sakein
   const safeData = data || {};
 
   return (
@@ -185,31 +374,25 @@ const SHSAT = () => {
        <div className="max-w-7xl mx-auto">
       
       {/* ===== HERO TITLE ===== */}
-      <h1 className="text-4xl font-bold text-center text-blue-900 mb-10">
-        {safeData.heroTitle || "SHSAT Test Prep"}
-      </h1>
+      {/* Sirf tab dikhega jab title backend se aayega */}
+      {safeData.heroTitle && (
+        <h1 className="text-4xl font-bold text-center text-blue-900 mb-10">
+            {safeData.heroTitle}
+        </h1>
+      )}
 
-      {/* ===== INTRO / HERO DESCRIPTION ===== */}
+      {/* ===== HERO SECTION & BUTTON ===== */}
+      {/* Ye box hamesha rahega taaki Button dikh sake */}
       <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
-        <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
-            {/* 
-               Admin Panel ka 'heroDescription' yahan aayega.
-               whitespace-pre-line use kiya hai taaki paragraphs alag dikhein.
-            */}
-            {safeData.heroDescription || (
-                <>
-                <p className="mb-4">
-                    At <strong>GGES</strong>, our SHSAT online tutoring programs are
-                    research-based and specifically designed to help students score
-                    higher on the SHSAT test.
-                </p>
-                <p>
-                    We emphasize maximizing a student’s available study time with the right strategies.
-                </p>
-                </>
-            )}
-        </div>
+        
+        {/* Description Text - Sirf tab dikhega jab data ho */}
+        {safeData.heroDescription && (
+            <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+                {safeData.heroDescription}
+            </div>
+        )}
 
+        {/* BUTTON: Ye hamesha dikhega (Default) */}
         <button
           onClick={() => navigate("/free-trial")}
           className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
@@ -219,84 +402,71 @@ const SHSAT = () => {
       </div>
 
       {/* ===== ALL ABOUT SHSAT (Dynamic Section) ===== */}
-      <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-800">
-          {safeData.aboutMainHeading || "All About SHSAT"}
-        </h2>
+      {/* Ye pura section tabhi dikhega jab Heading ya Items exist karte hon */}
+      {(safeData.aboutMainHeading || (safeData.aboutItems && safeData.aboutItems.length > 0)) && (
+        <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+            
+            {safeData.aboutMainHeading && (
+                <h2 className="text-2xl font-semibold mb-4 text-blue-800">
+                {safeData.aboutMainHeading}
+                </h2>
+            )}
 
-        {/* Dynamic Mapping for About Items */}
-        {safeData.aboutItems && safeData.aboutItems.length > 0 ? (
-            safeData.aboutItems.map((item, index) => (
-                <div key={index} className="mb-6 last:mb-0">
-                    {/* Agar Title hai tabhi dikhao (H3 style) */}
-                    {item.title && (
-                        <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
-                            {item.title}
-                        </h3>
-                    )}
-                    {/* Content (Description) */}
-                    <p className="text-gray-700 leading-7 whitespace-pre-line">
-                        {item.content}
-                    </p>
-                </div>
-            ))
-        ) : (
-            // FALLBACK STATIC CONTENT (Validation)
-            <>
-                <p className="text-gray-700 leading-7 mb-4">
-                The <strong>Specialized High Schools Admissions Test (SHSAT)</strong> is
-                an exam that 8th and 9th graders take for admission to Specialized
-                High Schools in New York City.
-                </p>
-
-                <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
-                Where do you take the SHSAT?
-                </h3>
-                <p className="text-gray-700 leading-7">
-                The test is administered at students’ home schools.
-                </p>
-            </>
-        )}
-      </div>
+            {/* Dynamic Mapping for About Items */}
+            {safeData.aboutItems && safeData.aboutItems.length > 0 && (
+                safeData.aboutItems.map((item, index) => (
+                    <div key={index} className="mb-6 last:mb-0">
+                        {item.title && (
+                            <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
+                                {item.title}
+                            </h3>
+                        )}
+                        {item.content && (
+                            <p className="text-gray-700 leading-7 whitespace-pre-line">
+                                {item.content}
+                            </p>
+                        )}
+                    </div>
+                ))
+            )}
+        </div>
+      )}
 
       {/* ===== SHSAT STRUCTURE ===== */}
-      <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
-        <h2 className="text-2xl font-semibold mb-6 text-blue-800">
-          {safeData.structureHeading || "SHSAT Test Structure"}
-        </h2>
-
-        <ul className="list-disc ml-6 text-gray-700 space-y-2">
-            {/* Dynamic List Mapping */}
-            {safeData.structurePoints && safeData.structurePoints.length > 0 ? (
-                safeData.structurePoints.map((point, index) => (
-                    // Filter empty points
-                    point && <li key={index}>{point}</li>
-                ))
-            ) : (
-                // Fallback Static Content
-                <>
-                    <li>2 Sections: English Language Arts (ELA) & Math</li>
-                    <li>57 questions in each section</li>
-                    <li>Total duration: 3 hours (180 minutes)</li>
-                    <li>Only score from these sections is used for admission</li>
-                </>
+      {/* Ye section bhi tabhi dikhega jab Heading ya Points hon */}
+      {(safeData.structureHeading || (safeData.structurePoints && safeData.structurePoints.length > 0)) && (
+        <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+            
+            {safeData.structureHeading && (
+                <h2 className="text-2xl font-semibold mb-6 text-blue-800">
+                {safeData.structureHeading}
+                </h2>
             )}
-        </ul>
 
-        {/* External Link (Static) */}
-        <div className="mt-6">
-          <a
-            href="https://www.princetonreview.com/k12/shsat-format?ceid=article-about-shsat"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-600 underline hover:text-blue-800"
-          >
-            Refer official SHSAT Format
-          </a>
+            {safeData.structurePoints && safeData.structurePoints.length > 0 && (
+                <ul className="list-disc ml-6 text-gray-700 space-y-2">
+                    {safeData.structurePoints.map((point, index) => (
+                        point ? <li key={index}>{point}</li> : null
+                    ))}
+                </ul>
+            )}
+
+            {/* External Link */}
+            <div className="mt-6">
+            <a
+                href="https://www.princetonreview.com/k12/shsat-format?ceid=article-about-shsat"
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 underline hover:text-blue-800"
+            >
+                Refer official SHSAT Format
+            </a>
+            </div>
         </div>
-      </div>
+      )}
 
-      {/* ===== CTA (Static - usually global) ===== */}
+      {/* ===== CTA (Static / Default Button) ===== */}
+      {/* Ye section kabhi gayab nahi hoga - Always Visible */}
       <div className="bg-blue-900 text-white p-10 rounded-2xl text-center">
         <h2 className="text-2xl font-bold mb-4">
           Get started with GGES SHSAT Test Prep
@@ -312,7 +482,8 @@ const SHSAT = () => {
           Book Free Trial Class
         </button>
       </div>
-            </div>
+    
+      </div>
     </div>
   );
 };

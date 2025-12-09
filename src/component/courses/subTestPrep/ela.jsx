@@ -231,6 +231,323 @@
 // export default ElaPage;
 
 
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import bgImage from "../../../assets/Elaback.png"; 
+
+// // Accordion Component (Same as before)
+// const AccordionItem = ({ title, children }) => {
+//   const [open, setOpen] = useState(false);
+//   return (
+//     <div className="border-b last:border-b-0">
+//       <button
+//         onClick={() => setOpen((s) => !s)}
+//         className="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50"
+//         aria-expanded={open}
+//       >
+//         <span className="font-semibold text-gray-800">{title}</span>
+//         <span className="text-gray-500">{open ? "−" : "+"}</span>
+//       </button>
+
+//       {open && <div className="p-4 bg-gray-50 text-gray-700 whitespace-pre-line">{children}</div>}
+//     </div>
+//   );
+// };
+
+// const ElaPage = () => {
+//   const navigate = useNavigate();
+
+//   // --- State Management ---
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   // --- API Call ---
+//   useEffect(() => {
+//     const fetchElaData = async () => {
+//       try {
+//         // Construct URL: VITE_APP_URL ends with '/' so add 'api/user/ela-test'
+//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/ela-test`);
+        
+//         console.log("ELA API Data:", response.data);
+
+//         if (response.data) {
+//           // Admin panel usually wraps data in 'data' key
+//           let apiData = response.data.data || response.data;
+
+//           // If array, take first item, else take object
+//           if (Array.isArray(apiData)) {
+//             setData(apiData[0]);
+//           } else {
+//             setData(apiData);
+//           }
+//         }
+//         setLoading(false);
+//       } catch (err) {
+//         console.error("Error fetching ELA data:", err);
+//         setError("Failed to load content.");
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchElaData();
+//   }, []);
+
+//   // --- Loading & Error Handling ---
+//   if (loading) return <div className="text-center py-20 font-bold text-gray-500">Loading ELA Prep...</div>;
+//   if (error) return <div className="text-center py-20 text-red-500">{error}</div>;
+
+//   // --- Safe Data (Validation) ---
+//   const safeData = data || {};
+
+//   // Helper to render points that might contain HTML (like <strong>) from admin
+//   const renderHTMLPoint = (text) => {
+//     if (!text) return null;
+//     return <span dangerouslySetInnerHTML={{ __html: text }} />;
+//   };
+
+//   return (
+//     <main  className="min-h-screen py-12 px-4 relative bg-cover bg-center bg-fixed" 
+//   id='ela'
+//   style={{ backgroundImage: `url(${bgImage})` }}>
+//       <div className="max-w-7xl mx-auto">
+
+//         {/* ===== 1. HERO SECTION ===== */}
+//         <header className="text-center mb-12">
+//           <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase">
+//             {/* Key: heroTitle */}
+//             {safeData.heroTitle || "ALL YOU NEED TO KNOW ABOUT ELA"}
+//           </h1>
+//           <p className="mt-4 text-gray-600 max-w-3xl mx-auto whitespace-pre-line">
+//             {/* Key: heroDescription */}
+//             {safeData.heroDescription || 
+//               "At GGES, ELA is tutored by expert teachers who have extensive experience in ELA test preparation."}
+//           </p>
+
+//           <div className="mt-6 flex justify-center">
+//             <button
+//               onClick={() => navigate("/free-trial")}
+//               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+//             >
+//               Get Free Trial Class
+//             </button>
+//           </div>
+//         </header>
+
+//         {/* Main Grid */}
+//         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+//           {/* Left column - primary content */}
+//           <article className="lg:col-span-2 space-y-8">
+
+//             {/* ===== 2. INTRO SECTION ("Who takes this test?") ===== */}
+//             <section className="prose prose-lg max-w-none">
+//               <h2>
+//                 {/* Key: introHeading */}
+//                 {safeData.introHeading || "Who takes this test?"}
+//               </h2>
+              
+//               {/* Key: introDescription */}
+//               {safeData.introDescription ? (
+//                   <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+//                       {safeData.introDescription}
+//                   </div>
+//               ) : (
+//                   // Fallback
+//                   <>
+//                     <p>
+//                         Students in grades <strong>3–10</strong> take the State English Language Arts (ELA) test.
+//                     </p>
+//                     <p>
+//                         An ELA test is a standardized assessment measuring proficiency in reading, writing, listening, speaking and language skills.
+//                     </p>
+//                   </>
+//               )}
+//             </section>
+
+//             {/* ===== 3. WHAT IS ON THE TEST ===== */}
+//             <section className="bg-white p-6 rounded-xl shadow-sm">
+//               <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+//                 {/* Key: testSectionHeading */}
+//                 {safeData.testSectionHeading || "What is on the test?"}
+//               </h2>
+
+//               {/* Sub-section: Core components */}
+//               <h3 className="font-medium text-gray-800 mb-2">
+//                 {/* Key: componentsHeading */}
+//                 {safeData.componentsHeading || "Core components & formats"}
+//               </h3>
+//               <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+//                 {/* Key: componentsPoints */}
+//                 {safeData.componentsPoints && safeData.componentsPoints.length > 0 ? (
+//                     safeData.componentsPoints.map((pt, i) => (
+//                         pt && <li key={i}>{renderHTMLPoint(pt)}</li>
+//                     ))
+//                 ) : (
+//                     <li><strong>Question types:</strong> Multiple-choice, short-answer, and essays.</li>
+//                 )}
+//               </ul>
+
+//               {/* Sub-section: Administration */}
+//               <h3 className="font-medium text-gray-800 mb-2">
+//                  {/* Key: administrationHeading */}
+//                  {safeData.administrationHeading || "Test administration"}
+//               </h3>
+//               <ul className="list-disc pl-6 space-y-2 text-gray-700">
+//                 {/* Key: administrationPoints */}
+//                 {safeData.administrationPoints && safeData.administrationPoints.length > 0 ? (
+//                     safeData.administrationPoints.map((pt, i) => (
+//                         pt && <li key={i}>{renderHTMLPoint(pt)}</li>
+//                     ))
+//                 ) : (
+//                     <li><strong>Structure:</strong> Tests may be administered in one session or across multiple days.</li>
+//                 )}
+//               </ul>
+//             </section>
+
+//             {/* ===== 4. PREPARATION ===== */}
+//             <section className="bg-white p-6 rounded-xl shadow-sm">
+//               <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+//                  {/* Key: preparationHeading */}
+//                  {safeData.preparationHeading || "Preparation"}
+//               </h2>
+
+//               <div className="grid gap-4 md:grid-cols-3">
+//                 {/* Key: preparationCards */}
+//                 {safeData.preparationCards && safeData.preparationCards.length > 0 ? (
+//                     safeData.preparationCards.map((card, i) => (
+//                         <div key={i}>
+//                             <h4 className="font-semibold text-gray-800">{card.title}</h4>
+//                             <p className="text-gray-700 text-sm whitespace-pre-line">
+//                                 {card.description}
+//                             </p>
+//                         </div>
+//                     ))
+//                 ) : (
+//                     // Fallback
+//                     <div>
+//                         <h4 className="font-semibold text-gray-800">Reading practice</h4>
+//                         <p className="text-gray-700 text-sm">Read a variety of genres.</p>
+//                     </div>
+//                 )}
+//               </div>
+//             </section>
+
+//             {/* ===== 5. MORE DETAILS & FAQ ===== */}
+//             <section className="bg-white p-6 rounded-xl shadow-sm">
+//               <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+//                  {/* Key: moreDetailsHeading */}
+//                  {safeData.moreDetailsHeading || "More details"}
+//               </h2>
+
+//               <p className="text-gray-700 mb-4 whitespace-pre-line">
+//                  {/* Key: moreDetailsDescription */}
+//                  {safeData.moreDetailsDescription || "The ELA is designed to assess a student’s ability to analyze texts."}
+//               </p>
+
+//               <div className="mt-4">
+//                 <h3 className="font-semibold mb-3 text-gray-800">
+//                      {/* Key: faqHeading */}
+//                      {safeData.faqHeading || "Frequently asked"}
+//                 </h3>
+
+//                 <div className="border rounded-lg overflow-hidden">
+//                   {/* Key: faqList */}
+//                   {safeData.faqList && safeData.faqList.length > 0 ? (
+//                       safeData.faqList.map((faq, index) => (
+//                         <AccordionItem key={index} title={faq.question}>
+//                             {faq.answer}
+//                         </AccordionItem>
+//                       ))
+//                   ) : (
+//                       <AccordionItem title="How should I prepare?">
+//                         Focus on daily reading and writing practice.
+//                       </AccordionItem>
+//                   )}
+//                 </div>
+//               </div>
+//             </section>
+
+//           </article>
+
+//           {/* ===== SIDEBAR (Right Column) ===== */}
+//           <aside className="space-y-6">
+//             <div className="sticky top-24">
+              
+//               {/* Quick Facts */}
+//               <div className="bg-blue-50 p-6 rounded-xl shadow-sm border">
+//                 <h3 className="text-lg font-bold text-blue-800 mb-3">
+//                      {/* Key: quickFactsHeading */}
+//                      {safeData.quickFactsHeading || "Quick Facts"}
+//                 </h3>
+//                 <ul className="text-gray-700 space-y-2">
+//                   {/* Key: quickFactsList */}
+//                   {safeData.quickFactsList && safeData.quickFactsList.length > 0 ? (
+//                       safeData.quickFactsList.map((fact, i) => (
+//                           fact && <li key={i} dangerouslySetInnerHTML={{ __html: fact }} />
+//                       ))
+//                   ) : (
+//                       <li><strong>Grades:</strong> 3–10</li>
+//                   )}
+//                 </ul>
+//               </div>
+
+//               {/* Scoring */}
+//               <div className="bg-white p-6 rounded-xl shadow-sm border mt-6">
+//                 <h4 className="font-semibold text-gray-800 mb-3">
+//                      {/* Key: scoringHeading */}
+//                      {safeData.scoringHeading || "Scoring & Rubrics"}
+//                 </h4>
+//                 <p className="text-gray-700 text-sm whitespace-pre-line">
+//                      {/* Key: scoringDescription */}
+//                      {safeData.scoringDescription || "Essays and short responses are scored with rubrics."}
+//                 </p>
+//               </div>
+
+//               <div className="mt-6 text-center">
+//                 <button
+//                   onClick={() => navigate("/free-trial")}
+//                   className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg font-semibold transition"
+//                 >
+//                   Book Free Trial Class
+//                 </button>
+//               </div>
+//             </div>
+//           </aside>
+//         </section>
+
+//         {/* Footer CTA */}
+//         <section className="mt-12 bg-gray-50 p-8 rounded-xl text-center">
+//           <h3 className="text-xl font-bold mb-3">Ready to improve ELA skills?</h3>
+//           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+//             Sign up for a free trial class and let our expert tutors build your child's reading and writing confidence.
+//           </p>
+
+//           <div className="flex justify-center gap-4">
+//             <button
+//               onClick={() => navigate("/free-trial")}
+//               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+//             >
+//               Free Trial Class
+//             </button>
+
+//             <a
+//               href="/contact"
+//               className="inline-flex items-center justify-center px-6 py-3 border rounded-lg text-gray-800 hover:bg-gray-100 transition"
+//             >
+//               Contact Us
+//             </a>
+//           </div>
+//         </section>
+
+//       </div>
+//     </main>
+//   );
+// };
+
+// export default ElaPage;
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -267,20 +584,17 @@ const ElaPage = () => {
   useEffect(() => {
     const fetchElaData = async () => {
       try {
-        // Construct URL: VITE_APP_URL ends with '/' so add 'api/user/ela-test'
         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/ela-test`);
         
-        console.log("ELA API Data:", response.data);
-
         if (response.data) {
-          // Admin panel usually wraps data in 'data' key
           let apiData = response.data.data || response.data;
-
-          // If array, take first item, else take object
+          
           if (Array.isArray(apiData)) {
-            setData(apiData[0]);
+            if (apiData.length > 0) setData(apiData[0]);
+            else setData(null);
           } else {
-            setData(apiData);
+            if (apiData && Object.keys(apiData).length > 0) setData(apiData);
+            else setData(null);
           }
         }
         setLoading(false);
@@ -298,33 +612,40 @@ const ElaPage = () => {
   if (loading) return <div className="text-center py-20 font-bold text-gray-500">Loading ELA Prep...</div>;
   if (error) return <div className="text-center py-20 text-red-500">{error}</div>;
 
-  // --- Safe Data (Validation) ---
+  // --- Safe Data ---
   const safeData = data || {};
 
-  // Helper to render points that might contain HTML (like <strong>) from admin
+  // Helper to render points
   const renderHTMLPoint = (text) => {
     if (!text) return null;
     return <span dangerouslySetInnerHTML={{ __html: text }} />;
   };
 
   return (
-    <main  className="min-h-screen py-12 px-4 relative bg-cover bg-center bg-fixed" 
-  id='ela'
-  style={{ backgroundImage: `url(${bgImage})` }}>
+    <main  
+        className="min-h-screen py-12 px-4 relative bg-cover bg-center bg-fixed" 
+        id='ela'
+        style={{ backgroundImage: `url(${bgImage})` }}
+    >
       <div className="max-w-7xl mx-auto">
 
         {/* ===== 1. HERO SECTION ===== */}
         <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase">
-            {/* Key: heroTitle */}
-            {safeData.heroTitle || "ALL YOU NEED TO KNOW ABOUT ELA"}
-          </h1>
-          <p className="mt-4 text-gray-600 max-w-3xl mx-auto whitespace-pre-line">
-            {/* Key: heroDescription */}
-            {safeData.heroDescription || 
-              "At GGES, ELA is tutored by expert teachers who have extensive experience in ELA test preparation."}
-          </p>
+          {/* Title - Only visible if data exists */}
+          {safeData.heroTitle && (
+              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase">
+                {safeData.heroTitle}
+              </h1>
+          )}
+          
+          {/* Description - Only visible if data exists */}
+          {safeData.heroDescription && (
+              <p className="mt-4 text-gray-600 max-w-3xl mx-auto whitespace-pre-line">
+                {safeData.heroDescription}
+              </p>
+          )}
 
+          {/* Button - Always Visible */}
           <div className="mt-6 flex justify-center">
             <button
               onClick={() => navigate("/free-trial")}
@@ -342,132 +663,128 @@ const ElaPage = () => {
           <article className="lg:col-span-2 space-y-8">
 
             {/* ===== 2. INTRO SECTION ("Who takes this test?") ===== */}
-            <section className="prose prose-lg max-w-none">
-              <h2>
-                {/* Key: introHeading */}
-                {safeData.introHeading || "Who takes this test?"}
-              </h2>
-              
-              {/* Key: introDescription */}
-              {safeData.introDescription ? (
-                  <div className="text-gray-700 whitespace-pre-line leading-relaxed">
-                      {safeData.introDescription}
-                  </div>
-              ) : (
-                  // Fallback
-                  <>
-                    <p>
-                        Students in grades <strong>3–10</strong> take the State English Language Arts (ELA) test.
-                    </p>
-                    <p>
-                        An ELA test is a standardized assessment measuring proficiency in reading, writing, listening, speaking and language skills.
-                    </p>
-                  </>
-              )}
-            </section>
-
-            {/* ===== 3. WHAT IS ON THE TEST ===== */}
-            <section className="bg-white p-6 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                {/* Key: testSectionHeading */}
-                {safeData.testSectionHeading || "What is on the test?"}
-              </h2>
-
-              {/* Sub-section: Core components */}
-              <h3 className="font-medium text-gray-800 mb-2">
-                {/* Key: componentsHeading */}
-                {safeData.componentsHeading || "Core components & formats"}
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
-                {/* Key: componentsPoints */}
-                {safeData.componentsPoints && safeData.componentsPoints.length > 0 ? (
-                    safeData.componentsPoints.map((pt, i) => (
-                        pt && <li key={i}>{renderHTMLPoint(pt)}</li>
-                    ))
-                ) : (
-                    <li><strong>Question types:</strong> Multiple-choice, short-answer, and essays.</li>
-                )}
-              </ul>
-
-              {/* Sub-section: Administration */}
-              <h3 className="font-medium text-gray-800 mb-2">
-                 {/* Key: administrationHeading */}
-                 {safeData.administrationHeading || "Test administration"}
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                {/* Key: administrationPoints */}
-                {safeData.administrationPoints && safeData.administrationPoints.length > 0 ? (
-                    safeData.administrationPoints.map((pt, i) => (
-                        pt && <li key={i}>{renderHTMLPoint(pt)}</li>
-                    ))
-                ) : (
-                    <li><strong>Structure:</strong> Tests may be administered in one session or across multiple days.</li>
-                )}
-              </ul>
-            </section>
-
-            {/* ===== 4. PREPARATION ===== */}
-            <section className="bg-white p-6 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                 {/* Key: preparationHeading */}
-                 {safeData.preparationHeading || "Preparation"}
-              </h2>
-
-              <div className="grid gap-4 md:grid-cols-3">
-                {/* Key: preparationCards */}
-                {safeData.preparationCards && safeData.preparationCards.length > 0 ? (
-                    safeData.preparationCards.map((card, i) => (
-                        <div key={i}>
-                            <h4 className="font-semibold text-gray-800">{card.title}</h4>
-                            <p className="text-gray-700 text-sm whitespace-pre-line">
-                                {card.description}
-                            </p>
-                        </div>
-                    ))
-                ) : (
-                    // Fallback
-                    <div>
-                        <h4 className="font-semibold text-gray-800">Reading practice</h4>
-                        <p className="text-gray-700 text-sm">Read a variety of genres.</p>
+            {(safeData.introHeading || safeData.introDescription) && (
+                <section className="prose prose-lg max-w-none">
+                {safeData.introHeading && <h2>{safeData.introHeading}</h2>}
+                
+                {safeData.introDescription && (
+                    <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                        {safeData.introDescription}
                     </div>
                 )}
-              </div>
-            </section>
+                </section>
+            )}
+
+            {/* ===== 3. WHAT IS ON THE TEST ===== */}
+            {(safeData.testSectionHeading || safeData.componentsHeading || safeData.administrationHeading) && (
+                <section className="bg-white p-6 rounded-xl shadow-sm">
+                
+                {safeData.testSectionHeading && (
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                        {safeData.testSectionHeading}
+                    </h2>
+                )}
+
+                {/* Sub-section: Core components */}
+                {(safeData.componentsHeading || (safeData.componentsPoints && safeData.componentsPoints.length > 0)) && (
+                    <>
+                        {safeData.componentsHeading && (
+                            <h3 className="font-medium text-gray-800 mb-2">
+                                {safeData.componentsHeading}
+                            </h3>
+                        )}
+                        {safeData.componentsPoints && safeData.componentsPoints.length > 0 && (
+                            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+                                {safeData.componentsPoints.map((pt, i) => (
+                                    pt ? <li key={i}>{renderHTMLPoint(pt)}</li> : null
+                                ))}
+                            </ul>
+                        )}
+                    </>
+                )}
+
+                {/* Sub-section: Administration */}
+                {(safeData.administrationHeading || (safeData.administrationPoints && safeData.administrationPoints.length > 0)) && (
+                    <>
+                        {safeData.administrationHeading && (
+                            <h3 className="font-medium text-gray-800 mb-2">
+                                {safeData.administrationHeading}
+                            </h3>
+                        )}
+                        {safeData.administrationPoints && safeData.administrationPoints.length > 0 && (
+                            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                                {safeData.administrationPoints.map((pt, i) => (
+                                    pt ? <li key={i}>{renderHTMLPoint(pt)}</li> : null
+                                ))}
+                            </ul>
+                        )}
+                    </>
+                )}
+                </section>
+            )}
+
+            {/* ===== 4. PREPARATION ===== */}
+            {(safeData.preparationHeading || (safeData.preparationCards && safeData.preparationCards.length > 0)) && (
+                <section className="bg-white p-6 rounded-xl shadow-sm">
+                
+                {safeData.preparationHeading && (
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                        {safeData.preparationHeading}
+                    </h2>
+                )}
+
+                {safeData.preparationCards && safeData.preparationCards.length > 0 && (
+                    <div className="grid gap-4 md:grid-cols-3">
+                        {safeData.preparationCards.map((card, i) => (
+                            <div key={i}>
+                                <h4 className="font-semibold text-gray-800">{card.title}</h4>
+                                <p className="text-gray-700 text-sm whitespace-pre-line">
+                                    {card.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                </section>
+            )}
 
             {/* ===== 5. MORE DETAILS & FAQ ===== */}
-            <section className="bg-white p-6 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                 {/* Key: moreDetailsHeading */}
-                 {safeData.moreDetailsHeading || "More details"}
-              </h2>
+            {(safeData.moreDetailsHeading || safeData.moreDetailsDescription || safeData.faqHeading || (safeData.faqList && safeData.faqList.length > 0)) && (
+                <section className="bg-white p-6 rounded-xl shadow-sm">
+                
+                {safeData.moreDetailsHeading && (
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                        {safeData.moreDetailsHeading}
+                    </h2>
+                )}
 
-              <p className="text-gray-700 mb-4 whitespace-pre-line">
-                 {/* Key: moreDetailsDescription */}
-                 {safeData.moreDetailsDescription || "The ELA is designed to assess a student’s ability to analyze texts."}
-              </p>
+                {safeData.moreDetailsDescription && (
+                    <p className="text-gray-700 mb-4 whitespace-pre-line">
+                        {safeData.moreDetailsDescription}
+                    </p>
+                )}
 
-              <div className="mt-4">
-                <h3 className="font-semibold mb-3 text-gray-800">
-                     {/* Key: faqHeading */}
-                     {safeData.faqHeading || "Frequently asked"}
-                </h3>
+                {(safeData.faqHeading || (safeData.faqList && safeData.faqList.length > 0)) && (
+                    <div className="mt-4">
+                        {safeData.faqHeading && (
+                            <h3 className="font-semibold mb-3 text-gray-800">
+                                {safeData.faqHeading}
+                            </h3>
+                        )}
 
-                <div className="border rounded-lg overflow-hidden">
-                  {/* Key: faqList */}
-                  {safeData.faqList && safeData.faqList.length > 0 ? (
-                      safeData.faqList.map((faq, index) => (
-                        <AccordionItem key={index} title={faq.question}>
-                            {faq.answer}
-                        </AccordionItem>
-                      ))
-                  ) : (
-                      <AccordionItem title="How should I prepare?">
-                        Focus on daily reading and writing practice.
-                      </AccordionItem>
-                  )}
-                </div>
-              </div>
-            </section>
+                        {safeData.faqList && safeData.faqList.length > 0 && (
+                            <div className="border rounded-lg overflow-hidden">
+                                {safeData.faqList.map((faq, index) => (
+                                    <AccordionItem key={index} title={faq.question}>
+                                        {faq.answer}
+                                    </AccordionItem>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+                </section>
+            )}
 
           </article>
 
@@ -475,36 +792,41 @@ const ElaPage = () => {
           <aside className="space-y-6">
             <div className="sticky top-24">
               
-              {/* Quick Facts */}
-              <div className="bg-blue-50 p-6 rounded-xl shadow-sm border">
-                <h3 className="text-lg font-bold text-blue-800 mb-3">
-                     {/* Key: quickFactsHeading */}
-                     {safeData.quickFactsHeading || "Quick Facts"}
-                </h3>
-                <ul className="text-gray-700 space-y-2">
-                  {/* Key: quickFactsList */}
-                  {safeData.quickFactsList && safeData.quickFactsList.length > 0 ? (
-                      safeData.quickFactsList.map((fact, i) => (
-                          fact && <li key={i} dangerouslySetInnerHTML={{ __html: fact }} />
-                      ))
-                  ) : (
-                      <li><strong>Grades:</strong> 3–10</li>
-                  )}
-                </ul>
-              </div>
+              {/* Quick Facts - Sirf tab dikhega agar data hai */}
+              {(safeData.quickFactsHeading || (safeData.quickFactsList && safeData.quickFactsList.length > 0)) && (
+                  <div className="bg-blue-50 p-6 rounded-xl shadow-sm border">
+                    {safeData.quickFactsHeading && (
+                        <h3 className="text-lg font-bold text-blue-800 mb-3">
+                            {safeData.quickFactsHeading}
+                        </h3>
+                    )}
+                    {safeData.quickFactsList && safeData.quickFactsList.length > 0 && (
+                        <ul className="text-gray-700 space-y-2">
+                            {safeData.quickFactsList.map((fact, i) => (
+                                fact ? <li key={i} dangerouslySetInnerHTML={{ __html: fact }} /> : null
+                            ))}
+                        </ul>
+                    )}
+                  </div>
+              )}
 
-              {/* Scoring */}
-              <div className="bg-white p-6 rounded-xl shadow-sm border mt-6">
-                <h4 className="font-semibold text-gray-800 mb-3">
-                     {/* Key: scoringHeading */}
-                     {safeData.scoringHeading || "Scoring & Rubrics"}
-                </h4>
-                <p className="text-gray-700 text-sm whitespace-pre-line">
-                     {/* Key: scoringDescription */}
-                     {safeData.scoringDescription || "Essays and short responses are scored with rubrics."}
-                </p>
-              </div>
+              {/* Scoring - Sirf tab dikhega agar data hai */}
+              {(safeData.scoringHeading || safeData.scoringDescription) && (
+                  <div className="bg-white p-6 rounded-xl shadow-sm border mt-6">
+                    {safeData.scoringHeading && (
+                        <h4 className="font-semibold text-gray-800 mb-3">
+                            {safeData.scoringHeading}
+                        </h4>
+                    )}
+                    {safeData.scoringDescription && (
+                        <p className="text-gray-700 text-sm whitespace-pre-line">
+                            {safeData.scoringDescription}
+                        </p>
+                    )}
+                  </div>
+              )}
 
+              {/* Sidebar Button - Always Visible */}
               <div className="mt-6 text-center">
                 <button
                   onClick={() => navigate("/free-trial")}
@@ -517,7 +839,7 @@ const ElaPage = () => {
           </aside>
         </section>
 
-        {/* Footer CTA */}
+        {/* Footer CTA - Always Visible */}
         <section className="mt-12 bg-gray-50 p-8 rounded-xl text-center">
           <h3 className="text-xl font-bold mb-3">Ready to improve ELA skills?</h3>
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
