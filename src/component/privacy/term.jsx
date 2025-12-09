@@ -99,7 +99,7 @@ export const PrivacyPolicy = () => {
                          )}
 
                          {/* 2. Description - Ye next line me aayega */}
-                         <div className="text-gray-700 leading-relaxed">
+                         <div className="text-gray-700 leading-relaxed whitespace-pre-line">
                            {renderTextWithLinks(point.desc)}
                          </div>
 

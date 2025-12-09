@@ -82,7 +82,7 @@ const sections = [
     ],
   },
   // { name: "k-12", link: "/courses/k-12" },
-   {
+  {
     name: "k-12",
     link: "/courses/k-12",
     courses: [
@@ -90,8 +90,9 @@ const sections = [
         name: "methodology",
         link: "/courses/k-12#methodology",
       },
-      { name: "Subject Expertise", link: "/courses/k-12#expertise" }]
-    },
+      { name: "Subject Expertise", link: "/courses/k-12#expertise" },
+    ],
+  },
   {
     name: "English",
     link: "/courses/english",
@@ -184,7 +185,7 @@ export const HeaderBanner = () => {
   };
 
   const handleWhatsApp = (e) => {
-    const phoneNumber = "919876543210";
+    const phoneNumber = "+918860296060";
     const url = `https://wa.me/${phoneNumber}`;
     window.open(url, "_blank");
   };
@@ -209,7 +210,7 @@ export const HeaderBanner = () => {
     <>
       <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
         {/* Banner Section */}
-        <div className="relative w-full max-h-[100vh] flex items-center justify-center overflow-visible lg:overflow-hidden ">
+        <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-visible lg:overflow-hidden ">
           <img
             src={`${import.meta.env.VITE_APP_URL}${bannerData.image}`}
             alt={slides[0].title}
@@ -311,7 +312,7 @@ export const HeaderBanner = () => {
                               {/* Main link */}
                               <Link
                                 to={subItem.link}
-                                 onClick={() => handleToggle(subItem.name)}
+                                onClick={() => handleToggle(subItem.name)}
                                 className="text-gray-700 hover:text-blue-600 transition"
                               >
                                 {subItem.name}
@@ -568,7 +569,10 @@ export const HeaderBanner = () => {
         </p>
 
         <div className="flex justify-center items-center gap-4">
-          <button className="flex items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold">
+          <button
+            onClick={handleUrl}
+            className="flex cursor-pointer items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold"
+          >
             Start Free Trial
             <img src={arrow} alt="arrow" className="w-2 h-2 sm:w-5 sm:h-5" />
           </button>

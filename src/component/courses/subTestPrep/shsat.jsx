@@ -370,7 +370,9 @@ const SHSAT = () => {
   const safeData = data || {};
 
   return (
-    <div className="bg-gray-50 py-14 px-4 md:px-20" id='shsat'>
+    <div className="py-14 px-4 md:px-20" id='shsat'
+    
+    >
        <div className="max-w-7xl mx-auto">
       
       {/* ===== HERO TITLE ===== */}
@@ -383,7 +385,7 @@ const SHSAT = () => {
 
       {/* ===== HERO SECTION & BUTTON ===== */}
       {/* Ye box hamesha rahega taaki Button dikh sake */}
-      <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+      <div className="bg-[#F0F8FF]  p-8 rounded-2xl shadow-xl mb-10">
         
         {/* Description Text - Sirf tab dikhega jab data ho */}
         {safeData.heroDescription && (
@@ -404,7 +406,7 @@ const SHSAT = () => {
       {/* ===== ALL ABOUT SHSAT (Dynamic Section) ===== */}
       {/* Ye pura section tabhi dikhega jab Heading ya Items exist karte hon */}
       {(safeData.aboutMainHeading || (safeData.aboutItems && safeData.aboutItems.length > 0)) && (
-        <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+        <div className="bg-[#F0F8FF] p-8 rounded-2xl shadow-xl mb-10">
             
             {safeData.aboutMainHeading && (
                 <h2 className="text-2xl font-semibold mb-4 text-blue-800">
@@ -435,7 +437,7 @@ const SHSAT = () => {
       {/* ===== SHSAT STRUCTURE ===== */}
       {/* Ye section bhi tabhi dikhega jab Heading ya Points hon */}
       {(safeData.structureHeading || (safeData.structurePoints && safeData.structurePoints.length > 0)) && (
-        <div className="bg-white p-8 rounded-2xl shadow-md mb-10">
+        <div className="bg-[#F0F8FF] p-8 rounded-2xl shadow-xl mb-10">
             
             {safeData.structureHeading && (
                 <h2 className="text-2xl font-semibold mb-6 text-blue-800">

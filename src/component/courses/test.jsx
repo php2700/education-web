@@ -12,10 +12,15 @@ import ScatTestPrep from "./subTestPrep/scat";
 import SHSAT from "./subTestPrep/shsat";
 import SsatTestPrep from "./subTestPrep/ssat";
 import STBPrep from "./subTestPrep/stb";
+import backgroundImage from "../../assets/math-bg.png";
 
 export const Test = () => {
   return (
-    <div>
+    <div className="bg-[#F0F8FF]"   style={{
+                      backgroundImage: `url(${backgroundImage})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                    }}>
         
       <SatTestPrep />
       <PsatTestPrep />

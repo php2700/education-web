@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import backgroundImage from "../../assets/price-bg.png";
 import aboutImg from "../../assets/about.jpg";
 import { useLocation } from "react-router-dom";
@@ -9,11 +9,12 @@ import team2 from "../../assets/michel.png";
 import team3 from "../../assets/michel.png";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaRegLightbulb, FaShieldAlt, FaStar } from "react-icons/fa";
+import { ShieldCheck, Sparkles, User } from "lucide-react";
 
 export const About = () => {
-  
   const [aboutData, setAboutData] = useState([]);
-    const headingRef = useRef(null); // Reference create kiya
+  const headingRef = useRef(null); // Reference create kiya
   const { pathname } = useLocation(); // URL track karne ke liye
 
   const getData = async () => {
@@ -35,7 +36,7 @@ export const About = () => {
   useEffect(() => {
     getData();
   }, []);
-   useEffect(() => {
+  useEffect(() => {
     if (headingRef.current) {
       // Ye function page ko scroll karke heading par le aayega
       headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -54,7 +55,10 @@ export const About = () => {
           backgroundPosition: "center",
         }}
       >
-        <p  ref={headingRef} className="text-3xl md:text-4xl font-bold  text-center mb-16">
+        <p
+          ref={headingRef}
+          className="text-3xl md:text-4xl font-bold  text-center mb-16"
+        >
           About Us
         </p>
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
@@ -86,9 +90,13 @@ export const About = () => {
       </div>
 
       {/* WHY US SECTION */}
-      <section className="py-10 bg-white px-6 sm:px-12 lg:px-20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+      <section className="py-10 bg-[#F0F8FF] px-6 sm:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          {/* <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            Why Us?
+          </h2> */}
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <ShieldCheck className="w-12 h-12 text-indigo-600" />
             Why Us?
           </h2>
           {aboutData?.whyUsDescription?.map((ele) => (
@@ -98,10 +106,11 @@ export const About = () => {
       </section>
 
       {/* HOW ARE WE DIFFERENT */}
-      <section className="py-24 bg-[#F8FBFF] px-6 sm:px-12 lg:px-20">
+      <section className="py-24 bg-[#F0F8FF]  px-6 sm:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            How Are We Diffrent?
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <Sparkles className="w-12 h-12 text-yellow-500" />
+            How Are We Different?
           </h2>
 
           <div className="grid md:grid-cols-2 gap-10 text-gray-700 text-lg leading-relaxed">
@@ -112,7 +121,8 @@ export const About = () => {
 
           {/* SAFETY SECTION */}
           <div className="mt-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+              <FaShieldAlt className="text-blue-600 text-4xl" />
               Safety
             </h3>
 
@@ -127,7 +137,8 @@ export const About = () => {
 
           {/* TUTORS SECTION */}
           <div className="mt-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+              <User className="w-12 h-12 text-blue-500" />
               Tutors
             </h3>
 
@@ -141,28 +152,3 @@ export const About = () => {
   );
 };
 
-{
-  /* <div className="relative max-w-7xl mx-auto mt-20 py-10 px-6 bg-white rounded-3xl shadow-lg border border-gray-200">
-        <div className="grid grid-cols-2 md:grid-cols-4 text-center gap-10">
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Years Experience</p>
-            <h2 className="text-3xl font-bold text-[#0E1D3E]">10+ Years</h2>
-          </div>
-
-          <div className="border-l border-gray-300 pl-6 md:pl-4">
-            <p className="text-sm text-gray-500 mb-1">Expert Tutors</p>
-            <h2 className="text-3xl font-bold text-[#0E1D3E]">250+</h2>
-          </div>
-
-          <div className="border-l border-gray-300 pl-6 md:pl-4">
-            <p className="text-sm text-gray-500 mb-1">Awards & Achievements</p>
-            <h2 className="text-3xl font-bold text-[#0E1D3E]">50+</h2>
-          </div>
-
-          <div className="border-l border-gray-300 pl-6 md:pl-4">
-            <p className="text-sm text-gray-500 mb-1">Happy Students</p>
-            <h2 className="text-3xl font-bold text-[#0E1D3E]">10,000+</h2>
-          </div>
-        </div>
-      </div> */
-}

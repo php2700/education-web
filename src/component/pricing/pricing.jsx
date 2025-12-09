@@ -7,9 +7,10 @@ import dotted from "../../assets/dotted.png";
 import line from "../../assets/divider-line.png";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PricingPage = () => {
+  const navigate=useNavigate()
   const [pricingData, setPricingData] = useState();
     const headingRef = useRef(null); // Reference create kiya
   const { pathname } = useLocation(); // URL track karne ke liye
@@ -42,6 +43,10 @@ const PricingPage = () => {
       );
     }
   };
+
+  const handleUrl=()=>{
+    navigate('/contact')
+  }
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 h-full"
@@ -226,7 +231,7 @@ const PricingPage = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <button className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 text-lg">
+          <button onClick={handleUrl} className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 text-lg">
             Get Started
             <svg
               xmlns="http://www.w3.org/2000/svg"

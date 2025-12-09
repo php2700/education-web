@@ -189,11 +189,14 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../../assets/math-bg.png";
 
 const K12Page = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
+    <div className="min-h-screen bg-gray-50 font-sans text-gray-800"
+    
+    >
       {/* --- HERO SECTION --- */}
       <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
@@ -230,7 +233,13 @@ const K12Page = () => {
       </section>
 
       {/* --- OUR APPROACH SECTION --- */}
-      <section id="methodology" className="py-20 px-6 bg-white">
+      <section id="methodology" className="bg-[#F0F8FF] py-20 px-6 bg-white"  
+        style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+              }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900">
@@ -327,7 +336,9 @@ const K12Page = () => {
       </section>
 
       {/* --- SUBJECTS DETAIL SECTION --- */}
-      <section id="expertise" className="py-20 px-6 bg-gray-50">
+      <section id="expertise" className=" py-20 bg-[#F0F8FF] px-6 " 
+      
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
@@ -342,7 +353,7 @@ const K12Page = () => {
             {/* Math Column */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-blue-600 hover:-translate-y-1 transition duration-300">
               <div className="bg-blue-50 p-6 flex items-center gap-4">
-                <div className="bg-blue-600 p-3 rounded-lg text-white shadow-lg">
+                <div className="bg-blue-600 p-3 rounded-lg text-white shadow-xl">
                   <Calculator size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800">
@@ -379,7 +390,7 @@ const K12Page = () => {
             {/* Science Column */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-teal-600 hover:-translate-y-1 transition duration-300">
               <div className="bg-teal-50 p-6 flex items-center gap-4">
-                <div className="bg-teal-600 p-3 rounded-lg text-white shadow-lg">
+                <div className="bg-teal-600 p-3 rounded-lg text-white shadow-xl">
                   <Microscope size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800">Science</h3>
@@ -410,7 +421,7 @@ const K12Page = () => {
             {/* English Column */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-indigo-600 hover:-translate-y-1 transition duration-300">
               <div className="bg-indigo-50 p-6 flex items-center gap-4">
-                <div className="bg-indigo-600 p-3 rounded-lg text-white shadow-lg">
+                <div className="bg-indigo-600 p-3 rounded-lg text-white shadow-xl">
                   <BookOpen size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800">
