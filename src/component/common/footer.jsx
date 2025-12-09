@@ -66,6 +66,8 @@ const Footer = () => {
   const handleLinkedIn = () => {
     window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
   };
+
+
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
@@ -85,11 +87,11 @@ const Footer = () => {
           <p className="text-gray-200 mb-8">{bannerData?.description}</p>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <button className="bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3  transition">
+            <button  className="bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3  transition">
               Get Started
               <img src={arrow} alt="Get Started Arrow" className="w-3 h-3  " />
             </button>
-            <button className="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-700 transition">
+            <button onClick={()=>handleUrl('/contact')} className="cursor-pointer border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-700 transition">
               Talk to an Advisor
             </button>
           </div>
@@ -145,13 +147,13 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/about");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer cursor-pointer"
                 >
                   About
                 </div>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline cursor-pointer">
                   Subjects
                 </a>
               </li>
@@ -160,7 +162,7 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/pricing");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   Pricing
                 </div>
@@ -170,7 +172,7 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/blog");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   Blog
                 </div>
@@ -180,7 +182,7 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/faq");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   FAQ
                 </div>
@@ -198,7 +200,7 @@ const Footer = () => {
                     // handleUrl("/help");
                      handleUrl("/faq");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   Help Center
                 </div>
@@ -208,7 +210,7 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/privacy-policy");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   Privacy Policy
                 </div>
@@ -218,15 +220,15 @@ const Footer = () => {
                   onClick={() => {
                     handleUrl("/term-condition");
                   }}
-                  className="hover:underline"
+                  className="hover:underline cursor-pointer"
                 >
                   Term & Condition
                 </div>
               </li>
               <li>
                 <div
-                  onClick={() => handleUrl("/contact-support")}
-                  className="hover:underline"
+                  onClick={() => handleUrl("/contact")}
+                  className="hover:underline cursor-pointer"
                 >
                   Contact Support
                 </div>

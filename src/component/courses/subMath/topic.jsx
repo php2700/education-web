@@ -143,10 +143,10 @@ export const TopicPage = () => {
                   <p className="text-gray-700 leading-relaxed">
                     {ele.description}
                   </p>
-                  <div className="mt-6 flex items-center text-blue-600 font-medium">
+                  {/* <div className="mt-6 flex items-center text-blue-600 font-medium">
                     <ArrowLeft className="h-5 w-5 mr-2" />
                     <ArrowRight className="h-5 w-5 mr-2" />
-                  </div>
+                  </div> */}
                 </div>
 
                 <div

@@ -12,7 +12,7 @@
 
 //   return (
 //     <div className="min-h-screen bg-white font-sans text-gray-800">
-      
+
 //       {/* --- HERO SECTION --- */}
 //       <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 px-6">
 //         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
@@ -29,9 +29,9 @@
 //           </div>
 //           <div className="md:w-1/2 flex justify-center">
 //             {/* Replace src with your actual 3D education illustration */}
-//             <img 
-//               src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-//               alt="K12 Digital Learning" 
+//             <img
+//               src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+//               alt="K12 Digital Learning"
 //               className="rounded-2xl shadow-2xl border-4 border-white/20 max-w-full h-auto"
 //             />
 //           </div>
@@ -175,24 +175,25 @@
 
 // export default K12Page;
 
-import React from 'react';
-import { 
-  BookOpen, 
-  Calculator, 
-  Microscope, 
-  TrendingUp, 
-  Users, 
-  Layers, 
-  CheckCircle, 
+import React from "react";
+import {
+  BookOpen,
+  Calculator,
+  Microscope,
+  TrendingUp,
+  Users,
+  Layers,
+  CheckCircle,
   ClipboardList,
   Smile,
-  ArrowRight
-} from 'lucide-react';
+  ArrowRight,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const K12Page = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
-      
       {/* --- HERO SECTION --- */}
       <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
@@ -201,25 +202,26 @@ const K12Page = () => {
               Our <span className="text-yellow-400">K-12 Services</span>
             </h1>
             <p className="text-lg text-blue-100 mb-6 leading-relaxed">
-              GGES offers tutoring for Math, Science, and Language Arts for all grades K through 12. 
-              We understand the need of every student is different and so is our methodology suiting the needs.
+              GGES offers tutoring for Math, Science, and Language Arts for all
+              grades K through 12. We understand the need of every student is
+              different and so is our methodology suiting the needs.
             </p>
             <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-              We help students in understanding and completing the concepts in day-to-day studies 
-              as well as homework and assignments.
+              We help students in understanding and completing the concepts in
+              day-to-day studies as well as homework and assignments.
             </p>
             <button className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg flex items-center gap-2">
               Book a Session <ArrowRight size={20} />
             </button>
           </div>
-          
+
           {/* Hero Image / Illustration */}
           <div className="md:w-2/5 flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-30 rounded-full"></div>
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Student Tutoring" 
+                alt="Student Tutoring"
                 className="relative rounded-2xl shadow-2xl border-4 border-white/20 z-10"
               />
             </div>
@@ -228,11 +230,15 @@ const K12Page = () => {
       </section>
 
       {/* --- OUR APPROACH SECTION --- */}
-      <section className="py-20 px-6 bg-white">
+      <section id="methodology" className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">Our Methodology</h2>
-            <p className="text-gray-600 mt-4">At GGES we work with the following approach:</p>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Our Methodology
+            </h2>
+            <p className="text-gray-600 mt-4">
+              At GGES we work with the following approach:
+            </p>
             <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
           </div>
 
@@ -242,9 +248,15 @@ const K12Page = () => {
               <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                 <Users size={28} />
               </div>
-              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">1</div>
-              <h3 className="font-bold text-gray-800 mb-2 relative z-10">Understanding Needs</h3>
-              <p className="text-sm text-gray-600 relative z-10">Understanding the need of each student.</p>
+              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">
+                1
+              </div>
+              <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                Understanding Needs
+              </h3>
+              <p className="text-sm text-gray-600 relative z-10">
+                Understanding the need of each student.
+              </p>
             </div>
 
             {/* Step 2 */}
@@ -252,9 +264,15 @@ const K12Page = () => {
               <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                 <Layers size={28} />
               </div>
-              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">2</div>
-              <h3 className="font-bold text-gray-800 mb-2 relative z-10">Build Foundation</h3>
-              <p className="text-sm text-gray-600 relative z-10">Build foundation and conceptual framework.</p>
+              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">
+                2
+              </div>
+              <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                Build Foundation
+              </h3>
+              <p className="text-sm text-gray-600 relative z-10">
+                Build foundation and conceptual framework.
+              </p>
             </div>
 
             {/* Step 3 */}
@@ -262,9 +280,15 @@ const K12Page = () => {
               <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                 <ClipboardList size={28} />
               </div>
-              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">3</div>
-              <h3 className="font-bold text-gray-800 mb-2 relative z-10">Reinforce</h3>
-              <p className="text-sm text-gray-600 relative z-10">Reinforce through practice using best materials & testing.</p>
+              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">
+                3
+              </div>
+              <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                Reinforce
+              </h3>
+              <p className="text-sm text-gray-600 relative z-10">
+                Reinforce through practice using best materials & testing.
+              </p>
             </div>
 
             {/* Step 4 */}
@@ -272,9 +296,15 @@ const K12Page = () => {
               <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                 <Smile size={28} />
               </div>
-              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">4</div>
-              <h3 className="font-bold text-gray-800 mb-2 relative z-10">Build Confidence</h3>
-              <p className="text-sm text-gray-600 relative z-10">Instilling belief in their own abilities.</p>
+              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">
+                4
+              </div>
+              <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                Build Confidence
+              </h3>
+              <p className="text-sm text-gray-600 relative z-10">
+                Instilling belief in their own abilities.
+              </p>
             </div>
 
             {/* Step 5 */}
@@ -282,46 +312,63 @@ const K12Page = () => {
               <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
                 <TrendingUp size={28} />
               </div>
-              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">5</div>
-              <h3 className="font-bold text-gray-800 mb-2 relative z-10">Improved Grades</h3>
-              <p className="text-sm text-gray-600 relative z-10">Accomplishing improved academic results.</p>
+              <div className="text-5xl font-bold text-blue-100 absolute -mt-4 ml-16 opacity-50 select-none">
+                5
+              </div>
+              <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                Improved Grades
+              </h3>
+              <p className="text-sm text-gray-600 relative z-10">
+                Accomplishing improved academic results.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* --- SUBJECTS DETAIL SECTION --- */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section id="expertise" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Subject Expertise</h2>
-            <p className="text-gray-600 mt-2">We are the best when it comes to:</p>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Subject Expertise
+            </h2>
+            <p className="text-gray-600 mt-2">
+              We are the best when it comes to:
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             {/* Math Column */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-blue-600 hover:-translate-y-1 transition duration-300">
               <div className="bg-blue-50 p-6 flex items-center gap-4">
                 <div className="bg-blue-600 p-3 rounded-lg text-white shadow-lg">
                   <Calculator size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">Mathematics</h3>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  Mathematics
+                </h3>
               </div>
               <div className="p-8">
                 <ul className="space-y-3">
                   {[
-                    "Math Basics", 
-                    "Algebra I", 
-                    "Algebra II", 
-                    "Geometry", 
-                    "Trigonometry", 
-                    "Pre Calculus", 
-                    "Calculus", 
-                    "Statistics"
+                    "Math Basics",
+                    "Algebra I",
+                    "Algebra II",
+                    "Geometry",
+                    "Trigonometry",
+                    "Pre Calculus",
+                    "Calculus",
+                    "Statistics",
                   ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3 text-gray-700">
-                      <CheckCircle size={18} className="text-blue-500 flex-shrink-0" /> 
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 text-gray-700"
+                    >
+                      <CheckCircle
+                        size={18}
+                        className="text-blue-500 flex-shrink-0"
+                      />
                       <span className="font-medium">{item}</span>
                     </li>
                   ))}
@@ -340,13 +387,19 @@ const K12Page = () => {
               <div className="p-8">
                 <ul className="space-y-3">
                   {[
-                    "Earth Science", 
-                    "Life Science", 
-                    "Environmental Science", 
-                    "Physics"
+                    "Earth Science",
+                    "Life Science",
+                    "Environmental Science",
+                    "Physics",
                   ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3 text-gray-700">
-                      <CheckCircle size={18} className="text-teal-500 flex-shrink-0" /> 
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 text-gray-700"
+                    >
+                      <CheckCircle
+                        size={18}
+                        className="text-teal-500 flex-shrink-0"
+                      />
                       <span className="font-medium">{item}</span>
                     </li>
                   ))}
@@ -360,44 +413,58 @@ const K12Page = () => {
                 <div className="bg-indigo-600 p-3 rounded-lg text-white shadow-lg">
                   <BookOpen size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">English & Arts</h3>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  English & Arts
+                </h3>
               </div>
               <div className="p-8">
                 <ul className="space-y-3">
                   {[
-                    "Reading Comprehension", 
-                    "Vocabulary", 
-                    "Word Recognition", 
-                    "Spelling", 
-                    "Grammar", 
-                    "Punctuation", 
-                    "Sentence Structure", 
-                    "Handwriting Improvement"
+                    "Reading Comprehension",
+                    "Vocabulary",
+                    "Word Recognition",
+                    "Spelling",
+                    "Grammar",
+                    "Punctuation",
+                    "Sentence Structure",
+                    "Handwriting Improvement",
                   ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3 text-gray-700">
-                      <CheckCircle size={18} className="text-indigo-500 flex-shrink-0" /> 
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 text-gray-700"
+                    >
+                      <CheckCircle
+                        size={18}
+                        className="text-indigo-500 flex-shrink-0"
+                      />
                       <span className="font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* --- CALL TO ACTION --- */}
       <section className="py-16 bg-blue-900 text-white text-center px-6">
-        <h2 className="text-3xl font-bold mb-4">Start Your Learning Journey with GGES</h2>
+        <h2 className="text-3xl font-bold mb-4">
+          Start Your Learning Journey with GGES
+        </h2>
         <p className="text-blue-200 mb-8 max-w-xl mx-auto">
-          Contact us today to discuss how we can help achieve your academic goals.
+          Contact us today to discuss how we can help achieve your academic
+          goals.
         </p>
-        <button className="bg-white text-blue-900 font-bold py-3 px-10 rounded-full hover:bg-gray-100 transition shadow-lg">
+        <button
+          onClick={() => {
+            navigate("/contact");
+          }}
+          className="cursor-pointer bg-white text-blue-900 font-bold py-3 px-10 rounded-full hover:bg-gray-100 transition shadow-lg"
+        >
           Contact Us
         </button>
       </section>
-
     </div>
   );
 };

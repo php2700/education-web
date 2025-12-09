@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import backgroundImage from "../../assets/work-bg.png";
 import slide2 from "../../assets/slide-2.jpg";
 import slide3 from "../../assets/slide-3.jpg";
 import slide4 from "../../assets/slide-4.jpg";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 export const Blog = () => {
+  const headingRef = useRef();
+  const location = useLocation();
+
   const [blogData, setBlogData] = useState([]);
 
   const getBlogData = async () => {
@@ -29,6 +33,12 @@ export const Blog = () => {
     getBlogData();
   }, []);
 
+  useEffect(() => {
+    if (headingRef.current) {
+      headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location?.pathname]);
+
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
@@ -38,7 +48,10 @@ export const Blog = () => {
         backgroundPosition: "center",
       }}
     >
-      <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
+      <h1
+        ref={headingRef}
+        className="text-3xl font-bold text-center mb-10 text-gray-800"
+      >
         📰 Latest Blog
       </h1>
 

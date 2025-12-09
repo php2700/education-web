@@ -41,6 +41,18 @@ export const Completion = () => {
 
     return () => clearInterval(timer);
   }, [completionData]);
+
+  const handleNext = () => {
+    if (current < completionData?.competition?.length - 1) {
+      setCurrent(current + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (current > 0) {
+      setCurrent(current - 1);
+    }
+  };
   return (
     <div>
       <div
@@ -57,7 +69,6 @@ export const Completion = () => {
           </h3>
           <p className="text-gray-700  mb-10  mx-auto">
             {completionData?.description}
-            
           </p>
 
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mt-12">
@@ -71,18 +82,15 @@ export const Completion = () => {
                 community:
               </p>
               <div className="space-y-6">
-                {completionData?.condition?.map((ele,index)=>(
-                     <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 flex items-center justify-center  text-black font-bold text-lg">
-                    {index+1}
+                {completionData?.condition?.map((ele, index) => (
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 flex items-center justify-center  text-black font-bold text-lg">
+                      {index + 1}
+                    </div>
+                    <div>
+                      <p className="text-gray-700">{ele}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-gray-700">
-                      {ele}
-                      
-                    </p>
-                  </div>
-                </div>
                 ))}
               </div>
             </div>
@@ -105,10 +113,16 @@ export const Completion = () => {
             </h2>
 
             <div className=" flex gap-3 justify-between px-2">
-              <button className="bg-white border border-gray-300 shadow-sm rounded-full p-2 hover:bg-blue-50 transition">
+              <button
+                onClick={handlePrev}
+                className="bg-white border border-gray-300 shadow-sm rounded-full p-2 hover:bg-blue-50 transition"
+              >
                 <FaArrowLeft className="text-blue-600" />
               </button>
-              <button className="bg-white border border-gray-300 shadow-sm rounded-full p-2 hover:bg-blue-50 transition">
+              <button
+                onClick={handleNext}
+                className="bg-white border border-gray-300 shadow-sm rounded-full p-2 hover:bg-blue-50 transition"
+              >
                 <FaArrowRight className="text-blue-600" />
               </button>
             </div>

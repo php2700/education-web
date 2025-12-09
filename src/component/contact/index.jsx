@@ -1,9 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const Contact = () => {
+    const headingRef=useRef()
+const location=useLocation()
   const [error, setError] = useState();
   const [contactTextData, setContactTextData] = useState();
   const [form, setForm] = useState({
@@ -65,12 +68,20 @@ export const Contact = () => {
     getData();
   }, []);
 
+
+
+   useEffect(()=>{
+      if(headingRef?.current){
+        headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    },[location?.pathname])
+
   return (
     <div className="bg-[#F0F8FF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* LEFT SIDE — Info */}
-        <div>
-          <h3 className="text-blue-600 font-semibold tracking-widest mb-2">
+        <div ref={headingRef}>
+          <h3  className="text-blue-600 font-semibold tracking-widest mb-2">
             CONTACT US
           </h3>
 

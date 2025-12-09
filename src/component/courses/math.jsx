@@ -14,6 +14,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const Courses = () => {
+  const [startIndex, setStartIndex] = useState(0);
+const itemsPerPage = 6;
   const [mathAboutData, setMathAboutData] = useState();
   const [tutoringData, setTutoringData] = useState();
   const [chapterData, setChapterData] = useState();
@@ -42,6 +44,24 @@ const Courses = () => {
       );
     }
   };
+
+  const visibleChapters = chapterData?.chapterName?.slice(
+  startIndex,
+  startIndex + itemsPerPage
+);
+
+const handleNext = () => {
+  if (startIndex + itemsPerPage < chapterData.chapterName.length) {
+    setStartIndex(startIndex + itemsPerPage);
+  }
+};
+
+const handlePrev = () => {
+  if (startIndex > 0) {
+    setStartIndex(startIndex - itemsPerPage);
+  }
+};
+
 
   return (
     <>
@@ -211,7 +231,7 @@ const Courses = () => {
             <div className="relative w-full px-4 sm:px-6 lg:px-10 py-6">
               {/* Chapters Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 text-center">
-                {chapterData?.chapterName?.map((chapter, index) => (
+                {visibleChapters?.map((chapter, index) => (
                   <div
                     key={index}
                     className="flex flex-row justify-start sm:justify-center items-center gap-3 sm:gap-4"
@@ -237,6 +257,8 @@ const Courses = () => {
               {/* Left Arrow */}
               <div className="absolute inset-y-0 left-2 sm:left-4 flex items-center">
                 <button
+                  onClick={handlePrev}
+  disabled={startIndex === 0}
                   className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
                   aria-label="Previous"
                 >
@@ -257,6 +279,8 @@ const Courses = () => {
               {/* Right Arrow */}
               <div className="absolute inset-y-0 right-2 sm:right-4 flex items-center">
                 <button
+                  onClick={handleNext}
+  disabled={startIndex + itemsPerPage >= chapterData?.chapterName?.length}
                   className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
                   aria-label="Next"
                 >

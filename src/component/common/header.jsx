@@ -81,7 +81,17 @@ const sections = [
       },
     ],
   },
-  { name: "k-12", link: "/courses/k-12" },
+  // { name: "k-12", link: "/courses/k-12" },
+   {
+    name: "k-12",
+    link: "/courses/k-12",
+    courses: [
+      {
+        name: "methodology",
+        link: "/courses/k-12#methodology",
+      },
+      { name: "Subject Expertise", link: "/courses/k-12#expertise" }]
+    },
   {
     name: "English",
     link: "/courses/english",
@@ -232,22 +242,22 @@ export const HeaderBanner = () => {
                 <img
                   onClick={() => handleInst()}
                   src={instagram}
-                  className="cursor-pointer "
+                  className="cursor-pointer  transition-transform duration-300 hover:scale-110 "
                 />
                 <img
                   onClick={() => handleFacebook()}
                   src={facebook}
-                  className="cursor-pointer"
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
                 />
                 <img
                   onClick={() => handleWhatsApp()}
                   src={whatsapp}
-                  className="cursor-pointer"
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
                 />
                 <img
                   onClick={() => handleYoutube()}
                   src={youtube}
-                  className="cursor-pointer"
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
                 />
               </div>
             </div>
@@ -301,6 +311,7 @@ export const HeaderBanner = () => {
                               {/* Main link */}
                               <Link
                                 to={subItem.link}
+                                 onClick={() => handleToggle(subItem.name)}
                                 className="text-gray-700 hover:text-blue-600 transition"
                               >
                                 {subItem.name}

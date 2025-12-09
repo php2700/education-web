@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export const PrivacyPolicy = () => {
+  const headingRef=useRef()
+  const location=useLocation()
+
   const [terms, setTerms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -35,10 +39,16 @@ export const PrivacyPolicy = () => {
     });
   };
 
+  useEffect(()=>{
+    if(headingRef?.current){
+      headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  },[location?.pathname])
+
   return (
     <div className="bg-gray-50 min-h-screen py-12 px-4 md:px-12 lg:px-24">
       <div className="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-xl">
-        <header className="text-center mb-6">
+        <header ref={headingRef} className="text-center mb-6">
           <h1 className="text-3xl md:text-4xl font-bold text-blue-600">
           Privacy Policy
           </h1>
