@@ -1,239 +1,3 @@
-// import React from "react";
-
-// const AccuplacerPrep = () => {
-//   return (
-//     <div className="w-full bg-white text-gray-800" id='lacer'>
-
-//       {/* HERO SECTION */}
-//       <section className="bg-[#0f172a] text-white py-20 px-4">
-//         <div className="max-w-7xl mx-auto text-center">
-//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-//             ACCUPLACER TEST PREP
-//           </h1>
-//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8">
-//             At GGES, we provide expert Accuplacer Test Prep tutoring. Our strategies have helped students achieve high scores, preparing them for college placement and success.
-//           </p>
-//           <a
-//             href="/free-trial"
-//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
-//           >
-//             Book Free Trial Class
-//           </a>
-//         </div>
-//       </section>
-
-//       {/* ABOUT ACCUPLACER */}
-//       <section className="py-16 px-4">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl font-bold mb-6">About Accuplacer</h2>
-//           <p className="text-lg mb-4">
-//             Colleges use Accuplacer to assess your skill levels in reading, writing, and math to determine readiness for credit-bearing courses. If you demonstrate proficiency, developmental courses may be bypassed, allowing you to start earning credits immediately.
-//           </p>
-//           <p className="text-lg mb-4">
-//             Accuplacer uses computer-adaptive technology. Each question adapts to your skill level, so thoughtful responses are essential. No one passes or fails; the goal is accurate placement in courses.
-//           </p>
-//         </div>
-//       </section>
-
-//       {/* TEST CONTENT */}
-//       <section className="bg-gray-100 py-16 px-4">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl font-bold mb-6">What’s on the Tests</h2>
-          
-//           {/* Reading */}
-//           <h3 className="text-2xl font-semibold mb-3">Reading Test</h3>
-//           <p className="text-lg mb-4">
-//             Assesses the ability to derive meaning from texts and determine the meaning of words/phrases in short and extended contexts. Includes single and paired passages.
-//           </p>
-
-//           {/* Writing */}
-//           <h3 className="text-2xl font-semibold mb-3">Writing Test</h3>
-//           <p className="text-lg mb-4">
-//             Evaluates your ability to revise and edit multi-paragraph text.
-//           </p>
-
-//           {/* Math */}
-//           <h3 className="text-2xl font-semibold mb-3">Math Tests</h3>
-//           <p className="text-lg mb-4">
-//             <strong>Arithmetic Test:</strong> Whole numbers, fractions, decimals, percent, comparisons, and equivalents.<br/>
-//             <strong>Quantitative Reasoning, Algebra, and Statistics (QAS):</strong> Rational numbers, ratios, exponents, algebraic expressions, linear equations, probability, statistics, and geometry.<br/>
-//             <strong>Advanced Algebra and Functions (AAF):</strong> Linear equations, factoring, quadratics, functions, radicals, polynomials, exponents, logarithms, and trigonometry.
-//           </p>
-
-//           {/* WritePlacer Essay */}
-//           <h3 className="text-2xl font-semibold mb-3">WritePlacer Essay</h3>
-//           <p className="text-lg mb-4">
-//             Measures writing ability including purpose & focus, organization & structure, development & support, sentence variety & style, mechanical conventions, and critical thinking.
-//           </p>
-
-//           {/* ESL */}
-//           <h3 className="text-2xl font-semibold mb-3">Accuplacer for English Language Learners</h3>
-//           <p className="text-lg mb-4">
-//             ESL tests assess grammar, listening, reading skills, and sentence meaning for non-native English speakers.
-//           </p>
-//         </div>
-//       </section>
-
-//       {/* CTA */}
-//       <section className="bg-[#0f172a] py-16 px-4 text-center">
-//         <div className="max-w-7xl mx-auto text-white">
-//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-//             Start Your Accuplacer Prep Today!
-//           </h2>
-//           <p className="mb-8 text-lg">
-//             Take a Free Trial Online Tutoring class for Accuplacer Test Prep and maximize your college readiness.
-//           </p>
-//           <a
-//             href="/free-trial"
-//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
-//           >
-//             Get Free Trial Class
-//           </a>
-//         </div>
-//       </section>
-
-//     </div>
-//   );
-// };
-
-// export default AccuplacerPrep;
-
-
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-// const AccuplacerPrep = () => {
-//   // --- State Management ---
-//   const [data, setData] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(false);
-
-//   // --- API Call ---
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         // API Endpoint based on router: /api/accuplacer-test
-//         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/accuplacer-test`);
-        
-//         // Validation: Check if data exists in response
-//         if (response.data && response.data.data) {
-//           setData(response.data.data);
-//         } else {
-//           setData(null);
-//         }
-//       } catch (err) {
-//         console.error("Error fetching Accuplacer data:", err);
-//         setError(true);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   // --- 1. Loading State ---
-//   if (loading) {
-//     return (
-//       <div className="w-full h-screen flex justify-center items-center bg-white">
-//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
-//       </div>
-//     );
-//   }
-
-//   // --- 2. Error State ---
-//   if (error) {
-//     return (
-//       <div className="w-full h-screen flex justify-center items-center bg-gray-50 text-red-500">
-//         <p>Unable to load content. Please try again later.</p>
-//       </div>
-//     );
-//   }
-
-//   // --- 3. Main Content ---
-//   return (
-//     <div className="w-full bg-white text-gray-800" id='lacer'>
-
-//       {/* HERO SECTION */}
-//       <section className="bg-[#0f172a] text-white py-20 px-4">
-//         <div className="max-w-7xl mx-auto text-center">
-//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-//             {data?.heroTitle || "ACCUPLACER TEST PREP"}
-//           </h1>
-//           <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-//             {data?.heroDescription || "At GGES, we provide expert Accuplacer Test Prep tutoring..."}
-//           </p>
-//           <a
-//             href="/free-trial"
-//             className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
-//           >
-//             Book Free Trial Class
-//           </a>
-//         </div>
-//       </section>
-
-//       {/* ABOUT ACCUPLACER */}
-//       <section className="py-16 px-4">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl font-bold mb-6">
-//             {data?.aboutHeading || "About Accuplacer"}
-//           </h2>
-//           {/* whitespace-pre-wrap ensures paragraphs from admin textarea are preserved */}
-//           <div className="text-lg mb-4 whitespace-pre-wrap">
-//             {data?.aboutDescription}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* TEST CONTENT (Dynamic List) */}
-//       <section className="bg-gray-100 py-16 px-4">
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-3xl font-bold mb-6">
-//             {data?.testSectionHeading || "What’s on the Tests"}
-//           </h2>
-          
-//           {/* Validation: Check if testList array exists and has items */}
-//           {data?.testList?.length > 0 ? (
-//             data.testList.map((test, index) => (
-//               <div key={index} className="mb-6">
-//                 <h3 className="text-2xl font-semibold mb-3">{test.title}</h3>
-//                 <p className="text-lg mb-4 whitespace-pre-wrap">
-//                   {test.description}
-//                 </p>
-//               </div>
-//             ))
-//           ) : (
-//             // Fallback content if no data from API
-//             <p className="text-lg">Test details will be updated soon.</p>
-//           )}
-
-//         </div>
-//       </section>
-
-//       {/* CTA (Static - Keeping specific style) */}
-//       <section className="bg-[#0f172a] py-16 px-4 text-center">
-//         <div className="max-w-7xl mx-auto text-white">
-//           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-//             Start Your Accuplacer Prep Today!
-//           </h2>
-//           <p className="mb-8 text-lg">
-//             Take a Free Trial Online Tutoring class for Accuplacer Test Prep and maximize your college readiness.
-//           </p>
-//           <a
-//             href="/free-trial"
-//             className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
-//           >
-//             Get Free Trial Class
-//           </a>
-//         </div>
-//       </section>
-
-//     </div>
-//   );
-// };
-
-// export default AccuplacerPrep;
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -248,8 +12,10 @@ const AccuplacerPrep = () => {
     const fetchData = async () => {
       try {
         // API Endpoint based on router: /api/accuplacer-test
-        const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/accuplacer-test`);
-        
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_URL}api/user/accuplacer-test`
+        );
+
         // Validation: Check if data exists in response
         if (response.data && response.data.data) {
           setData(response.data.data);
@@ -290,104 +56,217 @@ const AccuplacerPrep = () => {
 
   // --- 3. Main Content ---
   return (
-    <div className="w-full bg-white text-gray-800" id='lacer'>
-
+    <div className="w-full bg-white text-gray-800" id="lacer">
       {/* HERO SECTION */}
       {/* Background and Button always visible */}
-      <section className="bg-[#0f172a] text-white py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          
+      <section className=" pt-20 px-4">
+        <div className="max-w-7xl mx-auto ">
           {/* Title: Visible only if data exists */}
           {safeData.heroTitle && (
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                {safeData.heroTitle}
-              </h1>
+            <h1 className="text-4xl text-center md:text-5xl font-bold mb-6">
+              {safeData.heroTitle}
+            </h1>
           )}
 
           {/* Description: Visible only if data exists */}
           {safeData.heroDescription && (
-              <p className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap">
-                {safeData.heroDescription}
-              </p>
+            <p className="text-lg md:text-xl  mx-auto mb-8 whitespace-pre-wrap">
+              {safeData.heroDescription}
+            </p>
           )}
 
-          {/* BUTTON: Always Visible (Default) */}
-          <a
-            href="/free-trial"
-            className="inline-block bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition"
-          >
-            Book Free Trial Class
-          </a>
+          <section className="mt-4  p-4 rounded-xl text-center">
+            <h3 className="text-xl font-semibold mb-3">
+              So why wait? To avail a Free Trial Class for Accuplacer Test Prep
+              Online Tutoring
+            </h3>
+
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => navigate("/free-trial")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+              >
+                CLICK HERE
+              </button>
+            </div>
+          </section>
         </div>
       </section>
 
       {/* ABOUT ACCUPLACER */}
       {/* Section renders only if content exists */}
       {(safeData.aboutHeading || safeData.aboutDescription) && (
-        <section className="py-16 px-4">
-            <div className="max-w-7xl mx-auto">
+        <section className="py-8 px-4">
+          <div className="max-w-7xl mx-auto">
             {safeData.aboutHeading && (
-                <h2 className="text-3xl font-bold mb-6">
-                    {safeData.aboutHeading}
-                </h2>
+              <h2 className="text-3xl font-bold mb-2">
+                {safeData.aboutHeading}
+              </h2>
             )}
-            
+
             {safeData.aboutDescription && (
-                <div className="text-lg mb-4 whitespace-pre-wrap">
-                    {safeData.aboutDescription}
-                </div>
+              <div className="text-lg mb-4 whitespace-pre-wrap">
+                {safeData.aboutDescription}
+              </div>
             )}
-            </div>
+          </div>
+        </section>
+      )}
+      {(safeData.whatsHeading || safeData.whatsDescription) && (
+        <section className="py-8 px-4">
+          <div className="max-w-7xl mx-auto">
+            {safeData.whatsHeading && (
+              <h2 className="text-3xl font-bold mb-2">
+                {safeData.whatsHeading}
+              </h2>
+            )}
+
+            {safeData.whatsDescription && (
+              <div className="text-lg mb-4 whitespace-pre-wrap">
+                {safeData.whatsDescription}
+              </div>
+            )}
+          </div>
         </section>
       )}
 
       {/* TEST CONTENT (Dynamic List) */}
       {/* Section renders only if content exists */}
-      {(safeData.testSectionHeading || (safeData.testList && safeData.testList.length > 0)) && (
-        <section className="bg-gray-100 py-16 px-4">
-            <div className="max-w-7xl mx-auto">
-            {safeData.testSectionHeading && (
-                <h2 className="text-3xl font-bold mb-6">
-                    {safeData.testSectionHeading}
-                </h2>
-            )}
-            
+      {(safeData.testSectionHeading ||
+        (safeData.testList && safeData.testList.length > 0)) && (
+        <section className="bg-gradient-to-r from-gray-50 to-white py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Heading */}
+            <h2 className="text-4xl md:text-5xl text-center font-extrabold mb-12">
+              Inside the Tests
+            </h2>
+
+            {/* List Items */}
             {safeData.testList && safeData.testList.length > 0 && (
-                <div>
-                    {safeData.testList.map((test, index) => (
-                        <div key={index} className="mb-6">
-                            {test.title && <h3 className="text-2xl font-semibold mb-3">{test.title}</h3>}
-                            {test.description && (
-                                <p className="text-lg mb-4 whitespace-pre-wrap">
-                                    {test.description}
-                                </p>
-                            )}
-                        </div>
-                    ))}
-                </div>
+              <div className="flex flex-col gap-8">
+                {safeData.testList.map((test, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 border-l-4 border-blue-700 w-full"
+                  >
+                    {test.title && (
+                      <h3 className="text-2xl font-bold text-blue-700 mb-3">
+                        {test.title}
+                      </h3>
+                    )}
+                    {test.description && (
+                      <p className="text-gray-700 text-base md:text-lg whitespace-pre-wrap leading-relaxed">
+                        {test.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
-            </div>
+          </div>
         </section>
       )}
 
-      {/* CTA (Static - Always Visible - Default) */}
-      <section className="bg-[#0f172a] py-16 px-4 text-center">
-        <div className="max-w-7xl mx-auto text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Start Your Accuplacer Prep Today!
-          </h2>
-          <p className="mb-8 text-lg">
-            Take a Free Trial Online Tutoring class for Accuplacer Test Prep and maximize your college readiness.
-          </p>
-          <a
-            href="/free-trial"
-            className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+      {(safeData.writePlacerDescription ||
+        (safeData.writePlacerList && safeData.writePlacerList.length > 0)) && (
+        <section className="bg-gradient-to-r from-blue-50 to-white py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Heading */}
+            <h2 className="text-4xl md:text-5xl text-center font-extrabold  mb-12">
+              WritePlacer Essay
+            </h2>
+
+            {/* Description */}
+            {safeData.writePlacerDescription && (
+              <div className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed px-4 md:px-0">
+                {safeData.writePlacerDescription}
+              </div>
+            )}
+
+            {/* List Items */}
+            {safeData.writePlacerList &&
+              safeData.writePlacerList.length > 0 && (
+                <div className="grid md:grid-cols-2 gap-8">
+                  {safeData.writePlacerList.map((test, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 border-l-4 border-blue-600"
+                    >
+                      {test.title && (
+                        <div className="text-2xl font-bold text-blue-700 mb-3">
+                          {test.title}
+                        </div>
+                      )}
+                      {test.description && (
+                        <p className="text-gray-700 text-base md:text-lg whitespace-pre-wrap leading-relaxed">
+                          {test.description}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+          </div>
+        </section>
+      )}
+
+      {(safeData.accuplacerDescription ||
+        (safeData.accuplacerList && safeData.accuplacerList.length > 0)) && (
+        <section className="bg-gradient-to-r from-blue-50 to-white py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Heading */}
+            <h2 className="text-4xl md:text-5xl text-center font-extrabold  mb-12">
+              ACCUPLACER for English Language Learners
+            </h2>
+
+            {/* Description */}
+            {safeData.accuplacerDescription && (
+              <div className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed px-4 md:px-0">
+                {safeData.accuplacerDescription}
+              </div>
+            )}
+
+            {/* List Items */}
+            {safeData.accuplacerList && safeData.accuplacerList?.length > 0 && (
+              <div className="grid md:grid-cols-2 gap-8">
+                {safeData.accuplacerList?.map((test, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 border-l-4 border-blue-600"
+                  >
+                    {test.title && (
+                      <div className="text-2xl font-bold text-blue-700 mb-3">
+                        {test.title}
+                      </div>
+                    )}
+                    {test.description && (
+                      <p className="text-gray-700 text-base md:text-lg whitespace-pre-wrap leading-relaxed">
+                        {test.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <section className="mt-4  p-4 rounded-xl text-center">
+        <h3 className="text-xl font-semibold mb-3">
+          So why wait? To avail a Free Trial Class for Accuplacer Test Prep
+          Online Tutoring
+        </h3>
+
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => navigate("/free-trial")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
           >
-            Get Free Trial Class
-          </a>
+            CLICK HERE
+          </button>
         </div>
       </section>
-
     </div>
   );
 };
