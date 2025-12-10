@@ -29,7 +29,7 @@ export const Test = () => {
       <ISEE />
       <ElaPage />
       <ScatTestPrep />
-      <AmcTestPrep />
+      <AmcTestPrep />     
       <MathKangarooTestPrep />
       <ActTestPrep />
       <CogatTestPrep />

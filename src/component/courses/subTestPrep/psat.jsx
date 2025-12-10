@@ -165,8 +165,8 @@ const PsatTestPrep = () => {
                     <thead className="bg-blue-600 text-white">
                       <tr>
                         <th className="p-3 border">Section</th>
-                        <th className="p-3 border">Time</th>
-                        <th className="p-3 border">Question Type / Modules</th>
+                        <th className="p-3 border">Length(minutes)</th>
+                        <th className="p-3 border">Number of Questions/Tasks</th>
                       </tr>
                     </thead>
 
