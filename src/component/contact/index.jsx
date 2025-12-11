@@ -113,8 +113,8 @@ const location=useLocation()
             </div>
 
             <div className="flex   gap-4">
-              <FaMapMarkerAlt className="text-blue-600 text-5xl" />
-              <p className="text-lg text-gray-700 font-medium">
+              <FaMapMarkerAlt className="text-blue-600 text-2xl mt-1" />
+              <p className="text-lg text-gray-700 font-medium whitespace-pre-line">
                 {contactTextData?.address}
               </p>
             </div>
