@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -99,7 +99,7 @@ const location=useLocation()
           {/* Contact Details */}
           <div className="mt-10 space-y-6">
             <div className="flex items-center gap-4">
-              <FaPhone className="text-blue-600 text-2xl" />
+              <FaPhoneAlt  className="text-blue-600 text-2xl" />
               <p className="text-lg text-gray-700 font-medium">
                 {contactTextData?.mobile}
               </p>
@@ -112,8 +112,8 @@ const location=useLocation()
               </p>
             </div>
 
-            <div className="flex items-center gap-4">
-              <FaMapMarkerAlt className="text-blue-600 text-2xl" />
+            <div className="flex   gap-4">
+              <FaMapMarkerAlt className="text-blue-600 text-5xl" />
               <p className="text-lg text-gray-700 font-medium">
                 {contactTextData?.address}
               </p>
