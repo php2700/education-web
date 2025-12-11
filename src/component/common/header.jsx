@@ -132,20 +132,36 @@ const sections = [
 
 export const HeaderBanner = () => {
   const { hash } = useLocation();
+  const { pathname } = useLocation();
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [bannerData, setBannerData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openIndex, setOpenIndex] = useState(null);
   const [openSection, setOpenSection] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null);
 
   const handleToggle = (sectionName) => {
     setOpenSection(openSection === sectionName ? null : sectionName);
+    localStorage.setItem("LAST_OPEN_SECTION", sectionName);
   };
+
+  const isActiveHeader = (link) => pathname === link;
+
+  const isActiveParent = (section) => pathname.startsWith(section.link);
 
   const toggleSubItem = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  useEffect(() => {
+    const savedParent = localStorage.getItem("LAST_OPEN_SECTION");
+    const savedChild = localStorage.getItem("LAST_SELECTED_CHILD");
+
+    if (savedParent) setOpenSection(savedParent);
+    if (savedChild) setSelectedChild(savedChild);
+  }, []);
 
   useEffect(() => {
     if (hash) {
@@ -208,13 +224,15 @@ export const HeaderBanner = () => {
 
   return (
     <>
-      <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]">
+      {/* <div className="relative w-full overflow-y-auto lg:overflow-hidden max-h-[100vh]"> */}
+      <div className="relative w-full overflow-visible max-h-[100vh]">
         {/* Banner Section */}
-        <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-visible lg:overflow-hidden ">
+        {/* <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-visible lg:overflow-hidden "> */}
+        <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-visible">
           <img
             src={`${import.meta.env.VITE_APP_URL}${bannerData.image}`}
             alt={slides[0].title}
-            className="w-full max-h-full object-cover object-center  rounded-xl transition-all duration-700"
+            className="w-full max-h-[80vh] object-cover object-center   transition-all duration-700"
           />
 
           {/* <div className="absolute inset-0 bg-black/40"></div> */}
@@ -288,7 +306,15 @@ export const HeaderBanner = () => {
                 {headerData?.map((item) =>
                   item.dropdown ? (
                     <div key={item.name} className="relative group">
-                      <button className="hover:text-blue-600 transition-colors text-lg duration-200 flex items-center gap-1">
+                      <button
+                        className={`hover:text-blue-600 transition-colors text-lg duration-200 flex items-center gap-1
+                          ${
+                            pathname === item.link
+                              ? "text-blue-500 font-bold  border-blue-600"
+                              : ""
+                          }
+                        `}
+                      >
                         {item.name}
                         <svg
                           className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
@@ -305,7 +331,8 @@ export const HeaderBanner = () => {
                         </svg>
                       </button>
 
-                      <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48">
+                      {/* <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48"> */}
+                      <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
                         {sections?.map((subItem) => (
                           <div key={subItem.name} className="relative">
                             <div className="flex items-center justify-between px-4 py-2">
@@ -313,7 +340,13 @@ export const HeaderBanner = () => {
                               <Link
                                 to={subItem.link}
                                 onClick={() => handleToggle(subItem.name)}
-                                className="text-gray-700 hover:text-blue-600 transition"
+                                className={` hover:text-blue-600 transition
+                                  ${
+                                    isActiveParent(subItem)
+                                      ? " text-blue-600 font-semibold"
+                                      : ""
+                                  }
+                                  `}
                               >
                                 {subItem.name}
                               </Link>
@@ -342,7 +375,20 @@ export const HeaderBanner = () => {
                                     <Link
                                       key={course.name}
                                       to={course.link}
-                                      className="block px-4 py-2 text-sm hover:bg-blue-100 hover:text-blue-600"
+                                      onClick={() => {
+                                        setSelectedChild(course.name);
+                                        localStorage.setItem(
+                                          "LAST_SELECTED_CHILD",
+                                          course.name
+                                        );
+                                      }}
+                                      className={`block px-4 py-2  transition
+      ${
+        selectedChild === course.name
+          ? "text-blue-600  font-semibold"
+          : "hover:bg-blue-100 hover:text-blue-600"
+      }
+  `}
                                     >
                                       {course.name}
                                     </Link>
@@ -357,7 +403,13 @@ export const HeaderBanner = () => {
                     <Link
                       key={item.name}
                       to={item.link}
-                      className="hover:text-blue-600 text-lg transition-colors duration-200"
+                      className={`hover:text-blue-600 text-lg transition-colors duration-200
+                        ${
+                          pathname === item.link
+                            ? "text-blue-500 font-bold  border-blue-600"
+                            : ""
+                        }
+                        `}
                     >
                       {item.name}
                     </Link>
@@ -551,7 +603,7 @@ export const HeaderBanner = () => {
           </div>
         </div>
       </div>
-      <div className=" flex flex-col justify-center text-center px-4 sm:px-8 md:px-20 my-4 ">
+      <div className=" flex flex-col justify-center text-center  my-4 ">
         <div className="relative">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold  leading-tight ">
             Personalized <span className="relative inline-block">Online</span>
@@ -567,8 +619,16 @@ export const HeaderBanner = () => {
           Connect with expert tutors for math, science, languages, and more —
           tailored to your goals.
         </p>
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="6"
+          class="bg-blue-500 text-white py-2 text-lg font-semibold tracking-wide"
+        >
+          {bannerData?.title}
+        </marquee>
 
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-center mt-4 items-center gap-4">
           <button
             onClick={handleUrl}
             className="flex cursor-pointer items-center justify-center gap-4 bg-[#305CDE] text-white px-7 py-4 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition text-base sm:text-lg font-semibold"

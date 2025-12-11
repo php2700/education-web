@@ -64,167 +64,100 @@ const PricingPage = () => {
         <div className="hidden lg:block absolute left-1/2 top-40 bottom-40 transform -translate-x-1/2 z-0">
           <img src={line} alt="Vertical Line" className="h-full w-auto" />
         </div>
-        {/* {pricingData?.map((ele) => (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
-            <div className="flex justify-center">
-              <img
-                src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
-                alt="Student 1"
-                className="rounded-lg shadow-xl w-full"
-              />
-            </div>
+      {pricingData?.map((ele, index) => (
+  <div
+    key={ele.id}
+    className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10 py-10"
+  >
+    {/* IMAGE SECTION */}
+    <div
+      className={`flex justify-center ${
+        index % 2 !== 0 ? "lg:order-2" : "lg:order-1"
+      }`}
+    >
+      <img
+        src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+        alt="Plan"
+        className="
+          rounded-xl shadow-lg 
+          w-full max-w-xs sm:max-w-sm md:max-w-md 
+          object-cover
+        "
+      />
+    </div>
 
-            <div className="bg-white rounded-lg p-6  border border-gray-200 w-full   mx-auto">
-              <div className="overflow-x-auto">
-                <table className="min-w-full border border-gray-200 rounded-lg text-sm">
-                  <thead>
-                    <tr>
-                      <th className="py-3 px-4">
-                        <h3 className="text-xl font-bold text-gray-800">
-                          Compare plans{" "}
-                          <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">
-                            {ele.off}%
-                          </span>
-                        </h3>
-                        <p className="text-gray-500 my-4">
-                          Choose your plan according to you
-                        </p>
-                      </th>
-                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                        {ele.className}
-                        <div className="mt-2">
-                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                            Choose This Plan
-                          </button>
-                        </div>
-                      </th>
-                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                        5 CLASS
-                        <div className="mt-2">
-                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                            Choose This Plan
-                          </button>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
+    {/* TABLE SECTION */}
+    <div
+      className={`
+        bg-white rounded-xl p-6 border border-gray-200 
+        w-full mx-auto shadow-md
+        ${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}
+      `}
+    >
+      <div className="overflow-x-auto">
+        <table className="min-w-full border border-gray-200 rounded-lg text-sm sm:text-base">
+          <thead>
+            <tr>
+              <th className="py-3 px-4 text-left">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800">
+                  Plan Name
+                </h3>
+                {/* <p className="text-gray-600 mt-2 sm:mt-3 text-base sm:text-lg">
+                  {ele?.planName}
+                </p> */}
+<p className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold bg-rose-100 text-rose-700 px-3 py-1 rounded-lg inline-block shadow-sm">
+  {ele?.planName}
+</p>
 
-                  <tbody>
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Fees
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        $25
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        $115
-                        {ele?.fees}
-                      </td>
-                    </tr>
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Fees Per Hour
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        PER HOUR – ${ele?.feesPerHour}
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        PER HOUR – $23
-                      </td>
-                    </tr>
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Saving In Offers
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">-</td>
-                      <td className="py-3 px-4 text-center text-gray-600">-</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        ))} */}
+              </th>
 
-        {pricingData?.map((ele, index) => (
-          <div
-            key={ele.id}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10"
-          >
-            <div
-              className={`flex justify-center ${
-                index % 2 !== 0 ? "lg:order-2" : "lg:order-1"
-              }`}
-            >
-              <img
-                src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
-                alt="Student 1"
-                className="rounded-lg shadow-xl w-full"
-              />
-            </div>
+              <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                <span className="text-base sm:text-lg">Classes</span>
+                <div className="mt-2">
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs sm:text-sm">
+                    {ele.className}
+                  </button>
+                </div>
+              </th>
+            </tr>
+          </thead>
 
-            <div
-              className={`bg-white rounded-lg p-6 border border-gray-200 w-full mx-auto ${
-                index % 2 !== 0 ? "lg:order-1" : "lg:order-2"
-              }`}
-            >
-              <div className="overflow-x-auto">
-                <table className="min-w-full border border-gray-200 rounded-lg text-sm">
-                  <thead>
-                    <tr>
-                      <th className="py-3 px-4">
-                        <h3 className="text-xl font-bold text-gray-800">
-                          Plan Name{" "}
-                        </h3>
-                        <p className="text-gray-500 my-4">{ele?.planName}</p>
-                      </th>
-                      <th className="py-3 px-4 text-center font-semibold text-gray-700">
-                        Classes
-                        <div className="mt-2">
-                          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs">
-                            {ele.className}
-                          </button>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
+          <tbody>
+            {ele?.fees?.map((feeItem, i) => (
+              <tr key={i} className="border-t border-gray-200">
+                <td className="py-3 px-4 text-gray-700 font-medium text-base sm:text-lg">
+                  {feeItem?.label}
+                </td>
+                <td className="py-3 px-4 text-center text-gray-600 text-base sm:text-lg">
+                  {feeItem?.price}
+                </td>
+              </tr>
+            ))}
 
-                  <tbody>
-                    {ele?.fees?.map((ele) => (
-                      <tr className="border-t border-gray-200">
-                        <td className="py-3 px-4 text-gray-700 font-medium">
-                          {ele?.label}
-                        </td>
-                        <td className="py-3 px-4 text-center text-gray-600">
-                          {/* ${ele?.fees} */}
-                          {ele?.price}
-                        </td>
-                      </tr>
-                    ))}
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Fees Per Hour
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        {ele?.feesPerHour ? ele?.feesPerHour : "-"}
-                      </td>
-                    </tr>
-                    <tr className="border-t border-gray-200">
-                      <td className="py-3 px-4 text-gray-700 font-medium">
-                        Saving In Offers
-                      </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
-                        {" "}
-                        {ele?.off ? ele?.off : "-"}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        ))}
+            <tr className="border-t border-gray-200">
+              <td className="py-3 px-4 text-gray-700 font-medium text-base sm:text-lg">
+                Fees Per Hour
+              </td>
+              <td className="py-3 px-4 text-center text-gray-600 text-base sm:text-lg">
+                {ele?.feesPerHour || "-"}
+              </td>
+            </tr>
+
+            <tr className="border-t border-gray-200">
+              <td className="py-3 px-4 text-gray-700 font-medium text-base sm:text-lg">
+                Saving In Offers
+              </td>
+              <td className="py-3 px-4 text-center text-gray-600 text-base sm:text-lg">
+                {ele?.off || "-"}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+))}
+
 
         <div className="my-8">
           <img src={dotted} alt="Dotted Line" />
