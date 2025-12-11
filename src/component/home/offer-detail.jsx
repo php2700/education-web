@@ -1,6 +1,7 @@
 import React from "react";
 import blogImg from "../../assets/slide-3.jpg";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../../assets/work-bg.png";
 
 export const OfferDetail = () => {
   // Updated educational offer data
@@ -62,7 +63,12 @@ export const OfferDetail = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-10 bg-gray-100 rounded-2xl shadow-2xl">
+    <div className="bg-[#F0F8FF]" style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+          }}>
+    <div className="max-w-7xl mx-auto p-10  rounded-2xl shadow-2xl "   >
       <div
         onClick={handleBack}
         className="text-blue-500 font-semibold mb-2 text-lg"
@@ -116,6 +122,7 @@ export const OfferDetail = () => {
         <p className="font-semibold">By {offer.author}</p>
         <p>Published on {new Date(offer.createdAt).toLocaleDateString()}</p>
       </div>
+    </div>
     </div>
   );
 };
