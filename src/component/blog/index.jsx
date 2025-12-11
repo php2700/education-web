@@ -5,9 +5,10 @@ import slide3 from "../../assets/slide-3.jpg";
 import slide4 from "../../assets/slide-4.jpg";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Blog = () => {
+  const navigate = useNavigate();
   const headingRef = useRef();
   const location = useLocation();
 
@@ -38,6 +39,10 @@ export const Blog = () => {
       headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [location?.pathname]);
+
+  const handleMore = (id) => {
+    navigate(`/blog-detail/${id}`);
+  };
 
   return (
     <div
@@ -87,7 +92,12 @@ export const Blog = () => {
                 Date:{new Date(blog.createdAt).toLocaleDateString()}
               </p>
               <p className="text-gray-700 text-sm mb-4">{blog.description}</p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+              <button
+                onClick={() => {
+                  handleMore(blog?._id);
+                }}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              >
                 Read More
               </button>
             </div>

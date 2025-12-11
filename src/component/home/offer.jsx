@@ -15,8 +15,10 @@ import star from "../../assets/starimg.png";
 import backgroundImage from "../../assets/work-bg.png";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const OfferAndTrust = () => {
+  const navigate=useNavigate();
   const [offerData, setOfferData] = useState([]);
   const [successData, setSuccessData] = useState([]);
 
@@ -57,6 +59,15 @@ export const OfferAndTrust = () => {
     getSuccessData();
   }, []);
 
+
+  const handleUpdate=()=>{
+    navigate('/offer-list')
+  }
+
+  const handleLearnMore=(id)=>{
+    navigate(`/offer-detail/:${id}`)
+  }
+
   return (
     <div className="bg-[#F0F8FF] text-gray-900">
       {/* Offers Section */}
@@ -73,7 +84,7 @@ export const OfferAndTrust = () => {
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {offerData?.map((offer, i) => (
+            {offerData?.slice(0,3)?.map((offer, i) => (
               <div
                 key={i}
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all text-left"
@@ -92,14 +103,14 @@ export const OfferAndTrust = () => {
                 <p className="text-gray-600 text-sm mb-4">
                   {offer.description}
                 </p>
-                <button className=" font-medium bg-[#F0F8FF]  text-sm   w-full p-2 rounded-lg">
+                <button onClick={()=>{handleLearnMore(offer._id)}} className=" font-medium bg-[#F0F8FF]  text-sm   w-full p-2 rounded-lg">
                   Learn More →
                 </button>
               </div>
             ))}
           </div>
 
-          <button className="mt-10 bg-[#305CDE] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+          <button onClick={handleUpdate} className="mt-10 cursor-pointer bg-[#305CDE] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
             View All Updates →
           </button>
         </div>

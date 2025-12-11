@@ -18,12 +18,15 @@ import { Faqs } from "./component/faq";
 import ScrollToTop from "./component/scroll";
 import { Contact } from "./component/contact";
 import { PrivacyPolicy } from "./component/privacy/term";
-import {TermCondition} from "./component/privacy/index"
+import { TermCondition } from "./component/privacy/index";
 
 import { HelpCenterPage } from "./component/privacy/help";
 import { Management } from "./component/management";
 import { Test } from "./component/courses/test";
-import K12Page from './component/courses/k12'
+import K12Page from "./component/courses/k12";
+import { OfferList } from "./component/home/offer-list";
+import { BlogDetail } from "./component/blog/blogDetail";
+import { OfferDetail } from "./component/home/offer-detail";
 
 function App() {
   return (
@@ -43,12 +46,14 @@ function App() {
           <Route path="/courses/maths" element={<Courses />} />
           <Route path="/courses/test" element={<Test />} />
           <Route path="/courses/english" element={<EnglishCourse />} />
-          <Route path="/management" element={<Management/>} />
+          <Route path="/management" element={<Management />} />
           <Route path="/term-condition" element={<TermCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/help" element={<HelpCenterPage />} />
-            <Route path="/courses/k-12" element={<K12Page />} />
-
+          <Route path="/help" element={<HelpCenterPage />} />
+          <Route path="/courses/k-12" element={<K12Page />} />
+          <Route path="/offer-list" element={<OfferList />} />
+          <Route path="/blog-detail/:id" element={<BlogDetail />} />
+          <Route path="/offer-detail/:id" element={<OfferDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>
