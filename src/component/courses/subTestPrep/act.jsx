@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const ActTestPrep = () => {
   // State management
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate(); // For navigation
 
   // API Call
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Backend URL: Adjust base URL if needed
+        // Backend URL
         const response = await axios.get(
           `${import.meta.env.VITE_APP_URL}api/user/act-test`
         );
 
-        // Validation: Check if data object exists
-        if (response.data && response.data.data) {
-          setData(response.data.data);
+        if (response.data) {
+          const apiData = response.data.data || response.data;
+          // Handle Array vs Object
+          if (Array.isArray(apiData) && apiData.length > 0) {
+            setData(apiData[0]);
+          } else {
+            setData(apiData);
+          }
         } else {
           setData(null);
         }
@@ -54,129 +61,144 @@ const ActTestPrep = () => {
   // Safe Data Object
   const safeData = data || {};
 
-  // 3. Main Content
   return (
     <div className="w-full bg-white text-gray-800" id="act">
-      {/* HERO SECTION */}
-      {/* Background and Button always visible */}
-      <section className=" pt-20 px-4">
-        <div className="max-w-7xl mx-auto ">
-          {/* Title: Only visible if data exists */}
-          {safeData.heroTitle && (
-            <h1 className="text-4xl text-center md:text-5xl font-bold mb-6">
-              {safeData.heroTitle}
-            </h1>
-          )}
+      
+      {/* ================= HERO SECTION ================= */}
+      <section className="pt-20 px-4 bg-gray-50 pb-16">
+        <div className="max-w-7xl mx-auto text-center">
+          
+          {/* Title */}
+          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 mb-6 drop-shadow-sm uppercase">
+            {safeData.heroTitle }
+          </h1>
 
-          {/* Description: Only visible if data exists */}
+          {/* Description */}
           {safeData.heroDescription && (
-            <p className="text-lg md:text-xl mx-auto mb-8 whitespace-pre-wrap">
-              {safeData.heroDescription}
-            </p>
+             <div className="bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 max-w-4xl mx-auto mb-8">
+                <p className="text-lg md:text-xl text-gray-700 whitespace-pre-wrap leading-relaxed">
+                  {safeData.heroDescription}
+                </p>
+             </div>
           )}
 
-          <section className="mt-4  p-4 rounded-xl text-center">
-            <h3 className="text-xl font-semibold mb-3">
+          {/* Top CTA */}
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4 text-blue-800">
               So why wait? To avail a Free Trial Class for ACT Test Prep Online
+              {/* {safeData.herosubtitle} */}
             </h3>
-
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
-              >
-                CLICK HERE
-              </button>
-            </div>
-          </section>
+            <button
+              onClick={() => navigate("/contact")} // Change route if needed
+              className="bg-[#00C4CC] hover:bg-[#00aeb5] text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg transition transform hover:scale-105"
+            >
+              CLICK HERE FOR FREE TRIAL
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* ABOUT ACT */}
-      {/* Section renders only if Heading or Description exists */}
+
+      {/* ================= ABOUT SECTION (With List) ================= */}
       {(safeData.aboutHeading || safeData.aboutDescription) && (
-        <section className="py-4 px-4">
+        <section className="py-16 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
+            
+            {/* Heading */}
             {safeData.aboutHeading && (
-              <h2 className="text-3xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 border-l-8 border-blue-600 pl-4">
                 {safeData.aboutHeading}
               </h2>
             )}
 
+            {/* Description */}
             {safeData.aboutDescription && (
-              <div className="text-lg mb-4 whitespace-pre-wrap">
+              <div className="text-lg text-gray-700 mb-10 whitespace-pre-wrap leading-relaxed">
                 {safeData.aboutDescription}
+              </div>
+            )}
+
+            {/* Dynamic About List (Cards) */}
+            {safeData.aboutList && safeData.aboutList.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {safeData.aboutList.map((item, index) => (
+                  <div key={index} className="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                    {item.title && (
+                      <h3 className="text-xl font-bold text-blue-800 mb-3 border-b pb-2">
+                        {item.title}
+                      </h3>
+                    )}
+                    {item.description && (
+                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
           </div>
         </section>
       )}
 
-      {/* TEST STRUCTURE */}
-      {/* Section renders only if Heading or Points exist */}
-      {(safeData.structureHeading ||
-        (safeData.structurePoints && safeData.structurePoints.length > 0)) && (
+
+      {/* ================= ACT SECTIONS (With List) ================= */}
+      {(safeData.actHeading || (safeData.actList && safeData.actList.length > 0)) && (
         <section className="bg-gray-100 py-16 px-4">
           <div className="max-w-7xl mx-auto">
-            {safeData.structureHeading && (
-              <h2 className="text-3xl font-bold mb-6">
-                {safeData.structureHeading}
+            
+            {/* Heading */}
+            {safeData.actHeading && (
+              <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-gray-900">
+                {safeData.actHeading}
               </h2>
             )}
 
-            {safeData.structurePoints &&
-              safeData.structurePoints.length > 0 && (
-                <ul className="list-disc pl-6 space-y-3 text-lg">
-                  {safeData.structurePoints.map((point, index) =>
-                    point ? <li key={index}>{point}</li> : null
-                  )}
-                </ul>
-              )}
-          </div>
-        </section>
-      )}
-
-      {/* NEW ACT 2025 */}
-      {/* Section renders only if Heading or Points exist */}
-      {(safeData.changesHeading ||
-        (safeData.changesPoints && safeData.changesPoints.length > 0)) && (
-        <section className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            {safeData.changesHeading && (
-              <h2 className="text-3xl font-bold mb-6">
-                {safeData.changesHeading}
-              </h2>
-            )}
-
-            {safeData.changesPoints && safeData.changesPoints.length > 0 && (
-              <ol className="list-decimal pl-6 space-y-4 text-lg">
-                {safeData.changesPoints.map((point, index) =>
-                  point ? <li key={index}>{point}</li> : null
-                )}
-              </ol>
+            {/* Dynamic ACT List (Cards) */}
+            {safeData.actList && safeData.actList.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {safeData.actList.map((item, index) => (
+                  <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-500">
+                    {item.title && (
+                      <h3 className="text-2xl font-bold text-indigo-900 mb-4">
+                        {item.title}
+                      </h3>
+                    )}
+                    {item.description && (
+                      <div className="text-gray-700 whitespace-pre-wrap leading-relaxed text-lg">
+                        {item.description}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-gray-500 italic">No sections added yet.</p>
             )}
           </div>
         </section>
       )}
 
-      {/* CTA SECTION - Always Visible (Default) */}
-      <section className="bg-[#0f172a] py-16 px-4 text-center">
-        <div className="max-w-7xl mx-auto text-white">
+
+      {/* ================= BOTTOM CTA SECTION ================= */}
+      <section className="bg-[#0f172a] py-16 px-4 text-center mt-auto">
+        <div className="max-w-4xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Start Your ACT Prep Today!
           </h2>
-          <p className="mb-8 text-lg">
+          <p className="mb-8 text-lg text-gray-300">
             Take a Free Trial Online Tutoring class for ACT or SAT test
             preparation and boost your confidence.
           </p>
-          <a
-            href="/free-trial"
-            className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition"
+          <button
+            onClick={() => navigate("/contact-us")}
+            className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition transform hover:-translate-y-1 shadow-xl"
           >
             Get Free Trial Class
-          </a>
+          </button>
         </div>
       </section>
+      
     </div>
   );
 };
