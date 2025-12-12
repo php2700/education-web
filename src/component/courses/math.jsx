@@ -15,7 +15,7 @@ import axios from "axios";
 
 const Courses = () => {
   const [startIndex, setStartIndex] = useState(0);
-const itemsPerPage = 6;
+  const itemsPerPage = 6;
   const [mathAboutData, setMathAboutData] = useState();
   const [tutoringData, setTutoringData] = useState();
   const [chapterData, setChapterData] = useState();
@@ -38,29 +38,29 @@ const itemsPerPage = 6;
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
-          error.message ||
-          "Something went wrong",
+        error.message ||
+        "Something went wrong",
         { position: "top-right" }
       );
     }
   };
 
   const visibleChapters = chapterData?.chapterName?.slice(
-  startIndex,
-  startIndex + itemsPerPage
-);
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
-const handleNext = () => {
-  if (startIndex + itemsPerPage < chapterData.chapterName.length) {
-    setStartIndex(startIndex + itemsPerPage);
-  }
-};
+  const handleNext = () => {
+    if (startIndex + itemsPerPage < chapterData.chapterName.length) {
+      setStartIndex(startIndex + itemsPerPage);
+    }
+  };
 
-const handlePrev = () => {
-  if (startIndex > 0) {
-    setStartIndex(startIndex - itemsPerPage);
-  }
-};
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - itemsPerPage);
+    }
+  };
 
 
   return (
@@ -134,9 +134,8 @@ const handlePrev = () => {
         </div>
         {tutoringData?.chapter?.map((ele, index) => (
           <div
-            className={`relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12 ${
-              index % 2 === 0 ? "bg-[#AEA4DE]" : "bg-[#F0B6C2]"
-            }`}
+            className={`relative rounded-lg shadow-xl p-6 sm:p-8 md:p-10 mb-12 ${index % 2 === 0 ? "bg-[#AEA4DE]" : "bg-[#F0B6C2]"
+              }`}
           >
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 sm:gap-8 text-white ">
               <div className="w-full lg:w-1/2 text-left">
@@ -184,6 +183,147 @@ const handlePrev = () => {
         ))}
       </section>
 
+      {/* <section id='geometry'
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="max-w-7xl container mx-auto text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
+            {chapterData?.title}
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            {chapterData?.description}
+          </p>
+          <p className="my-4 font-semibold text-lg">
+            Why not avail a Free Trial Class for online Geometry tutoring. To
+            schedule a Free Trial Class
+          </p>
+          <div className="mt-8">
+            <button className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Get Started{" "}
+              <svg
+                className="ml-2 -mr-0.5 h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="relative container max-w-7xl mx-auto p-8">
+          <div className="relative z-10">
+            <h3 className=" text-gray-800 mb-6">
+              Geometry Chapters Included in our Geometry tutoring are as
+              follows:
+            </h3>
+            <div className="relative w-full px-4 sm:px-6 lg:px-10 py-6">
+            
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 text-center">
+                {visibleChapters?.map((chapter, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-row justify-start sm:justify-center items-center gap-3 sm:gap-4"
+                  >
+                    <div
+                      className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white font-bold text-base sm:text-lg bg-blue-500`}
+                    >
+                      {index + 1}
+                    </div>
+
+                    <div className="flex flex-col text-left">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-900">
+                        Chapter {index + 1}
+                      </h4>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        {chapter}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+             
+              <div className="absolute inset-y-0 left-2 sm:left-4 flex items-center">
+                <button
+                  onClick={handlePrev}
+                  disabled={startIndex === 0}
+                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Previous"
+                >
+                  <svg
+                    className="h-6 w-6 sm:h-8 sm:w-8"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="absolute inset-y-0 right-2 sm:right-4 flex items-center">
+                <button
+                  onClick={handleNext}
+                  disabled={startIndex + itemsPerPage >= chapterData?.chapterName?.length}
+                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Next"
+                >
+                  <svg
+                    className="h-6 w-6 sm:h-8 sm:w-8"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <p className="text-gray-700 text-center mt-8">
+              {chapterData?.subjectDescription}
+            </p>
+            <p className="text-xl font-semibold text-gray-800 mb-4 text-center mt-6">
+              Why not avail a Free Trial Class for online Geometry tutoring. To
+              schedule a Free Trial Class
+            </p>
+            <div className="mt-6 text-center">
+              <button className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Start Free Trial{" "}
+                <svg
+                  className="ml-2 -mr-0.5 h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section> */}
       <section id='geometry'
         className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]"
         style={{
@@ -239,11 +379,15 @@ const handlePrev = () => {
                     <div
                       className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white font-bold text-base sm:text-lg bg-blue-500`}
                     >
+                      {/* Note: logic for numbering might need adjustment based on pagination, 
+                          currently it shows 1,2,3 for every page. If you want continuous numbering:
+                          {startIndex + index + 1} */}
                       {index + 1}
                     </div>
 
                     <div className="flex flex-col text-left">
                       <h4 className="text-base sm:text-lg font-semibold text-gray-900">
+                        {/* Same here for Chapter Number */}
                         Chapter {index + 1}
                       </h4>
                       <p className="text-sm sm:text-base text-gray-700">
@@ -254,49 +398,51 @@ const handlePrev = () => {
                 ))}
               </div>
 
-              {/* Left Arrow */}
-              <div className="absolute inset-y-0 left-2 sm:left-4 flex items-center">
-                <button
-                  onClick={handlePrev}
-  disabled={startIndex === 0}
-                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
-                  aria-label="Previous"
-                >
-                  <svg
-                    className="h-6 w-6 sm:h-8 sm:w-8"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+              {/* Left Arrow - Sirf tab dikhega jab startIndex 0 se bada ho */}
+              {startIndex > 0 && (
+                <div className="absolute inset-y-0 left-2 sm:left-4 flex items-center">
+                  <button
+                    onClick={handlePrev}
+                    className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                    aria-label="Previous"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
+                    <svg
+                      className="h-6 w-6 sm:h-8 sm:w-8"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              )}
 
-              {/* Right Arrow */}
-              <div className="absolute inset-y-0 right-2 sm:right-4 flex items-center">
-                <button
-                  onClick={handleNext}
-  disabled={startIndex + itemsPerPage >= chapterData?.chapterName?.length}
-                  className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
-                  aria-label="Next"
-                >
-                  <svg
-                    className="h-6 w-6 sm:h-8 sm:w-8"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+              {/* Right Arrow - Sirf tab dikhega jab aur items bache ho */}
+              {startIndex + itemsPerPage < (chapterData?.chapterName?.length || 0) && (
+                <div className="absolute inset-y-0 right-2 sm:right-4 flex items-center">
+                  <button
+                    onClick={handleNext}
+                    className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 focus:outline-none"
+                    aria-label="Next"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
+                    <svg
+                      className="h-6 w-6 sm:h-8 sm:w-8"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              )}
             </div>
 
             <p className="text-gray-700 text-center mt-8">
@@ -367,11 +513,11 @@ const handlePrev = () => {
 
       {/* <Prep /> */}
 
-<div id='kangaroo'>
-      <TestStructure />
+      <div id='kangaroo'>
+        <TestStructure />
       </div>
       <div id='science'>
-      <TopicPage />
+        <TopicPage />
       </div>
     </>
   );

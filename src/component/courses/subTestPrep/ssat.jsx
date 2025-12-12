@@ -450,6 +450,7 @@ const SsatTestPrep = () => {
       </div>
 
       {/* ================= 7. TEST STRUCTURE TABLES ================= */}
+ {/* ================= 7. TEST STRUCTURE TABLES ================= */}
       <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-12">
                 {safeData.structureHeading || "SSAT TEST STRUCTURE"}
@@ -459,7 +460,7 @@ const SsatTestPrep = () => {
                 {/* Middle Level */}
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold text-blue-700 mb-4 bg-blue-50 py-2 px-4 rounded-lg self-start">
-                        Middle Level Test
+                        Middle Level Test(5th-7th Grade)
                     </h3>
                     <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
                         <table className="w-full text-left bg-white">
@@ -468,14 +469,32 @@ const SsatTestPrep = () => {
                                     <th className="p-4 font-semibold">Section</th>
                                     <th className="p-4 font-semibold">Time</th>
                                     <th className="p-4 font-semibold">Questions</th>
+                                    <th className="p-4 font-semibold">Downloads</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100">
                                 {safeData.middleTable && safeData.middleTable.map((row, idx) => (
                                     <tr key={idx} className="hover:bg-blue-50">
                                         <td className="p-4 text-gray-700">{row.section}</td>
-                                        <td className="p-4 text-gray-600">{row.time}</td>
-                                        <td className="p-4 text-gray-600">{row.questions}</td>
+                                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.time}</td>
+                                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.questions}</td>
+                                        
+                                        {/* ADDED DOWNLOAD CELL HERE */}
+                                        <td className="p-4">
+                                            {row.download ? (
+                                                <a 
+                                                    href={row.download} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 font-bold hover:underline"
+                                                >
+                                                    Download 
+                                                </a>
+                                            ) : (
+                                                <span className="text-gray-400 text-sm">-</span>
+                                            )}
+                                        </td>
+
                                     </tr>
                                 ))}
                             </tbody>
@@ -486,7 +505,7 @@ const SsatTestPrep = () => {
                 {/* Upper Level */}
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold text-green-700 mb-4 bg-green-50 py-2 px-4 rounded-lg self-start">
-                        Upper Level Test
+                        Upper Level Test(8th-11th Grade)
                     </h3>
                     <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
                         <table className="w-full text-left bg-white">
@@ -495,14 +514,32 @@ const SsatTestPrep = () => {
                                     <th className="p-4 font-semibold">Section</th>
                                     <th className="p-4 font-semibold">Time</th>
                                     <th className="p-4 font-semibold">Questions</th>
+                                    <th className="p-4 font-semibold">Downloads</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100">
                                 {safeData.upperTable && safeData.upperTable.map((row, idx) => (
                                     <tr key={idx} className="hover:bg-green-50">
                                         <td className="p-4 text-gray-700">{row.section}</td>
-                                        <td className="p-4 text-gray-600">{row.time}</td>
-                                        <td className="p-4 text-gray-600">{row.questions}</td>
+                                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.time}</td>
+                                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.questions}</td>
+
+                                        {/* ADDED DOWNLOAD CELL HERE */}
+                                        <td className="p-4">
+                                            {row.download ? (
+                                                <a 
+                                                    href={row.download} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="text-green-600 font-bold hover:underline"
+                                                >
+                                                    Download 
+                                                </a>
+                                            ) : (
+                                                <span className="text-gray-400 text-sm">-</span>
+                                            )}
+                                        </td>
+
                                     </tr>
                                 ))}
                             </tbody>
