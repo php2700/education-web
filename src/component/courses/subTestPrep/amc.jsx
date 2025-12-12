@@ -183,7 +183,7 @@ const AmcTestPrep = () => {
                       )}
                       {card.whoText && (
                         <p className="mb-2">
-                          <strong>Who:</strong> {card.whoText}
+                          <strong>For:</strong> {card.whoText}
                         </p>
                       )}
                     </div>

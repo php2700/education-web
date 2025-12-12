@@ -221,11 +221,13 @@ const ScatTestPrep = () => {
               <h3 className="text-2xl font-bold">{safe.authHeading}</h3>
             )}
 
-            {safe.authDescription && (
-              <p className="text-lg  pl-2  whitespace-pre-line">
-                {safe.authDescription}
-              </p>
-            )}
+           {safe.authDescription && (
+  <p
+    className="text-lg pl-2 whitespace-pre-line"
+    dangerouslySetInnerHTML={{ __html: safe.authDescription }}
+  />
+)}
+
           </div>
         </section>
       )}
