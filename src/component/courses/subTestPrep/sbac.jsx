@@ -70,8 +70,8 @@ const SBACPrep = () => {
 
           {/* Description: Only visible if data exists */}
           {safeData.heroDescription && (
-            <p className="text-lg md:text-xl max-w-7xl mx-auto mb-8 whitespace-pre-wrap">
-              {safeData.heroDescription}
+            <p className="text-lg md:text-xl max-w-7xl mx-auto mb-8 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: safeData.heroDescription }} >
+              
             </p>
           )}
 

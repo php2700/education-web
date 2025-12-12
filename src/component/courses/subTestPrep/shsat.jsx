@@ -105,8 +105,10 @@ const SHSAT = () => {
                             </h3>
                         )}
                         {item.content && (
-                            <p className="text-gray-700 leading-7 whitespace-pre-line">
-                                {item.content}
+                            <p className="text-gray-700 leading-7 whitespace-pre-line"
+                             dangerouslySetInnerHTML={{ __html: item.content }}
+                            >
+                              
                             </p>
                         )}
                     </div>

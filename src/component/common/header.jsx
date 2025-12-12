@@ -603,6 +603,14 @@ export const HeaderBanner = () => {
           </div>
         </div>
       </div>
+         <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="6"
+          class="bg-blue-500 text-white py-2 text-lg font-semibold tracking-wide"
+        >
+          {bannerData?.title}
+        </marquee>
       <div className=" flex flex-col justify-center text-center  my-4 ">
         <div className="relative">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold  leading-tight ">
@@ -619,14 +627,7 @@ export const HeaderBanner = () => {
           Connect with expert tutors for math, science, languages, and more —
           tailored to your goals.
         </p>
-        <marquee
-          behavior="scroll"
-          direction="left"
-          scrollamount="6"
-          class="bg-blue-500 text-white py-2 text-lg font-semibold tracking-wide"
-        >
-          {bannerData?.title}
-        </marquee>
+     
 
         <div className="flex justify-center mt-4 items-center gap-4">
           <button

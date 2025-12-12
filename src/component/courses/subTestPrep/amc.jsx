@@ -167,12 +167,11 @@ const AmcTestPrep = () => {
                         </h3>
                       )}
                       {card.amcDescription && (
-                        <p className="mb-2 whitespace-pre-wrap">
-                          {card.amcDescription}
+                        <p className="mb-2 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: card.amcDescription }}>
                         </p>
                       )}
                       {card.description && (
-                        <p className="mb-2">
+                        <p className="mb-2" >
                           <strong>Description:</strong> {card.description}
                         </p>
                       )}

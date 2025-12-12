@@ -212,7 +212,7 @@ const ScatTestPrep = () => {
             {contactListArray.length > 0 && (
               <ul className="list-disc pl-2 text-lg space-y-1">
                 {contactListArray.map((item, i) => (
-                  <div key={i}>{item}</div>
+                  <div key={i}  dangerouslySetInnerHTML={{ __html: item }}></div>
                 ))}
               </ul>
             )}

@@ -170,12 +170,15 @@ const ISEE = () => {
                 {safeData.measureList?.map((pt, i) => (
                   <li key={i} className="text-gray-700">
                     {pt.title && (
-                      <h3 className="text-lg font-semibold  ">{pt.title}</h3>
+                      <h3 className="text-lg font-semibold  "  dangerouslySetInnerHTML={{ __html: pt.title }} >
+                      </h3>
                     )}
 
                     {pt.description && (
-                      <p className="text-base whitespace-pre-wrap leading-relaxed">
-                        {pt.description}
+                      <p className="text-base whitespace-pre-wrap leading-relaxed"
+                       
+                      >
+                     {pt.description}
                       </p>
                     )}
                   </li>

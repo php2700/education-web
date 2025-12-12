@@ -119,8 +119,8 @@ const ElaPage = () => {
                 )}
 
                 {safeData.introDescription && (
-                  <div className="text-gray-700 whitespace-pre-line leading-relaxed">
-                    {safeData.introDescription}
+                  <div className="text-gray-700 whitespace-pre-line leading-relaxed"  dangerouslySetInnerHTML={{ __html: safeData.introDescription }}>
+                   
                   </div>
                 )}
               </section>
