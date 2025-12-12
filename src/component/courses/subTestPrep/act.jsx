@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import actTableImg from "../../../assets/P2-ACT.jpg"; // Import useNavigate
 
 const ActTestPrep = () => {
   // State management
@@ -140,6 +141,22 @@ const ActTestPrep = () => {
           </div>
         </section>
       )}
+<section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900">
+            ACT Structure (2025-26)
+          </h2>
+          
+          <div className="flex justify-center">
+            {/* Image styling: Shadow, Rounded corners, aur Responsive width */}
+            <img 
+              src={actTableImg} 
+              alt="ACT 2025-26 Format Table" 
+              className="w-full max-w-lg md:max-w-xl h-auto shadow-2xl rounded-lg border-2 border-gray-200 hover:scale-[1.02] transition-transform duration-300"
+            />
+          </div>
+        </div>
+      </section>
 
 
       {/* ================= ACT SECTIONS (With List) ================= */}
@@ -170,6 +187,7 @@ const ActTestPrep = () => {
                       </div>
                     )}
                   </div>
+                  
                 ))}
               </div>
             ) : (
@@ -204,3 +222,4 @@ const ActTestPrep = () => {
 };
 
 export default ActTestPrep;
+
