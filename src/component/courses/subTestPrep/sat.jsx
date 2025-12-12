@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import backgroundImage from "../../../assets/math-bg.png";
+import { useNavigate } from "react-router-dom";
 
 const SatTestPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+     const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSatData = async () => {
@@ -86,7 +88,7 @@ const SatTestPrep = () => {
               place.
             </p>
 
-            <button className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+            <button  onClick={() => navigate("/free-trial")} className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
               Click here for Free Trial Class
             </button>
           </div>
@@ -158,7 +160,7 @@ const SatTestPrep = () => {
           <p className="text-gray-700 mt-6 text-center">{data.tableFooter}</p>
 
           <div className="text-center mt-8">
-            <button className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition">
+            <button onClick={() => navigate("/free-trial")} className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition">
               Click here for Free Trial Class
             </button>
           </div>

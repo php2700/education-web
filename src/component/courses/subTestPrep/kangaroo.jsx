@@ -2,12 +2,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import bgImage from "../../../assets/Elaback.png"; 
+import { useNavigate } from "react-router-dom";
 
 
 const MathKangarooTestPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   // --- API Call ---
   useEffect(() => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import bgImage from "../../../assets/Elaback.png";
-
+import { useNavigate } from "react-router-dom";
 const AmcTestPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   // API Call to fetch AMC Data
   useEffect(() => {
@@ -79,7 +80,7 @@ const AmcTestPrep = () => {
             </p>
           )}
           <section className="mt-4  p-4 rounded-xl text-center">
-            <h3 className="text-xl font-semibold mb-3">
+            <h3  className="text-xl font-semibold mb-3">
               So why wait? To avail a Free Trial Class for AMC Test Prep
             </h3>
 
