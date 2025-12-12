@@ -282,8 +282,8 @@ export const HeaderBanner = () => {
             </div>
 
             {/* Navbar */}
-            <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-3 shadow-md">
-              {/* Logo + Menu Toggle */}
+            {/* <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-3 shadow-md">
+     
               <div className="flex items-center justify-between w-full lg:w-auto">
                 <div className="text-xl font-bold text-black flex items-center">
                   <img
@@ -294,7 +294,6 @@ export const HeaderBanner = () => {
                   />
                 </div>
 
-                {/* Menu Icon (only visible below lg) */}
                 <div className="lg:hidden">
                   <button onClick={() => setMenuOpen(!menuOpen)}>
                     {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -331,12 +330,12 @@ export const HeaderBanner = () => {
                         </svg>
                       </button>
 
-                      {/* <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-hidden border border-gray-100 z-50 w-48"> */}
+               
                       <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
                         {sections?.map((subItem) => (
                           <div key={subItem.name} className="relative">
                             <div className="flex items-center justify-between px-4 py-2">
-                              {/* Main link */}
+                          
                               <Link
                                 to={subItem.link}
                                 onClick={() => handleToggle(subItem.name)}
@@ -357,17 +356,17 @@ export const HeaderBanner = () => {
                                     onClick={() => handleToggle(subItem.name)}
                                     className="text-gray-500 hover:text-blue-600 focus:outline-none"
                                   >
-                                    {/* Use any icon here, for example a simple arrow */}
+                                
                                     {openSection === subItem.name ? (
-                                      <span>&#9650;</span> // Up arrow
+                                      <span>&#9650;</span> 
                                     ) : (
-                                      <span>&#9660;</span> // Down arrow
+                                      <span>&#9660;</span> 
                                     )}
                                   </button>
                                 )}
                             </div>
 
-                            {/* Courses list */}
+                      
                             {subItem?.courses &&
                               openSection === subItem.name && (
                                 <div className="ml-6 bg-white border-l border-blue-200">
@@ -423,7 +422,146 @@ export const HeaderBanner = () => {
                   Contact us
                 </button>
               </div>
+            </div> */}
+            <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-2 shadow-md">
+              {/* Left: Logo */}
+              <div className="flex items-center">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  onClick={() => handleHome()}
+                  className="h-8 sm:h-10 w-auto object-contain cursor-pointer"
+                />
+              </div>
+
+              {/* Right: Menu (Desktop & Mobile) */}
+              <div className="flex items-center gap-4">
+                {/* Mobile menu toggle */}
+                <div className="lg:hidden">
+                  <button onClick={() => setMenuOpen(!menuOpen)}>
+                    {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                  </button>
+                </div>
+
+                {/* Desktop menu */}
+                <div className="hidden lg:flex items-center gap-4 lg:gap-10 text-gray-700 font-medium relative">
+                  {headerData?.map((item) =>
+                    item.dropdown ? (
+                      <div key={item.name} className="relative group">
+                        {/* Dropdown button */}
+                        <button
+                          className={`hover:text-blue-600 transition-colors text-lg duration-200 flex items-center gap-1
+                ${
+                  pathname === item.link
+                    ? "text-blue-500 font-bold border-blue-600"
+                    : ""
+                }
+              `}
+                        >
+                          {item.name}
+                          <svg
+                            className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+
+                        {/* Dropdown menu */}
+                        <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
+                          {sections?.map((subItem) => (
+                            <div key={subItem.name} className="relative">
+                              <div className="flex items-center justify-between px-4 py-2">
+                                <Link
+                                  to={subItem.link}
+                                  onClick={() => handleToggle(subItem.name)}
+                                  className={`hover:text-blue-600 transition
+                        ${
+                          isActiveParent(subItem)
+                            ? "text-blue-600 font-semibold"
+                            : ""
+                        }`}
+                                >
+                                  {subItem.name}
+                                </Link>
+
+                                {subItem?.courses?.length > 0 && (
+                                  <button
+                                    onClick={() => handleToggle(subItem.name)}
+                                    className="text-gray-500 hover:text-blue-600 focus:outline-none"
+                                  >
+                                    {openSection === subItem.name ? (
+                                      <span>&#9650;</span>
+                                    ) : (
+                                      <span>&#9660;</span>
+                                    )}
+                                  </button>
+                                )}
+                              </div>
+
+                              {subItem?.courses &&
+                                openSection === subItem.name && (
+                                  <div className="ml-6 bg-white border-l border-blue-200">
+                                    {subItem.courses.map((course) => (
+                                      <Link
+                                        key={course.name}
+                                        to={course.link}
+                                        onClick={() => {
+                                          setSelectedChild(course.name);
+                                          localStorage.setItem(
+                                            "LAST_SELECTED_CHILD",
+                                            course.name
+                                          );
+                                        }}
+                                        className={`block px-4 py-2 transition
+                            ${
+                              selectedChild === course.name
+                                ? "text-blue-600 font-semibold"
+                                : "hover:bg-blue-100 hover:text-blue-600"
+                            }`}
+                                      >
+                                        {course.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        key={item.name}
+                        to={item.link}
+                        className={`hover:text-blue-600 text-lg transition-colors duration-200
+              ${
+                pathname === item.link
+                  ? "text-blue-500 font-bold border-blue-600"
+                  : ""
+              }`}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  )}
+
+                  <button
+                    onClick={() => handleUrl("/contact")}
+                    className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Contact us
+                  </button>
+                </div>
+              </div>
             </div>
+
             {menuOpen && (
               <nav
                 className="
@@ -575,7 +713,6 @@ export const HeaderBanner = () => {
                     )
                   )}
 
-                  {/* Contact Button */}
                   <li className="py-3">
                     <button
                       className="
@@ -598,19 +735,19 @@ export const HeaderBanner = () => {
             <img
               src={moneyImg}
               alt="Money Icon"
-              className="w-20 md:w-40 lg:w-60 drop-shadow-lg"
+              className="w-24 md:w-40 lg:w-60 drop-shadow-lg"
             />
           </div>
         </div>
       </div>
-         <marquee
-          behavior="scroll"
-          direction="left"
-          scrollamount="6"
-          class="bg-blue-500 text-white py-2 text-lg font-semibold tracking-wide"
-        >
-          {bannerData?.title}
-        </marquee>
+      <marquee
+        behavior="scroll"
+        direction="left"
+        scrollamount="6"
+        class="bg-blue-500 text-white py-2 text-lg font-semibold tracking-wide"
+      >
+        {bannerData?.title}
+      </marquee>
       <div className=" flex flex-col justify-center text-center  my-4 ">
         <div className="relative">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold  leading-tight ">
@@ -627,7 +764,6 @@ export const HeaderBanner = () => {
           Connect with expert tutors for math, science, languages, and more —
           tailored to your goals.
         </p>
-     
 
         <div className="flex justify-center mt-4 items-center gap-4">
           <button

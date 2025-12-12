@@ -187,6 +187,7 @@ const ISEE = () => {
             )}
           </div>
         )}
+        <h2 className="font-bold text-3xl text-center mb-2">TEST STRUCTURE</h2>
         <div>
           <img src={iseeImg} />
         </div>
