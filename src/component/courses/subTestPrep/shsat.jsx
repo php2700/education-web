@@ -81,7 +81,7 @@ const SHSAT = () => {
           <div className="text-center">
             <button
               onClick={() => navigate("/contact")}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition"
             >
               Click Here for Free Trial Class
             </button>

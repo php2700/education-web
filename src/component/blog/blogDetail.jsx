@@ -1,46 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import blogImg from "../../assets/slide-3.jpg";
 import backgroundImage from "../../assets/work-bg.png";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export const BlogDetail = () => {
-  // Static blog data (education-related)
-  const blog = {
-    title: "The Importance of Early Childhood Education",
-    description: [
-      "At GGES, our SHSAT online tutoring programs are research-based and specifically designed to help students score higher on the SHSAT test. For SHSAT Test prep focus on teaching students strategies while also reviewing the content on the test.",
-      "Beginning with the fall 2025 SHSAT, the test will be administered digitally except for those who require special accommodations. In fall 2026, it becomes a computer-adaptive test (CAT).",
-      "SHSAT test dates are offered in late October for school day testing, mid-November for 8th graders, and early December for 9th graders.",
-      "At GGES, ISEE test prep is imparted by expert tutors. We emphasize understanding concepts deeply rather than rote learning.",
-      "The SHSAT test has two main sections: English Language Arts (ELA) and Math, each with 57 items, with a total test time of 180 minutes.",
-    ],
-    sections: [
-      {
-        heading: "Four Levels of Learning",
-        content: [
-          "Early education helps children build problem-solving, memory, and attention skills.",
-          "Play-based learning stimulates creativity and cognitive development.",
-        ],
-      },
-      {
-        heading: "Social and Emotional Skills",
-        content: [
-          "Children learn empathy, cooperation, and communication.",
-          "Group interactions help build confidence and teamwork abilities.",
-        ],
-      },
-      {
-        heading: "Parental Involvement",
-        content: [
-          "Parents play a crucial role in reinforcing learning at home.",
-          "Storytelling, reading, and daily conversations boost cognitive growth.",
-        ],
-      },
-    ],
-    author: "Jane Smith",
-    createdAt: "2025-12-11T10:00:00Z",
-    tags: ["Education", "Early Learning", "Child Development", "Parenting"],
+  const navigate = useNavigate();
+  const [blodDetailData, setBlogDetailData] = useState();
+
+  const { id } = useParams();
+
+  const getBlogDetail = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/blog-detail/${id}`
+      );
+      setBlogDetailData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
   };
 
+  useEffect(() => {
+    getBlogDetail();
+  }, [id]);
+
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <div
       className="bg-[#F0F8FF]"
@@ -51,54 +44,53 @@ export const BlogDetail = () => {
       }}
     >
       <div className="max-w-7xl mx-auto p-10 bg-gray-100 rounded-2xl shadow-2xl">
-        
-        {/* Main Blog Image */}
-        <img
-          src={blogImg}
-          alt={blog.title}
-          className="w-full h-[500px] object-cover rounded-2xl mb-8 shadow-xl"
-        />
+        <button
+          onClick={handleBack}
+          className="inline-flex items-center gap-2 px-4 py-2 text-blue-700 font-semibold rounded-lg hover:text-blue-900 transition"
+        >
+          <svg
+            className="w-5 h-5 stroke-[3]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back
+        </button>
+
+        {blodDetailData?.type === "image" ? (
+          <img
+            src={`${import.meta.env.VITE_APP_URL}${blodDetailData?.image}`}
+            alt="Blog Media"
+            className="w-full h-[500px] object-cover rounded-2xl mb-8 shadow-xl"
+          />
+        ) : blodDetailData?.type === "video" ? (
+          <video
+            src={`${import.meta.env.VITE_APP_URL}${blodDetailData?.video}`}
+            controls
+            className="w-full h-[500px] object-cover rounded-2xl mb-8 shadow-xl"
+          />
+        ) : null}
 
         {/* Blog Title */}
         <h1 className="text-5xl font-extrabold mb-6 text-gray-900">
-          {blog.title}
+          {blodDetailData?.title}
         </h1>
 
-        {/* Tags */}
+        <div
+          className="mb-6 flex flex-wrap gap-2"
+          dangerouslySetInnerHTML={{ __html: blodDetailData?.description }}
+        ></div>
+
         <div className="mb-6 flex flex-wrap gap-2">
-          {blog.tags.map((tag, idx) => (
-            <span
-              key={idx}
-              className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
 
-        {/* Main Description */}
-        <div className="space-y-6 text-lg text-gray-800 leading-relaxed mb-10">
-          {blog.description.map((desc, index) => (
-            <p key={index}>{desc}</p>
-          ))}
-        </div>
-
-        {/* Sections — WITHOUT images */}
-        {blog.sections.map((section, idx) => (
-          <div key={idx} className="mb-10">
-            <h2 className="text-3xl font-bold mb-4">{section.heading}</h2>
-            <div className="space-y-4 text-gray-700 text-lg">
-              {section.content.map((text, i) => (
-                <p key={i}>{text}</p>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {/* Author and Date */}
-        <div className="mt-10 text-lg text-gray-600 border-t pt-6 flex justify-between">
-          <p className="font-semibold">By {blog.author}</p>
-          <p>Published on {new Date(blog.createdAt).toLocaleDateString()}</p>
+          {blodDetailData?.createdAt &&
+            new Date(blodDetailData.createdAt).toLocaleString("en-IN")}
         </div>
       </div>
     </div>

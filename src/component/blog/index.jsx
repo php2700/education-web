@@ -5,6 +5,7 @@ import slide3 from "../../assets/slide-3.jpg";
 import slide4 from "../../assets/slide-4.jpg";
 import axios from "axios";
 import { toast } from "react-toastify";
+import DOMPurify from "dompurify";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Blog = () => {
@@ -42,6 +43,15 @@ export const Blog = () => {
 
   const handleMore = (id) => {
     navigate(`/blog-detail/${id}`);
+  };
+
+  const getShortText = (html, limit = 80) => {
+    const cleanHtml = DOMPurify.sanitize(html || "");
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = cleanHtml;
+
+    const text = tempDiv.textContent || tempDiv.innerText || "";
+    return text.length > limit ? text?.slice(0, limit) + "..." : text;
   };
 
   return (
@@ -91,7 +101,9 @@ export const Blog = () => {
               <p className="text-gray-600 text-sm mb-4">
                 Date:{new Date(blog.createdAt).toLocaleDateString()}
               </p>
-              <p className="text-gray-700 text-sm mb-4">{blog.description}</p>
+              <p className="text-gray-700 text-sm mb-4">
+                {getShortText(blog?.description, 80)}
+              </p>
               <button
                 onClick={() => {
                   handleMore(blog?._id);

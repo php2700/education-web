@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import DOMPurify from "dompurify";
 
 export const OfferList = () => {
   const navigate = useNavigate();
@@ -32,7 +33,16 @@ export const OfferList = () => {
   };
 
   const handleLearnMore = (id) => {
-    navigate(`/offer-detail/:${id}`);
+    navigate(`/offer-detail/${id}`);
+  };
+
+  const getShortText = (html, limit = 80) => {
+    const cleanHtml = DOMPurify.sanitize(html || "");
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = cleanHtml;
+
+    const text = tempDiv.textContent || tempDiv.innerText || "";
+    return text.length > limit ? text?.slice(0, limit) + "..." : text;
   };
 
   return (
@@ -70,7 +80,7 @@ export const OfferList = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  {offer.description}
+                  {getShortText(offer?.description, 80)}
                 </p>
                 <button
                   onClick={() => {

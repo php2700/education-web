@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import blogImg from "../../assets/slide-3.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import backgroundImage from "../../assets/work-bg.png";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const OfferDetail = () => {
+  const [offerData, setOfferData] = useState();
   // Updated educational offer data
+  const { id } = useParams();
   const navigate = useNavigate();
   const offer = {
     title: "SHSAT & ISEE Premium Tutoring Program",
@@ -58,71 +62,82 @@ export const OfferDetail = () => {
     tags: ["SHSAT", "ISEE", "Education", "Tutoring", "Online Learning"],
   };
 
+  const getBlogDetail = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/offer-detail/${id}`
+      );
+      setOfferData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getBlogDetail();
+  }, [id]);
+
   const handleBack = () => {
     navigate(-1);
   };
 
   return (
-    <div className="bg-[#F0F8FF]" style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-          }}>
-    <div className="max-w-7xl mx-auto p-10  rounded-2xl shadow-2xl "   >
-      <div
-        onClick={handleBack}
-        className="text-blue-500 font-semibold mb-2 text-lg"
-      >
-        Back
-      </div>
-
-      <img
-        src={blogImg}
-        alt={offer.title}
-        className="w-full h-[500px] object-cover rounded-2xl mb-8 shadow-xl"
-      />
-
-      <h1 className="text-5xl font-extrabold mb-6 text-gray-900">
-        {offer.title}
-      </h1>
-
-      {/* Tags */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {offer.tags.map((tag, idx) => (
-          <span
-            key={idx}
-            className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+    <div
+      className="bg-[#F0F8FF]"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="max-w-7xl mx-auto p-10  rounded-2xl shadow-2xl ">
+        <button
+          onClick={handleBack}
+          className="inline-flex items-center gap-2 px-4 py-2 text-blue-700 font-semibold rounded-lg hover:text-blue-900 transition"
+        >
+          <svg
+            className="w-5 h-5 stroke-[3]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            {tag}
-          </span>
-        ))}
-      </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back
+        </button>
 
-      {/* Description */}
-      <div className="space-y-6 text-lg text-gray-800 leading-relaxed mb-10">
-        {offer.description.map((desc, index) => (
-          <p key={index}>{desc}</p>
-        ))}
-      </div>
+        <div className="flex justify-between">
+          <h1 className="text-5xl font-extrabold mb-6 text-gray-900">
+            {offerData?.title}
+          </h1>
+          <div>
+            <div className="text-xl font-semibold text-end">Deal</div>
 
-      {/* Sections */}
-      {offer.sections.map((section, idx) => (
-        <div key={idx} className="mb-10">
-          <h2 className="text-3xl font-bold mb-4">{section.heading}</h2>
-          <div className="space-y-4 text-gray-700 text-lg">
-            {section.content.map((text, i) => (
-              <p key={i}>{text}</p>
-            ))}
+            <div className="text-xl font-semibold text-end">
+              {offerData?.type}
+            </div>
           </div>
         </div>
-      ))}
 
-      {/* Author & Date */}
-      <div className="mt-10 text-lg text-gray-600 border-t pt-6 flex justify-between">
-        <p className="font-semibold">By {offer.author}</p>
-        <p>Published on {new Date(offer.createdAt).toLocaleDateString()}</p>
+        <div
+          className="mb-6 flex flex-wrap gap-2"
+          dangerouslySetInnerHTML={{ __html: offerData?.description }}
+        ></div>
+        <div className="mt-10 text-lg text-gray-600 border-t pt-6 flex justify-between">
+          <p>
+            Published on {new Date(offerData?.createdAt).toLocaleDateString()}
+          </p>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
