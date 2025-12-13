@@ -2330,13 +2330,7 @@ export const  HeaderBanner = () => {
   const handleUrl = () => {
     navigate("/contact");
 
-    // Time thoda badhayein taaki page load hone ke baad animation dikhe
-    setTimeout(() => {
-      window.scrollTo({
-        top: 800, // Aapki set ki hui position
-        behavior: "smooth" // 'instant' ki jagah 'smooth' likhein
-      });
-    }, 300); // 100 ki jagah 300 ya 500 try karein
+    
   };
 
   const handleHome = () => {
@@ -2492,12 +2486,12 @@ export const  HeaderBanner = () => {
             {/* Navbar */}
             <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-3 shadow-md">
               <div className="flex items-center justify-between w-full lg:w-auto">
-                <div className="text-xl font-bold text-black flex items-center">
+                <div className="text-xl font-bold text-black flex items-center ">
                   <img
                     src={logo}
                     alt="Logo"
                     onClick={() => handleHome()}
-                    className="h-8 sm:h-10 w-auto object-contain"
+                    className="h-8 sm:h-10 w-auto object-contain cursor-pointer"
                   />
                 </div>
 
@@ -2612,7 +2606,7 @@ export const  HeaderBanner = () => {
 
                 <button
                   onClick={() => handleUrl("/contact")}
-                  className="bg-blue-600 text-white text-md px-5 py-2 rounded-lg hover:bg-blue-700 transition"
+                  className="bg-blue-600 text-white text-md px-5 py-2 cursor-pointer rounded-lg hover:bg-blue-700 transition"
                 >
                   Contact us
                 </button>
@@ -2785,7 +2779,10 @@ export const  HeaderBanner = () => {
                     )}
 
                     <li className="py-3">
-                      <button
+                      <button  onClick={() => {
+                          handleUrl();       // Contact page par le jayega
+                          setMenuOpen(false); // Menu ko band karega
+                        }}
                         className="
                           bg-blue-600 text-white
                           w-4/5 mx-auto

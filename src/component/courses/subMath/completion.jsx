@@ -112,7 +112,7 @@ export const Completion = () => {
         </div>
       </div>
       <div className="bg-[#F0F8FF]">
-        <div className="container mx-auto ">
+        {/* <div className="container mx-auto ">
           <div className="text-center flex-col md:flex-row bg-[#F0F8FF]  flex justify-between mb-10">
             <h2 className="text-2xl sm:text-3xl font-semibold flex items-center justify-center gap-2">
               What are the different MAA AMC competitions?
@@ -169,7 +169,7 @@ export const Completion = () => {
             ))}
           </div>
 
-          <div className="bg-[#F0F8FF]">{/* Header */}</div>
+          <div className="bg-[#F0F8FF]"></div>
           <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
             <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
               WHY TO TAKE IT?
@@ -186,6 +186,168 @@ export const Completion = () => {
               </div>
               <div className="text-center my-4">
                 <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+                  Start Free Trial
+                </button>
+              </div>
+            </section>
+          </div>
+        </div> */}
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10 mt-8">
+            <h2 className="text-2xl sm:text-3xl font-semibold flex items-center justify-center gap-2">
+              What are the different MAA AMC competitions?
+            </h2>
+          </div>
+
+          {/* Wrapper Div: Relative positioning for arrows, width controlled here */}
+          <div className="relative max-w-6xl mx-auto">
+            
+            {/* 🟢 LEFT BUTTON */}
+            <button
+              onClick={handlePrev}
+              className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-16 z-10 bg-white border border-gray-200 shadow-lg rounded-full p-2 hover:bg-blue-50 transition hidden md:flex items-center justify-center text-blue-600"
+            >
+              <svg
+                className="h-6 w-6 sm:h-8 sm:w-8"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {/* 🟢 MAIN CARD (Width remains same) */}
+            <div className="w-full bg-[#D7E9FF] shadow-md rounded-2xl p-6 sm:p-10 text-gray-700 border border-blue-100 min-h-[300px]">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3">AMC 8</h3>
+
+              <p className="mb-4 text-gray-600 text-[16px] font-semibold leading-relaxed">
+                {completionData?.competition?.[current]?.amc}
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-700 mb-2">
+                <span className="font-semibold text-gray-800">
+                  Description:
+                </span>{" "}
+                {completionData?.competition?.[current]?.description}
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-700 mb-2">
+                <span className="font-semibold text-gray-800">For:</span>
+                {completionData?.competition?.[current]?.for}
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-700">
+                <span className="font-semibold text-gray-800">When:</span>
+                {completionData?.competition?.[current]?.when}
+              </p>
+            </div>
+
+            {/* 🟢 RIGHT BUTTON (Rotated Icon) */}
+            <button
+              onClick={handleNext}
+              className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-16 z-10 bg-white border border-gray-200 shadow-lg rounded-full p-2 hover:bg-blue-50 transition hidden md:flex items-center justify-center text-blue-600"
+            >
+              {/* Added 'rotate-180' class to flip the icon */}
+              <svg
+                className="h-6 w-6 sm:h-8 sm:w-8 rotate-180" 
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Navigation (Only visible on small screens) */}
+          <div className="flex justify-center items-center gap-4 mt-8 md:hidden">
+            <button
+              onClick={handlePrev}
+              className="p-2 bg-white rounded-full shadow border text-blue-600"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <div className="flex gap-2">
+              {completionData?.competition?.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className={`h-3 rounded-full transition-all duration-300 ${
+                    current === index ? "bg-blue-600 w-8" : "bg-gray-300 w-3"
+                  }`}
+                ></button>
+              ))}
+            </div>
+            <button
+              onClick={handleNext}
+              className="p-2 bg-white rounded-full shadow border text-blue-600"
+            >
+              <svg
+                className="h-6 w-6 rotate-180"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop Dots */}
+          <div className="hidden md:flex justify-center items-center gap-2 mt-8">
+            {completionData?.competition?.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrent(index)}
+                className={`h-3 rounded-full transition-all duration-300 ${
+                  current === index ? "bg-blue-600 w-8" : "bg-gray-300 w-3"
+                }`}
+              ></button>
+            ))}
+          </div>
+
+          <div className="bg-[#F0F8FF]">{/* Header */}</div>
+          <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
+            <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
+              WHY TO TAKE IT?
+            </h1>
+            <section className="text-gray-600 text-[16px] font-semibold mt-4">
+              {completionData?.whyTake?.map((ele, i) => (
+                <p key={i} className="leading-relaxed mb-6">
+                  {ele}
+                </p>
+              ))}
+              <div className="text-center">
+                <h3 className="text-2xl font-bold my-4">
+                  So why wait? To avail a Free Trial Class for AMC Test Prep
+                  Online Tutoring
+                </h3>
+              </div>
+              <div className="text-center my-4">
+                <button
+                  onClick={handleContact}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 "
+                >
                   Start Free Trial
                 </button>
               </div>
