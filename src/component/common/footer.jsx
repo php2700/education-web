@@ -126,7 +126,7 @@ const Footer = () => {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
           {/* Left About Section */}
           <div>
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-center cursor-pointer md:justify-start">
               <img onClick={() => handleHome()} src={logo} />
             </div>
             <p className="text-md leading-relaxed my-5">
@@ -267,7 +267,7 @@ const Footer = () => {
                 <img src={mail} alt="Mail" className="w-4 h-4" />
                 <span onClick={handleGmail} className="cursor-pointer"  >info@mygges.com</span>
               </li>
-              <li className="flex items-center gap-2 justify-center md:justify-start">
+              <li className="flex items-center gap-2  cursor-pointer justify-center md:justify-start">
                 <img src={callImg} alt="Call" className="w-4 h-4" />
                 <span>+91-886-029-6060</span>
               </li>

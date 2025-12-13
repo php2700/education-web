@@ -191,7 +191,7 @@ export const Management = () => {
       </div>
 
       {/* Grid */}
-      <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-2 lg:gap-16">
+      <div className="max-w-7xl mx-auto grid gap-y-24 gap-x-12 md:grid-cols-2 lg:gap-16 mt-10">
         {members.map((member) => (
           <div
             key={member._id}

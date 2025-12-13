@@ -91,9 +91,7 @@ const location=useLocation()
 
           <p className="text-gray-600 mt-4 text-lg leading-relaxed">
             {contactTextData?.description}
-            Have questions about our tutoring services, demo sessions, or
-            pricing? We’d love to help you. Fill out the form or reach us
-            directly through phone or email.
+           
           </p>
 
           {/* Contact Details */}
