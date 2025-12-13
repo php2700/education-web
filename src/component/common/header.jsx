@@ -2363,18 +2363,9 @@ export const  HeaderBanner = () => {
     window.location.href = "tel:+918860296060";
   };
 
-  const handleGmail = () => {
+   const handleGmail = () => {
     const to = "info@mygges.com";
-    const subject = "Inquiry";
-    const body = "Hello Team,";
-
-    // const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${encodeURIComponent(
-    //   subject
-    // )}&body=${encodeURIComponent(body)}`;
-
-    // window.open(gmailUrl, "_blank");
-    const gmailUrl = `https://mail.google.com`
-
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}`;
     window.open(gmailUrl, "_blank");
   };
 
