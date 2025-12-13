@@ -106,7 +106,7 @@ export const About = () => {
       </section>
 
       {/* HOW ARE WE DIFFERENT */}
-      <section className="py-24 bg-[#F0F8FF]  px-6 sm:px-12 lg:px-20">
+      {/* <section className="py-24 bg-[#F0F8FF]  px-6 sm:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
             <Sparkles className="w-12 h-12 text-yellow-500" />
@@ -119,7 +119,7 @@ export const About = () => {
             ))}
           </div>
 
-          {/* SAFETY SECTION */}
+        
           <div className="mt-20">
             <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
               <FaShieldAlt className="text-blue-600 text-4xl" />
@@ -135,7 +135,7 @@ export const About = () => {
             </div>
           </div>
 
-          {/* TUTORS SECTION */}
+    
           <div className="mt-20">
             <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
               <User className="w-12 h-12 text-blue-500" />
@@ -143,6 +143,51 @@ export const About = () => {
             </h3>
 
             <div className="bg-white p-6 shadow-lg rounded-xl text-gray-700 text-lg leading-relaxed">
+              {aboutData?.tutorDescription}
+            </div>
+          </div>
+        </div>
+      </section> */}
+      <section className="py-10 md:py-24 bg-[#F0F8FF] px-4 sm:px-12 lg:px-20">
+        <div className="max-w-6xl mx-auto">
+          {/* How Are We Different Header */}
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16 flex items-center justify-center gap-2 md:gap-3">
+            <Sparkles className="w-8 h-8 md:w-12 md:h-12 text-yellow-500" />
+            How Are We Different?
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10 text-gray-700 text-base md:text-lg leading-relaxed">
+            {aboutData?.howDiffrentDescription?.map((ele, i) => (
+              <div key={i} className="p-6 bg-white shadow-lg rounded-xl">
+                • {ele}
+              </div>
+            ))}
+          </div>
+
+          {/* Safety Section */}
+          <div className="mt-12 md:mt-20">
+            <h3 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16 flex items-center justify-center gap-2 md:gap-3">
+              <FaShieldAlt className="text-blue-600 text-2xl md:text-4xl" />
+              Safety
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+              {aboutData?.safetyDescription?.map((ele, i) => (
+                <div key={i} className="p-6 bg-white shadow-lg rounded-xl text-gray-700 text-base md:text-lg leading-relaxed">
+                  {ele}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tutors Section */}
+          <div className="mt-12 md:mt-20">
+            <h3 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16 flex items-center justify-center gap-2 md:gap-3">
+              <User className="w-8 h-8 md:w-12 md:h-12 text-blue-500" />
+              Tutors
+            </h3>
+
+            <div className="bg-white p-6 shadow-lg rounded-xl text-gray-700 text-base md:text-lg leading-relaxed">
               {aboutData?.tutorDescription}
             </div>
           </div>
