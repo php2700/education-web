@@ -49,7 +49,6 @@ const PricingPage = () => {
   // }
     const handleUrl = () => {
     navigate("/contact");
-
   };
   return (
     <div

@@ -77,10 +77,10 @@ const location=useLocation()
     },[location?.pathname])
 
   return (
-    <div className="bg-[#F0F8FF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
+    <div ref={headingRef} className=" bg-[#F0F8FF] min-h-screen py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* LEFT SIDE — Info */}
-        <div ref={headingRef}>
+        <div >
           <h3  className="text-blue-600 font-semibold tracking-widest mb-2">
             CONTACT US
           </h3>
