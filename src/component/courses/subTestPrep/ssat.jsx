@@ -321,7 +321,7 @@ const SsatTestPrep = () => {
             </div>
         )}
 
-        <button className="bg-[#00C4CC] hover:bg-[#00aeb5] text-white text-lg font-bold py-1 px-10 rounded-full shadow-lg transition transform hover:scale-105 mt-6">
+        <button className=" text-lg font-bold py-1  mt-6">
           {safeData.topCtaText || "Click here for Free Trial Class"}
         </button>
         
@@ -581,15 +581,15 @@ const SsatTestPrep = () => {
         </div>
 
         {/* CTA Button */}
-        <button className="mt-4 bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-1 px-12 rounded-full shadow-xl transition transform hover:scale-105">
+        <button className="mt-4  text-xl font-bold py-1 px-12  ">
           {safeData.footerCtaText || "Click here for Free Trial Class"}
         </button>
 
-         <div className="mt-8 text-center">
+         <div className="mt-2 text-center">
         <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-6 tracking-wide">
             Ready to start your SSAT preparation?
         </h2>
-        <button onClick={handleNavigate}  className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg shadow-xl transition transform hover:scale-105">
+        <button onClick={handleNavigate}  className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg transition transform ">
           Click here for Free Trial Class
         </button>
       </div>

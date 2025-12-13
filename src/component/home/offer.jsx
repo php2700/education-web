@@ -16,6 +16,8 @@ import backgroundImage from "../../assets/work-bg.png";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
+
 
 export const OfferAndTrust = () => {
   const navigate=useNavigate();
@@ -65,8 +67,16 @@ export const OfferAndTrust = () => {
   }
 
   const handleLearnMore=(id)=>{
-    navigate(`/offer-detail/:${id}`)
+    navigate(`/offer-detail/${id}`)
   }
+  const getShortText = (html, limit = 80) => {
+      const cleanHtml = DOMPurify.sanitize(html || "");
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = cleanHtml;
+  
+      const text = tempDiv.textContent || tempDiv.innerText || "";
+      return text.length > limit ? text?.slice(0, limit) + "..." : text;
+    };
 
   return (
     <div className="bg-[#F0F8FF] text-gray-900">
@@ -101,7 +111,7 @@ export const OfferAndTrust = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  {offer.description}
+                   {getShortText(offer?.description, 80)}
                 </p>
                 <button onClick={()=>{handleLearnMore(offer._id)}} className=" font-medium bg-[#F0F8FF]  text-sm   w-full p-2 rounded-lg">
                   Learn More →
