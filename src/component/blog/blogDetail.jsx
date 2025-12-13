@@ -43,7 +43,7 @@ export const BlogDetail = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto p-10 bg-gray-100 rounded-2xl shadow-2xl">
+      <div className="max-w-7xl mx-auto p-4 md:p-10 bg-gray-100 rounded-2xl shadow-2xl">
         <button
           onClick={handleBack}
           className="inline-flex items-center gap-2 px-4 py-2 text-blue-700 font-semibold rounded-lg hover:text-blue-900 transition"
@@ -67,7 +67,7 @@ export const BlogDetail = () => {
           <img
             src={`${import.meta.env.VITE_APP_URL}${blodDetailData?.image}`}
             alt="Blog Media"
-            className="w-full h-[500px] object-cover rounded-2xl mb-8 shadow-xl"
+            className="w-full h-64 sm:h-80 md:h-[500px] object-cover rounded-2xl mb-6 md:mb-8 shadow-xl"
           />
         ) : blodDetailData?.type === "video" ? (
           <video
@@ -78,7 +78,7 @@ export const BlogDetail = () => {
         ) : null}
 
         {/* Blog Title */}
-        <h1 className="text-5xl font-extrabold mb-6 text-gray-900">
+        <h1 className="text-2xl md:text-5xl font-extrabold mb-4 md:mb-6 text-gray-900">
           {blodDetailData?.title}
         </h1>
 
