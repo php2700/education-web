@@ -147,8 +147,7 @@ useEffect(()=>{
 
       {/* Description */}
       {faq.description && (
-        <div className="mt-4 text-gray-700 text-lg leading-relaxed">
-          {faq.description}
+        <div className="mt-4 text-gray-700 text-lg leading-relaxed" dangerouslySetInnerHTML={{__html:faq?.description}}>
         </div>
       )}
 
