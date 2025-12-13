@@ -97,7 +97,7 @@ export const AboutInfoPage = () => {
           <div className="bg-[#F0F8FF] rounded-2xl  p-8 md:p-12 relative ">
             <div className="relative z-10 max-w-4xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
-                QUESTION TYPES:
+                QUESTION TYPES
               </h3>
 
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
