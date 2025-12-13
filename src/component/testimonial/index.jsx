@@ -170,12 +170,12 @@ export const Testimonial = () => {
               {testImonialData?.map((review, i) => (
                 <div
                   key={i}
-                  className="bg-[#F0F8FF] rounded-xl p-6 shadow-md hover:shadow-lg transition-all text-left"
+                  className="bg-[#F0F8FF] rounded-xl p-6 shadow-md hover:shadow-lg transition-all text-left flex flex-col h-full"
                 >
                   {/* <div className="text-yellow-400 mb-3">
                   {"★".repeat(review.rating)}
                 </div> */}
-                  <p className="text-gray-700 italic mb-4">
+                  <p className="text-gray-700 italic mb-4 flex-1">
                     “{review.description}”
                   </p>
                   <div className="flex items-center gap-3 mt-4">

@@ -44,9 +44,20 @@ const PricingPage = () => {
     }
   };
 
-  const handleUrl=()=>{
-    navigate('/contact')
-  }
+  // const handleUrl=()=>{
+  //   navigate('/contact')
+  // }
+    const handleUrl = () => {
+    navigate("/contact");
+
+    // Time thoda badhayein taaki page load hone ke baad animation dikhe
+    setTimeout(() => {
+      window.scrollTo({
+        top: 800, // Aapki set ki hui position
+        behavior: "smooth" // 'instant' ki jagah 'smooth' likhein
+      });
+    }, 300); // 100 ki jagah 300 ya 500 try karein
+  };
   return (
     <div
       className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 h-full"

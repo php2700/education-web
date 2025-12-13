@@ -67,6 +67,24 @@ const Footer = () => {
     window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
   };
 
+    const handleHome = () => {
+    navigate("/");
+  };
+
+    const handleGmail = () => {
+    const to = "info@mygges.com";
+    const subject = "Inquiry";
+    const body = "Hello Team,";
+
+    // const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${encodeURIComponent(
+    //   subject
+    // )}&body=${encodeURIComponent(body)}`;
+
+    // window.open(gmailUrl, "_blank");
+    const gmailUrl = `https://mail.google.com`
+
+    window.open(gmailUrl, "_blank");
+  };
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
@@ -109,7 +127,7 @@ const Footer = () => {
           {/* Left About Section */}
           <div>
             <div className="flex justify-center md:justify-start">
-              <img src={logo} />
+              <img onClick={() => handleHome()} src={logo} />
             </div>
             <p className="text-md leading-relaxed my-5">
               Personalized online tutoring to help students achieve their
@@ -157,11 +175,11 @@ const Footer = () => {
                   About
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:underline cursor-pointer">
                   Subjects
                 </a>
-              </li>
+              </li> */}
               <li>
                 <div
                   onClick={() => {
@@ -245,20 +263,20 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Contact</h4>
             <ul className="space-y-2 text-md">
-              <li className="flex items-center gap-2">
+              <li     onClick={handleGmail} className="flex items-center gap-2 justify-center md:justify-start">
                 <img src={mail} alt="Mail" className="w-4 h-4" />
-                <span>info@mygges.com</span>
+                <span onClick={handleGmail} className="cursor-pointer"  >info@mygges.com</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 justify-center md:justify-start">
                 <img src={callImg} alt="Call" className="w-4 h-4" />
                 <span>+91-886-029-6060</span>
               </li>
-              <li>
+              <li className="flex justify-center md:justify-start">
                 <button
                   onClick={handleWhatsApp}
-                  className="cursor-pointer bg-white text-blue-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition flex items-center gap-2"
+                  className="cursor-pointer bg-white text-blue-700  font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition flex items-center gap-2"
                 >
-                  <FaWhatsapp className="text-green-500 text-xl" />
+                  <FaWhatsapp className="text-green-500 text-xl " />
                   Live Chat
                 </button>
               </li>

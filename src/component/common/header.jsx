@@ -283,7 +283,7 @@
 
 //             {/* Navbar */}
 //             {/* <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-3 shadow-md">
-     
+
 //               <div className="flex items-center justify-between w-full lg:w-auto">
 //                 <div className="text-xl font-bold text-black flex items-center">
 //                   <img
@@ -330,12 +330,12 @@
 //                         </svg>
 //                       </button>
 
-               
+
 //                       <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
 //                         {sections?.map((subItem) => (
 //                           <div key={subItem.name} className="relative">
 //                             <div className="flex items-center justify-between px-4 py-2">
-                          
+
 //                               <Link
 //                                 to={subItem.link}
 //                                 onClick={() => handleToggle(subItem.name)}
@@ -356,7 +356,7 @@
 //                                     onClick={() => handleToggle(subItem.name)}
 //                                     className="text-gray-500 hover:text-blue-600 focus:outline-none"
 //                                   >
-                                
+
 //                                     {openSection === subItem.name ? (
 //                                       <span>&#9650;</span> 
 //                                     ) : (
@@ -366,7 +366,7 @@
 //                                 )}
 //                             </div>
 
-                      
+
 //                             {subItem?.courses &&
 //                               openSection === subItem.name && (
 //                                 <div className="ml-6 bg-white border-l border-blue-200">
@@ -2231,7 +2231,7 @@ const sections = [
   },
 ];
 
-export const HeaderBanner = () => {
+export const  HeaderBanner = () => {
   const { hash } = useLocation();
   const { pathname } = useLocation();
 
@@ -2265,7 +2265,7 @@ export const HeaderBanner = () => {
     // Agar link me # hai (matlab same page section navigation)
     if (link.includes("#")) {
       const targetId = link.split("#")[1];
-      
+
       // Thoda wait karke scroll karein taki agar page change ho raha ho to DOM load ho jaye
       setTimeout(() => {
         const element = document.getElementById(targetId);
@@ -2316,8 +2316,8 @@ export const HeaderBanner = () => {
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
-          error?.message ||
-          "something went wrong",
+        error?.message ||
+        "something went wrong",
         { position: "top-right" }
       );
     }
@@ -2329,6 +2329,14 @@ export const HeaderBanner = () => {
 
   const handleUrl = () => {
     navigate("/contact");
+
+    // Time thoda badhayein taaki page load hone ke baad animation dikhe
+    setTimeout(() => {
+      window.scrollTo({
+        top: 800, // Aapki set ki hui position
+        behavior: "smooth" // 'instant' ki jagah 'smooth' likhein
+      });
+    }, 300); // 100 ki jagah 300 ya 500 try karein
   };
 
   const handleHome = () => {
@@ -2357,6 +2365,29 @@ export const HeaderBanner = () => {
     window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
   };
 
+  const handleCall = () => {
+    window.location.href = "tel:+918860296060";
+  };
+
+  const handleGmail = () => {
+    const to = "info@mygges.com";
+    const subject = "Inquiry";
+    const body = "Hello Team,";
+
+    // const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${encodeURIComponent(
+    //   subject
+    // )}&body=${encodeURIComponent(body)}`;
+
+    // window.open(gmailUrl, "_blank");
+    const gmailUrl = `https://mail.google.com`
+
+    window.open(gmailUrl, "_blank");
+  };
+
+
+
+
+
   return (
     <>
       <div className="relative w-full overflow-visible max-h-[100vh]">
@@ -2369,7 +2400,7 @@ export const HeaderBanner = () => {
 
           <header className="absolute top-0 left-0 w-full flex flex-col px-4 sm:px-8 md:px-16 py-4 z-[1000] gap-3">
             {/* Top Contact & Social */}
-            <div className="hidden sm:flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
+            {/* <div className="hidden sm:flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
               <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
                 <div className="flex items-center gap-2">
                   <img src={callImg} className="text-blue-400" />
@@ -2407,7 +2438,56 @@ export const HeaderBanner = () => {
                   className="cursor-pointer transition-transform duration-300 hover:scale-110"
                 />
               </div>
+            </div> */}
+
+            <div className="hidden sm:flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
+
+                {/* Phone */}
+                <a
+                  href="tel:+918860296060"
+                  className="flex items-center gap-2 cursor-pointer hover:underline"
+                >
+                  <img src={callImg} className="text-blue-400" />
+                  <span       onClick={handleCall} >+91-886-029-6060</span>
+                </a>
+
+                {/* Email (Gmail only) */}
+                <div
+                  className="flex items-center gap-2 cursor-pointer hover:underline"
+                  onClick={handleGmail}
+                >
+                  <img src={mail} className="text-blue-400" />
+                  <span>info@mygges.com</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 mt-2 sm:mt-0">
+                <img
+                  onClick={handleInst}
+                  src={instagram}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                />
+                <img
+                  onClick={handleFacebook}
+                  src={facebook}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                />
+                <img
+                  onClick={handleWhatsApp}
+                  src={whatsapp}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                />
+                <img
+                  onClick={handleYoutube}
+                  src={youtube}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                />
+              </div>
             </div>
+
+
+
 
             {/* Navbar */}
             <div className="flex justify-between items-center w-full bg-white/90 rounded-xl px-4 sm:px-6 py-3 shadow-md">
@@ -2434,10 +2514,9 @@ export const HeaderBanner = () => {
                     <div key={item.name} className="relative group">
                       <button
                         className={`hover:text-blue-600 transition-colors text-lg duration-200 flex items-center gap-1
-                          ${
-                            pathname === item.link
-                              ? "text-blue-500 font-bold border-blue-600"
-                              : ""
+                          ${pathname === item.link
+                            ? "text-blue-500 font-bold border-blue-600"
+                            : ""
                           }
                         `}
                       >
@@ -2465,10 +2544,9 @@ export const HeaderBanner = () => {
                                 to={subItem.link}
                                 onClick={() => handleToggle(subItem.name)}
                                 className={`hover:text-blue-600 transition
-                                  ${
-                                    isActiveParent(subItem)
-                                      ? "text-blue-600 font-semibold"
-                                      : ""
+                                  ${isActiveParent(subItem)
+                                    ? "text-blue-600 font-semibold"
+                                    : ""
                                   }
                                   `}
                               >
@@ -2501,10 +2579,9 @@ export const HeaderBanner = () => {
                                       // 🟢 UPDATE: Added Manual Scroll Logic
                                       onClick={() => handleLinkClick(course.name, course.link)}
                                       className={`block px-4 py-2 text-sm transition-all duration-200 border-l-4 
-                                        ${
-                                          selectedChild === course.name
-                                            ? "bg-blue-50 border-blue-600 text-blue-700 font-bold shadow-inner"
-                                            : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-blue-600 hover:border-blue-300"
+                                        ${selectedChild === course.name
+                                          ? "bg-blue-50 border-blue-600 text-blue-700 font-bold shadow-inner"
+                                          : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-blue-600 hover:border-blue-300"
                                         }
                                       `}
                                     >
@@ -2522,10 +2599,9 @@ export const HeaderBanner = () => {
                       key={item.name}
                       to={item.link}
                       className={`hover:text-blue-600 text-lg transition-colors duration-200
-                        ${
-                          pathname === item.link
-                            ? "text-blue-500 font-bold border-blue-600"
-                            : ""
+                        ${pathname === item.link
+                          ? "text-blue-500 font-bold border-blue-600"
+                          : ""
                         }
                         `}
                     >
@@ -2672,10 +2748,9 @@ export const HeaderBanner = () => {
                                           // 🟢 UPDATE: Added Manual Scroll Logic
                                           onClick={() => handleLinkClick(course.name, course.link)}
                                           className={`block px-4 py-2 text-sm font-medium transition
-                                            ${
-                                              selectedChild === course.name
-                                                ? "bg-blue-600 text-white"
-                                                : "hover:bg-blue-600 hover:text-white"
+                                            ${selectedChild === course.name
+                                              ? "bg-blue-600 text-white"
+                                              : "hover:bg-blue-600 hover:text-white"
                                             }
                                           `}
                                         >
