@@ -97,7 +97,7 @@ const PricingAndHowItWorks = () => {
             {transparentData?.map((plan, i) => (
               <div
                 key={i}
-                className={`relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all border ${
+                className={` flex flex-col h-full relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all border ${
                   plan.highlight ? "border-blue-500" : "border-transparent"
                 }`}
               >
@@ -129,7 +129,7 @@ const PricingAndHowItWorks = () => {
                 </ul>
 
                 <button
-                  className={`w-full py-3 rounded-lg font-medium transition ${
+                  className={`w-full py-3 rounded-lg font-medium transition mt-auto ${
                     plan.highlight
                       ? "bg-[#305CDE] text-white hover:bg-blue-700"
                       : "bg-blue-100 text-blue-600 hover:bg-blue-200"

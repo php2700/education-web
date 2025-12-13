@@ -64,7 +64,7 @@ export const Blog = () => {
         {blogData.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
+            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
           >
             {blog.type === "image" && blog.image ? (
               <img
@@ -84,7 +84,7 @@ export const Blog = () => {
               </div>
             )}
 
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 {blog.title}
               </h2>
@@ -96,7 +96,7 @@ export const Blog = () => {
                 onClick={() => {
                   handleMore(blog?._id);
                 }}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-auto"
               >
                 Read More
               </button>
