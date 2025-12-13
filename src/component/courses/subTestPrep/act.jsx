@@ -63,24 +63,22 @@ const ActTestPrep = () => {
   const safeData = data || {};
 
   return (
-    <div className="w-full bg-white text-gray-800" id="act">
-      
+    <div className="w-full  text-gray-800" id="act">
       {/* ================= HERO SECTION ================= */}
-      <section className="pt-20 px-4 bg-gray-50 pb-16">
+      <section className="pt-20 px-4 pb-16">
         <div className="max-w-7xl mx-auto text-center">
-          
           {/* Title */}
           <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 mb-6 drop-shadow-sm uppercase">
-            {safeData.heroTitle }
+            {safeData.heroTitle}
           </h1>
 
           {/* Description */}
           {safeData.heroDescription && (
-             <div className="bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 max-w-4xl mx-auto mb-8">
-                <p className="text-lg md:text-xl text-gray-700 whitespace-pre-wrap leading-relaxed">
-                  {safeData.heroDescription}
-                </p>
-             </div>
+            <div className="bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 max-w-4xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-gray-700 whitespace-pre-wrap leading-relaxed">
+                {safeData.heroDescription}
+              </p>
+            </div>
           )}
 
           {/* Top CTA */}
@@ -91,7 +89,7 @@ const ActTestPrep = () => {
             </h3>
             <button
               onClick={() => navigate("/contact")} // Change route if needed
-              className="bg-[#00C4CC] hover:bg-[#00aeb5] text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg transition transform hover:scale-105"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-lg transition transform hover:bg-blue-700"
             >
               CLICK HERE FOR FREE TRIAL
             </button>
@@ -99,12 +97,10 @@ const ActTestPrep = () => {
         </div>
       </section>
 
-
       {/* ================= ABOUT SECTION (With List) ================= */}
       {(safeData.aboutHeading || safeData.aboutDescription) && (
-        <section className="py-16 px-4 bg-white">
+        <section className="py-16 px-4 ">
           <div className="max-w-7xl mx-auto">
-            
             {/* Heading */}
             {safeData.aboutHeading && (
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 border-l-8 border-blue-600 pl-4">
@@ -123,7 +119,10 @@ const ActTestPrep = () => {
             {safeData.aboutList && safeData.aboutList.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {safeData.aboutList.map((item, index) => (
-                  <div key={index} className="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                  <div
+                    key={index}
+                    className="bg-[#F0F8FF] p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition"
+                  >
                     {item.title && (
                       <h3 className="text-xl font-bold text-blue-800 mb-3 border-b pb-2">
                         {item.title}
@@ -141,29 +140,28 @@ const ActTestPrep = () => {
           </div>
         </section>
       )}
-<section className="py-12 px-4 bg-gray-50">
+      <section className="py-12 px-4 ">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900">
             ACT Structure (2025-26)
           </h2>
-          
+
           <div className="flex justify-center">
             {/* Image styling: Shadow, Rounded corners, aur Responsive width */}
-            <img 
-              src={actTableImg} 
-              alt="ACT 2025-26 Format Table" 
+            <img
+              src={actTableImg}
+              alt="ACT 2025-26 Format Table"
               className="w-full max-w-lg md:max-w-xl h-auto shadow-2xl rounded-lg border-2 border-gray-200 hover:scale-[1.02] transition-transform duration-300"
             />
           </div>
         </div>
       </section>
 
-
       {/* ================= ACT SECTIONS (With List) ================= */}
-      {(safeData.actHeading || (safeData.actList && safeData.actList.length > 0)) && (
+      {(safeData.actHeading ||
+        (safeData.actList && safeData.actList.length > 0)) && (
         <section className="bg-gray-100 py-16 px-4">
           <div className="max-w-7xl mx-auto">
-            
             {/* Heading */}
             {safeData.actHeading && (
               <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-gray-900">
@@ -173,9 +171,12 @@ const ActTestPrep = () => {
 
             {/* Dynamic ACT List (Cards) */}
             {safeData.actList && safeData.actList.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
                 {safeData.actList.map((item, index) => (
-                  <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-500">
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-500"
+                  >
                     {item.title && (
                       <h3 className="text-2xl font-bold text-indigo-900 mb-4">
                         {item.title}
@@ -187,39 +188,39 @@ const ActTestPrep = () => {
                       </div>
                     )}
                   </div>
-                  
                 ))}
               </div>
             ) : (
-              <p className="text-center text-gray-500 italic">No sections added yet.</p>
+              <p className="text-center text-gray-500 italic">
+                No sections added yet.
+              </p>
             )}
           </div>
         </section>
       )}
 
-
       {/* ================= BOTTOM CTA SECTION ================= */}
-      <section className="bg-[#0f172a] py-16 px-4 text-center mt-auto">
-        <div className="max-w-4xl mx-auto text-white">
+      <section className=" py-8 bg-gray-100 px-4 text-center mt-auto">
+        <div className="max-w-4xl mx-auto ">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Start Your ACT Prep Today!
           </h2>
-          <p className="mb-8 text-lg text-gray-300">
+          <p className="mb-8 text-lg ">
             Take a Free Trial Online Tutoring class for ACT or SAT test
             preparation and boost your confidence.
           </p>
-          <button
-            onClick={() => navigate("/contact-us")}
-            className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition transform hover:-translate-y-1 shadow-xl"
-          >
-            Get Free Trial Class
-          </button>
+          <div className="text-center mt-8">
+            <button
+              onClick={() => navigate("/contact")}
+              className="bg-blue-600 cursor-pointer text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
+            >
+              Click here for Free Trial Class
+            </button>
+          </div>
         </div>
       </section>
-      
     </div>
   );
 };
 
 export default ActTestPrep;
-

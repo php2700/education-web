@@ -7,7 +7,7 @@ const SBACPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-     const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // --- API Call ---
   useEffect(() => {
@@ -38,7 +38,7 @@ const SBACPrep = () => {
   // --- 1. Loading View ---
   if (loading) {
     return (
-      <div className="w-full h-screen flex justify-center items-center bg-white">
+      <div className="w-full h-screen flex justify-center items-center ">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
       </div>
     );
@@ -58,7 +58,7 @@ const SBACPrep = () => {
 
   // --- 3. Main Content ---
   return (
-    <div className="w-full bg-white text-gray-800" id="sbac">
+    <div className="w-full  text-gray-800" id="sbac">
       {/* HERO SECTION */}
       {/* Background and Button always visible */}
       <section className=" pt-20 px-4">
@@ -72,9 +72,10 @@ const SBACPrep = () => {
 
           {/* Description: Only visible if data exists */}
           {safeData.heroDescription && (
-            <p className="text-lg md:text-xl max-w-7xl mx-auto mb-8 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: safeData.heroDescription }} >
-              
-            </p>
+            <p
+              className="text-lg md:text-xl max-w-7xl mx-auto mb-8 whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: safeData.heroDescription }}
+            ></p>
           )}
 
           <section className="mt-4  p-4 rounded-xl text-center">
@@ -85,8 +86,8 @@ const SBACPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition"
               >
                 CLICK HERE
               </button>
@@ -114,7 +115,7 @@ const SBACPrep = () => {
       {/* ASSESSMENT DETAILS */}
       {/* Render only if content exists */}
       {safeData.assessmentPoints && safeData.assessmentPoints.length > 0 && (
-        <section className="bg-gray-100 py-16 px-4">
+        <section className="bg-[#F0F8FF] py-16 px-4">
           <div className="max-w-7xl mx-auto">
             {safeData?.assessmentDescription && (
               <section className="py-4 ">
@@ -150,8 +151,8 @@ const SBACPrep = () => {
 
         <div className="flex justify-center gap-4">
           <button
-            onClick={() => navigate("/free-trial")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+            onClick={() => navigate("/contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition"
           >
             CLICK HERE
           </button>

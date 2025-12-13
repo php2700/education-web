@@ -15,8 +15,10 @@ import scoringImg from "../../../assets/scoring.png";
 import testBgImg from "../../../assets/test-bg.png";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const TestStructure = () => {
+  const navigate=useNavigate();
   const [mathData, setMathData] = useState([]);
   const [mathDetailData, setMathDetailData] = useState([]);
 
@@ -42,6 +44,10 @@ export const TestStructure = () => {
       );
     }
   };
+
+   const handleContact=()=>{
+    navigate('/contact')
+  }
 
   return (
     <div
@@ -69,7 +75,7 @@ export const TestStructure = () => {
           </div>
 
           <div className="text-center my-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+            <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
               Start Free Trial
             </button>
           </div>
@@ -116,12 +122,14 @@ export const TestStructure = () => {
 ))}
 
 
-          <div className="mt-4 text-[16px] font-semibold text-gray-600">
+          
+        </main>
+        <div className="mt-2 text-[16px] font-semibold text-gray-600">
             We have the best content and specialized tutors available for Math
             Kangaroo.
           </div>
-        </main>
       </div>
+      
       <div className="text-center">
         <h3 className="text-xl font-semibold my-2">
           So why wait? To avail a Free Trial Class for AMC Test Prep Online

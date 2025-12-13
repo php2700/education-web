@@ -6,7 +6,7 @@ const ScatTestPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-       const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchScatData = async () => {
@@ -47,7 +47,7 @@ const ScatTestPrep = () => {
       : [];
 
   return (
-    <div className="w-full bg-white text-gray-800" id="scat">
+    <div className="w-full  text-gray-800" id="scat">
       {/* ================= HERO ================= */}
       <section className=" py-4 px-4  ">
         <div className="max-w-7xl mx-auto">
@@ -68,12 +68,14 @@ const ScatTestPrep = () => {
             Tutoring
           </div>
 
-          <button
-            onClick={() => navigate("/free-trial")}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
-          >
-            Click Here for Free Trial Class
-          </button>
+          <div className="text-center">
+            <button
+              onClick={() => navigate("/contact")}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-lg  hover:bg-blue-700 transition"
+            >
+              Click Here for Free Trial Class
+            </button>
+          </div>
         </div>
       </section>
 
@@ -214,7 +216,7 @@ const ScatTestPrep = () => {
             {contactListArray.length > 0 && (
               <ul className="list-disc pl-2 text-lg space-y-1">
                 {contactListArray.map((item, i) => (
-                  <div key={i}  dangerouslySetInnerHTML={{ __html: item }}></div>
+                  <div key={i} dangerouslySetInnerHTML={{ __html: item }}></div>
                 ))}
               </ul>
             )}
@@ -223,31 +225,30 @@ const ScatTestPrep = () => {
               <h3 className="text-2xl font-bold">{safe.authHeading}</h3>
             )}
 
-           {safe.authDescription && (
-  <p
-    className="text-lg pl-2 whitespace-pre-line"
-    dangerouslySetInnerHTML={{ __html: safe.authDescription }}
-  />
-)}
-
+            {safe.authDescription && (
+              <p
+                className="text-lg pl-2 whitespace-pre-line"
+                dangerouslySetInnerHTML={{ __html: safe.authDescription }}
+              />
+            )}
           </div>
         </section>
       )}
 
-   <section className="mt-12  p-8 rounded-xl text-center">
-          <h3 className="text-xl font-semibold mb-3">
-            So why wait? To avail a Free Trial Class for SCAT Test Prep 
-          </h3>
+      <section className="mt-12  p-8 rounded-xl text-center">
+        <h3 className="text-xl font-semibold mb-3">
+          So why wait? To avail a Free Trial Class for SCAT Test Prep
+        </h3>
 
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={() => navigate("/free-trial")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
-            >
-             CLICK HERE
-            </button>
-          </div>
-        </section>
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+          >
+            CLICK HERE
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

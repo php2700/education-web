@@ -88,10 +88,11 @@ const SatTestPrep = () => {
               place.
             </p>
 
-            <button  onClick={() => navigate("/free-trial")} className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+<div className="text-center">
+            <button  onClick={() => navigate("/contact")} className="mt-4 bg-blue-600 text-center font-semibold text-white px-6 py-3 text-lg rounded-lg shadow-md hover:bg-blue-700 ">
               Click here for Free Trial Class
             </button>
-          </div>
+          </div></div>
 
           {/* RIGHT: Features Card */}
           {/* <div className="bg-gray-100 p-6 rounded-xl shadow-lg">
@@ -160,7 +161,7 @@ const SatTestPrep = () => {
           <p className="text-gray-700 mt-6 text-center">{data.tableFooter}</p>
 
           <div className="text-center mt-8">
-            <button onClick={() => navigate("/free-trial")} className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition">
+            <button onClick={() => navigate("/contact")} className="bg-blue-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
               Click here for Free Trial Class
             </button>
           </div>

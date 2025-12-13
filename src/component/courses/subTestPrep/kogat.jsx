@@ -168,7 +168,7 @@
 //       try {
 //         // API Endpoint: /api/cogat-test
 //         const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/cogat-test`);
-        
+
 //         // Validation: Check if data exists
 //         if (response.data && response.data.data) {
 //           setData(response.data.data);
@@ -247,7 +247,7 @@
 //           <p className="text-lg mb-4 whitespace-pre-wrap">
 //             {data?.structureDescription}
 //           </p>
-          
+
 //           <div className="overflow-x-auto">
 //             <table className="table-auto border-collapse border border-gray-300 w-full text-left mb-6">
 //               <thead>
@@ -498,7 +498,7 @@
 //           <div className="max-w-7xl mx-auto">
 //             <h2 className="text-3xl font-bold mb-6 text-center">{safeData.levelsHeading}</h2>
 //             <p className="text-center text-lg mb-8 max-w-4xl mx-auto">{safeData.levelsDescription}</p>
-            
+
 //             <div className="overflow-x-auto shadow-lg rounded-lg">
 //               <table className="w-full text-left border-collapse">
 //                 <thead className="bg-green-600 text-white">
@@ -636,7 +636,9 @@ const CogatTestPrep = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_URL}api/user/cogat-test`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_URL}api/user/cogat-test`
+        );
         if (response.data) {
           const apiData = response.data.data || response.data;
           if (Array.isArray(apiData) && apiData.length > 0) {
@@ -654,24 +656,33 @@ const CogatTestPrep = () => {
     fetchData();
   }, []);
 
-  const handleNavigate = () => navigate("/contact-us");
+  const handleNavigate = () => navigate("/contact");
 
-  if (loading) return <div className="h-screen flex justify-center items-center"><div className="animate-spin h-10 w-10 border-4 border-blue-600 rounded-full border-t-transparent"></div></div>;
+  if (loading)
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <div className="animate-spin h-10 w-10 border-4 border-blue-600 rounded-full border-t-transparent"></div>
+      </div>
+    );
 
   const safeData = data || {};
 
   return (
-    <div className="w-full bg-white text-gray-800" id='cogat'>
-
+    <div className="w-full text-gray-800" id="cogat">
       {/* 1. HERO SECTION */}
       {/* Yahan sirf Title aur Main Hero Description rahega */}
       <section className="bg-[#0f172a] text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">{safeData.heroTitle || "COGAT TEST PREP"}</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            {safeData.heroTitle || "COGAT TEST PREP"}
+          </h1>
           <div className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap text-left">
             {safeData.heroDescription}
           </div>
-          <button onClick={handleNavigate} className="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition">
+          <button
+            onClick={handleNavigate}
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+          >
             Book Free Trial Class
           </button>
         </div>
@@ -679,44 +690,45 @@ const CogatTestPrep = () => {
 
       {/* 2. WHY CHOOSE / BULLET POINTS SECTION */}
       {/* Sub Description yahan move kar diya gaya hai, bullet points ke upar */}
-      {(safeData.heroSubDescription || (safeData.heroList && safeData.heroList.length > 0)) && (
-        <section className="py-12 px-4 bg-white">
+      {(safeData.heroSubDescription ||
+        (safeData.heroList && safeData.heroList.length > 0)) && (
+        <section className="py-12 px-4 ">
           <div className="max-w-5xl mx-auto text-gray-800">
-             
-             {/* Sub Description (Ab ye bullet points ke just upar hai) */}
-             {safeData.heroSubDescription && (
-                <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
-                   {safeData.heroSubDescription}
-                </p>
-             )}
+            {/* Sub Description (Ab ye bullet points ke just upar hai) */}
+            {safeData.heroSubDescription && (
+              <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+                {safeData.heroSubDescription}
+              </p>
+            )}
 
-             {/* Bullet Points */}
-             {safeData.heroList && (
+            {/* Bullet Points */}
+            {safeData.heroList && (
               <ul className="list-disc pl-6 space-y-3 text-lg leading-relaxed text-gray-700">
                 {safeData.heroList.map((item, idx) => (
                   <li key={idx}>{item}</li>
                 ))}
               </ul>
-             )}
-             
-             {/* Link below bullets */}
-             {/* <div className="mt-8 text-center md:text-left">
+            )}
+
+            {/* Link below bullets */}
+            {/* <div className="mt-8 text-center md:text-left">
                 <span className="font-bold text-xl block md:inline">To avail a free Trial Class with us for COGAT Test Online tutoring, </span>
                 <button onClick={handleNavigate} className="text-[#00C4CC] font-bold text-xl underline hover:text-blue-600 uppercase ml-2">
                     CLICK HERE
                 </button>
              </div> */}
-
           </div>
         </section>
       )}
 
       {/* 3. INTRO (What is on the CogAT?) */}
       {(safeData.introHeading || safeData.introDescription) && (
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-4 ">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">{safeData.introHeading}</h2>
-            <p className="text-lg text-gray-700 max-w-4xl mx-auto">{safeData.introDescription}</p>
+            <p className="text-lg text-gray-700 max-w-4xl mx-auto">
+              {safeData.introDescription}
+            </p>
           </div>
         </section>
       )}
@@ -754,16 +766,26 @@ const CogatTestPrep = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
           {/* Measure */}
           <div>
-            <h2 className="text-3xl font-bold mb-4">{safeData.measureHeading}</h2>
-            <p className="text-lg text-gray-700">{safeData.measureDescription}</p>
+            <h2 className="text-3xl font-bold mb-4">
+              {safeData.measureHeading}
+            </h2>
+            <p className="text-lg text-gray-700">
+              {safeData.measureDescription}
+            </p>
           </div>
           {/* Administer */}
           <div>
-            <h2 className="text-3xl font-bold mb-4">{safeData.administerHeading}</h2>
-            <p className="text-lg text-gray-700 mb-4">{safeData.administerDescription}</p>
+            <h2 className="text-3xl font-bold mb-4">
+              {safeData.administerHeading}
+            </h2>
+            <p className="text-lg text-gray-700 mb-4">
+              {safeData.administerDescription}
+            </p>
             {safeData.administerList && (
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                {safeData.administerList.map((item, i) => <li key={i}>{item}</li>)}
+                {safeData.administerList.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             )}
           </div>
@@ -774,9 +796,13 @@ const CogatTestPrep = () => {
       {safeData.levelsTable && safeData.levelsTable.length > 0 && (
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-center">{safeData.levelsHeading}</h2>
-            <p className="text-center text-lg mb-8 max-w-4xl mx-auto">{safeData.levelsDescription}</p>
-            
+            <h2 className="text-3xl font-bold mb-6 text-center">
+              {safeData.levelsHeading}
+            </h2>
+            <p className="text-center text-lg mb-8 max-w-4xl mx-auto">
+              {safeData.levelsDescription}
+            </p>
+
             <div className="overflow-x-auto shadow-lg rounded-lg">
               <table className="w-full text-left border-collapse">
                 <thead className="bg-green-600 text-white">
@@ -801,11 +827,16 @@ const CogatTestPrep = () => {
             </div>
 
             {/* Question Count Section */}
-            {(safeData.questionCountHeading || safeData.questionCountDescription) && (
-                <div className="mt-10 text-center bg-green-50 p-6 rounded-xl">
-                    <h3 className="text-2xl font-bold text-green-900 mb-2">{safeData.questionCountHeading}</h3>
-                    <p className="text-lg text-green-800">{safeData.questionCountDescription}</p>
-                </div>
+            {(safeData.questionCountHeading ||
+              safeData.questionCountDescription) && (
+              <div className="mt-10 text-center bg-green-50 p-6 rounded-xl">
+                <h3 className="text-2xl font-bold text-green-900 mb-2">
+                  {safeData.questionCountHeading}
+                </h3>
+                <p className="text-lg text-green-800">
+                  {safeData.questionCountDescription}
+                </p>
+              </div>
             )}
           </div>
         </section>
@@ -814,88 +845,105 @@ const CogatTestPrep = () => {
       {/* 7. BATTERY DETAILS */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto space-y-12">
-            {/* Verbal */}
-            {safeData.verbalBatteryList && safeData.verbalBatteryList.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold mb-6 text-blue-800 border-b-4 border-blue-600 inline-block">
-                        {safeData.verbalBatteryHeading || "VERBAL BATTERY"}
-                    </h2>
-                    <div className="grid gap-6">
-                        {safeData.verbalBatteryList.map((item, i) => (
-                            <div key={i} className="bg-blue-50 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                                <p className="text-gray-700 whitespace-pre-wrap">{item.content}</p>
-                            </div>
-                        ))}
+          {/* Verbal */}
+          {safeData.verbalBatteryList &&
+            safeData.verbalBatteryList.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-bold mb-6 text-blue-800 border-b-4 border-blue-600 inline-block">
+                  {safeData.verbalBatteryHeading || "VERBAL BATTERY"}
+                </h2>
+                <div className="grid gap-6">
+                  {safeData.verbalBatteryList.map((item, i) => (
+                    <div key={i} className="bg-blue-50 p-6 rounded-lg">
+                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                      <p className="text-gray-700 whitespace-pre-wrap">
+                        {item.content}
+                      </p>
                     </div>
+                  ))}
                 </div>
+              </div>
             )}
 
-            {/* Non-Verbal */}
-            {safeData.nonVerbalBatteryList && safeData.nonVerbalBatteryList.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold mb-6 text-green-800 border-b-4 border-green-600 inline-block">
-                        {safeData.nonVerbalBatteryHeading || "NON-VERBAL BATTERY"}
-                    </h2>
-                    <div className="grid gap-6">
-                        {safeData.nonVerbalBatteryList.map((item, i) => (
-                            <div key={i} className="bg-green-50 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                                <p className="text-gray-700 whitespace-pre-wrap">{item.content}</p>
-                            </div>
-                        ))}
+          {/* Non-Verbal */}
+          {safeData.nonVerbalBatteryList &&
+            safeData.nonVerbalBatteryList.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-bold mb-6 text-green-800 border-b-4 border-green-600 inline-block">
+                  {safeData.nonVerbalBatteryHeading || "NON-VERBAL BATTERY"}
+                </h2>
+                <div className="grid gap-6">
+                  {safeData.nonVerbalBatteryList.map((item, i) => (
+                    <div key={i} className="bg-green-50 p-6 rounded-lg">
+                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                      <p className="text-gray-700 whitespace-pre-wrap">
+                        {item.content}
+                      </p>
                     </div>
+                  ))}
                 </div>
+              </div>
             )}
 
-            {/* Quant */}
-            {safeData.quantBatteryList && safeData.quantBatteryList.length > 0 && (
-                <div>
-                    <h2 className="text-3xl font-bold mb-6 text-yellow-800 border-b-4 border-yellow-600 inline-block">
-                        {safeData.quantBatteryHeading || "QUANTITATIVE BATTERY"}
-                    </h2>
-                    <div className="grid gap-6">
-                        {safeData.quantBatteryList.map((item, i) => (
-                            <div key={i} className="bg-yellow-50 p-6 rounded-lg">
-                                <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                                <p className="text-gray-700 whitespace-pre-wrap">{item.content}</p>
-                            </div>
-                        ))}
+          {/* Quant */}
+          {safeData.quantBatteryList &&
+            safeData.quantBatteryList.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-bold mb-6 text-yellow-800 border-b-4 border-yellow-600 inline-block">
+                  {safeData.quantBatteryHeading || "QUANTITATIVE BATTERY"}
+                </h2>
+                <div className="grid gap-6">
+                  {safeData.quantBatteryList.map((item, i) => (
+                    <div key={i} className="bg-yellow-50 p-6 rounded-lg">
+                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                      <p className="text-gray-700 whitespace-pre-wrap">
+                        {item.content}
+                      </p>
                     </div>
+                  ))}
                 </div>
+              </div>
             )}
         </div>
       </section>
 
       {/* 8. SCORING & LOCATION */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto space-y-12">
-            {/* Scoring */}
-            <div>
-                <h2 className="text-3xl font-bold mb-4 text-center">{safeData.scoringHeading}</h2>
-                <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
-                    {safeData.scoringDescription}
-                </div>
+          {/* Scoring */}
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-center">
+              {safeData.scoringHeading}
+            </h2>
+            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+              {safeData.scoringDescription}
             </div>
+          </div>
 
-            {/* Location */}
-            <div>
-                <h2 className="text-3xl font-bold mb-4 text-center">{safeData.locationHeading}</h2>
-                <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
-                    {safeData.locationDescription}
-                </div>
+          {/* Location */}
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-center">
+              {safeData.locationHeading}
+            </h2>
+            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+              {safeData.locationDescription}
             </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Footer */}
       <section className="bg-[#0f172a] py-16 px-4 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your CogAT Prep Today!</h2>
-        <button onClick={handleNavigate} className="bg-yellow-400 text-black px-10 py-4 rounded-full font-bold hover:bg-yellow-300 transition shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Start Your CogAT Prep Today!
+        </h2>
+        <button
+          onClick={handleNavigate}
+          className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition text-lg shadow-lg"
+        >
           Get Free Trial Class
         </button>
       </section>
-
     </div>
   );
 };

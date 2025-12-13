@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import { Rocket, Sun, Pencil } from "lucide-react";
 import backgroundImage from "../../../assets/work-bg.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Structure = () => {
+  const navigate = useNavigate();
   const [structureData, setStructureData] = useState([]);
 
   const getStructureData = async () => {
@@ -27,6 +29,9 @@ export const Structure = () => {
   useEffect(() => {
     getStructureData();
   }, []);
+  const handlecontact = () => {
+    navigate("/contact");
+  };
   return (
     <>
       <div
@@ -56,9 +61,18 @@ export const Structure = () => {
           </div>
 
           <div className="text-center mt-10">
-            <div className="text-center font-bold my-2">
+            <div className="font-bold my-2">
               So why wait? To avail a Free Trial Class for Science Online
               Tutoring
+            </div>
+
+            <div className="flex justify-center my-6">
+              <button
+                onClick={handlecontact}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300"
+              >
+                Start Free Trial
+              </button>
             </div>
           </div>
         </div>

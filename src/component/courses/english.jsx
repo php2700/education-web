@@ -21,8 +21,10 @@ import backgroundImage from "../../assets/work-bg.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const EnglishCourse = () => {
+  const navigate = useNavigate();
   const [aboutCoreData, setAboutCoreData] = useState([]);
   const [aboutCoreDetailData, setAboutCoreDetailData] = useState([]);
   const [languageData, setLanguageData] = useState();
@@ -81,9 +83,14 @@ export const EnglishCourse = () => {
     getAboutCoreDetail();
   }, []);
 
+  const handlecontact = () => {
+    navigate("/contact");
+  };
+
   return (
     <section>
-      <div id="common"
+      <div
+        id="common"
         className="bg-[#F0F8FF] py-16 px-6 sm:px-10 lg:px-12 relative"
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -107,7 +114,7 @@ export const EnglishCourse = () => {
             </p>
 
             <div className="text-center lg:text-left my-6">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300">
+              <button onClick={handlecontact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300">
                 Start Free Trial
               </button>
             </div>
@@ -148,7 +155,7 @@ export const EnglishCourse = () => {
         </div>
       </div>
 
-      <div id='ela' className="bg-[#F0F8FF] ">
+      <div id="ela" className="bg-[#F0F8FF] ">
         <div className="container mx-auto p-10   ">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
@@ -184,17 +191,17 @@ export const EnglishCourse = () => {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          {/* <div className="text-center mt-10">
             <div className="text-center font-bold my-2">
               So why wait? To avail a Free Trial Class for Science Online
               Tutoring
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <AboutInfoPage />
-      <div id='isee'>
-      <TestPage />
+      <div id="isee">
+        <TestPage />
       </div>
       <Measure />
       <Structure />

@@ -13,8 +13,10 @@ import {
 import tutorImg from "../../../assets/tutor-bg.png";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const TopicPage = () => {
+  const navigate=useNavigate();
   const [commonScienceData, setCommonScienceData] = useState();
   const [commonDetail, setCommonDetail] = useState([]);
 
@@ -55,9 +57,13 @@ export const TopicPage = () => {
     getCommonDetail();
   }, []);
 
+   const handleContact=()=>{
+    navigate('/contact')
+  }
+
   return (
     <>
-      <div className="bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#F0F8FF] py-6 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto mx-auto">
           <div className="text-4xl font-semibold text-center my-4">
             ABOUT COMMON CORE – SCIENCE
@@ -67,14 +73,14 @@ export const TopicPage = () => {
             So why wait? To avail a Free Trial Class for Science Online Tutoring
           </div>
           <div className="text-center my-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+            <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
               Start Free Trial
             </button>
           </div>
         </div>
       </div>
       <div
-        className="relative bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8"
+        className="relative bg-[#F0F8FF] py-4 px-4 sm:px-6 lg:px-8"
         style={{
           backgroundImage: `url(${tutorImg})`,
           backgroundSize: "contain",
@@ -186,7 +192,7 @@ export const TopicPage = () => {
                 Tutoring
               </div>
               <div className="text-center my-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+                <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
                   Start Free Trial
                 </button>
               </div>

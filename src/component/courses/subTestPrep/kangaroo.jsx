@@ -89,8 +89,8 @@ const MathKangarooTestPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition"
               >
                 CLICK HERE
               </button>
@@ -120,7 +120,7 @@ const MathKangarooTestPrep = () => {
 
       {/* FEATURES */}
       {(safeData.featuresHeading || (safeData.featuresList && safeData.featuresList.length > 0)) && (
-        <section className="bg-gray-100 py-16 px-4">
+        <section className="bg-[#F0F8FF] py-16 px-4">
             <div className="max-w-7xl mx-auto">
             
             {safeData.featuresHeading && (
@@ -175,7 +175,7 @@ const MathKangarooTestPrep = () => {
 
       {/* SCORING */}
       {(safeData.scoringHeading || safeData.scoringDescription) && (
-        <section className="bg-gray-100 py-16 px-4">
+        <section className="bg-[#F0F8FF] py-16 px-4">
             <div className="max-w-7xl mx-auto">
             
             {safeData.scoringHeading && (
@@ -199,8 +199,8 @@ const MathKangarooTestPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
               >
                 CLICK HERE
               </button>

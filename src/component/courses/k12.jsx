@@ -46,6 +46,8 @@ const K12Page = () => {
     getData();
   }, []);
 
+
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       {/* --- HERO SECTION --- */}
@@ -59,7 +61,9 @@ const K12Page = () => {
               {serviceData?.description}
             </p>
 
-            <button className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg flex items-center gap-2">
+            <button   onClick={() => {
+            navigate("/contact");
+          }} className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg flex items-center gap-2">
               Book a Session <ArrowRight size={20} />
             </button>
           </div>

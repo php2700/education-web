@@ -86,8 +86,8 @@ const AmcTestPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
               >
                 CLICK HERE
               </button>
@@ -196,7 +196,7 @@ const AmcTestPrep = () => {
 
       {/* WHY TAKE AMC */}
       {(safeData.whyHeading || safeData.whyDescription) && (
-        <section className="bg-gray-100 py-16 px-4">
+        <section className="bg-[#F0F8FF] py-16 px-4">
           <div className="max-w-7xl mx-auto">
             {safeData.whyHeading && (
               <h2 className="text-3xl font-bold mb-6">{safeData.whyHeading}</h2>
@@ -218,8 +218,8 @@ const AmcTestPrep = () => {
 
         <div className="flex justify-center gap-4">
           <button
-            onClick={() => navigate("/free-trial")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+            onClick={() => navigate("/")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
           >
             CLICK HERE
           </button>

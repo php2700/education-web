@@ -4,8 +4,10 @@ import amcImg from "../../../assets/amc.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const Completion = () => {
+  const navigate=useNavigate()
   const [completionData, setCompletionData] = useState([]);
   const [current, setCurrent] = useState(0);
 
@@ -53,10 +55,14 @@ export const Completion = () => {
       setCurrent(current - 1);
     }
   };
+
+     const handleContact=()=>{
+    navigate('/contact')
+  }
   return (
     <div>
       <div
-        className="relative bg-[#F0F8FF] py-16 px-4 sm:px-6 lg:px-8"
+        className="relative bg-[#F0F8FF] py-4 px-4 sm:px-6 lg:px-8"
         style={{
           backgroundImage: `url(${aboutImage})`,
           backgroundSize: "contain",
@@ -179,7 +185,7 @@ export const Completion = () => {
                 </h3>
               </div>
               <div className="text-center my-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+                <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
                   Start Free Trial
                 </button>
               </div>

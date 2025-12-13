@@ -293,22 +293,22 @@ const SsatTestPrep = () => {
 
   return (
     <div 
-      className="w-full bg-[#F0F8FF] min-h-screen font-sans" 
+      className="w-full min-h-screen " 
       id='ssat'
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "contain",
-        backgroundRepeat: "repeat",
-        backgroundPosition: "center",
-        backgroundBlendMode: "overlay",
-      }}
+    //   style={{
+    //     backgroundImage: `url(${backgroundImage})`,
+    //     backgroundSize: "contain",
+    //     backgroundRepeat: "repeat",
+    //     backgroundPosition: "center",
+    //     backgroundBlendMode: "overlay",
+    //   }}
     >
        <div className="max-w-7xl mx-auto px-4 md:px-12 py-16 space-y-20">
       
       {/* ================= 1. HERO SECTION ================= */}
       <div className="text-center space-y-6">
         {safeData.heroTitle && (
-            <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 drop-shadow-sm uppercase tracking-wider">
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 drop-shadow-sm uppercase tracking-wider">
               {safeData.heroTitle}
             </h1>
         )}
@@ -327,10 +327,11 @@ const SsatTestPrep = () => {
         
        
       </div>
-       <button onClick={handleNavigate}  className="bg-blue-600 mx-auto  text-white text-lg font-bold py-3 px-10 rounded-full shadow-lg transition transform hover:scale-105 mt-2">
+      <div className="text-center">
+       <button onClick={handleNavigate}  className="bg-blue-600 mx-auto  text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform hover:scale-105 mt-2">
           Click here for Free Trial Class
         </button>
-
+</div>
       {/* ================= 2. ABOUT & LEVELS ================= */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           
@@ -588,7 +589,7 @@ const SsatTestPrep = () => {
         <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-6 tracking-wide">
             Ready to start your SSAT preparation?
         </h2>
-        <button onClick={handleNavigate}  className="bg-[#E60000] hover:bg-red-700 text-white text-xl font-bold py-4 px-12 rounded-full shadow-xl transition transform hover:scale-105">
+        <button onClick={handleNavigate}  className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg shadow-xl transition transform hover:scale-105">
           Click here for Free Trial Class
         </button>
       </div>

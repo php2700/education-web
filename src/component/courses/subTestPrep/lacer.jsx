@@ -56,7 +56,7 @@ const AccuplacerPrep = () => {
 
   // --- 3. Main Content ---
   return (
-    <div className="w-full bg-white text-gray-800" id="lacer">
+    <div className="w-full text-gray-800" id="lacer">
       {/* HERO SECTION */}
       {/* Background and Button always visible */}
       <section className=" pt-20 px-4">
@@ -83,8 +83,8 @@ const AccuplacerPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
               >
                 CLICK HERE
               </button>
@@ -134,7 +134,7 @@ const AccuplacerPrep = () => {
       {/* Section renders only if content exists */}
       {(safeData.testSectionHeading ||
         (safeData.testList && safeData.testList.length > 0)) && (
-        <section className="bg-gradient-to-r from-gray-50 to-white py-16 px-4">
+        <section className=" py-16 px-4">
           <div className="max-w-7xl mx-auto">
             {/* Section Heading */}
             <h2 className="text-4xl md:text-5xl text-center font-extrabold mb-12">
@@ -260,8 +260,8 @@ const AccuplacerPrep = () => {
 
         <div className="flex justify-center gap-4">
           <button
-            onClick={() => navigate("/free-trial")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+            onClick={() => navigate("/contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
           >
             CLICK HERE
           </button>

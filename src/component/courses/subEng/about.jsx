@@ -123,9 +123,9 @@ export const AboutInfoPage = () => {
               </div>
             </div>
           </div>
-          <div className="text-center font-bold my-2">
+          {/* <div className="text-center font-bold my-2">
             So why wait? To avail a Free Trial Class for Science Online Tutoring
-          </div>
+          </div> */}
         </section>
       </main>
     </div>

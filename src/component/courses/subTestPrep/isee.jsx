@@ -76,12 +76,13 @@ const ISEE = () => {
           )}
 
           {/* BUTTON: Always Visible */}
+          <div className="text-center">
           <button
-            onClick={() => navigate("/free-trial")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition"
+            onClick={() => navigate("/contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
           >
             Click Here for Free Trial Class
-          </button>
+          </button></div>
         </div>
 
         {/* ===== 2. ABOUT ISEE ===== */}
@@ -218,8 +219,8 @@ const ISEE = () => {
 
           <div className="flex justify-center gap-4">
             <button
-              onClick={() => navigate("/free-trial")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+              onClick={() => navigate("/contact")}
+              className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white px-6 py-3 rounded-lg font-semibold transition"
             >
               CLICK HERE
             </button>

@@ -103,12 +103,12 @@ const PsatTestPrep = () => {
               Prepare with the best. Boost your confidence. Achieve higher
               scores.
             </p>
-
-            <button   onClick={() => navigate("/free-trial")} className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+<div className="text-center">
+            <button   onClick={() => navigate("/contact")} className="mt-4 bg-blue-600 text-white px-6 py-3 font-semibold text-lg rounded-lg shadow-md hover:bg-blue-700 transition">
               Click here for Free Trial Class
             </button>
           </div>
-
+</div>
           {/* RIGHT CARD (Features) */}
           {/* Agar features ki length 0 se zyada hai tabhi ye box dikhega */}
           {/* {data.features &&
@@ -240,7 +240,7 @@ const PsatTestPrep = () => {
 
             {/* CTA AGAIN */}
             <div className="text-center mt-10">
-              <button   onClick={() => navigate("/free-trial")} className="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-700 transition">
+              <button   onClick={() => navigate("/contact")} className="bg-blue-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
                 Click here for Free Trial Class
               </button>
             </div>

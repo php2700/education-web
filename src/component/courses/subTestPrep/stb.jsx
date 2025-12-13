@@ -7,7 +7,7 @@ const STBPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-      const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // --- API Call ---
   useEffect(() => {
@@ -58,7 +58,7 @@ const STBPrep = () => {
 
   // --- 3. Main Content ---
   return (
-    <div className="w-full bg-white text-gray-800" id="stb">
+    <div className="w-full  text-gray-800" id="stb">
       {/* HERO SECTION */}
       {/* Background and Button always visible */}
       <section className=" py-20 px-4">
@@ -84,8 +84,8 @@ const STBPrep = () => {
 
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-6 py-3 rounded-lg font-semibold transition"
               >
                 CLICK HERE
               </button>
@@ -157,7 +157,7 @@ const STBPrep = () => {
         (safeData.subtests && safeData.subtests.length > 0) ||
         safeData.infoHeading ||
         (safeData.timeTable && safeData.timeTable.length > 0)) && (
-        <section className="bg-gray-100 py-16 px-4">
+        <section className="bg-[#F0F8FF] py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl text-center font-bold mb-6">
               What Material is on the STB Subtests?
@@ -210,7 +210,7 @@ const STBPrep = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse border border-gray-300 mb-6">
                   <thead>
-                    <tr className="bg-gray-200">
+                    <tr className="bg-blue-600 text-white">
                       <th className="border border-gray-300 px-4 py-2">
                         Subtest + Tutorial
                       </th>
@@ -247,21 +247,20 @@ const STBPrep = () => {
         </section>
       )}
 
-    <section className="mt-4  p-4 rounded-xl text-center">
-            <h3 className="text-xl font-semibold mb-3">
-             Why not take a FREE TRIAL CLASS for STB Test online tutoring. 
+      <section className="mt-4  p-4 rounded-xl text-center">
+        <h3 className="text-xl font-semibold mb-3">
+          Why not take a FREE TRIAL CLASS for STB Test online tutoring. 
+        </h3>
 
-            </h3>
-
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={() => navigate("/free-trial")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
-              >
-                CLICK HERE
-              </button>
-            </div>
-          </section>
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
+          >
+            CLICK HERE
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

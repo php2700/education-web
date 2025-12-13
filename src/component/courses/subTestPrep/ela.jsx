@@ -119,9 +119,12 @@ const ElaPage = () => {
                 )}
 
                 {safeData.introDescription && (
-                  <div className="text-gray-700 whitespace-pre-line leading-relaxed"  dangerouslySetInnerHTML={{ __html: safeData.introDescription }}>
-                   
-                  </div>
+                  <div
+                    className="text-gray-700 whitespace-pre-line leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: safeData.introDescription,
+                    }}
+                  ></div>
                 )}
               </section>
             )}
@@ -158,8 +161,8 @@ const ElaPage = () => {
 
           <div className="flex justify-center gap-4">
             <button
-              onClick={() => navigate("/free-trial")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition"
+              onClick={() => navigate("/contact")}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
             >
               Free Trial Class
             </button>
