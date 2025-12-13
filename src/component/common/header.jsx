@@ -2330,13 +2330,7 @@ export const  HeaderBanner = () => {
   const handleUrl = () => {
     navigate("/contact");
 
-    // Time thoda badhayein taaki page load hone ke baad animation dikhe
-    setTimeout(() => {
-      window.scrollTo({
-        top: 800, // Aapki set ki hui position
-        behavior: "smooth" // 'instant' ki jagah 'smooth' likhein
-      });
-    }, 300); // 100 ki jagah 300 ya 500 try karein
+    
   };
 
   const handleHome = () => {
