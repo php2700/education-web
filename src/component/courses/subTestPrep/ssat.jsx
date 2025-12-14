@@ -461,7 +461,7 @@ const SsatTestPrep = () => {
                 {/* Middle Level */}
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold text-blue-700 mb-4 bg-blue-50 py-2 px-4 rounded-lg self-start">
-                        Middle Level Test(5th-7th Grade)
+                        Middle Level Test (5th-7th Grade)
                     </h3>
                     <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
                         <table className="w-full text-left bg-white">
@@ -506,7 +506,7 @@ const SsatTestPrep = () => {
                 {/* Upper Level */}
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold text-green-700 mb-4 bg-green-50 py-2 px-4 rounded-lg self-start">
-                        Upper Level Test(8th-11th Grade)
+                        Upper Level Test (8th-11th Grade)
                     </h3>
                     <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
                         <table className="w-full text-left bg-white">
