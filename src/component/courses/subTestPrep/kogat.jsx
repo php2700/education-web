@@ -805,7 +805,7 @@ const CogatTestPrep = () => {
 
             <div className="overflow-x-auto shadow-lg rounded-lg">
               <table className="w-full text-left border-collapse">
-                <thead className="bg-green-600 text-white">
+                <thead className="bg-blue-600 text-white">
                   <tr>
                     <th className="px-6 py-4 border">Grade</th>
                     <th className="px-6 py-4 border">Level</th>

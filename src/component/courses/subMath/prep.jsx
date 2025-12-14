@@ -22,10 +22,10 @@ export const Prep = () => {
 
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
           <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
-            WHY TO TAKE IT?
+            WHY TO TAKE IT?hjj
           </h1>
           <section className="text-gray-600 text-[16px] font-semibold">
-            <p className=" leading-relaxed mb-6">
+            {/* <p className=" leading-relaxed mb-6">
               The main purpose of the AMC 10/12 is to spur interest in
               mathematics and to develop talent through the excitement of
               solving challenging problems in a timed multiple-choice format.
@@ -35,8 +35,8 @@ export const Prep = () => {
               is intended for everyone from the average student at a typical
               school who enjoys mathematics to the very best student at the most
               special school.
-            </p>
-            <p className="leading-relaxed">
+            </p> */}
+            {/* <p className="leading-relaxed">
               A special purpose of the AMC 10/12 is to help identify those few
               students with truly exceptional mathematics talent. Students who
               are among the very best deserve some indication of how they stand
@@ -53,7 +53,7 @@ export const Prep = () => {
               in their mathematics studies and to look back with pride each year
               on how they have learned to answer questions that they could not
               have answered previously.
-            </p>
+            </p> */}
             <div className="text-center">
               <h3 className="text-2xl font-bold my-4">
                 So why wait? To avail a Free Trial Class for AMC Test Prep

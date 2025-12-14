@@ -155,6 +155,11 @@ export const About = () => {
             <Sparkles className="w-8 h-8 md:w-12 md:h-12 text-yellow-500" />
             How Are We Different?
           </h2>
+           {aboutData?.howDiffrentHeader && (
+            <p className="text-base md:text-xl text-gray-800 font-semibold mb-8 text-center px-4">
+              {aboutData.howDiffrentHeader}
+            </p>
+          )}
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-10 text-gray-700 text-base md:text-lg leading-relaxed">
             {aboutData?.howDiffrentDescription?.map((ele, i) => (
