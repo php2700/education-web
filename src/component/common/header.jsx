@@ -2811,7 +2811,7 @@ export const  HeaderBanner = () => {
         </h1>
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-500 mb-5">
           {/* Anywhere */}
-          from our experienced
+          From Our Experienced
         </h1>
         <p className=" text-sm sm:text-lg md:text-xl mb-6 mx-auto max-w-xl sm:max-w-2xl">
           {/* Connect with expert tutors for math, science, languages, and more —

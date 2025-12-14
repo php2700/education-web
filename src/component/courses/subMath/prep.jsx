@@ -22,7 +22,7 @@ export const Prep = () => {
 
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
           <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
-            WHY TO TAKE IT?hjj
+            WHY TO TAKE IT?
           </h1>
           <section className="text-gray-600 text-[16px] font-semibold">
             {/* <p className=" leading-relaxed mb-6">
