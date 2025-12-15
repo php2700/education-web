@@ -209,6 +209,8 @@ import { ShieldCheck, Sparkles, User } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 export const About = () => {
+  const { hash } = useLocation();
+
   const [aboutData, setAboutData] = useState([]);
   const [members, setMembers] = useState([]); // Management members ke liye state
   const headingRef = useRef(null);
@@ -251,6 +253,21 @@ export const About = () => {
       window.scrollTo(0, 0);
     }
   }, [pathname]);
+
+
+useEffect(() => {
+  if (!hash) return;
+
+  const timer = setTimeout(() => {
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, 300);
+
+  return () => clearTimeout(timer);
+}, [hash]);
+
 
   return (
     <>
@@ -362,10 +379,10 @@ export const About = () => {
         </section>
       )}
 
-      {/* --- WHY US SECTION --- */}
+
       <section className="py-10 bg-[#F0F8FF] px-6 sm:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+        <div id='whyus' className="max-w-7xl mx-auto">
+          <h2  className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
             <ShieldCheck className="w-12 h-12 text-indigo-600" />
             Why Us?
           </h2>

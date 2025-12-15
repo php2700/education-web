@@ -16,21 +16,7 @@ const steps = [
 ];
 
 const HowItWorks = () => {
-   const { hash } = useLocation();
 
- useEffect(() => {
-    if (!hash) return;
-console.log(hash)
-
-    const timeout = setTimeout(() => {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [hash]);
   return (
     <section
     id='howitwork'
