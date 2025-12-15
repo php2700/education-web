@@ -5,6 +5,7 @@ import { Rocket, Sun, Pencil } from "lucide-react";
 import backgroundImage from "../../../assets/work-bg.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import iseeImg from '../../../assets/isee.jpg'
 
 export const Structure = () => {
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ export const Structure = () => {
             <h1 className="text-4xl font-semibold  uppercase mb-2">
               Test Structure
             </h1>
+<div><img src={iseeImg} /></div>
+
             <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
               {structureData?.title}
             </h2>

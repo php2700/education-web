@@ -322,7 +322,7 @@ const Courses = () => {
               )}
             </div>
 
-            <p className="text-gray-700 text-center mt-8">
+            <p className="text-gray-700 text-center text-lg mt-8">
               {chapterData?.subjectDescription}
             </p>
             <p className="text-xl font-semibold text-gray-800 mb-4 text-center mt-6">

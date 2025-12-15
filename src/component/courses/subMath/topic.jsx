@@ -349,7 +349,11 @@ export const TopicPage = () => {
             <p className="text-lg text-gray-700 leading-relaxed">
               {commonScienceData?.tutorDescription}
             </p>
-
+   <div className="max-w-7xl mx-auto ">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-center">
+              TOPICS WE TUTOR?
+            </h1>
+          </div>
             {commonDetail?.map((ele, index) => (
               <section
                 key={index}
@@ -389,7 +393,7 @@ export const TopicPage = () => {
                 </div>
               </section>
             ))}
-
+  
             <section className=" mx-auto  p-4">
               <p className="text-lg font-semibold text-gray-700 leading-relaxed">
                 Experience has shown time and time again that students who spend

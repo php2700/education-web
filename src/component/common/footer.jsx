@@ -270,7 +270,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Support</h4>
             <ul className="space-y-2 text-md">
-              <li>
+              {/* <li>
                 <div
                   onClick={() => {
                     // handleUrl("/help");
@@ -280,7 +280,7 @@ const Footer = () => {
                 >
                   Help Center
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div
                   onClick={() => {

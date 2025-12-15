@@ -99,7 +99,7 @@ const ElaPage = () => {
           )}
 
           {safeData.heroDescription && (
-            <p className="mt-4 text-gray-600 max-w-7xl mx-auto whitespace-pre-line">
+            <p className="mt-4 text-gray-600 max-w-7xl text-lg mx-auto whitespace-pre-line">
               {safeData.heroDescription}
             </p>
           )}
@@ -120,7 +120,7 @@ const ElaPage = () => {
 
                 {safeData.introDescription && (
                   <div
-                    className="text-gray-700 whitespace-pre-line leading-relaxed"
+                    className="text-gray-700 text-lg whitespace-pre-line leading-relaxed"
                     dangerouslySetInnerHTML={{
                       __html: safeData.introDescription,
                     }}

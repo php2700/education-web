@@ -100,10 +100,12 @@ export const TestStructure = () => {
         </h2>
         <ul className="space-y-4 text-gray-700">
           {ele?.description.map((item, idx) => (
-            <li key={idx} className="flex gap-2">
-              <span className="font-bold">{idx + 1}.</span>
-              <span>{item}</span>
-            </li>
+          <li key={idx} className="flex gap-2">
+  <span className="font-bold">{idx + 1}.</span>
+  <span className="whitespace-pre-line">
+    {item}
+  </span>
+</li>
           ))}
         </ul>
       </div>

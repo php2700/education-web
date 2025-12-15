@@ -2524,7 +2524,7 @@ export const  HeaderBanner = () => {
                       <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
                         {sections?.map((subItem) => (
                           <div key={subItem.name} className="relative">
-                            <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition">
+                            {/* <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition">
                               <Link
                                 to={subItem.link}
                                 onClick={() => handleToggle(subItem.name)}
@@ -2551,7 +2551,30 @@ export const  HeaderBanner = () => {
                                     )}
                                   </button>
                                 )}
-                            </div>
+                            </div> */}
+<div
+  onClick={() => handleToggle(subItem.name)}
+  className="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-gray-50 transition"
+>
+  <Link
+    to={subItem.link}
+    className={`hover:text-blue-600 transition
+      ${isActiveParent(subItem)
+        ? "text-blue-600 font-semibold"
+        : "text-gray-700"
+      }
+    `}
+  >
+    {subItem.name}
+  </Link>
+
+  {subItem?.courses?.length > 0 && (
+    <span className="text-gray-500 hover:text-blue-600">
+      {openSection === subItem.name ? "▲" : "▼"}
+    </span>
+  )}
+</div>
+
 
                             {/* DESKTOP SUB-MENU */}
                             {subItem?.courses &&
@@ -2800,24 +2823,7 @@ export const  HeaderBanner = () => {
           </div>
         </div>
       </div>
-      <div className=" flex flex-col justify-center text-center my-4 ">
-        <div className="relative">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight ">
-            Personalized <span className="relative inline-block">Online</span>
-          </h1>
-        </div>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3">
-          Tutoring <span className="text-blue-500">Anytime,</span>
-        </h1>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-500 mb-5">
-          {/* Anywhere */}
-          From Our Experienced
-        </h1>
-        <p className=" text-sm sm:text-lg md:text-xl mb-6 mx-auto max-w-xl sm:max-w-2xl">
-
-           {bannerData?.description }
-        </p>
-        <marquee
+          <marquee
           behavior="scroll"
           direction="left"
           scrollamount="6"
@@ -2826,6 +2832,25 @@ export const  HeaderBanner = () => {
           {bannerData?.title}
         </marquee>
 
+      <div className=" flex flex-col justify-center text-center my-4 ">
+        
+        <div className="relative">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight ">
+            Personalized <span className="relative inline-block">Online</span>
+          </h1>
+        </div>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3">
+          Tutoring 
+        </h1>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-500 mb-5">
+          {/* Anywhere */}
+          From Our Experienced tutors.
+        </h1>
+        <p className=" text-sm sm:text-lg md:text-xl mb-6 mx-auto max-w-xl sm:max-w-2xl">
+
+           {bannerData?.description }
+        </p>
+    
         <div className="flex justify-center mt-4 items-center gap-4">
           <button
             onClick={handleUrl}

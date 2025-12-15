@@ -222,7 +222,7 @@ export const Completion = () => {
 
             {/* 🟢 MAIN CARD (Width remains same) */}
             <div className="w-full bg-[#D7E9FF] shadow-md rounded-2xl p-6 sm:p-10 text-gray-700 border border-blue-100 min-h-[300px]">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3">AMC 8</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3">{completionData?.competition?.[current]?.title}</h3>
 
               <p className="mb-4 text-gray-600 text-[16px] font-semibold leading-relaxed">
                 {completionData?.competition?.[current]?.amc}
