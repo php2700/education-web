@@ -463,8 +463,8 @@ const SsatTestPrep = () => {
                     <h3 className="text-xl font-bold text-blue-700 mb-4 bg-blue-50 py-2 px-4 rounded-lg self-start">
                         Middle Level Test (5th-7th Grade)
                     </h3>
-                    <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
-                        <table className="w-full text-left bg-white">
+                    <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm flex-grow">
+                        <table className="w-full  min-w-[600px] text-left bg-white">
                             <thead className="bg-blue-600 text-white">
                                 <tr>
                                     <th className="p-4 font-semibold">Section</th>
@@ -508,8 +508,8 @@ const SsatTestPrep = () => {
                     <h3 className="text-xl font-bold text-green-700 mb-4 bg-green-50 py-2 px-4 rounded-lg self-start">
                         Upper Level Test (8th-11th Grade)
                     </h3>
-                    <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm flex-grow">
-                        <table className="w-full text-left bg-white">
+                    <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm flex-grow">
+                        <table className="w-full min-w-[600px] text-left bg-white">
                             <thead className="bg-green-600 text-white">
                                 <tr>
                                     <th className="p-4 font-semibold">Section</th>

@@ -2814,8 +2814,7 @@ export const  HeaderBanner = () => {
           From Our Experienced
         </h1>
         <p className=" text-sm sm:text-lg md:text-xl mb-6 mx-auto max-w-xl sm:max-w-2xl">
-          {/* Connect with expert tutors for math, science, languages, and more —
-          tailored to your goals. */}
+
            {bannerData?.description }
         </p>
         <marquee
