@@ -5,6 +5,7 @@ import iseeImg from "../../../assets/isee.jpg";
 
 const ISEE = () => {
   const navigate = useNavigate();
+  
 
   // State Management
   const [data, setData] = useState(null);

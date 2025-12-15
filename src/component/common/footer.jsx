@@ -88,7 +88,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#305CDE] text-gray-900">
       {/* CTA Section with Background Image */}
-      <section
+      {/* <section
         className="relative py-24 px-6 text-center bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${import.meta.env.VITE_APP_URL}${
@@ -117,6 +117,59 @@ const Footer = () => {
             >
               Talk to an Advisor
             </button>
+          </div>
+        </div>
+      </section> */}
+      {/* CTA Section - Fixed for Responsive */}
+      <section className="relative w-full">
+        
+        {/* 1. MOBILE IMAGE (Sirf Mobile pe dikhega) */}
+        {/* Isse image puri dikhegi, kategi nahi */}
+        <div className="block md:hidden w-full">
+          <img 
+            src={`${import.meta.env.VITE_APP_URL}${bannerData?.image}`} 
+            alt="Learning Journey" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
+        {/* 2. DESKTOP BACKGROUND IMAGE (Sirf Desktop pe dikhega) */}
+        <div
+          className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${import.meta.env.VITE_APP_URL}${
+              bannerData?.image
+            })`,
+          }}
+        >
+           {/* Black Overlay only for Desktop */}
+           <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* 3. TEXT CONTENT AREA */}
+        {/* Mobile pe Blue Background, Desktop pe Transparent */}
+        <div className="relative z-10 py-12 px-6 text-center md:py-24 bg-[#305CDE] md:bg-transparent">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+              {bannerData?.title}
+            </h2>
+            <p className="text-gray-200 mb-8">{bannerData?.description}</p>
+
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+              <button
+                onClick={() => handleUrl("/contact")}
+                className="cursor-pointer bg-white text-[#305CDE] px-6 py-3 rounded-lg font-medium flex items-center gap-3 transition"
+              >
+                Get Started
+                <img src={arrow} alt="Get Started Arrow" className="w-3 h-3" />
+              </button>
+              <button
+                onClick={handleWhatsApp}
+                className="cursor-pointer border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-700 transition"
+              >
+                Talk to an Advisor
+              </button>
+            </div>
           </div>
         </div>
       </section>
