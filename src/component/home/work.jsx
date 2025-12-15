@@ -5,6 +5,7 @@ import subject from "../../assets/subject.png";
 import rightImg from "../../assets/right-tutorial.png";
 import session from "../../assets/session.png";
 import progress from "../../assets/progress.png";
+import { useLocation } from "react-router-dom";
 
 
 const steps = [
@@ -15,9 +16,24 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+   const { hash } = useLocation();
 
+ useEffect(() => {
+    if (!hash) return;
+console.log(hash)
+
+    const timeout = setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [hash]);
   return (
     <section
+    id='howitwork'
       className="relative bg-[#F0F8FF] py-20"
       style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -27,7 +43,7 @@ const HowItWorks = () => {
     >
       <div className="max-w-7xl mx-auto px-4" >
         {/* Heading */}
-        <h2 id='howitwork' className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
+        <h2  className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
           How It Works
         </h2>
         <p className=" text-center text-[#4B5563] mb-16 max-w-2xl mx-auto">
