@@ -25,9 +25,9 @@ const HowItWorks = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4" >
         {/* Heading */}
-        <h2 className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
+        <h2 id='howitwork' className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
           How It Works
         </h2>
         <p className=" text-center text-[#4B5563] mb-16 max-w-2xl mx-auto">

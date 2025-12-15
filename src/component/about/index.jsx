@@ -90,12 +90,15 @@ export const About = () => {
       </div>
 
       {/* WHY US SECTION */}
-      <section className="py-10 bg-[#F0F8FF] px-6 sm:px-12 lg:px-20">
+      <section className="py-10 bg-[#F0F8FF] px-6 sm:px-12 lg:px-20"   id="whyus">
         <div className="max-w-7xl mx-auto">
           {/* <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             Why Us?
           </h2> */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+          <h2
+          
+            className="text-3xl md:text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3"
+          >
             <ShieldCheck className="w-12 h-12 text-indigo-600" />
             Why Us?
           </h2>
@@ -173,7 +176,10 @@ export const About = () => {
 
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               {aboutData?.safetyDescription?.map((ele, i) => (
-                <div key={i} className="p-6 bg-white shadow-lg rounded-xl text-gray-700 text-base md:text-lg leading-relaxed">
+                <div
+                  key={i}
+                  className="p-6 bg-white shadow-lg rounded-xl text-gray-700 text-base md:text-lg leading-relaxed"
+                >
                   {ele}
                 </div>
               ))}
@@ -196,4 +202,3 @@ export const About = () => {
     </>
   );
 };
-
