@@ -179,8 +179,9 @@ export const Testimonial = () => {
                     “{review.description}”
                   </p>
                   <div className="flex items-center gap-3 mt-4">
-                    <div className="w-10 h-10 ">
+                    <div>
                       <img
+                        className="rounded-full h-16 w-16"
                         src={`${import.meta.env.VITE_APP_URL}${review?.image}`}
                       />
                     </div>

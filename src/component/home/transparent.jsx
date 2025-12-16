@@ -125,7 +125,7 @@ const PricingAndHowItWorks = () => {
                       <tbody>
                         {ele?.fees?.map((feeItem, i) => (
                           <tr key={i} className="border-t border-gray-200">
-                            <td className="py-3 px-4 text-gray-700 font-medium">
+                            <td className="py-3 text-left px-4 text-gray-700 font-medium">
                               {feeItem?.label}
                             </td>
                             <td className="py-3 px-4 text-center text-gray-600">
@@ -135,7 +135,7 @@ const PricingAndHowItWorks = () => {
                         ))}
 
                         <tr className="border-t border-gray-200">
-                          <td className="py-3 px-4 font-medium">
+                          <td className="py-3 text-left  px-4 font-medium">
                             Fees Per Hour
                           </td>
                           <td className="py-3 px-4 text-center">
@@ -144,7 +144,7 @@ const PricingAndHowItWorks = () => {
                         </tr>
 
                         <tr className="border-t border-gray-200">
-                          <td className="py-3 px-4 font-medium">
+                          <td className="py-3 text-left  px-4 font-medium">
                             Saving In Offers
                           </td>
                           <td className="py-3 px-4 text-center">

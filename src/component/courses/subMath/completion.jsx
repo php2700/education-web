@@ -230,18 +230,18 @@ export const Completion = () => {
 
               <p className="text-sm sm:text-base text-gray-700 mb-2">
                 <span className="font-semibold text-gray-800">
-                  Description:
+                  Description:&nbsp;
                 </span>{" "}
                 {completionData?.competition?.[current]?.description}
               </p>
 
               <p className="text-sm sm:text-base text-gray-700 mb-2">
-                <span className="font-semibold text-gray-800">For:</span>
+                <span className="font-semibold text-gray-800">For:&nbsp;</span>
                 {completionData?.competition?.[current]?.for}
               </p>
 
               <p className="text-sm sm:text-base text-gray-700">
-                <span className="font-semibold text-gray-800">When:</span>
+                <span className="font-semibold text-gray-800">When:&nbsp;</span>
                 {completionData?.competition?.[current]?.when}
               </p>
             </div>

@@ -24,28 +24,28 @@ const SubjectsAndCourses = () => {
       bgColor: "from-blue-500 to-blue-700",
       bgImg: math,
       icon: mathIcon,
-      pageUrl: "/courses/maths",
+      pageUrl: "/courses/maths#math",
     },
     {
       title: "English",
       bgColor: "from-purple-500 to-pink-500",
       bgImg: english,
       icon: engIcon,
-      pageUrl: "/courses/english",
+      pageUrl: "/courses/english#common",
     },
     {
       title: "K-12",
       bgColor: "from-indigo-500 to-blue-700",
       bgImg: lp,
       icon: kIcon,
-      pageUrl: "/courses/k-12",
+      pageUrl: "/courses/k-12#methodology",
     },
     {
       title: "Test Prep",
       bgColor: "from-red-500 to-orange-500",
       bgImg: child,
       icon: lpIcon,
-      pageUrl: "/courses/test",
+      pageUrl: "/courses/test#sat",
     },
   ];
 

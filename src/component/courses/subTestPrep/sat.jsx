@@ -83,10 +83,10 @@ const SatTestPrep = () => {
               {data.heroDescription}
             </p>
 
-            <p className="text-gray-700 leading-relaxed font-semibold">
+            {/* <p className="text-gray-700 leading-relaxed font-semibold">
               Looking for SAT preparation tutoring? You have reached the right
               place.
-            </p>
+            </p> */}
 
 <div className="text-center">
             <button  onClick={() => navigate("/contact")} className="mt-4 bg-blue-600 text-center font-semibold text-white px-6 py-3 text-lg rounded-lg shadow-md hover:bg-blue-700 ">

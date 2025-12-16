@@ -112,9 +112,9 @@ export const PrivacyPolicy = () => {
           </section>
         )}
 
-        <footer className="text-sm text-gray-500 mt-12 border-t pt-6 text-center">
-          <p>© {new Date().getFullYear()} GGES. All rights reserved.</p>
-        </footer>
+        {/* <footer className="text-sm text-gray-500 mt-12 border-t pt-6 text-center">
+          <p> © 2026, Grace Global Education Services, All rights reserved .</p>
+        </footer> */}
       </div>
     </div>
   );

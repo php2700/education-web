@@ -346,8 +346,7 @@ const Footer = () => {
         </div>
         {/* Bottom Footer */}
         <div className="mt-10 text-center text-md text-blue-100 pt-6">
-          © 2025 <span className="font-semibold">GGES</span>. All rights
-          reserved.
+          © 2026 <span className="font-semibold">Grace Global Education Services ,</span> All rights reserved
         </div>
       </section>
     </footer>

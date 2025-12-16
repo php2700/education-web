@@ -2165,16 +2165,16 @@ const sections = [
       },
       { name: "MATH ALGEBRA 1 & 2", link: "/courses/maths#algebra" },
       {
-        name: "MATH GEOMETRY-MC3",
+        name: "MATH GEOMETRY",
         link: "/courses/maths#geometry",
+      },
+       {
+        name: "MATH KANGAROO",
+        link: "/courses/maths#kangaroo",
       },
       {
         name: "Math AMC ",
         link: "/courses/maths#amc",
-      },
-      {
-        name: "MATH KANGAROO",
-        link: "/courses/maths#kangaroo",
       },
       {
         name: "MATH PRE-CALCULUS",
@@ -2183,17 +2183,7 @@ const sections = [
     ],
   },
   // { name: "k-12", link: "/courses/k-12" },
-  {
-    name: "k-12",
-    link: "/courses/k-12",
-    courses: [
-      {
-        name: "Methodology",
-        link: "/courses/k-12#methodology",
-      },
-      { name: "Subject Expertise", link: "/courses/k-12#expertise" },
-    ],
-  },
+
   {
     name: "English",
     link: "/courses/english",
@@ -2227,6 +2217,17 @@ const sections = [
       { name: "SBAC", link: "/courses/test#sbac" },
       { name: "ACCUPLACER", link: "/courses/test#lacer" },
       { name: "STB", link: "/courses/test#stb" },
+    ],
+  },
+    {
+    name: "k-12",
+    link: "/courses/k-12",
+    courses: [
+      {
+        name: "Methodology",
+        link: "/courses/k-12#methodology",
+      },
+      { name: "Subject Expertise", link: "/courses/k-12#expertise" },
     ],
   },
 ];
@@ -2521,7 +2522,7 @@ export const  HeaderBanner = () => {
                         </svg>
                       </button>
 
-                      <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-48">
+                      <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg overflow-visible border border-gray-100 z-[9999] w-72">
                         {sections?.map((subItem) => (
                           <div key={subItem.name} className="relative">
                             {/* <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition">

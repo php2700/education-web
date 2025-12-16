@@ -47,7 +47,7 @@ const HowItWorks = () => {
     key={step.id}
     // CHANGE 1: 'md:items-start' aur 'md:text-left' hata diya.
     // Ab mobile aur desktop dono par 'items-center' aur 'text-center' rahega.
-    className="relative flex flex-col items-center text-center w-full md:w-1/4 mb-12 md:mb-0 px-2"
+    className="relative flex flex-col items-center text-center w-full md:w-1/4 mb-16 lg:mb-12 md:mb-0 px-2"
   >
     {/* Step Number */}
     {/* CHANGE 2: Number ko bilkul center (left-1/2) kar diya */}
@@ -57,7 +57,7 @@ const HowItWorks = () => {
 
     {/* Icon Container */}
     {/* CHANGE 3: 'relative' add kiya taaki arrow ko absolute kar sakein */}
-    <div className="flex items-center justify-center relative w-full mb-4">
+    <div className="flex items-center justify-center relative w-full mb-1 lg:mb-4">
       <img
         src={step.img}
         alt={step.text}
