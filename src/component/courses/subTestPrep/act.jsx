@@ -143,7 +143,7 @@ const ActTestPrep = () => {
       <section className="py-12 px-4 ">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900">
-            ACT Structure (2025-26)
+            ACT TEST STRUCTURE
           </h2>
 
           <div className="flex justify-center">

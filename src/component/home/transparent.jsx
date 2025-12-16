@@ -58,7 +58,7 @@ const PricingAndHowItWorks = () => {
   const getTrsansparentData = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_APP_URL}api/user/plan`
+        `${import.meta.env.VITE_APP_URL}api/user/pricing`
       );
       setTransparentData(res?.data?.data);
     } catch (error) {
@@ -82,8 +82,8 @@ const PricingAndHowItWorks = () => {
   return (
     <div className="bg-[#F0F8FF] text-gray-900">
       {/* Transparent Pricing Section */}
-      <section className="py-20 px-5 text-center">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-10 px-5 text-center">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-[#1A202C]">
             Transparent Pricing
           </h2>
@@ -92,57 +92,84 @@ const PricingAndHowItWorks = () => {
             with a free trial.
           </p>
 
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {transparentData?.map((plan, i) => (
-              <div
-                key={i}
-                className={` flex flex-col h-full relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all border ${
-                  plan.highlight ? "border-blue-500" : "border-transparent"
-                }`}
-              >
-                {plan.highlight && (
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#305CDE] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    {plan.tag}
-                  </span>
-                )}
-                <h3 className="text-xl font-bold mb-2 text-[#000000]">
-                  {plan.name}
-                </h3>
-                <p className="text-4xl font-bold mb-1 flex items-center justify-center">
-                  {plan.amount}
-                  <span className="text-[#4B5563] text-xl font-normal">
-                    /month
-                  </span>
-                </p>
-                {/* <p className="text-[#4B5563] mb-6">/month</p> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {transparentData?.slice(0, 3).map((ele, index) => (
+              <div key={ele.id} className="z-10 py-10">
+                <div className="bg-white rounded-xl  border border-gray-200 w-full mx-auto shadow-md">
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full border border-gray-200 rounded-lg text-sm sm:text-base">
+                      <thead>
+                        <tr>
+                          <th className="py-3 px-4 text-left">
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-800">
+                              Plan Name
+                            </h3>
+                            <p className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold bg-rose-100 text-rose-700 px-3 py-1 rounded-lg inline-block shadow-sm">
+                              {ele?.planName}
+                            </p>
+                          </th>
 
-                <ul className="text-left mb-6 space-y-2">
-                  {plan.feature?.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-center gap-2 text-gray-700"
-                    >
-                      <FaCheck className="text-green-500" /> {feature}
-                    </li>
-                  ))}
-                </ul>
+                          <th className="py-3 px-4 text-center font-semibold text-gray-700">
+                            <span className="text-base sm:text-lg">
+                              Classes
+                            </span>
+                            <div className="mt-2">
+                              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-xs sm:text-sm">
+                                {ele.className}
+                              </button>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
 
-                <button
-                  className={`w-full py-3 rounded-lg font-medium transition mt-auto ${
-                    plan.highlight
-                      ? "bg-[#305CDE] text-white hover:bg-blue-700"
-                      : "bg-blue-100 text-blue-600 hover:bg-blue-200"
-                  }`}
-                  onClick={() => handleUrl()}
-                >
-                  Get Started
-                </button>
+                      <tbody>
+                        {ele?.fees?.map((feeItem, i) => (
+                          <tr key={i} className="border-t border-gray-200">
+                            <td className="py-3 px-4 text-gray-700 font-medium">
+                              {feeItem?.label}
+                            </td>
+                            <td className="py-3 px-4 text-center text-gray-600">
+                              {feeItem?.price}
+                            </td>
+                          </tr>
+                        ))}
+
+                        <tr className="border-t border-gray-200">
+                          <td className="py-3 px-4 font-medium">
+                            Fees Per Hour
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {ele?.feesPerHour || "-"}
+                          </td>
+                        </tr>
+
+                        <tr className="border-t border-gray-200">
+                          <td className="py-3 px-4 font-medium">
+                            Saving In Offers
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {ele?.off || "-"}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button
+                    className={`w-full py-3 rounded-lg font-medium transition mt-auto cursor-pointer ${
+                      // plan.highlight
+
+                      "bg-[#305CDE] text-white hover:bg-blue-700"
+                    }`}
+                    onClick={() => handleUrl()}
+                  >
+                    Get Started
+                  </button>
+                </div>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-gray-600 text-sm">
+          <p className="mt-4 text-gray-600 text-sm">
             All plans include a{" "}
             <span className="font-semibold">money-back guarantee</span>
           </p>

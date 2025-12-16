@@ -67,11 +67,11 @@ const Footer = () => {
     window.open(`${import.meta.env.VITE_APP_LINKEDIN}`, "_blank");
   };
 
-    const handleHome = () => {
+  const handleHome = () => {
     navigate("/");
   };
 
-    const handleGmail = () => {
+  const handleGmail = () => {
     const to = "info@mygges.com";
     const subject = "Inquiry";
     const body = "Hello Team,";
@@ -81,9 +81,13 @@ const Footer = () => {
     // )}&body=${encodeURIComponent(body)}`;
 
     // window.open(gmailUrl, "_blank");
-    const gmailUrl = `https://mail.google.com`
+    const gmailUrl = `https://mail.google.com`;
 
     window.open(gmailUrl, "_blank");
+  };
+
+  const handleCall = () => {
+    window.location.href = "tel:+918860296060";
   };
   return (
     <footer className="bg-[#305CDE] text-gray-900">
@@ -122,13 +126,12 @@ const Footer = () => {
       </section> */}
       {/* CTA Section - Fixed for Responsive */}
       <section className="relative w-full">
-        
         {/* 1. MOBILE IMAGE (Sirf Mobile pe dikhega) */}
         {/* Isse image puri dikhegi, kategi nahi */}
         <div className="block md:hidden w-full">
-          <img 
-            src={`${import.meta.env.VITE_APP_URL}${bannerData?.image}`} 
-            alt="Learning Journey" 
+          <img
+            src={`${import.meta.env.VITE_APP_URL}${bannerData?.image}`}
+            alt="Learning Journey"
             className="w-full h-auto object-cover"
           />
         </div>
@@ -142,8 +145,8 @@ const Footer = () => {
             })`,
           }}
         >
-           {/* Black Overlay only for Desktop */}
-           <div className="absolute inset-0 bg-black/40"></div>
+          {/* Black Overlay only for Desktop */}
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         {/* 3. TEXT CONTENT AREA */}
@@ -316,13 +319,18 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Contact</h4>
             <ul className="space-y-2 text-md">
-              <li     onClick={handleGmail} className="flex items-center gap-2 justify-center md:justify-start">
+              <li
+                onClick={handleGmail}
+                className="flex items-center gap-2 justify-center md:justify-start"
+              >
                 <img src={mail} alt="Mail" className="w-4 h-4" />
-                <span onClick={handleGmail} className="cursor-pointer"  >info@mygges.com</span>
+                <span onClick={handleGmail} className="cursor-pointer">
+                  info@mygges.com
+                </span>
               </li>
               <li className="flex items-center gap-2  cursor-pointer justify-center md:justify-start">
                 <img src={callImg} alt="Call" className="w-4 h-4" />
-                <span>+91-886-029-6060</span>
+                <span onClick={handleCall}>+91-886-029-6060</span>
               </li>
               <li className="flex justify-center md:justify-start">
                 <button
