@@ -42,7 +42,7 @@ export const Blog = () => {
   }, [location?.pathname]);
 
   const handleMore = (id) => {
-    navigate(`/blog-detail/${id}`);
+    navigate(`/blog-detail/${id}#blog`);
   };
 
   const getShortText = (html, limit = 80) => {

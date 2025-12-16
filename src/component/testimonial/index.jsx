@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import michel from "../../assets/michel.png";
 import image2 from "../../assets/client2.png";
@@ -68,7 +68,7 @@ const testimonials = [
 
 export const Testimonial = () => {
   const [testImonialData, setTestImonialData] = useState([]);
-   const headingRef = useRef(null); // Reference create kiya
+  const headingRef = useRef(null); // Reference create kiya
   const { pathname } = useLocation(); // URL track karne ke liye
 
   const [index, setIndex] = useState(0);
@@ -126,7 +126,7 @@ export const Testimonial = () => {
       }}
     >
       <div className="max-w-6xl mx-auto py-16 px-6 text-center">
-        <h2  ref={headingRef} className="text-3xl md:text-4xl font-bold mb-10">
+        <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold mb-4">
           What Our Clients Say
         </h2>
 
@@ -164,7 +164,7 @@ export const Testimonial = () => {
           ></div>
         ))}
       </div> */}
-        <section className="py-16 px-4">
+        <section className="py-6 px-4">
           <div className="max-w-7xl container mx-auto text-center">
             <div className="grid md:grid-cols-3 gap-6">
               {testImonialData?.map((review, i) => (

@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DOMPurify from "dompurify";
 
 export const OfferList = () => {
   const navigate = useNavigate();
+    const { hash } = useLocation;
   const [offerData, setOfferData] = useState([]);
 
   const getOfferData = async () => {
@@ -33,8 +34,21 @@ export const OfferList = () => {
   };
 
   const handleLearnMore = (id) => {
-    navigate(`/offer-detail/${id}`);
+    navigate(`/offer-detail/${id}#offer-detail`);
   };
+
+
+
+  useEffect(() => {
+    if (hash) return;
+    const timer = setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [hash]);
 
   const getShortText = (html, limit = 80) => {
     const cleanHtml = DOMPurify.sanitize(html || "");
@@ -50,7 +64,7 @@ export const OfferList = () => {
       {/* Offers Section */}
       <section className="py-16 px-4">
         <div className="container max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">Offers & News</h2>
+          <h2 id='offer-list' className="text-3xl md:text-4xl font-bold mb-2">Offers & News</h2>
           <p className="text-gray-600 mb-10">
             Stay updated with our latest promotions, new courses, and exciting
             announcements

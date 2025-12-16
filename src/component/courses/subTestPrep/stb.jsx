@@ -61,7 +61,7 @@ const STBPrep = () => {
     <div className="w-full  text-gray-800" id="stb">
       {/* HERO SECTION */}
       {/* Background and Button always visible */}
-      <section className=" py-20 px-4">
+      <section className=" py-10 px-4">
         <div className="max-w-7xl mx-auto ">
           {/* Title: Visible only if data exists */}
           {safeData.heroTitle && (
@@ -100,15 +100,16 @@ const STBPrep = () => {
         <section className="pt-4 px-4">
           <div className="max-w-7xl mx-auto">
             {safeData.aboutHeading && (
-              <h2 className="text-3xl font-bold mb-6 break-all">
+              <h2 className="text-3xl font-bold mb-4 break-all">
                 {safeData.aboutHeading}
               </h2>
             )}
 
             {safeData.aboutDescription && (
-              <div className="text-lg mb-4 whitespace-pre-wrap break-all">
-                {safeData.aboutDescription}
-              </div>
+              <div
+                className="text-lg mb-4 whitespace-pre-wrap"
+                dangerouslySetInnerHTML={{ __html: safeData?.aboutDescription }}
+              ></div>
             )}
           </div>
         </section>
@@ -116,12 +117,12 @@ const STBPrep = () => {
       {safeData.stbUsedDescription && (
         <section className="py-2 px-4">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 break-all">
+            <h2 className="text-3xl font-bold mb-6 ">
               What is the STB Used For?
             </h2>
 
             {safeData.stbUsedDescription && (
-              <div className="text-lg mb-4 whitespace-pre-wrap break-all">
+              <div className="text-lg mb-4 whitespace-pre-wrap ">
                 {safeData.stbUsedDescription}
               </div>
             )}
@@ -143,7 +144,7 @@ const STBPrep = () => {
             </ul>
 
             {safeData.stbSubsetDescription && (
-              <p className="text-lg mt-4 whitespace-pre-wrap break-all">
+              <p className="text-lg mt-4 whitespace-pre-wrap ">
                 {safeData.stbSubsetDescription}
               </p>
             )}

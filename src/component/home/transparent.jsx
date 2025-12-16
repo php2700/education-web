@@ -168,7 +168,12 @@ const PricingAndHowItWorks = () => {
               </div>
             ))}
           </div>
-
+          <button
+            onClick={() => handleUrl()}
+            className=" cursor-pointer bg-[#305CDE] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+          >
+            View All plans →
+          </button>
           <p className="mt-4 text-gray-600 text-sm">
             All plans include a{" "}
             <span className="font-semibold">money-back guarantee</span>

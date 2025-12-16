@@ -63,11 +63,11 @@ export const OfferAndTrust = () => {
 
 
   const handleUpdate=()=>{
-    navigate('/offer-list')
+    navigate('/offer-list#offer-list')
   }
 
   const handleLearnMore=(id)=>{
-    navigate(`/offer-detail/${id}`)
+    navigate(`/offer-detail/${id}#offer-detail`)
   }
   const getShortText = (html, limit = 80) => {
       const cleanHtml = DOMPurify.sanitize(html || "");

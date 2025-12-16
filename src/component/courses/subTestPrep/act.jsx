@@ -140,6 +140,45 @@ const ActTestPrep = () => {
           </div>
         </section>
       )}
+
+{(safeData?.additionalInfo || safeData.additionalInfoList) && (
+        <section className="py-4 px-4 ">
+          <div className="max-w-7xl mx-auto">
+            {/* Heading */}
+            {safeData?.additionalInfo && (
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 border-l-8 border-blue-600 pl-4">
+                {safeData?.additionalInfo}
+              </h2>
+            )}
+
+    
+
+            {/* Dynamic About List (Cards) */}
+            {safeData.additionalInfoList && safeData.additionalInfoList.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {safeData.additionalInfoList.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#F0F8FF] p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition"
+                  >
+                    {item.title && (
+                      <h3 className="text-xl font-bold text-blue-800 mb-3 border-b pb-2">
+                        {item.title}
+                      </h3>
+                    )}
+                    {item.description && (
+                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       <section className="py-12 px-4 ">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900">

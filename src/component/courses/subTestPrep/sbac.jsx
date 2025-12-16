@@ -115,7 +115,7 @@ const SBACPrep = () => {
       {/* ASSESSMENT DETAILS */}
       {/* Render only if content exists */}
       {safeData.assessmentPoints && safeData.assessmentPoints.length > 0 && (
-        <section className="bg-[#F0F8FF] py-16 px-4">
+        <section className="bg-[#F0F8FF] py-6 px-4">
           <div className="max-w-7xl mx-auto">
             {safeData?.assessmentDescription && (
               <section className="py-4 ">

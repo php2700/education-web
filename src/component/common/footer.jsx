@@ -324,13 +324,13 @@ const Footer = () => {
                 className="flex items-center gap-2 justify-center md:justify-start"
               >
                 <img src={mail} alt="Mail" className="w-4 h-4" />
-                <span onClick={handleGmail} className="cursor-pointer">
+                <span onClick={handleGmail} className="cursor-pointer hover:underline">
                   info@mygges.com
                 </span>
               </li>
               <li className="flex items-center gap-2  cursor-pointer justify-center md:justify-start">
                 <img src={callImg} alt="Call" className="w-4 h-4" />
-                <span onClick={handleCall}>+91-886-029-6060</span>
+                <span onClick={handleCall} className="hover:underline">+91-886-029-6060</span>
               </li>
               <li className="flex justify-center md:justify-start">
                 <button

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import blogImg from "../../assets/slide-3.jpg";
 import backgroundImage from "../../assets/work-bg.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -34,6 +34,21 @@ export const BlogDetail = () => {
   const handleBack = () => {
     navigate(-1);
   };
+
+   const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+
+    const timer = setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [hash]);
   return (
     <div
       className="bg-[#F0F8FF]"
@@ -44,7 +59,7 @@ export const BlogDetail = () => {
       }}
     >
       <div className="max-w-7xl mx-auto p-4 md:p-10 bg-gray-100 rounded-2xl shadow-2xl">
-        <button
+        <button id='blog'
           onClick={handleBack}
           className="inline-flex items-center gap-2 px-4 py-2 text-blue-700 font-semibold rounded-lg hover:text-blue-900 transition"
         >

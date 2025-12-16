@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import blogImg from "../../assets/slide-3.jpg";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import backgroundImage from "../../assets/work-bg.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 export const OfferDetail = () => {
   const [offerData, setOfferData] = useState();
+  const { hash } = useLocation();
+
   // Updated educational offer data
   const { id } = useParams();
   const navigate = useNavigate();
@@ -62,6 +64,17 @@ export const OfferDetail = () => {
     tags: ["SHSAT", "ISEE", "Education", "Tutoring", "Online Learning"],
   };
 
+  useEffect(() => {
+    if (hash) return;
+    const timer = setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [hash]);
+
   const getBlogDetail = async () => {
     try {
       const res = await axios.get(
@@ -115,12 +128,14 @@ export const OfferDetail = () => {
           Back
         </button>
 
-        <div className="flex justify-between">
+        <div id="offer-detail" className="flex justify-between">
           <h1 className="text-5xl font-extrabold mb-6 text-gray-900">
             {offerData?.title}
           </h1>
           <div>
-            <div className="text-xl font-semibold text-end">Deal</div>
+            <div className="text-xl font-semibold text-blue-400 text-end">
+              Offer
+            </div>
 
             <div className="text-xl font-semibold text-end">
               {offerData?.type}

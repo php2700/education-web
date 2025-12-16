@@ -2188,7 +2188,7 @@ const sections = [
     link: "/courses/k-12",
     courses: [
       {
-        name: "methodology",
+        name: "Methodology",
         link: "/courses/k-12#methodology",
       },
       { name: "Subject Expertise", link: "/courses/k-12#expertise" },

@@ -705,7 +705,7 @@ const CogatTestPrep = () => {
             {safeData.heroList && (
               <ul className="list-disc pl-6 space-y-3 text-lg leading-relaxed text-gray-700">
                 {safeData.heroList.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                  <li key={idx} dangerouslySetInnerHTML={{ __html: item }}></li>
                 ))}
               </ul>
             )}
@@ -723,7 +723,7 @@ const CogatTestPrep = () => {
 
       {/* 3. INTRO (What is on the CogAT?) */}
       {(safeData.introHeading || safeData.introDescription) && (
-        <section className="py-16 px-4 ">
+        <section className="py-4 px-4 ">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">{safeData.introHeading}</h2>
             <p className="text-lg text-gray-700 max-w-4xl mx-auto">
@@ -735,7 +735,7 @@ const CogatTestPrep = () => {
 
       {/* 4. TEST STRUCTURE TABLE */}
       {safeData.structureTable && safeData.structureTable.length > 0 && (
-        <section className="py-16 px-4">
+        <section className="py-4 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="overflow-x-auto shadow-lg rounded-lg">
               <table className="w-full text-left border-collapse">
@@ -778,16 +778,26 @@ const CogatTestPrep = () => {
             <h2 className="text-3xl font-bold mb-4">
               {safeData.administerHeading}
             </h2>
-            <p className="text-lg text-gray-700 mb-4">
-              {safeData.administerDescription}
-            </p>
-            {safeData.administerList && (
+            {/* <p className="text-lg text-gray-700 mb-4" dangerouslySetInnerHTML={{__html:safeData?.administerDescription}}>
+            </p> */}
+            <div
+  className="
+    text-lg text-gray-700 mb-4
+    [&_ul]:list-disc [&_ul]:pl-6
+    [&_ol]:list-decimal [&_ol]:pl-6
+    [&_li]:mb-0
+  "
+  dangerouslySetInnerHTML={{
+    __html: safeData?.administerDescription,
+  }}
+/>
+            {/* {safeData.administerList && (
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 {safeData.administerList.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
-            )}
+            )} */}
           </div>
         </div>
       </section>

@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export const TestStructure = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [mathData, setMathData] = useState([]);
   const [mathDetailData, setMathDetailData] = useState([]);
 
@@ -45,9 +45,9 @@ export const TestStructure = () => {
     }
   };
 
-   const handleContact=()=>{
-    navigate('/contact')
-  }
+  const handleContact = () => {
+    navigate("/contact");
+  };
 
   return (
     <div
@@ -75,7 +75,10 @@ export const TestStructure = () => {
           </div>
 
           <div className="text-center my-4">
-            <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+            <button
+              onClick={handleContact}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 "
+            >
               Start Free Trial
             </button>
           </div>
@@ -90,48 +93,45 @@ export const TestStructure = () => {
         </div>
 
         <main className=" py-8 space-y-12">
-         {mathDetailData?.map((ele, index) => (
-  <section key={index}>
-    <div className="grid md:grid-cols-2 gap-8">
+          {mathDetailData?.map((ele, index) => (
+            <section key={index}>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div
+                  className={`${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}
+                >
+                  <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                    {ele?.title}
+                  </h2>
+                  <ul className="space-y-4 text-gray-700">
+                    {ele?.description.map((item, idx) => (
+                      <li key={idx} className="flex gap-2">
+                        <span className="font-bold">{idx + 1}.</span>
+                        <span className="whitespace-pre-line">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      <div className={`${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}>
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-          {ele?.title}
-        </h2>
-        <ul className="space-y-4 text-gray-700">
-          {ele?.description.map((item, idx) => (
-          <li key={idx} className="flex gap-2">
-  <span className="font-bold">{idx + 1}.</span>
-  <span className="whitespace-pre-line">
-    {item}
-  </span>
-</li>
+                {/* IMAGE COLUMN */}
+                <div
+                  className={`${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}`}
+                >
+                  <img
+                    src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
+                    alt="Student studying"
+                    className="w-full"
+                  />
+                </div>
+              </div>
+            </section>
           ))}
-        </ul>
-      </div>
-
-      {/* IMAGE COLUMN */}
-      <div className={`${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}`}>
-        <img
-          src={`${import.meta.env.VITE_APP_URL}${ele.image}`}
-          alt="Student studying"
-          className="w-full"
-        />
-      </div>
-
-    </div>
-  </section>
-))}
-
-
-          
         </main>
         <div className="mt-2 text-[16px] font-semibold text-gray-600">
-            We have the best content and specialized tutors available for Math
-            Kangaroo.
-          </div>
+          We have the best content and specialized tutors available for Math
+          Kangaroo.
+        </div>
       </div>
-      
+
       <div className="text-center">
         <h3 className="text-xl font-semibold my-2">
           So why wait? To avail a Free Trial Class for AMC Test Prep Online
@@ -139,7 +139,10 @@ export const TestStructure = () => {
         </h3>
       </div>
       <div className="text-center my-4">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
+        <button
+          onClick={handleContact}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 "
+        >
           Start Free Trial
         </button>
       </div>
