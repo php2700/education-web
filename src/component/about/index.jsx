@@ -296,10 +296,10 @@ useEffect(() => {
 
           {/* ABOUT CONTENT */}
           <div className="space-y-6">
-            <h1 className="text-3xl lg:text-4xl font-extrabold text-[#0E1D3E] leading-tight">
+            {/* <h1 className="text-3xl lg:text-4xl font-extrabold text-[#0E1D3E] leading-tight">
               Personalized Online <br />
               <span className="text-[#0572E6]">Tutoring Anytime, Anywhere</span>
-            </h1>
+            </h1> */}
             {aboutData?.description?.slice(0, 2)?.map((ele, i) => (
               <p key={i} className="text-gray-700 text-lg leading-relaxed">
                 {ele}

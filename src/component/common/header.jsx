@@ -2160,24 +2160,24 @@ const sections = [
     link: "/courses/maths",
     courses: [
       {
-        name: "Common Core Math",
+        name: "MATH COMMON CORE – MC1",
         link: "/courses/maths#math",
       },
-      { name: "Math Algebra", link: "/courses/maths#algebra" },
+      { name: "MATH ALGEBRA 1 & 2 – MC2", link: "/courses/maths#algebra" },
       {
-        name: "Geometry",
+        name: "MATH GEOMETRY-MC3",
         link: "/courses/maths#geometry",
       },
       {
-        name: "Math Amc",
+        name: "Math AMC - MC4",
         link: "/courses/maths#amc",
       },
       {
-        name: "Math Kangaroo",
+        name: "MATH KANGAROO – MC5",
         link: "/courses/maths#kangaroo",
       },
       {
-        name: "Common Core Science",
+        name: "MATH PRE-CALCULUS",
         link: "/courses/maths#science",
       },
     ],
