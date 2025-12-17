@@ -62,7 +62,7 @@ export const AboutInfoPage = () => {
       </div>
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <p className="text-sm text-gray-800 leading-relaxed ">
+        <p className="text-lg text-gray-800 leading-relaxed ">
           {aboutData?.description}
         </p>
 
@@ -77,13 +77,13 @@ export const AboutInfoPage = () => {
           <h3 className="text-2xl font-bold mb-6  text-center ">
             Who takes this test?
           </h3>
-          <p className="text-gray-700 text-sm leading-relaxed mb-2">
+          {/* <p className=" text-lg leading-relaxed mb-2">
             Students in grades 3–10 take the State English Language Arts (ELA)
             test each spring. These assessments measure the Common Core Learning
             Standards (CCLS).
-          </p>
-          <p className="text-gray-500 font-semibold leading-relaxed">
-            {aboutData.whoTake}
+          </p> */}
+          <p className=" text-lg leading-relaxed" dangerouslySetInnerHTML={{__html:aboutData?.whoTake}}>
+
           </p>
         </section>
 

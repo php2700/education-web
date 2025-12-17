@@ -78,14 +78,14 @@ const SHSAT = () => {
           )}
 
           {/* BUTTON: Ye hamesha dikhega (Default) */}
-          <div className="text-center">
-            <button
-              onClick={() => navigate("/contact")}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition"
-            >
-              Click Here for Free Trial Class
-            </button>
-          </div>
+      <div className="text-center text-lg mb-2">So why wait? To avail a Free Trial Class for SHSAT Test Prep Online Tutoring, &nbsp; 
+   <span
+                onClick={() => navigate("/contact")}
+                className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
+              >
+               CLICK HERE
+              </span>
+  </div>
         </div>
 
         {/* ===== ALL ABOUT SHSAT (Dynamic Section) ===== */}
@@ -94,7 +94,7 @@ const SHSAT = () => {
           (safeData.aboutItems && safeData.aboutItems.length > 0)) && (
           <div className="bg-[#F0F8FF] p-8 rounded-2xl shadow-xl mb-10">
             {safeData.aboutMainHeading && (
-              <h2 className="text-2xl font-semibold mb-4 text-blue-800">
+              <h2 className="text-2xl font-bold mb-4 text-blue-800">
                 {safeData.aboutMainHeading}
               </h2>
             )}
@@ -105,7 +105,7 @@ const SHSAT = () => {
               safeData.aboutItems.map((item, index) => (
                 <div key={index} className="mb-6 last:mb-0">
                   {item.title && (
-                    <h3 className="text-xl font-semibold mt-6 mb-2 text-blue-700">
+                    <h3 className="text-xl font-bold mt-6 mb-2 text-blue-700">
                       {item.title}
                     </h3>
                   )}
@@ -127,7 +127,7 @@ const SHSAT = () => {
             safeData.structurePoints.length > 0)) && (
           <div className="bg-[#F0F8FF] p-8 rounded-2xl shadow-xl mb-10">
             {safeData.structureHeading && (
-              <h2 className="text-2xl font-semibold mb-6 text-blue-800">
+              <h2 className="text-2xl font-bold mb-6 text-blue-800">
                 {safeData.structureHeading}
               </h2>
             )}

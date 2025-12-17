@@ -58,13 +58,13 @@ export const Structure = () => {
 
           {/* Description Paragraph */}
           <div className="mb-12">
-            <p className="text-gray-700 text-base leading-relaxed  mx-auto">
+            <p className=" text-lg leading-relaxed  mx-auto">
               {structureData?.description}
             </p>
           </div>
 
           <div className="text-center mt-10">
-            <div className="font-bold my-2">
+            <div className="font-bold text-lg my-2">
               So why wait? To avail a Free Trial Class for Science Online
               Tutoring
             </div>

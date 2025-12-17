@@ -319,10 +319,13 @@ export const TopicPage = () => {
           <div className="text-4xl font-semibold text-center my-4">
             ABOUT COMMON CORE – SCIENCE
           </div>
-          <p className="my-2 ">{commonScienceData?.description}</p>
-          <div className="text-center font-bold my-2">
-            So why wait? To avail a Free Trial Class for Science Online Tutoring
-          </div>
+          <p className="my-2  text-lg">{commonScienceData?.description}</p>
+          <div className="text-center">
+        <h3 className="text-lg font-semibold my-2">
+          So why wait? To avail a Free Trial Class for AMC Test Prep Online
+          Tutoring
+        </h3>
+      </div>
           <div className="text-center my-4">
             <button onClick={handleContact} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ">
               Start Free Trial

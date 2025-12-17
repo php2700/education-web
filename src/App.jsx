@@ -27,6 +27,7 @@ import K12Page from "./component/courses/k12";
 import { OfferList } from "./component/home/offer-list";
 import { BlogDetail } from "./component/blog/blogDetail";
 import { OfferDetail } from "./component/home/offer-detail";
+import { Upward } from "./component/scroll/upArrow";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <ScrollToTop />
+        <Upward/>
         <HeaderBanner />
         <Routes>
           <Route path="/" index element={<Home />} />

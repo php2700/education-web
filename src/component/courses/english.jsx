@@ -104,7 +104,7 @@ export const EnglishCourse = () => {
               {languageData?.heading}
             </h2>
 
-            <p className="font-medium text-[15px] sm:text-[16px] text-gray-600 mb-4 leading-relaxed">
+            <p className="text-lg  text-gray-600 mb-4 leading-relaxed">
               {languageData?.description}
             </p>
 
@@ -162,7 +162,7 @@ export const EnglishCourse = () => {
               ABOUT COMMON CORE – ELA
             </h2>
             {aboutCoreData?.coreDescription?.map((ele) => (
-              <p className=" font-semibold text-[16px] text-gray-500  mx-auto text-justify leading-relaxed">
+              <p className=" text-lg   mx-auto text-justify leading-relaxed">
                 {ele}
               </p>
             ))}
@@ -172,7 +172,7 @@ export const EnglishCourse = () => {
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 flex items-center  gap-2">
                 WHAT WE COVER?
               </h3>
-              <p className="text-gray-600  mx-auto text-sm sm:text-base">
+              <p className="  mx-auto text-lg">
                 {aboutCoreData?.coverDescription}
               </p>
             </div>
@@ -186,17 +186,27 @@ export const EnglishCourse = () => {
                 <div className={`text-3xl p-3 rounded-full bg-[#554FE8] `}>
                   <img src={`${import.meta.env.VITE_APP_URL}${item.image}`} />
                 </div>
-                <p className="font-medium text-md sm:text-lg">{item.title}</p>
+                <p className="font-medium text-lg ">{item.title}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-10">
-            <div className="text-center font-bold my-2">
+            <div className="text-center text-lg font-bold my-2">
               So why wait? To avail a Free Trial Class for Science Online
               Tutoring
             </div>
+         <div className="flex justify-center my-6">
+  <button
+    onClick={handlecontact}
+    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300"
+  >
+    Start Free Trial
+  </button>
+</div>
+
           </div>
+          
         </div>
       </div>
       <AboutInfoPage />

@@ -222,8 +222,7 @@ const ActTestPrep = () => {
                       </h3>
                     )}
                     {item.description && (
-                      <div className="text-gray-700 whitespace-pre-wrap leading-relaxed text-lg">
-                        {item.description}
+                      <div className="text-gray-700 whitespace-pre-wrap leading-relaxed text-lg" dangerouslySetInnerHTML={{__html:item?.description}}>
                       </div>
                     )}
                   </div>

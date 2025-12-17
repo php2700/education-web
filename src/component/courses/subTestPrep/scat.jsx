@@ -63,7 +63,7 @@ const ScatTestPrep = () => {
             </p>
           )}
 
-          <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+          <div className="text-gray-700 text-lg leading-7 mb-6 whitespace-pre-line">
             So why wait? To avail a Free Trial Class for SCAT Test Prep Online
             Tutoring
           </div>
@@ -148,8 +148,9 @@ const ScatTestPrep = () => {
       {(safe.scoringHeading || safe.scoringLevels?.length > 0) && (
         <section className="py-4 px-4">
           <div className="max-w-7xl mx-auto space-y-10">
+            <div className="text-3xl font-bold">Scoring and Timing</div>
             {safe.scoringHeading && (
-              <h2 className="text-3xl font-bold">{safe.scoringHeading}</h2>
+              <h2 className="text-xl" dangerouslySetInnerHTML={{__html:safe.scoringHeading}}></h2>
             )}
 
             {safe.scoringLevels?.length > 0 && (
@@ -165,7 +166,7 @@ const ScatTestPrep = () => {
                 ))}
               </div>
             )}
-            <p>
+            <p className="text-lg">
               This scaled score is based on the number of questions the student
               answers correctly out of the 50 scored questions in each section.
             </p>
@@ -180,7 +181,7 @@ const ScatTestPrep = () => {
             {safe.tipsHeading && (
               <h2 className="text-3xl font-bold mb-2">{safe.tipsHeading}</h2>
             )}
-            <div className="mb-4">
+            <div className="mb-4 text-lg">
               However, during our sessions on the SCAT test preparations, we
               equip our students by giving Tips and Tricks to answer SCAT test
               questions quickly and accurately. Still here are general tips for

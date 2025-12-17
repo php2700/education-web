@@ -13,10 +13,31 @@ import quantitative from "../../../assets/quantitative.png";
 import reading from "../../../assets/reading.png";
 import mathematics from "../../../assets/mathmatics.png";
 import essay from "../../../assets/essay.png";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 export const Measure = () => {
- 
+  const [aboutData,setAboutData]=useState();
+   const getAboutData = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_URL}api/user/measure`
+      );
+      setAboutData(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error?.message ||
+          "something went wrong",
+        { position: "top-right" }
+      );
+    }
+  };
+
+  useEffect(() => {
+    getAboutData();
+  }, []);
   return (
     <>
       <div className="bg-[#F0F8FF]">
@@ -37,11 +58,12 @@ export const Measure = () => {
                   <img src={verbal} className="w-6 h-6 " />
                 </div>
               </div>
-              <h3 className="text-lg  font-semibold text-gray-900 mb-2">
-                Verbal Reasoning:
+              <h3 className="text-lg  font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title1}}>
+               
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Vocabulary and verbal skills.
+              
+                {aboutData?.description1}
               </p>
             </div>
 
@@ -52,11 +74,11 @@ export const Measure = () => {
                   <img src={quantitative} className="w-6 h-6 " />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Quantitative Reasoning:
+              <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title2}}>
+               
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Problem-solving skills and logic.
+              {aboutData?.description2}
               </p>
             </div>
 
@@ -67,11 +89,11 @@ export const Measure = () => {
                   <img src={reading} className="w-6 h-6 " />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Reading Comprehension:
+              <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title3}}>
+              
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Understanding and analyzing passages.
+                {aboutData?.description3}
               </p>
               <div className="absolute top-6 right-6 w-2 h-2 bg-gray-300 rounded-full"></div>
             </div>
@@ -86,11 +108,11 @@ export const Measure = () => {
                   <img src={mathematics} className="w-6 h-6 " />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Mathematics Achievement:
+              <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title4}}>
+              
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Knowledge of mathematical concepts.
+               {aboutData?.description4}
               </p>
             </div>
 
@@ -101,11 +123,11 @@ export const Measure = () => {
                   <img src={essay} className="w-6 h-6 " />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Essay:
+              <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title5}}>
+            
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Written communication skills.
+                {aboutData?.description5}
               </p>
             </div>
           </div>

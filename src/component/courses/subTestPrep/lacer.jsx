@@ -77,21 +77,16 @@ const AccuplacerPrep = () => {
             </p>
           )}
 
-          <section className="mt-4  p-4 rounded-xl text-center">
-            <h3 className="text-xl font-semibold mb-3">
-              So why wait? To avail a Free Trial Class for Accuplacer Test Prep
-              Online Tutoring
-            </h3>
-
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={() => navigate("/contact")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition"
-              >
-                CLICK HERE
-              </button>
-            </div>
-          </section>
+          <div className="text-center text-lg mb-2">
+            So why wait? To avail a Free Trial Class for Accuplacer Test Prep
+            Online Tutoring, &nbsp;
+            <span
+              onClick={() => navigate("/contact")}
+              className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
+            >
+              CLICK HERE
+            </span>
+          </div>
         </div>
       </section>
 

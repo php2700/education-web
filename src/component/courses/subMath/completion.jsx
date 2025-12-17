@@ -73,7 +73,7 @@ export const Completion = () => {
           <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
             ABOUT AMC TEST
           </h3>
-          <p className="text-gray-700  mb-10  mx-auto">
+          <p className="text-gray-700 text-lg  mb-10  mx-auto">
             {completionData?.description}
           </p>
 
@@ -82,7 +82,7 @@ export const Completion = () => {
               <h4 className="text-2xl font-bold text-gray-900 mb-6">
                 {completionData?.title}
               </h4>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 text-lg mb-6">
                 The MAA AMC proudly engages students with a dedicated group of
                 participants, each crucial to the success of our mathematical
                 community:
@@ -94,7 +94,7 @@ export const Completion = () => {
                       {index + 1}
                     </div>
                     <div>
-                      <p className="text-gray-700">{ele}</p>
+                      <p className="text-gray-700 text-lg">{ele}</p>
                     </div>
                   </div>
                 ))}
@@ -331,9 +331,9 @@ export const Completion = () => {
             <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-center">
               WHY TO TAKE IT?
             </h1>
-            <section className="text-gray-600 text-[16px] font-semibold mt-4">
+            <section className="text-gray-600 text-lg mt-4">
               {completionData?.whyTake?.map((ele, i) => (
-                <p key={i} className="leading-relaxed mb-6">
+                <p key={i} className="leading-relaxed  mb-6">
                   {ele}
                 </p>
               ))}

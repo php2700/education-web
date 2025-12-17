@@ -35,6 +35,11 @@ export const TestPage = () => {
   return (
     <div className="bg-[#F0F8FF]">
       <div className="container mx-auto">
+        <div className="text-3xl font-bold text-center">ISEE TEST PREP</div>
+        {measureData?.title?.slice(0, 1)?.map((ele) => (
+          <p className="text-lg mt-2 leading-relaxed ">{ele}</p>
+        ))}
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
             ALL ABOUT ISEE TEST
@@ -42,10 +47,8 @@ export const TestPage = () => {
         </div>
 
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {measureData?.title?.map((ele) => (
-            <p className="text-lg text-gray-700 leading-relaxed text-center">
-              {ele}
-            </p>
+          {measureData?.title?.slice(1)?.map((ele) => (
+            <p className="text-lg mb-1 leading-relaxed ">{ele}</p>
           ))}
 
           {/* Purpose of the ISEE */}

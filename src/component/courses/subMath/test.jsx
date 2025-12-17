@@ -65,7 +65,7 @@ export const TestStructure = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-center my-2 text-gray-800">
               MATH KANGAROO TEST PREP
             </h2>
-            <p className="text-md font-semibold text-gray-500 leading-relaxed">
+            <p className="text-lg text-gray-500 leading-relaxed">
               {mathData?.testPrepDescription}
             </p>
             <p className="text-xl text-center font-bold text-gray-700 leading-relaxed mt-4">
@@ -86,7 +86,7 @@ export const TestStructure = () => {
         <div className=" py-4">
           <h1 className="text-3xl font-bold text-center">TEST STRUCTURE</h1>
           {mathData?.testStructureDescription?.map((ele) => (
-            <p className="my-4 font-semibold text-[16px] text-gray-500">
+            <p className="my-4  text-[18px] ">
               {ele}
             </p>
           ))}
@@ -102,7 +102,7 @@ export const TestStructure = () => {
                   <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                     {ele?.title}
                   </h2>
-                  <ul className="space-y-4 text-gray-700">
+                  <ul className="space-y-4 text-lg text-gray-700">
                     {ele?.description.map((item, idx) => (
                       <li key={idx} className="flex gap-2">
                         <span className="font-bold">{idx + 1}.</span>
@@ -126,7 +126,7 @@ export const TestStructure = () => {
             </section>
           ))}
         </main>
-        <div className="mt-2 text-[16px] font-semibold text-gray-600">
+        <div className="mt-2 text-[18px] font-semibold text-center ">
           We have the best content and specialized tutors available for Math
           Kangaroo.
         </div>
