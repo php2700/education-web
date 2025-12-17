@@ -129,7 +129,7 @@ const ActTestPrep = () => {
                       </h3>
                     )}
                     {item.description && (
-                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                      <p className="text-gray-700 whitespace-pre-wrap text-lg leading-relaxed">
                         {item.description}
                       </p>
                     )}
@@ -167,7 +167,7 @@ const ActTestPrep = () => {
                       </h3>
                     )}
                     {item.description && (
-                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                      <p className="text-gray-700 text-lg whitespace-pre-wrap leading-relaxed">
                         {item.description}
                       </p>
                     )}
@@ -243,9 +243,8 @@ const ActTestPrep = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Start Your ACT Prep Today!
           </h2>
-          <p className="mb-8 text-lg ">
-            Take a Free Trial Online Tutoring class for ACT or SAT test
-            preparation and boost your confidence.
+          <p className="mb-8 text-lg font-semibold ">
+           To know more or to take a Free Trial Online tutoring class for ACT or SAT test preparation tutoring, 
           </p>
           <div className="text-center mt-8">
             <button

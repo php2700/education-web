@@ -32,7 +32,7 @@ const HowItWorks = () => {
         <h2  className="font-[Poppins] font-semibold text-[48px] leading-[40px] tracking-[0px] text-[#000000] text-center mb-3">
           How It Works
         </h2>
-        <p className=" text-center text-[#4B5563] mb-16 max-w-2xl mx-auto">
+        <p className=" text-center text-[#4B5563] mb-16 max-w-3xl text-lg mx-auto">
           Getting started with your personalized learning journey is simple.
           Follow these four easy steps.
         </p>

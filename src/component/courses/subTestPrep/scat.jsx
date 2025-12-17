@@ -58,12 +58,12 @@ const ScatTestPrep = () => {
           )}
 
           {safe.heroDescription && (
-            <p className="text-lg md:text-xl mb-6 whitespace-pre-line">
+            <p className="text-lg  mb-6 whitespace-pre-line">
               {safe.heroDescription}
             </p>
           )}
 
-          <div className="text-gray-700 text-lg leading-7 mb-6 whitespace-pre-line">
+          {/* <div className="text-gray-700 text-lg leading-7 mb-6 whitespace-pre-line">
             So why wait? To avail a Free Trial Class for SCAT Test Prep Online
             Tutoring
           </div>
@@ -75,7 +75,16 @@ const ScatTestPrep = () => {
             >
               Click Here for Free Trial Class
             </button>
-          </div>
+          </div> */}
+
+           <div className="text-center font-semibold text-lg mb-2">So why wait? To avail a Free Trial Class for SCAT Test Prep Online Tutoring, &nbsp; 
+   <span
+                onClick={() => navigate("/contact")}
+                className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
+              >
+               CLICK HERE
+              </span>
+  </div>
         </div>
       </section>
 
@@ -91,7 +100,7 @@ const ScatTestPrep = () => {
             )}
 
             {safe.aboutDescription && (
-              <p className="text-lg whitespace-pre-line">
+              <p className="text-lg whitespace-pre-line ">
                 {safe.aboutDescription}
               </p>
             )}
@@ -135,7 +144,7 @@ const ScatTestPrep = () => {
                     key={i}
                   >
                     <h3 className="text-xl font-bold mb-1">{sec.title}</h3>
-                    <p className="whitespace-pre-line">{sec.description}</p>
+                    <p className="whitespace-pre-line text-lg">{sec.description}</p>
                   </div>
                 ))}
               </div>
@@ -161,7 +170,7 @@ const ScatTestPrep = () => {
                     className="border p-6 rounded-xl shadow-sm bg-white"
                   >
                     <h3 className="text-xl font-bold mb-3">{lvl.title}</h3>
-                    <p className="whitespace-pre-line">{lvl.details}</p>
+                    <p className="whitespace-pre-line text-lg">{lvl.details}</p>
                   </div>
                 ))}
               </div>

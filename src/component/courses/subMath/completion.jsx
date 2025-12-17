@@ -224,8 +224,7 @@ export const Completion = () => {
             <div className="w-full bg-[#D7E9FF] shadow-md rounded-2xl p-6 sm:p-10 text-gray-700 border border-blue-100 min-h-[300px]">
               <h3 className="text-xl sm:text-2xl font-bold mb-3">{completionData?.competition?.[current]?.title}</h3>
 
-              <p className="mb-4 text-gray-600 text-[16px] font-semibold leading-relaxed">
-                {completionData?.competition?.[current]?.amc}
+              <p className="mb-4 text-gray-600 text-[16px] font-semibold leading-relaxed" dangerouslySetInnerHTML={{__html:completionData?.competition?.[current]?.amc}}>
               </p>
 
               <p className="text-sm sm:text-base text-gray-700 mb-2">

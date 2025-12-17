@@ -72,13 +72,13 @@ const SHSAT = () => {
         <div className="bg-[#F0F8FF]  p-8 rounded-2xl shadow-xl mb-10">
           {/* Description Text - Sirf tab dikhega jab data ho */}
           {safeData.heroDescription && (
-            <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+            <div className="text-gray-700 text-lg leading-7 mb-6 whitespace-pre-line">
               {safeData.heroDescription}
             </div>
           )}
 
           {/* BUTTON: Ye hamesha dikhega (Default) */}
-      <div className="text-center text-lg mb-2">So why wait? To avail a Free Trial Class for SHSAT Test Prep Online Tutoring, &nbsp; 
+      <div className="text-center font-semibold text-lg mb-2">So why wait? To avail a Free Trial Class for SHSAT Test Prep Online Tutoring, &nbsp; 
    <span
                 onClick={() => navigate("/contact")}
                 className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
@@ -111,7 +111,7 @@ const SHSAT = () => {
                   )}
                   {item.content && (
                     <p
-                      className="text-gray-700 leading-7 whitespace-pre-line"
+                      className="text-gray-700 leading-7 text-lg whitespace-pre-line"
                       dangerouslySetInnerHTML={{ __html: item.content }}
                     ></p>
                   )}
@@ -161,7 +161,7 @@ const SHSAT = () => {
           <h2 className="text-2xl font-bold mb-4">
             Get started with GGES SHSAT Test Prep
           </h2>
-          <p className="mb-6">
+          <p className="mb-6 text-lg">
             Our expert tutors and strategic plan help you score higher and
             secure admission to top specialized high schools.
           </p>

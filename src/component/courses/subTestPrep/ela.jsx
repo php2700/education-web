@@ -147,7 +147,7 @@ const ElaPage = () => {
                   <h4 className="text-xl font-bold text-blue-600 mb-1">
                     {pt.title}
                   </h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 text-lg leading-relaxed">
                     {pt.description}
                   </p>
                 </div>

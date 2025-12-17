@@ -81,20 +81,22 @@ const PsatTestPrep = () => {
               </h1>
             )}
             {data.heroSubtitle && (
-              <p className="text-gray-600 text-sm md:text-base  mx-auto">
+              <p className="text-gray-600 text-lg  mx-auto">
                 {data.heroSubtitle}
               </p>
             )}
           </div>
         )}
-<div className="text-center text-lg mb-2">So why wait? To avail a Free Trial Class for PSAT Test Prep Online Tutoring, 
-   <span
-                onClick={() => navigate("/contact")}
-                className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
-              >
-                CLICK HERE
-              </span>
-  </div>
+        <div className="text-center font-semibold text-lg mb-2">
+          So why wait? To avail a Free Trial Class for PSAT Test Prep Online
+          Tutoring,
+          <span
+            onClick={() => navigate("/contact")}
+            className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
+          >
+            CLICK HERE
+          </span>
+        </div>
         {/* ===== MAIN CONTENT ===== */}
         <div className=" items-center">
           {/* LEFT CONTENT (Description) */}
@@ -104,7 +106,7 @@ const PsatTestPrep = () => {
             </div>
 
             {data.heroDescription && (
-              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap ">
+              <div className="text-gray-700 leading-relaxed text-lg whitespace-pre-wrap ">
                 {data.heroDescription}
               </div>
             )}
@@ -162,7 +164,7 @@ const PsatTestPrep = () => {
             )}
 
             {data.aboutDescription && (
-              <p className="text-gray-700 mb-8  mx-auto whitespace-pre-wrap break-all">
+              <p className="text-gray-700 mb-8  mx-auto whitespace-pre-wrap text-lg">
                 {data.aboutDescription}
               </p>
             )}
@@ -171,86 +173,71 @@ const PsatTestPrep = () => {
               PSAT TEST STRUCTURE
             </h3>
 
-            {/* TABLE */}
-            {data.tableData &&
-              data.tableData.length > 0 &&
-              data.tableData[0].section !== "" && (
-                <div className="overflow-x-auto">
-                  <table className="w-full border border-gray-300 text-left">
-                    <thead className="bg-blue-600 text-white">
-                      <tr>
-                        <th className="p-3 border">Section</th>
-                        <th className="p-3 border">Length(minutes)</th>
-                        <th className="p-3 border">
-                          Number of Questions/Tasks
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      {data.tableData.map((row, index) => (
-                        <tr
-                          key={index}
-                          className={
-                            index % 2 === 0 ? "bg-white" : "bg-gray-100"
-                          }
-                        >
-                          <td className="p-3 border font-semibold">
-                            {row.section}
-                          </td>
-                          <td className="p-3 border">{row.time}</td>
-                          <td className="p-3 border">{row.modules}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
+            {data.tableData?.length > 0 && data.tableData[0].section !== "" && (
+              <table className="w-full table-fixed border border-gray-300 text-left mb-10">
+                <thead className="bg-blue-600 text-white">
+                  <tr>
+                    <th className="w-1/3 p-3 border">Section</th>
+                    <th className="w-1/3 p-3 border">Length (minutes)</th>
+                    <th className="w-1/3 p-3 border">
+                      Number of Questions / Tasks
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.tableData.map((row, index) => (
+                    <tr
+                      key={index}
+                      className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+                    >
+                      <td className="p-3 border font-semibold">
+                        {row.section}
+                      </td>
+                      <td className="p-3 border">{row.time}</td>
+                      <td className="p-3 border">{row.modules}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
 
             <h3 className="text-2xl font-bold my-4  text-gray-800">
               EXAM PERIOD
             </h3>
 
-            {/* TABLE */}
-            {data.examPeriod &&
-              data.examPeriod.length > 0 &&
+            {data.examPeriod?.length > 0 &&
               data.examPeriod[0].section !== "" && (
-                <div className="overflow-x-auto">
-                  <table className="w-full border border-gray-300 text-left">
-                    <thead className="bg-blue-600 text-white">
-                      <tr>
-                        <th className="p-3 border">Grade Level </th>
-                        <th className="p-3 border">Season</th>
-                        <th className="p-3 border">Exam</th>
+                <table className="w-full table-fixed border border-gray-300 text-left">
+                  <thead className="bg-blue-600 text-white">
+                    <tr>
+                      <th className="w-1/3 p-3 border">Grade Level</th>
+                      <th className="w-1/3 p-3 border">Season</th>
+                      <th className="w-1/3 p-3 border">Exam</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.examPeriod.map((row, index) => (
+                      <tr
+                        key={index}
+                        className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+                      >
+                        <td className="p-3 border font-semibold">
+                          {row.section}
+                        </td>
+                        <td className="p-3 border">{row.time}</td>
+                        <td className="p-3 border">{row.modules}</td>
                       </tr>
-                    </thead>
-
-                    <tbody>
-                      {data.examPeriod.map((row, index) => (
-                        <tr
-                          key={index}
-                          className={
-                            index % 2 === 0 ? "bg-white" : "bg-gray-100"
-                          }
-                        >
-                          <td className="p-3 border font-semibold">
-                            {row.section}
-                          </td>
-                          <td className="p-3 border">{row.time}</td>
-                          <td className="p-3 border">{row.modules}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                    ))}
+                  </tbody>
+                </table>
               )}
 
             {/* Footer Note */}
-            {data.tableFooter && (
+            {/* {data.tableFooter && (
               <p className="text-sm text-gray-500 mt-4 text-center italic">
                 {data.tableFooter}
               </p>
-            )}
+            )} */}
 
             {/* CTA AGAIN */}
             <div className="text-center mt-10">

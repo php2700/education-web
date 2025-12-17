@@ -137,7 +137,7 @@ const SBACPrep = () => {
             {safeData.assessmentPoints?.map((ele) => (
               <div className="mb-4">
                 <h2 className="text-xl font-bold ">{ele?.title}</h2>
-                <div className="whitespace-pre-wrap">{ele?.description}</div>
+                <div className="whitespace-pre-wrap text-lg">{ele?.description}</div>
               </div>
             ))}
           </div>

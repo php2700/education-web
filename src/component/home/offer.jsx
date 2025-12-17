@@ -88,7 +88,7 @@ export const OfferAndTrust = () => {
             Latest Updates
           </button>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Offers & News</h2>
-          <p className="text-gray-600 mb-10">
+          <p className="text-gray-600 text-lg mb-10">
             Stay updated with our latest promotions, new courses, and exciting
             announcements
           </p>
@@ -110,7 +110,7 @@ export const OfferAndTrust = () => {
                   </span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-lg mb-4">
                    {getShortText(offer?.description, 80)}
                 </p>
                 <button onClick={()=>{handleLearnMore(offer._id)}} className=" font-medium bg-[#F0F8FF]  text-sm   w-full p-2 rounded-lg">
@@ -132,7 +132,7 @@ export const OfferAndTrust = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Success Stories
           </h2>
-          <p className="text-gray-600 mb-10">
+          <p className="text-gray-600 text-lg mb-10">
             Hear what parents and students have to say about their experience
             with us.
           </p>
@@ -146,7 +146,7 @@ export const OfferAndTrust = () => {
                 <div className="text-yellow-400 mb-3">
                   {"★".repeat(review.rating)}
                 </div>
-                <p className="text-gray-700 italic mb-4">
+                <p className="text-gray-700 text-lg italic mb-4">
                   “{review.description}”
                 </p>
                 <div className="flex items-center gap-3 mt-4">

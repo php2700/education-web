@@ -408,7 +408,7 @@ export const TopicPage = () => {
                 tutoring. Set them on the path to success with a science tutor
                 from GoES.
               </p>
-              <div className="text-center font-bold my-4">
+              <div className="text-center text-lg font-bold my-4">
                 So why wait? To avail a Free Trial Class for Science Online
                 Tutoring
               </div>

@@ -71,7 +71,7 @@ const ISEE = () => {
         {/* Intro Box & Button - Ye Box hamesha rahega for Button */}
         <div className="bg-[#F0F8FF] p-8 md:p-10 rounded-2xl shadow-xl mb-12">
           {safeData.heroDescription && (
-            <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+            <div className="text-gray-700 text-lg leading-7 mb-6 whitespace-pre-line">
               {safeData.heroDescription}
             </div>
           )}
@@ -100,7 +100,7 @@ const ISEE = () => {
             )}
 
             {safeData.aboutDescription && (
-              <div className="text-gray-700 leading-7 mb-4 whitespace-pre-line">
+              <div className="text-gray-700 text-lg leading-7 mb-4 whitespace-pre-line">
                 {safeData.aboutDescription}
               </div>
             )}
@@ -118,7 +118,7 @@ const ISEE = () => {
             )}
 
             {safeData.purposePoints && safeData.purposePoints.length > 0 && (
-              <ul className="list-disc ml-6 text-gray-700 space-y-2">
+              <ul className="list-disc ml-6 text-lg text-gray-700 space-y-2">
                 {safeData.purposePoints.map((pt, i) =>
                   pt ? <li key={i}>{pt}</li> : null
                 )}
@@ -147,7 +147,7 @@ const ISEE = () => {
                     )}
 
                     {pt.description && (
-                      <p className="text-base whitespace-pre-wrap leading-relaxed">
+                      <p className="text-base whitespace-pre-wrap text-lg leading-relaxed">
                         {pt.description}
                       </p>
                     )}
@@ -177,7 +177,7 @@ const ISEE = () => {
                     )}
 
                     {pt.description && (
-                      <p className="text-base whitespace-pre-wrap leading-relaxed"
+                      <p className="text-lg whitespace-pre-wrap leading-relaxed"
                        
                       >
                      {pt.description}
@@ -204,7 +204,7 @@ const ISEE = () => {
             )}
 
             {safeData.registrationDescription && (
-              <div className="text-gray-700 leading-7 mb-6 whitespace-pre-line">
+              <div className="text-gray-700 leading-7 text-lg mb-6 whitespace-pre-line">
                 {safeData.registrationDescription}
               </div>
             )}

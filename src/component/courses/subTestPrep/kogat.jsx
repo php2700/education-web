@@ -693,7 +693,7 @@ const CogatTestPrep = () => {
       {(safeData.heroSubDescription ||
         (safeData.heroList && safeData.heroList.length > 0)) && (
         <section className="py-12 px-4 ">
-          <div className="max-w-5xl mx-auto text-gray-800">
+          <div className="max-w-7xl mx-auto text-gray-800">
             {/* Sub Description (Ab ye bullet points ke just upar hai) */}
             {safeData.heroSubDescription && (
               <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
@@ -809,7 +809,7 @@ const CogatTestPrep = () => {
             <h2 className="text-3xl font-bold mb-6 text-center">
               {safeData.levelsHeading}
             </h2>
-            <p className="text-center text-lg mb-8 max-w-4xl mx-auto">
+            <p className="text-center text-lg mb-8 max-w-7xl mx-auto">
               {safeData.levelsDescription}
             </p>
 
@@ -866,7 +866,7 @@ const CogatTestPrep = () => {
                   {safeData.verbalBatteryList.map((item, i) => (
                     <div key={i} className="bg-blue-50 p-6 rounded-lg">
                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                      <p className="text-gray-700 whitespace-pre-wrap">
+                      <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
                     </div>
@@ -886,7 +886,7 @@ const CogatTestPrep = () => {
                   {safeData.nonVerbalBatteryList.map((item, i) => (
                     <div key={i} className="bg-green-50 p-6 rounded-lg">
                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                      <p className="text-gray-700 whitespace-pre-wrap">
+                      <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
                     </div>
@@ -906,7 +906,7 @@ const CogatTestPrep = () => {
                   {safeData.quantBatteryList.map((item, i) => (
                     <div key={i} className="bg-yellow-50 p-6 rounded-lg">
                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                      <p className="text-gray-700 whitespace-pre-wrap">
+                      <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
                     </div>
@@ -944,7 +944,7 @@ const CogatTestPrep = () => {
 
       {/* CTA Footer */}
       <section className="bg-[#0f172a] py-16 px-4 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Start Your CogAT Prep Today!
         </h2>
         <button

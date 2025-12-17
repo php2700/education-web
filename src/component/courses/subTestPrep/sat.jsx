@@ -70,7 +70,7 @@ const SatTestPrep = () => {
           <h1 className="text-3xl text-center text-5xl font-bold text-gray-800 mb-4 ">
             {data.heroTitle || "SAT TEST PREP"}
           </h1>
-          <p className="text-gray-600 text-sm md:text-base max-w-7xl mx-auto ">
+          <p className="text-gray-600 text-lg  max-w-7xl mx-auto ">
             {data.heroSubtitle}
           </p>
         </div>
@@ -79,7 +79,7 @@ const SatTestPrep = () => {
         <div className=" items-center">
           {/* LEFT: Description */}
           <div className="text-left space-y-4">
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line ">
+            <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line ">
               {data.heroDescription}
             </p>
 
@@ -118,7 +118,7 @@ const SatTestPrep = () => {
             {data.aboutHeading || "ALL ABOUT SAT"}
           </h2>
 
-          <p className="text-gray-700 mb-6  max-w-7xl mx-auto whitespace-pre-line ">
+          <p className="text-gray-700 mb-6 text-lg  max-w-7xl mx-auto whitespace-pre-line ">
             {data.aboutDescription}
           </p>
 

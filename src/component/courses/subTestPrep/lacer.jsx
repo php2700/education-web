@@ -77,7 +77,7 @@ const AccuplacerPrep = () => {
             </p>
           )}
 
-          <div className="text-center text-lg mb-2">
+          <div className="text-center font-semibold text-lg mb-2">
             So why wait? To avail a Free Trial Class for Accuplacer Test Prep
             Online Tutoring, &nbsp;
             <span

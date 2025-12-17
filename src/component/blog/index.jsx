@@ -101,7 +101,7 @@ export const Blog = () => {
               <p className="text-gray-600 text-sm mb-4">
                 Date:{new Date(blog.createdAt).toLocaleDateString()}
               </p>
-              <p className="text-gray-700 text-sm mb-4">
+              <p className="text-gray-700 text-md mb-4">
                 {getShortText(blog?.description, 80)}
               </p>
               <button

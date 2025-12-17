@@ -46,8 +46,6 @@ const K12Page = () => {
     getData();
   }, []);
 
-
-
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       {/* --- HERO SECTION --- */}
@@ -61,9 +59,12 @@ const K12Page = () => {
               {serviceData?.description}
             </p>
 
-            <button   onClick={() => {
-            navigate("/contact");
-          }} className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg flex items-center gap-2">
+            <button
+              onClick={() => {
+                navigate("/contact");
+              }}
+              className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition duration-300 shadow-lg flex items-center gap-2"
+            >
               Book a Session <ArrowRight size={20} />
             </button>
           </div>
@@ -97,7 +98,7 @@ const K12Page = () => {
             <h2 className="text-3xl font-bold text-gray-900">
               Our Methodology
             </h2>
-            <p className="text-gray-600 mt-4">
+            <p className="text-gray-600 text-lg mt-4">
               At GGES we work with the following approach:
             </p>
             <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
@@ -114,10 +115,10 @@ const K12Page = () => {
                   />
                 </div>
 
-                <h3 className="font-bold text-gray-800 mb-2 relative z-10">
+                <h3 className="font-bold text-lg text-gray-800 mb-2 relative z-10">
                   {ele?.title}
                 </h3>
-                <p className="text-sm text-gray-600 relative z-10">
+                <p className="text-lg text-gray-600 relative z-10">
                   {ele?.description}
                 </p>
               </div>
@@ -211,7 +212,7 @@ const K12Page = () => {
             <h2 className="text-3xl font-bold text-gray-900">
               Subject Expertise
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 text-lg mt-2">
               We are the best when it comes to:
             </p>
           </div>
@@ -309,7 +310,7 @@ const K12Page = () => {
         <h2 className="text-3xl font-bold mb-4">
           Start Your Learning Journey with GGES
         </h2>
-        <p className="text-blue-200 mb-8 max-w-xl mx-auto">
+        <p className="text-blue-200 mb-8 text-lg max-w-2xl mx-auto">
           Contact us today to discuss how we can help achieve your academic
           goals.
         </p>

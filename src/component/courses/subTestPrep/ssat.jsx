@@ -327,7 +327,7 @@ const SsatTestPrep = () => {
         <div className="text-center">
           <button
             onClick={handleNavigate}
-            className="bg-blue-600 mx-auto  text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform hover:scale-105 mt-2"
+            className="bg-blue-600 mx-auto  text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform hover:scale-105 "
           >
             Click here for Free Trial Class
           </button>
@@ -339,7 +339,7 @@ const SsatTestPrep = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-4 uppercase">
               {safeData.aboutHeading || "ABOUT SSAT"}
             </h2>
-            <div className="text-gray-600 leading-7 whitespace-pre-wrap">
+            <div className="text-gray-600 text-lg leading-7 whitespace-pre-wrap">
               {safeData.aboutDescription || "Description not available."}
             </div>
           </div>
@@ -353,8 +353,8 @@ const SsatTestPrep = () => {
               <div className="space-y-4">
                 {safeData.levels.map((level, idx) => (
                   <div key={idx} className="border-b pb-3 last:border-0">
-                    <h3 className="font-bold text-blue-700">{level.title}</h3>
-                    <p className=" text-gray-600 whitespace-pre-wrap">
+                    <h3 className="font-bold text-blue-700 text-lg">{level.title}</h3>
+                    <p className=" text-gray-600 text-lg whitespace-pre-wrap">
                       {level.description}
                     </p>
                   </div>
@@ -385,20 +385,20 @@ const SsatTestPrep = () => {
             safeData.comparisonPoints.length > 0)) && (
           <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-400">
             {safeData.comparisonHeading && (
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+              <h2 className="text-2xl font-bold  text-gray-800 mb-4 text-center">
                 {safeData.comparisonHeading}
               </h2>
             )}
 
             {/* Intro Description */}
             {safeData.comparisonDescription && (
-              <div className="text-gray-700 mb-6 leading-relaxed whitespace-pre-wrap">
+              <div className="text-gray-700 mb-6  text-lg leading-relaxed whitespace-pre-wrap">
                 {safeData.comparisonDescription}
               </div>
             )}
 
             {/* Bullet Points */}
-            <ul className="list-disc list-inside space-y-3 text-gray-700 bg-orange-50 p-6 rounded-lg">
+            <ul className="list-disc list-inside space-y-3 text-gray-700 bg-orange-50 p-6 text-lg rounded-lg">
               {safeData.comparisonPoints &&
                 safeData.comparisonPoints.map((point, index) =>
                   point ? (
@@ -412,24 +412,7 @@ const SsatTestPrep = () => {
         )}
 
         {/* ================= 5. QUICK FACTS (NEW SECTION) ================= */}
-        {(safeData.factsHeading || safeData.factsContent) && (
-          <div className="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-teal-500">
-            <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
-              {safeData.factsHeading || "SSAT Quick Facts"}
-            </h2>
-
-            {/* The pre-wrap class ensures new lines from admin text area show up as lines here */}
-            <div className="text-gray-700 text-lg leading-8 whitespace-pre-wrap font-medium">
-              {safeData.factsContent}
-            </div>
-
-            {safeData.disclaimer && (
-              <p className="mt-6 text-xs text-gray-400 italic border-t pt-2">
-                {safeData.disclaimer}
-              </p>
-            )}
-          </div>
-        )}
+       
 
         {/* ================= 6. SCORING ================= */}
         <div className="bg-white py-10 px-6 rounded-2xl shadow-xl">
@@ -463,7 +446,24 @@ const SsatTestPrep = () => {
             {safeData.scoringFooter}
           </div>
         </div>
+ {(safeData.factsHeading || safeData.factsContent) && (
+          <div className="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-teal-500">
+            <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
+              {safeData.factsHeading || "SSAT Quick Facts"}
+            </h2>
 
+            {/* The pre-wrap class ensures new lines from admin text area show up as lines here */}
+            <div className="text-gray-700 text-lg leading-8 whitespace-pre-wrap font-medium">
+              {safeData.factsContent}
+            </div>
+
+            {safeData.disclaimer && (
+              <p className="mt-6 text-xs text-gray-400 italic border-t pt-2">
+                {safeData.disclaimer}
+              </p>
+            )}
+          </div>
+        )}
         {/* ================= 7. TEST STRUCTURE TABLES ================= */}
         {/* ================= 7. TEST STRUCTURE TABLES ================= */}
         <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
@@ -588,8 +588,8 @@ const SsatTestPrep = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
             {safeData.scaledScoresContent && (
               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
-                <h3 className="font-bold text-red-800 mb-2">Scaled Scores</h3>
-                <p className="text-gray-700 whitespace-pre-wrap text-sm">
+                <h3 className="font-bold text-lg text-red-800 mb-2">Scaled Scores</h3>
+                <p className="text-gray-700 whitespace-pre-wrap text-md">
                   {safeData.scaledScoresContent}
                 </p>
               </div>
@@ -597,10 +597,10 @@ const SsatTestPrep = () => {
 
             {safeData.percentileRanksContent && (
               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
-                <h3 className="font-bold text-red-800 mb-2">
+                <h3 className="font-bold text-lg text-red-800 mb-2">
                   Percentile Ranks
                 </h3>
-                <p className="text-gray-700 whitespace-pre-wrap text-sm">
+                <p className="text-gray-700 whitespace-pre-wrap text-md">
                   {safeData.percentileRanksContent}
                 </p>
               </div>
@@ -608,7 +608,7 @@ const SsatTestPrep = () => {
           </div>
 
           {/* CTA Button */}
-          <button className="mt-4  text-xl font-bold py-1 px-12  ">
+          <button className="mt-4  text-xl font-semibold py-1 px-12  ">
             {safeData.footerCtaText || "Click here for Free Trial Class"}
           </button>
 

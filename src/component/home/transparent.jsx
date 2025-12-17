@@ -87,7 +87,7 @@ const PricingAndHowItWorks = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-[#1A202C]">
             Transparent Pricing
           </h2>
-          <p className="text-[#4B5563] mb-10">
+          <p className="text-[#4B5563] text-lg mb-10">
             Choose a plan that works for you. No hidden fees, ever. Get started
             with a free trial.
           </p>
@@ -174,7 +174,7 @@ const PricingAndHowItWorks = () => {
           >
             View All plans →
           </button>
-          <p className="mt-4 text-gray-600 text-sm">
+          <p className="mt-4 text-gray-600 text-lg">
             All plans include a{" "}
             <span className="font-semibold">money-back guarantee</span>
           </p>

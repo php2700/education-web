@@ -61,7 +61,7 @@ export const Measure = () => {
               <h3 className="text-lg  font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title1}}>
                
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 text-lg leading-relaxed">
               
                 {aboutData?.description1}
               </p>
@@ -77,7 +77,7 @@ export const Measure = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title2}}>
                
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600  text-lg leading-relaxed">
               {aboutData?.description2}
               </p>
             </div>
@@ -92,7 +92,7 @@ export const Measure = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title3}}>
               
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 text-lg leading-relaxed">
                 {aboutData?.description3}
               </p>
               <div className="absolute top-6 right-6 w-2 h-2 bg-gray-300 rounded-full"></div>
@@ -111,7 +111,7 @@ export const Measure = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title4}}>
               
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 text-lg leading-relaxed">
                {aboutData?.description4}
               </p>
             </div>
@@ -126,7 +126,7 @@ export const Measure = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{__html:aboutData?.title5}}>
             
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 text-lg leading-relaxed">
                 {aboutData?.description5}
               </p>
             </div>
