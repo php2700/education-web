@@ -158,7 +158,7 @@ const SatTestPrep = () => {
             </table>
           </div>
 
-          <p className="text-gray-700 mt-6 text-center">{data.tableFooter}</p>
+          {/* <p className="text-gray-700 mt-6 text-center">{data.tableFooter}</p> */}
 
           <div className="text-center mt-8">
             <button onClick={() => navigate("/contact")} className="bg-blue-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">

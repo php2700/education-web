@@ -2174,7 +2174,7 @@ const sections = [
       },
       {
         name: "Math AMC ",
-        link: "/courses/maths#amc",
+        link: "/courses/maths#mathamc",
       },
       {
         name: "MATH PRE-CALCULUS",
@@ -2192,10 +2192,10 @@ const sections = [
         name: "COMMON CORE ENGLISH",
         link: "/courses/english#common",
       },
-      { name: "ELA", link: "/courses/english#ela" },
+      { name: "ELA", link: "/courses/english#englishela" },
       {
         name: "ISEE",
-        link: "/courses/english#isee",
+        link: "/courses/english#englishisee",
       },
     ],
   },

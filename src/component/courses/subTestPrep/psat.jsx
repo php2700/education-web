@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import backgroundImage from "../../../assets/math-bg.png";
@@ -9,7 +8,7 @@ const PsatTestPrep = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // --- API Call ---
   useEffect(() => {
@@ -88,27 +87,41 @@ const PsatTestPrep = () => {
             )}
           </div>
         )}
-
+<div className="text-center text-lg mb-2">So why wait? To avail a Free Trial Class for PSAT Test Prep Online Tutoring, 
+   <span
+                onClick={() => navigate("/contact")}
+                className="mt-4  cursor-pointer  py-3 font-semibold text-lg underline text-blue-600  transition"
+              >
+                CLICK HERE
+              </span>
+  </div>
         {/* ===== MAIN CONTENT ===== */}
         <div className=" items-center">
           {/* LEFT CONTENT (Description) */}
           <div className="text-left space-y-4">
+            <div className="text-3xl font-bold  text-gray-800 ">
+              ALL ABOUT PSAT
+            </div>
+
             {data.heroDescription && (
-              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap break-all">
+              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap ">
                 {data.heroDescription}
               </div>
             )}
 
-            <p className="text-gray-700 leading-relaxed font-semibold">
+            {/* <p className="text-gray-700 leading-relaxed font-semibold">
               Prepare with the best. Boost your confidence. Achieve higher
               scores.
-            </p>
-<div className="text-center">
-            <button   onClick={() => navigate("/contact")} className="mt-4 bg-blue-600 text-white px-6 py-3 font-semibold text-lg rounded-lg shadow-md hover:bg-blue-700 transition">
-              Click here for Free Trial Class
-            </button>
+            </p> */}
+            {/* <div className="text-center">
+              <button
+                onClick={() => navigate("/contact")}
+                className="mt-4 bg-blue-600 text-white px-6 py-3 font-semibold text-lg rounded-lg shadow-md hover:bg-blue-700 transition"
+              >
+                Click here for Free Trial Class
+              </button>
+            </div> */}
           </div>
-</div>
           {/* RIGHT CARD (Features) */}
           {/* Agar features ki length 0 se zyada hai tabhi ye box dikhega */}
           {/* {data.features &&
@@ -168,7 +181,9 @@ const PsatTestPrep = () => {
                       <tr>
                         <th className="p-3 border">Section</th>
                         <th className="p-3 border">Length(minutes)</th>
-                        <th className="p-3 border">Number of Questions/Tasks</th>
+                        <th className="p-3 border">
+                          Number of Questions/Tasks
+                        </th>
                       </tr>
                     </thead>
 
@@ -192,9 +207,8 @@ const PsatTestPrep = () => {
                 </div>
               )}
 
-
-               <h3 className="text-2xl font-bold my-4  text-gray-800">
-             EXAM PERIOD
+            <h3 className="text-2xl font-bold my-4  text-gray-800">
+              EXAM PERIOD
             </h3>
 
             {/* TABLE */}
@@ -240,7 +254,10 @@ const PsatTestPrep = () => {
 
             {/* CTA AGAIN */}
             <div className="text-center mt-10">
-              <button   onClick={() => navigate("/contact")} className="bg-blue-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+              <button
+                onClick={() => navigate("/contact")}
+                className="bg-blue-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
+              >
                 Click here for Free Trial Class
               </button>
             </div>

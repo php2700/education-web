@@ -155,7 +155,7 @@ export const EnglishCourse = () => {
         </div>
       </div>
 
-      <div id="ela" className="bg-[#F0F8FF] ">
+      <div id="englishela" className="bg-[#F0F8FF] ">
         <div className="container mx-auto p-10   ">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 flex items-center justify-center gap-2">
@@ -200,7 +200,7 @@ export const EnglishCourse = () => {
         </div>
       </div>
       <AboutInfoPage />
-      <div id="isee">
+      <div id="englishisee">
         <TestPage />
       </div>
       <Measure />

@@ -355,7 +355,7 @@ const Courses = () => {
       {/* End of K-12 Tutoring - Geometry section */}
 
       {/* New section: ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions) Test */}
-      <section id="amc" className="py-4 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
+      <section id="mathamc" className="py-4 px-4 sm:px-6 lg:px-8 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto  mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">
             ALL YOU NEED TO KNOW ABOUT AMC (American Mathematics Competitions)
