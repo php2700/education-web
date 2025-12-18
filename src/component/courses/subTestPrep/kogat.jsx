@@ -624,9 +624,350 @@
 
 // export default CogatTestPrep;
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+
+// const CogatTestPrep = () => {
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get(
+//           `${import.meta.env.VITE_APP_URL}api/user/cogat-test`
+//         );
+//         if (response.data) {
+//           const apiData = response.data.data || response.data;
+//           if (Array.isArray(apiData) && apiData.length > 0) {
+//             setData(apiData[0]);
+//           } else {
+//             setData(apiData);
+//           }
+//         }
+//       } catch (err) {
+//         console.error("Error fetching CogAT data:", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchData();
+//   }, []);
+
+//   const handleNavigate = () => navigate("/contact");
+
+//   if (loading)
+//     return (
+//       <div className="h-screen flex justify-center items-center">
+//         <div className="animate-spin h-10 w-10 border-4 border-blue-600 rounded-full border-t-transparent"></div>
+//       </div>
+//     );
+
+//   const safeData = data || {};
+
+//   return (
+//     <div className="w-full text-gray-800" id="cogat">
+//       {/* 1. HERO SECTION */}
+//       {/* Yahan sirf Title aur Main Hero Description rahega */}
+//       <section className="bg-[#0f172a] text-white py-20 px-4">
+//         <div className="max-w-7xl mx-auto text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6">
+//             {safeData.heroTitle || "COGAT TEST PREP"}
+//           </h1>
+//           <div className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap text-left">
+//             {safeData.heroDescription}
+//           </div>
+//           <button
+//             onClick={handleNavigate}
+//             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+//           >
+//             Book Free Trial Class
+//           </button>
+//         </div>
+//       </section>
+
+//       {/* 2. WHY CHOOSE / BULLET POINTS SECTION */}
+//       {/* Sub Description yahan move kar diya gaya hai, bullet points ke upar */}
+//       {(safeData.heroSubDescription ||
+//         (safeData.heroList && safeData.heroList.length > 0)) && (
+//         <section className="py-12 px-4 ">
+//           <div className="max-w-7xl mx-auto text-gray-800">
+//             {/* Sub Description (Ab ye bullet points ke just upar hai) */}
+//             {safeData.heroSubDescription && (
+//               <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+//                 {safeData.heroSubDescription}
+//               </p>
+//             )}
+
+//             {/* Bullet Points */}
+//             {safeData.heroList && (
+//               <ul className="list-disc pl-6 space-y-3 text-lg leading-relaxed text-gray-700">
+//                 {safeData.heroList.map((item, idx) => (
+//                   <li key={idx} dangerouslySetInnerHTML={{ __html: item }}></li>
+//                 ))}
+//               </ul>
+//             )}
+
+//             {/* Link below bullets */}
+//             {/* <div className="mt-8 text-center md:text-left">
+//                 <span className="font-bold text-xl block md:inline">To avail a free Trial Class with us for COGAT Test Online tutoring, </span>
+//                 <button onClick={handleNavigate} className="text-[#00C4CC] font-bold text-xl underline hover:text-blue-600 uppercase ml-2">
+//                     CLICK HERE
+//                 </button>
+//              </div> */}
+//           </div>
+//         </section>
+//       )}
+
+//       {/* 3. INTRO (What is on the CogAT?) */}
+//       {(safeData.introHeading || safeData.introDescription) && (
+//         <section className="py-4 px-4 ">
+//           <div className="max-w-7xl mx-auto text-center">
+//             <h2 className="text-3xl font-bold mb-4">{safeData.introHeading}</h2>
+//             <p className="text-lg text-gray-700 max-w-4xl mx-auto">
+//               {safeData.introDescription}
+//             </p>
+//           </div>
+//         </section>
+//       )}
+
+//       {/* 4. TEST STRUCTURE TABLE */}
+//       {safeData.structureTable && safeData.structureTable.length > 0 && (
+//         <section className="py-4 px-4">
+//           <div className="max-w-7xl mx-auto">
+//             <div className="overflow-x-auto shadow-lg rounded-lg">
+//               <table className="w-full text-left border-collapse">
+//                 <thead className="bg-blue-600 text-white">
+//                   <tr>
+//                     <th className="px-6 py-4 border">Verbal Battery</th>
+//                     <th className="px-6 py-4 border">Quantitative Battery</th>
+//                     <th className="px-6 py-4 border">Non-Verbal Battery</th>
+//                   </tr>
+//                 </thead>
+//                 <tbody>
+//                   {safeData.structureTable.map((row, index) => (
+//                     <tr key={index} className="hover:bg-blue-50">
+//                       <td className="px-6 py-4 border">{row.verbal}</td>
+//                       <td className="px-6 py-4 border">{row.quantitative}</td>
+//                       <td className="px-6 py-4 border">{row.nonVerbal}</td>
+//                     </tr>
+//                   ))}
+//                 </tbody>
+//               </table>
+//             </div>
+//           </div>
+//         </section>
+//       )}
+
+//       {/* 5. MEASURE & ADMINISTER */}
+//       <section className="py-16 px-4 bg-gray-50">
+//         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+//           {/* Measure */}
+//           <div>
+//             <h2 className="text-3xl font-bold mb-4">
+//               {safeData.measureHeading}
+//             </h2>
+//             <p className="text-lg text-gray-700">
+//               {safeData.measureDescription}
+//             </p>
+//           </div>
+//           {/* Administer */}
+//           <div>
+//             <h2 className="text-3xl font-bold mb-4">
+//               {safeData.administerHeading}
+//             </h2>
+//             {/* <p className="text-lg text-gray-700 mb-4" dangerouslySetInnerHTML={{__html:safeData?.administerDescription}}>
+//             </p> */}
+//             <div
+//   className="
+//     text-lg text-gray-700 mb-4
+//     [&_ul]:list-disc [&_ul]:pl-6
+//     [&_ol]:list-decimal [&_ol]:pl-6
+//     [&_li]:mb-0
+//   "
+//   dangerouslySetInnerHTML={{
+//     __html: safeData?.administerDescription,
+//   }}
+// />
+//             {/* {safeData.administerList && (
+//               <ul className="list-disc pl-6 space-y-2 text-gray-700">
+//                 {safeData.administerList.map((item, i) => (
+//                   <li key={i}>{item}</li>
+//                 ))}
+//               </ul>
+//             )} */}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* 6. LEVELS TABLE */}
+//       {safeData.levelsTable && safeData.levelsTable.length > 0 && (
+//         <section className="py-16 px-4">
+//           <div className="max-w-7xl mx-auto">
+//             <h2 className="text-3xl font-bold mb-6 text-center">
+//               {safeData.levelsHeading}
+//             </h2>
+//             <p className="text-center text-lg mb-8 max-w-7xl mx-auto">
+//               {safeData.levelsDescription}
+//             </p>
+
+//             <div className="overflow-x-auto shadow-lg rounded-lg">
+//               <table className="w-full text-left border-collapse">
+//                 <thead className="bg-blue-600 text-white">
+//                   <tr>
+//                     <th className="px-6 py-4 border">Grade</th>
+//                     <th className="px-6 py-4 border">Level</th>
+//                     <th className="px-6 py-4 border">Questions</th>
+//                     <th className="px-6 py-4 border">Time</th>
+//                   </tr>
+//                 </thead>
+//                 <tbody>
+//                   {safeData.levelsTable.map((row, index) => (
+//                     <tr key={index} className="hover:bg-green-50">
+//                       <td className="px-6 py-4 border">{row.grade}</td>
+//                       <td className="px-6 py-4 border">{row.level}</td>
+//                       <td className="px-6 py-4 border">{row.questions}</td>
+//                       <td className="px-6 py-4 border">{row.testTime}</td>
+//                     </tr>
+//                   ))}
+//                 </tbody>
+//               </table>
+//             </div>
+
+//             {/* Question Count Section */}
+//             {(safeData.questionCountHeading ||
+//               safeData.questionCountDescription) && (
+//               <div className="mt-10 text-center bg-green-50 p-6 rounded-xl">
+//                 <h3 className="text-2xl font-bold text-green-900 mb-2">
+//                   {safeData.questionCountHeading}
+//                 </h3>
+//                 <p className="text-lg text-green-800">
+//                   {safeData.questionCountDescription}
+//                 </p>
+//               </div>
+//             )}
+//           </div>
+//         </section>
+//       )}
+
+//       {/* 7. BATTERY DETAILS */}
+//       <section className="py-16 px-4 bg-white">
+//         <div className="max-w-7xl mx-auto space-y-12">
+//           {/* Verbal */}
+//           {safeData.verbalBatteryList &&
+//             safeData.verbalBatteryList.length > 0 && (
+//               <div>
+//                 <h2 className="text-3xl font-bold mb-6 text-blue-800 border-b-4 border-blue-600 inline-block">
+//                   {safeData.verbalBatteryHeading || "VERBAL BATTERY"}
+//                 </h2>
+//                 <div className="grid gap-6">
+//                   {safeData.verbalBatteryList.map((item, i) => (
+//                     <div key={i} className="bg-blue-50 p-6 rounded-lg">
+//                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+//                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
+//                         {item.content}
+//                       </p>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             )}
+
+//           {/* Non-Verbal */}
+//           {safeData.nonVerbalBatteryList &&
+//             safeData.nonVerbalBatteryList.length > 0 && (
+//               <div>
+//                 <h2 className="text-3xl font-bold mb-6 text-green-800 border-b-4 border-green-600 inline-block">
+//                   {safeData.nonVerbalBatteryHeading || "NON-VERBAL BATTERY"}
+//                 </h2>
+//                 <div className="grid gap-6">
+//                   {safeData.nonVerbalBatteryList.map((item, i) => (
+//                     <div key={i} className="bg-green-50 p-6 rounded-lg">
+//                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+//                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
+//                         {item.content}
+//                       </p>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             )}
+
+//           {/* Quant */}
+//           {safeData.quantBatteryList &&
+//             safeData.quantBatteryList.length > 0 && (
+//               <div>
+//                 <h2 className="text-3xl font-bold mb-6 text-yellow-800 border-b-4 border-yellow-600 inline-block">
+//                   {safeData.quantBatteryHeading || "QUANTITATIVE BATTERY"}
+//                 </h2>
+//                 <div className="grid gap-6">
+//                   {safeData.quantBatteryList.map((item, i) => (
+//                     <div key={i} className="bg-yellow-50 p-6 rounded-lg">
+//                       <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+//                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
+//                         {item.content}
+//                       </p>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             )}
+//         </div>
+//       </section>
+
+//       {/* 8. SCORING & LOCATION */}
+//       <section className="py-16 px-4 bg-[#F0F8FF]">
+//         <div className="max-w-7xl mx-auto space-y-12">
+//           {/* Scoring */}
+//           <div>
+//             <h2 className="text-3xl font-bold mb-4 text-center">
+//               {safeData.scoringHeading}
+//             </h2>
+//             <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+//               {safeData.scoringDescription}
+//             </div>
+//           </div>
+
+//           {/* Location */}
+//           <div>
+//             <h2 className="text-3xl font-bold mb-4 text-center">
+//               {safeData.locationHeading}
+//             </h2>
+//             <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+//               {safeData.locationDescription}
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA Footer */}
+//       <section className="bg-[#0f172a] py-16 px-4 text-center text-white">
+//         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+//           Start Your CogAT Prep Today!
+//         </h2>
+//         <button
+//           onClick={handleNavigate}
+//           className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition text-lg shadow-lg"
+//         >
+//           Get Free Trial Class
+//         </button>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default CogatTestPrep;
+
+
+// annimation
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // Animation Import
 
 const CogatTestPrep = () => {
   const [data, setData] = useState(null);
@@ -658,6 +999,35 @@ const CogatTestPrep = () => {
 
   const handleNavigate = () => navigate("/contact");
 
+  // --- Premium 3D Animation Variants ---
+  const pagePerspective = {
+    perspective: "1200px", // Creates the 3D space
+    overflowX: "hidden"
+  };
+
+  const fadeUp3D = {
+    hidden: { opacity: 0, y: 60, rotateX: -15, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      rotateX: 0, 
+      scale: 1,
+      transition: { type: "spring", bounce: 0.4, duration: 0.8 }
+    }
+  };
+
+  const cardHover3D = {
+    rest: { scale: 1, rotateX: 0, rotateY: 0, z: 0 },
+    hover: { 
+      scale: 1.03, 
+      rotateX: 5, 
+      rotateY: -2, 
+      z: 50,
+      boxShadow: "0px 20px 40px rgba(0,0,0,0.3)",
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
   if (loading)
     return (
       <div className="h-screen flex justify-center items-center">
@@ -668,76 +1038,107 @@ const CogatTestPrep = () => {
   const safeData = data || {};
 
   return (
-    <div className="w-full text-gray-800" id="cogat">
+    <motion.div 
+        style={pagePerspective} // Apply 3D depth to container
+        className="w-full text-gray-800" 
+        id="cogat"
+    >
       {/* 1. HERO SECTION */}
-      {/* Yahan sirf Title aur Main Hero Description rahega */}
-      <section className="bg-[#0f172a] text-white py-20 px-4">
+      <motion.section 
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp3D}
+        className="bg-[#0f172a] text-white py-20 px-4"
+      >
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <motion.h1 
+            initial={{ opacity: 0, z: -100, scale: 0.8 }}
+            animate={{ opacity: 1, z: 0, scale: 1 }}
+            transition={{ duration: 1, type: "spring" }}
+            className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl"
+          >
             {safeData.heroTitle || "COGAT TEST PREP"}
-          </h1>
-          <div className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap text-left">
+          </motion.h1>
+          <motion.div 
+            variants={fadeUp3D}
+            className="text-lg md:text-xl max-w-4xl mx-auto mb-8 whitespace-pre-wrap text-left"
+          >
             {safeData.heroDescription}
-          </div>
-          <button
+          </motion.div>
+          <motion.button
+            whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.6)" }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleNavigate}
             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
             Book Free Trial Class
-          </button>
+          </motion.button>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. WHY CHOOSE / BULLET POINTS SECTION */}
-      {/* Sub Description yahan move kar diya gaya hai, bullet points ke upar */}
       {(safeData.heroSubDescription ||
         (safeData.heroList && safeData.heroList.length > 0)) && (
-        <section className="py-12 px-4 ">
+        <motion.section 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp3D}
+            className="py-12 px-4"
+        >
           <div className="max-w-7xl mx-auto text-gray-800">
-            {/* Sub Description (Ab ye bullet points ke just upar hai) */}
             {safeData.heroSubDescription && (
               <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
                 {safeData.heroSubDescription}
               </p>
             )}
 
-            {/* Bullet Points */}
             {safeData.heroList && (
               <ul className="list-disc pl-6 space-y-3 text-lg leading-relaxed text-gray-700">
                 {safeData.heroList.map((item, idx) => (
-                  <li key={idx} dangerouslySetInnerHTML={{ __html: item }}></li>
+                  <motion.li 
+                    key={idx} 
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }} // Staggered Effect
+                    dangerouslySetInnerHTML={{ __html: item }}
+                  ></motion.li>
                 ))}
               </ul>
             )}
-
-            {/* Link below bullets */}
-            {/* <div className="mt-8 text-center md:text-left">
-                <span className="font-bold text-xl block md:inline">To avail a free Trial Class with us for COGAT Test Online tutoring, </span>
-                <button onClick={handleNavigate} className="text-[#00C4CC] font-bold text-xl underline hover:text-blue-600 uppercase ml-2">
-                    CLICK HERE
-                </button>
-             </div> */}
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* 3. INTRO (What is on the CogAT?) */}
       {(safeData.introHeading || safeData.introDescription) && (
-        <section className="py-4 px-4 ">
+        <motion.section 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="py-4 px-4"
+        >
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">{safeData.introHeading}</h2>
             <p className="text-lg text-gray-700 max-w-4xl mx-auto">
               {safeData.introDescription}
             </p>
           </div>
-        </section>
+        </motion.section>
       )}
 
-      {/* 4. TEST STRUCTURE TABLE */}
+      {/* 4. TEST STRUCTURE TABLE - 3D Tilted Table */}
       {safeData.structureTable && safeData.structureTable.length > 0 && (
-        <section className="py-4 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="overflow-x-auto shadow-lg rounded-lg">
+        <section className="py-4 px-4" style={{ perspective: "1000px" }}>
+          <motion.div 
+            initial={{ rotateX: 20, opacity: 0, y: 50 }}
+            whileInView={{ rotateX: 0, opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="max-w-7xl mx-auto"
+          >
+            <div className="overflow-x-auto shadow-2xl rounded-lg border border-gray-100">
               <table className="w-full text-left border-collapse">
                 <thead className="bg-blue-600 text-white">
                   <tr>
@@ -748,64 +1149,72 @@ const CogatTestPrep = () => {
                 </thead>
                 <tbody>
                   {safeData.structureTable.map((row, index) => (
-                    <tr key={index} className="hover:bg-blue-50">
+                    <motion.tr 
+                        key={index} 
+                        whileHover={{ scale: 1.01, backgroundColor: "#eff6ff" }}
+                        className="hover:bg-blue-50 transition-colors"
+                    >
                       <td className="px-6 py-4 border">{row.verbal}</td>
                       <td className="px-6 py-4 border">{row.quantitative}</td>
                       <td className="px-6 py-4 border">{row.nonVerbal}</td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </div>
+          </motion.div>
         </section>
       )}
 
       {/* 5. MEASURE & ADMINISTER */}
-      <section className="py-16 px-4 bg-gray-50">
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp3D}
+        className="py-16 px-4 bg-gray-50"
+      >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* Measure */}
-          <div>
-            <h2 className="text-3xl font-bold mb-4">
+          {/* Measure - 3D Card Effect */}
+          <motion.div 
+            whileHover={{ scale: 1.02, rotateY: 5 }}
+            className="bg-white p-6 rounded-xl shadow-lg"
+          >
+            <h2 className="text-3xl font-bold mb-4 text-blue-900">
               {safeData.measureHeading}
             </h2>
             <p className="text-lg text-gray-700">
               {safeData.measureDescription}
             </p>
-          </div>
-          {/* Administer */}
-          <div>
-            <h2 className="text-3xl font-bold mb-4">
+          </motion.div>
+          {/* Administer - 3D Card Effect */}
+          <motion.div 
+             whileHover={{ scale: 1.02, rotateY: -5 }}
+             className="bg-white p-6 rounded-xl shadow-lg"
+          >
+            <h2 className="text-3xl font-bold mb-4 text-blue-900">
               {safeData.administerHeading}
             </h2>
-            {/* <p className="text-lg text-gray-700 mb-4" dangerouslySetInnerHTML={{__html:safeData?.administerDescription}}>
-            </p> */}
             <div
-  className="
-    text-lg text-gray-700 mb-4
-    [&_ul]:list-disc [&_ul]:pl-6
-    [&_ol]:list-decimal [&_ol]:pl-6
-    [&_li]:mb-0
-  "
-  dangerouslySetInnerHTML={{
-    __html: safeData?.administerDescription,
-  }}
-/>
-            {/* {safeData.administerList && (
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                {safeData.administerList.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            )} */}
-          </div>
+                className="text-lg text-gray-700 mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-0"
+                dangerouslySetInnerHTML={{
+                    __html: safeData?.administerDescription,
+                }}
+            />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. LEVELS TABLE */}
       {safeData.levelsTable && safeData.levelsTable.length > 0 && (
-        <section className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-16 px-4" style={{ perspective: "1000px" }}>
+          <motion.div 
+             initial={{ rotateX: 15, opacity: 0 }}
+             whileInView={{ rotateX: 0, opacity: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="max-w-7xl mx-auto"
+          >
             <h2 className="text-3xl font-bold mb-6 text-center">
               {safeData.levelsHeading}
             </h2>
@@ -813,7 +1222,7 @@ const CogatTestPrep = () => {
               {safeData.levelsDescription}
             </p>
 
-            <div className="overflow-x-auto shadow-lg rounded-lg">
+            <div className="overflow-x-auto shadow-2xl rounded-lg">
               <table className="w-full text-left border-collapse">
                 <thead className="bg-blue-600 text-white">
                   <tr>
@@ -825,12 +1234,19 @@ const CogatTestPrep = () => {
                 </thead>
                 <tbody>
                   {safeData.levelsTable.map((row, index) => (
-                    <tr key={index} className="hover:bg-green-50">
+                    <motion.tr 
+                        key={index} 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        whileHover={{ scale: 1.01, backgroundColor: "#f0fdf4" }}
+                        className="hover:bg-green-50"
+                    >
                       <td className="px-6 py-4 border">{row.grade}</td>
                       <td className="px-6 py-4 border">{row.level}</td>
                       <td className="px-6 py-4 border">{row.questions}</td>
                       <td className="px-6 py-4 border">{row.testTime}</td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
@@ -839,122 +1255,154 @@ const CogatTestPrep = () => {
             {/* Question Count Section */}
             {(safeData.questionCountHeading ||
               safeData.questionCountDescription) && (
-              <div className="mt-10 text-center bg-green-50 p-6 rounded-xl">
+              <motion.div 
+                whileHover={{ scale: 1.02, rotateX: 2 }}
+                className="mt-10 text-center bg-green-50 p-6 rounded-xl shadow-md"
+              >
                 <h3 className="text-2xl font-bold text-green-900 mb-2">
                   {safeData.questionCountHeading}
                 </h3>
                 <p className="text-lg text-green-800">
                   {safeData.questionCountDescription}
                 </p>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
         </section>
       )}
 
-      {/* 7. BATTERY DETAILS */}
+      {/* 7. BATTERY DETAILS - Premium Floating Cards */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Verbal */}
           {safeData.verbalBatteryList &&
             safeData.verbalBatteryList.length > 0 && (
-              <div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <h2 className="text-3xl font-bold mb-6 text-blue-800 border-b-4 border-blue-600 inline-block">
                   {safeData.verbalBatteryHeading || "VERBAL BATTERY"}
                 </h2>
                 <div className="grid gap-6">
                   {safeData.verbalBatteryList.map((item, i) => (
-                    <div key={i} className="bg-blue-50 p-6 rounded-lg">
-                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                    <motion.div 
+                        key={i} 
+                        initial="rest" whileHover="hover" variants={cardHover3D}
+                        className="bg-blue-50 p-6 rounded-lg border border-blue-100"
+                    >
+                      <h3 className="font-bold text-xl mb-2 text-blue-900">{item.title}</h3>
                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
 
           {/* Non-Verbal */}
           {safeData.nonVerbalBatteryList &&
             safeData.nonVerbalBatteryList.length > 0 && (
-              <div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <h2 className="text-3xl font-bold mb-6 text-green-800 border-b-4 border-green-600 inline-block">
                   {safeData.nonVerbalBatteryHeading || "NON-VERBAL BATTERY"}
                 </h2>
                 <div className="grid gap-6">
                   {safeData.nonVerbalBatteryList.map((item, i) => (
-                    <div key={i} className="bg-green-50 p-6 rounded-lg">
-                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                    <motion.div 
+                        key={i} 
+                        initial="rest" whileHover="hover" variants={cardHover3D}
+                        className="bg-green-50 p-6 rounded-lg border border-green-100"
+                    >
+                      <h3 className="font-bold text-xl mb-2 text-green-900">{item.title}</h3>
                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
 
           {/* Quant */}
           {safeData.quantBatteryList &&
             safeData.quantBatteryList.length > 0 && (
-              <div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <h2 className="text-3xl font-bold mb-6 text-yellow-800 border-b-4 border-yellow-600 inline-block">
                   {safeData.quantBatteryHeading || "QUANTITATIVE BATTERY"}
                 </h2>
                 <div className="grid gap-6">
                   {safeData.quantBatteryList.map((item, i) => (
-                    <div key={i} className="bg-yellow-50 p-6 rounded-lg">
-                      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                    <motion.div 
+                        key={i} 
+                        initial="rest" whileHover="hover" variants={cardHover3D}
+                        className="bg-yellow-50 p-6 rounded-lg border border-yellow-100"
+                    >
+                      <h3 className="font-bold text-xl mb-2 text-yellow-900">{item.title}</h3>
                       <p className="text-gray-700 text-lg whitespace-pre-wrap">
                         {item.content}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
         </div>
       </section>
 
-      {/* 8. SCORING & LOCATION */}
+      {/* 8. SCORING & LOCATION - 3D Tilt Panels */}
       <section className="py-16 px-4 bg-[#F0F8FF]">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Scoring */}
-          <div>
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.01 }}
+          >
             <h2 className="text-3xl font-bold mb-4 text-center">
               {safeData.scoringHeading}
             </h2>
-            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-lg border border-gray-100">
               {safeData.scoringDescription}
             </div>
-          </div>
+          </motion.div>
 
           {/* Location */}
-          <div>
+          <motion.div 
+             initial={{ opacity: 0, x: 50 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             whileHover={{ scale: 1.01 }}
+          >
             <h2 className="text-3xl font-bold mb-4 text-center">
               {safeData.locationHeading}
             </h2>
-            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-sm">
+            <div className="text-lg text-gray-700 whitespace-pre-wrap bg-white p-8 rounded-xl shadow-lg border border-gray-100">
               {safeData.locationDescription}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Footer */}
-      <section className="bg-[#0f172a] py-16 px-4 text-center text-white">
+      <motion.section 
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="bg-[#0f172a] py-16 px-4 text-center text-white"
+      >
         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Start Your CogAT Prep Today!
         </h2>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1, rotateZ: -2 }}
+          whileTap={{ scale: 0.9 }}
           onClick={handleNavigate}
-          className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition text-lg shadow-lg"
+          className="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition text-lg shadow-xl border border-blue-500"
         >
           Get Free Trial Class
-        </button>
-      </section>
-    </div>
+        </motion.button>
+      </motion.section>
+    </motion.div>
   );
 };
 

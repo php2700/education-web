@@ -16,12 +16,12 @@ import backgroundImage from "../../assets/math-bg.png";
 
 export const Test = () => {
   return (
-    <div className="bg-[#F0F8FF]"   style={{
-                      backgroundImage: `url(${backgroundImage})`,
-                      backgroundSize: "contain",
-                      backgroundPosition: "center",
-                    }}>
-        
+    <div className="bg-[#F0F8FF]" style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "contain",
+      backgroundPosition: "center",
+    }}>
+
       <SatTestPrep />
       <PsatTestPrep />
       <SsatTestPrep />
@@ -29,7 +29,7 @@ export const Test = () => {
       <ISEE />
       <ElaPage />
       <ScatTestPrep />
-      <AmcTestPrep />     
+      <AmcTestPrep />
       <MathKangarooTestPrep />
       <ActTestPrep />
       <CogatTestPrep />
