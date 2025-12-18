@@ -118,21 +118,143 @@
 
 
 
-import React, { useEffect, useState ,useRef } from "react";
+// import React, { useEffect, useState ,useRef } from "react";
+// import axios from "axios";
+// import { FaLinkedinIn } from "react-icons/fa";
+// import { useLocation } from "react-router-dom";
+
+// export const Management = () => {
+//   const [members, setMembers] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//    const headingRef = useRef(null); // Reference create kiya
+//   const { pathname } = useLocation(); // URL track karne ke liye
+
+//   // Backend URL (.env se)
+//   const API_URL = import.meta.env.VITE_APP_URL || "http://localhost:3007/";
+
+//   // API Call to fetch data
+//   useEffect(() => {
+//     const fetchMembers = async () => {
+//       try {
+//         const res = await axios.get(`${API_URL}api/user/management`);
+//         if (res.data.success) {
+//           setMembers(res.data.data);
+//         }
+//       } catch (err) {
+//         console.error("Failed to fetch management team", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchMembers();
+//   }, [API_URL]);
+  
+
+//    useEffect(() => {
+//     // Agar loading chal raha hai to ruk jao, kyunki tab tak Ref wala element screen par nahi hai
+//     if (loading) return;
+
+//     // Thoda delay dete hain taaki DOM update ho jaye
+//     const timer = setTimeout(() => {
+//       if (headingRef.current) {
+//         headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+//       } else {
+//         window.scrollTo(0, 0);
+//       }
+//     }, 100);
+
+//     return () => clearTimeout(timer); // Cleanup
+//   }, [pathname, loading]);
+
+//   if (loading) {
+//     return (
+//       <div className="bg-gray-50 min-h-screen flex justify-center items-center">
+//         <p className="text-xl text-gray-500">Loading Team...</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+//       {/* Header */}
+//       <div className="max-w-7xl mx-auto text-center mb-20">
+//         <h2 className="text-blue-600 font-bold tracking-wide uppercase text-sm">
+//           Our Leadership
+//         </h2>
+//         <h1  ref={headingRef} className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+//           Meet the Management Team
+//         </h1>
+//         <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+//           Visionaries guiding our path to excellence.
+//         </p>
+//       </div>
+
+//       {/* Grid */}
+//       <div className="max-w-7xl mx-auto grid gap-y-24 gap-x-12 md:grid-cols-2 lg:gap-16 mt-10">
+//         {members.map((member) => (
+//           <div
+//             key={member._id}
+//             className="relative bg-white rounded-2xl shadow-lg border border-gray-100 p-8 pt-24 hover:shadow-2xl transition-shadow duration-300 text-center group"
+//           >
+//             {/* --- IMAGE SECTION (Avatar Style) --- */}
+//             <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
+//               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
+//                 <img
+//                   className="w-full h-full object-cover"
+//                   // Logic: Agar image hai toh URL combine karein, nahi toh placeholder
+//                   src={member.image ? `${API_URL}${member.image}` : "https://via.placeholder.com/150"}
+//                   alt={member.name}
+//                   style={{ objectPosition: "top center" }}
+//                   onError={(e) => {
+//                     e.target.src = "https://via.placeholder.com/150"; // Fallback agar image na mile
+//                   }}
+//                 />
+//               </div>
+
+//               {/* Optional: Social Icons below image */}
+//               <div className="absolute bottom-0 right-0 bg-blue-600 rounded-full p-2 text-white shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+//                 <FaLinkedinIn size={14} />
+//               </div>
+//             </div>
+
+//             {/* --- TEXT CONTENT --- */}
+//             <div className="mt-4">
+//               <h3 className="text-2xl font-bold text-gray-900">
+//                 {member.name}
+//               </h3>
+//               <p className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-4">
+//                 {member.role}
+//               </p>
+
+//               <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-words">
+//                 {member.description}
+//               </p>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
+// 1. Framer Motion Import
+import { motion } from "framer-motion";
+
 export const Management = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
-   const headingRef = useRef(null); // Reference create kiya
-  const { pathname } = useLocation(); // URL track karne ke liye
+  const headingRef = useRef(null);
+  const { pathname } = useLocation();
 
-  // Backend URL (.env se)
   const API_URL = import.meta.env.VITE_APP_URL || "http://localhost:3007/";
 
-  // API Call to fetch data
   useEffect(() => {
     const fetchMembers = async () => {
       try {
@@ -146,16 +268,11 @@ export const Management = () => {
         setLoading(false);
       }
     };
-
     fetchMembers();
   }, [API_URL]);
-  
 
-   useEffect(() => {
-    // Agar loading chal raha hai to ruk jao, kyunki tab tak Ref wala element screen par nahi hai
+  useEffect(() => {
     if (loading) return;
-
-    // Thoda delay dete hain taaki DOM update ho jaye
     const timer = setTimeout(() => {
       if (headingRef.current) {
         headingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -163,64 +280,112 @@ export const Management = () => {
         window.scrollTo(0, 0);
       }
     }, 100);
-
-    return () => clearTimeout(timer); // Cleanup
+    return () => clearTimeout(timer);
   }, [pathname, loading]);
 
   if (loading) {
     return (
       <div className="bg-gray-50 min-h-screen flex justify-center items-center">
-        <p className="text-xl text-gray-500">Loading Team...</p>
+        {/* Animated Loader Text */}
+        <motion.p 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+          className="text-xl text-blue-600 font-semibold tracking-wider"
+        >
+          Loading Team...
+        </motion.p>
       </div>
     );
   }
 
+  // 🔥 Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Ek ke baad ek card aayega
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto text-center mb-20">
+    <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      
+      {/* Animated Header */}
+      <motion.div 
+        className="max-w-7xl mx-auto text-center mb-20"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <h2 className="text-blue-600 font-bold tracking-wide uppercase text-sm">
           Our Leadership
         </h2>
-        <h1  ref={headingRef} className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+        <h1 ref={headingRef} className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
           Meet the Management Team
         </h1>
         <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
           Visionaries guiding our path to excellence.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Grid */}
-      <div className="max-w-7xl mx-auto grid gap-y-24 gap-x-12 md:grid-cols-2 lg:gap-16 mt-10">
+      {/* Animated Grid */}
+      <motion.div 
+        className="max-w-7xl mx-auto grid gap-y-24 gap-x-12 md:grid-cols-2 lg:gap-16 mt-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {members.map((member) => (
-          <div
+          <motion.div
             key={member._id}
-            className="relative bg-white rounded-2xl shadow-lg border border-gray-100 p-8 pt-24 hover:shadow-2xl transition-shadow duration-300 text-center group"
+            variants={cardVariants}
+            whileHover={{ 
+              y: -15, // Lift Up Effect
+              scale: 1.02, 
+              boxShadow: "0px 25px 50px -12px rgba(0, 0, 0, 0.25)" // Premium Deep Shadow
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="relative bg-white rounded-2xl shadow-lg border border-gray-100 p-8 pt-24 transition-all duration-300 text-center group cursor-pointer"
           >
             {/* --- IMAGE SECTION (Avatar Style) --- */}
             <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
+              <motion.div 
+                className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200"
+                whileHover={{ scale: 1.1, rotate: 2 }} // Zoom & Rotate on Hover
+                transition={{ duration: 0.3 }}
+              >
                 <img
                   className="w-full h-full object-cover"
-                  // Logic: Agar image hai toh URL combine karein, nahi toh placeholder
                   src={member.image ? `${API_URL}${member.image}` : "https://via.placeholder.com/150"}
                   alt={member.name}
                   style={{ objectPosition: "top center" }}
                   onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/150"; // Fallback agar image na mile
+                    e.target.src = "https://via.placeholder.com/150";
                   }}
                 />
-              </div>
+              </motion.div>
 
-              {/* Optional: Social Icons below image */}
-              <div className="absolute bottom-0 right-0 bg-blue-600 rounded-full p-2 text-white shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+              {/* Social Icon Animation */}
+              <motion.div 
+                className="absolute bottom-0 right-0 bg-blue-600 rounded-full p-2 text-white shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+              >
                 <FaLinkedinIn size={14} />
-              </div>
+              </motion.div>
             </div>
 
             {/* --- TEXT CONTENT --- */}
             <div className="mt-4">
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                 {member.name}
               </h3>
               <p className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-4">
@@ -231,9 +396,9 @@ export const Management = () => {
                 {member.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

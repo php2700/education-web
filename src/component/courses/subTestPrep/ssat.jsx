@@ -241,10 +241,407 @@
 
 // export default SsatTestPrep;
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import backgroundImage from "../../../assets/math-bg.png";
+// import { useNavigate } from "react-router-dom"; // Verify path matches your project
+
+// const SsatTestPrep = () => {
+//   const [data, setData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchSsatData = async () => {
+//       try {
+//         const response = await axios.get(
+//           `${import.meta.env.VITE_APP_URL}api/user/ssat-test`
+//         );
+
+//         if (response.data) {
+//           const apiData = response.data.data || response.data;
+//           // Handle both array and object responses
+//           if (Array.isArray(apiData) && apiData.length > 0) {
+//             setData(apiData[0]);
+//           } else {
+//             setData(apiData);
+//           }
+//         }
+//       } catch (err) {
+//         console.error("Error fetching SSAT data:", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchSsatData();
+//   }, []);
+//   const handleNavigate = () => {
+//     navigate("/contact"); // Yahan apna sahi route path dalein
+//   };
+
+//   if (loading)
+//     return (
+//       <div className="min-h-screen flex items-center justify-center bg-[#F0F8FF]">
+//         <div className="text-xl font-bold text-blue-600 animate-pulse">
+//           Loading Content...
+//         </div>
+//       </div>
+//     );
+
+//   const safeData = data || {};
+
+//   return (
+//     <div
+//       className="w-full min-h-screen "
+//       id="ssat"
+//       //   style={{
+//       //     backgroundImage: `url(${backgroundImage})`,
+//       //     backgroundSize: "contain",
+//       //     backgroundRepeat: "repeat",
+//       //     backgroundPosition: "center",
+//       //     backgroundBlendMode: "overlay",
+//       //   }}
+//     >
+//       <div className="max-w-7xl mx-auto px-4 md:px-12 py-16 space-y-20">
+//         {/* ================= 1. HERO SECTION ================= */}
+//         <div className="text-center space-y-6">
+//           {safeData.heroTitle && (
+//             <h1 className="text-4xl md:text-5xl font-bold text-blue-900 drop-shadow-sm uppercase tracking-wider">
+//               {safeData.heroTitle}
+//             </h1>
+//           )}
+
+//           {safeData.heroDescription && (
+//             <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border-t-4 border-blue-500 max-w-4xl mx-auto">
+//               <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-wrap">
+//                 {safeData.heroDescription}
+//               </p>
+//             </div>
+//           )}
+
+//           <button className=" text-lg font-bold py-1  mt-6">
+//             {safeData.topCtaText || "Click here for Free Trial Class"}
+//           </button>
+//         </div>
+//         <div className="text-center">
+//           <button
+//             onClick={handleNavigate}
+//             className="bg-blue-600 mx-auto  text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform hover:scale-105 "
+//           >
+//             Click here for Free Trial Class
+//           </button>
+//         </div>
+//         {/* ================= 2. ABOUT & LEVELS ================= */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+//           {/* About Box */}
+//           <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-blue-600 h-full">
+//             <h2 className="text-2xl font-bold text-gray-800 mb-4 uppercase">
+//               {safeData.aboutHeading || "ABOUT SSAT"}
+//             </h2>
+//             <div className="text-gray-600 text-lg leading-7 whitespace-pre-wrap">
+//               {safeData.aboutDescription || "Description not available."}
+//             </div>
+//           </div>
+
+//           {/* Levels Box */}
+//           <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-purple-600 h-full">
+//             <h2 className="text-2xl font-bold text-gray-800 mb-4 uppercase">
+//               Different Levels
+//             </h2>
+//             {safeData.levels && safeData.levels.length > 0 ? (
+//               <div className="space-y-4">
+//                 {safeData.levels.map((level, idx) => (
+//                   <div key={idx} className="border-b pb-3 last:border-0">
+//                     <h3 className="font-bold text-blue-700 text-lg">{level.title}</h3>
+//                     <p className=" text-gray-600 text-lg whitespace-pre-wrap">
+//                       {level.description}
+//                     </p>
+//                   </div>
+//                 ))}
+//               </div>
+//             ) : (
+//               <p className="text-gray-500">No levels data added.</p>
+//             )}
+//           </div>
+//         </div>
+
+//         {/* ================= 3. REGISTRATION (If exists) ================= */}
+//         {/* {(safeData.registrationHeading || safeData.registrationContent) && (
+//         <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500">
+//              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+//                 {safeData.registrationHeading || "Registration"}
+//             </h2>
+//             <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+//                 {safeData.registrationContent}
+//             </p>
+//         </div>
+//       )} */}
+
+//         {/* ================= 4. COMPARISON (ISEE vs SSAT) ================= */}
+//         {(safeData.comparisonHeading ||
+//           safeData.comparisonDescription ||
+//           (safeData.comparisonPoints &&
+//             safeData.comparisonPoints.length > 0)) && (
+//           <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-400">
+//             {safeData.comparisonHeading && (
+//               <h2 className="text-2xl font-bold  text-gray-800 mb-4 text-center">
+//                 {safeData.comparisonHeading}
+//               </h2>
+//             )}
+
+//             {/* Intro Description */}
+//             {safeData.comparisonDescription && (
+//               <div className="text-gray-700 mb-6  text-lg leading-relaxed whitespace-pre-wrap">
+//                 {safeData.comparisonDescription}
+//               </div>
+//             )}
+
+//             {/* Bullet Points */}
+//             <ul className="list-disc list-inside space-y-3 text-gray-700 bg-orange-50 p-6 text-lg rounded-lg">
+//               {safeData.comparisonPoints &&
+//                 safeData.comparisonPoints.map((point, index) =>
+//                   point ? (
+//                     <li key={index} className="leading-relaxed">
+//                       {point}
+//                     </li>
+//                   ) : null
+//                 )}
+//             </ul>
+//           </div>
+//         )}
+
+//         {/* ================= 5. QUICK FACTS (NEW SECTION) ================= */}
+       
+
+//         {/* ================= 6. SCORING ================= */}
+//         <div className="bg-white py-10 px-6 rounded-2xl shadow-xl">
+//           <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-10">
+//             {safeData.scoringHeading || "How is the SSAT scored?"}
+//           </h2>
+
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+//             {safeData.scoringCards && safeData.scoringCards.length > 0 ? (
+//               safeData.scoringCards.map((card, index) => (
+//                 <div
+//                   key={index}
+//                   className="bg-blue-50 p-6 rounded-xl border border-blue-100 hover:shadow-xl transition"
+//                 >
+//                   <h3 className="font-bold text-lg text-blue-700 mb-3 uppercase border-b border-blue-200 pb-2">
+//                     {card.title}
+//                   </h3>
+//                   <p className="text-gray-700 whitespace-pre-wrap font-medium text-sm leading-6">
+//                     {card.content}
+//                   </p>
+//                 </div>
+//               ))
+//             ) : (
+//               <div className="col-span-3 text-center text-gray-500">
+//                 Scoring info not added.
+//               </div>
+//             )}
+//           </div>
+
+//           <div className="mt-8 text-center text-gray-600 italic">
+//             {safeData.scoringFooter}
+//           </div>
+//         </div>
+//  {(safeData.factsHeading || safeData.factsContent) && (
+//           <div className="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-teal-500">
+//             <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
+//               {safeData.factsHeading || "SSAT Quick Facts"}
+//             </h2>
+
+//             {/* The pre-wrap class ensures new lines from admin text area show up as lines here */}
+//             <div className="text-gray-700 text-lg leading-8 whitespace-pre-wrap font-medium">
+//               {safeData.factsContent}
+//             </div>
+
+//             {safeData.disclaimer && (
+//               <p className="mt-6 text-xs text-gray-400 italic border-t pt-2">
+//                 {safeData.disclaimer}
+//               </p>
+//             )}
+//           </div>
+//         )}
+//         {/* ================= 7. TEST STRUCTURE TABLES ================= */}
+//         {/* ================= 7. TEST STRUCTURE TABLES ================= */}
+//         <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
+//           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-12">
+//             {safeData.structureHeading || "SSAT TEST STRUCTURE"}
+//           </h2>
+
+//           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+//             {/* Middle Level */}
+//             <div className="flex flex-col">
+//               <h3 className="text-xl font-bold text-blue-700 mb-4 bg-blue-50 py-2 px-4 rounded-lg self-start">
+//                 Middle Level Test (5th-7th Grade)
+//               </h3>
+//               <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm flex-grow">
+//                 <table className="w-full  min-w-[600px] text-left bg-white">
+//                   <thead className="bg-blue-600 text-white">
+//                     <tr>
+//                       <th className="p-4 font-semibold">Section</th>
+//                       <th className="p-4 font-semibold">Time</th>
+//                       <th className="p-4 font-semibold">Questions</th>
+//                       <th className="p-4 font-semibold">Downloads</th>
+//                     </tr>
+//                   </thead>
+//                   <tbody className="divide-y divide-gray-100">
+//                     {safeData.middleTable &&
+//                       safeData.middleTable.map((row, idx) => (
+//                         <tr key={idx} className="hover:bg-blue-50">
+//                           <td className="p-4 text-gray-700">{row.section}</td>
+//                           <td className="p-4 text-gray-600 whitespace-nowrap">
+//                             {row.time}
+//                           </td>
+//                           <td className="p-4 text-gray-600 whitespace-nowrap">
+//                             {row.questions}
+//                           </td>
+
+//                           {/* ADDED DOWNLOAD CELL HERE */}
+//                           <td className="p-4">
+//                             {row.download ? (
+//                               <a
+//                                 href={row.download}
+//                                 target="_blank"
+//                                 rel="noopener noreferrer"
+//                                 className="text-blue-600 font-bold hover:underline"
+//                               >
+//                                 Download
+//                               </a>
+//                             ) : (
+//                               <span className="text-gray-400 text-sm">-</span>
+//                             )}
+//                           </td>
+//                         </tr>
+//                       ))}
+//                   </tbody>
+//                 </table>
+//               </div>
+//             </div>
+
+//             {/* Upper Level */}
+//             <div className="flex flex-col">
+//               <h3 className="text-xl font-bold text-green-700 mb-4 bg-green-50 py-2 px-4 rounded-lg self-start">
+//                 Upper Level Test (8th-11th Grade)
+//               </h3>
+//               <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm flex-grow">
+//                 <table className="w-full min-w-[600px] text-left bg-white">
+//                   <thead className="bg-green-600 text-white">
+//                     <tr>
+//                       <th className="p-4 font-semibold">Section</th>
+//                       <th className="p-4 font-semibold">Time</th>
+//                       <th className="p-4 font-semibold">Questions</th>
+//                       <th className="p-4 font-semibold">Downloads</th>
+//                     </tr>
+//                   </thead>
+//                   <tbody className="divide-y divide-gray-100">
+//                     {safeData.upperTable &&
+//                       safeData.upperTable.map((row, idx) => (
+//                         <tr key={idx} className="hover:bg-green-50">
+//                           <td className="p-4 text-gray-700">{row.section}</td>
+//                           <td className="p-4 text-gray-600 whitespace-nowrap">
+//                             {row.time}
+//                           </td>
+//                           <td className="p-4 text-gray-600 whitespace-nowrap">
+//                             {row.questions}
+//                           </td>
+
+//                           {/* ADDED DOWNLOAD CELL HERE */}
+//                           <td className="p-4">
+//                             {row.download ? (
+//                               <a
+//                                 href={row.download}
+//                                 target="_blank"
+//                                 rel="noopener noreferrer"
+//                                 className="text-green-600 font-bold hover:underline"
+//                               >
+//                                 Download
+//                               </a>
+//                             ) : (
+//                               <span className="text-gray-400 text-sm">-</span>
+//                             )}
+//                           </td>
+//                         </tr>
+//                       ))}
+//                   </tbody>
+//                 </table>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* ================= 8. GOOD SCORE & FOOTER (Updated to show all data) ================= */}
+//         <div className="bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-lg text-center border-b-8 border-red-500 space-y-8">
+//           {/* Heading & Intro */}
+//           <div>
+//             <h2 className="text-3xl font-bold text-gray-800 mb-4">
+//               {safeData.goodScoreHeading || "Ready to start?"}
+//             </h2>
+//             <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed whitespace-pre-wrap">
+//               {safeData.goodScoreIntro}
+//             </p>
+//           </div>
+
+//           {/* Scaled Scores & Percentiles (PREVIOUSLY MISSING) */}
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+//             {safeData.scaledScoresContent && (
+//               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
+//                 <h3 className="font-bold text-lg text-red-800 mb-2">Scaled Scores</h3>
+//                 <p className="text-gray-700 whitespace-pre-wrap text-md">
+//                   {safeData.scaledScoresContent}
+//                 </p>
+//               </div>
+//             )}
+
+//             {safeData.percentileRanksContent && (
+//               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
+//                 <h3 className="font-bold text-lg text-red-800 mb-2">
+//                   Percentile Ranks
+//                 </h3>
+//                 <p className="text-gray-700 whitespace-pre-wrap text-md">
+//                   {safeData.percentileRanksContent}
+//                 </p>
+//               </div>
+//             )}
+//           </div>
+
+//           {/* CTA Button */}
+//           <button className="mt-4  text-xl font-semibold py-1 px-12  ">
+//             {safeData.footerCtaText || "Click here for Free Trial Class"}
+//           </button>
+
+//           <div className="mt-2 text-center">
+//             <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-6 tracking-wide">
+//               Ready to start your SSAT preparation?
+//             </h2>
+//             <button
+//               onClick={handleNavigate}
+//               className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg transition transform "
+//             >
+//               Click here for Free Trial Class
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SsatTestPrep;
+
+
+
+// annimation
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import backgroundImage from "../../../assets/math-bg.png";
-import { useNavigate } from "react-router-dom"; // Verify path matches your project
+import { useNavigate } from "react-router-dom";
+
+// 1. Framer Motion Import
+import { motion } from "framer-motion";
 
 const SsatTestPrep = () => {
   const [data, setData] = useState(null);
@@ -260,7 +657,6 @@ const SsatTestPrep = () => {
 
         if (response.data) {
           const apiData = response.data.data || response.data;
-          // Handle both array and object responses
           if (Array.isArray(apiData) && apiData.length > 0) {
             setData(apiData[0]);
           } else {
@@ -276,8 +672,9 @@ const SsatTestPrep = () => {
 
     fetchSsatData();
   }, []);
+
   const handleNavigate = () => {
-    navigate("/contact"); // Yahan apna sahi route path dalein
+    navigate("/contact");
   };
 
   if (loading)
@@ -291,61 +688,107 @@ const SsatTestPrep = () => {
 
   const safeData = data || {};
 
+  // 🔥 Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
   return (
     <div
-      className="w-full min-h-screen "
+      className="w-full min-h-screen overflow-hidden"
       id="ssat"
-      //   style={{
-      //     backgroundImage: `url(${backgroundImage})`,
-      //     backgroundSize: "contain",
-      //     backgroundRepeat: "repeat",
-      //     backgroundPosition: "center",
-      //     backgroundBlendMode: "overlay",
-      //   }}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundRepeat: "repeat",
+        backgroundPosition: "center",
+        backgroundBlendMode: "overlay",
+        backgroundColor: "#F0F8FF" // Fallback color
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-12 py-16 space-y-20">
-        {/* ================= 1. HERO SECTION ================= */}
-        <div className="text-center space-y-6">
+        
+        {/* ================= 1. HERO SECTION (Fade In) ================= */}
+        <motion.div 
+          className="text-center space-y-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
           {safeData.heroTitle && (
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 drop-shadow-sm uppercase tracking-wider">
+            <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-blue-900 drop-shadow-sm uppercase tracking-wider">
               {safeData.heroTitle}
-            </h1>
+            </motion.h1>
           )}
 
           {safeData.heroDescription && (
-            <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border-t-4 border-blue-500 max-w-4xl mx-auto">
+            <motion.div variants={fadeInUp} className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border-t-4 border-blue-500 max-w-4xl mx-auto">
               <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-wrap">
                 {safeData.heroDescription}
               </p>
-            </div>
+            </motion.div>
           )}
 
-          <button className=" text-lg font-bold py-1  mt-6">
+          <motion.button variants={fadeInUp} className="text-lg font-bold py-1 mt-6">
             {safeData.topCtaText || "Click here for Free Trial Class"}
-          </button>
-        </div>
-        <div className="text-center">
-          <button
+          </motion.button>
+        </motion.div>
+
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.button
             onClick={handleNavigate}
-            className="bg-blue-600 mx-auto  text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform hover:scale-105 "
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-blue-600 mx-auto text-white text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition transform"
           >
             Click here for Free Trial Class
-          </button>
-        </div>
-        {/* ================= 2. ABOUT & LEVELS ================= */}
+          </motion.button>
+        </motion.div>
+
+        {/* ================= 2. ABOUT & LEVELS (3D Slide In) ================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          {/* About Box */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-blue-600 h-full">
+          {/* About Box (Slide Left) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5, boxShadow: "0px 15px 30px rgba(37, 99, 235, 0.2)" }}
+            className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-blue-600 h-full"
+          >
             <h2 className="text-2xl font-bold text-gray-800 mb-4 uppercase">
               {safeData.aboutHeading || "ABOUT SSAT"}
             </h2>
             <div className="text-gray-600 text-lg leading-7 whitespace-pre-wrap">
               {safeData.aboutDescription || "Description not available."}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Levels Box */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-purple-600 h-full">
+          {/* Levels Box (Slide Right) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5, boxShadow: "0px 15px 30px rgba(147, 51, 234, 0.2)" }}
+            className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-purple-600 h-full"
+          >
             <h2 className="text-2xl font-bold text-gray-800 mb-4 uppercase">
               Different Levels
             </h2>
@@ -354,7 +797,7 @@ const SsatTestPrep = () => {
                 {safeData.levels.map((level, idx) => (
                   <div key={idx} className="border-b pb-3 last:border-0">
                     <h3 className="font-bold text-blue-700 text-lg">{level.title}</h3>
-                    <p className=" text-gray-600 text-lg whitespace-pre-wrap">
+                    <p className="text-gray-600 text-lg whitespace-pre-wrap">
                       {level.description}
                     </p>
                   </div>
@@ -363,69 +806,75 @@ const SsatTestPrep = () => {
             ) : (
               <p className="text-gray-500">No levels data added.</p>
             )}
-          </div>
+          </motion.div>
         </div>
 
-        {/* ================= 3. REGISTRATION (If exists) ================= */}
-        {/* {(safeData.registrationHeading || safeData.registrationContent) && (
-        <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500">
-             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                {safeData.registrationHeading || "Registration"}
-            </h2>
-            <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
-                {safeData.registrationContent}
-            </p>
-        </div>
-      )} */}
-
-        {/* ================= 4. COMPARISON (ISEE vs SSAT) ================= */}
-        {(safeData.comparisonHeading ||
-          safeData.comparisonDescription ||
-          (safeData.comparisonPoints &&
-            safeData.comparisonPoints.length > 0)) && (
-          <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-400">
+        {/* ================= 4. COMPARISON (3D Lift) ================= */}
+        {(safeData.comparisonHeading || safeData.comparisonDescription || (safeData.comparisonPoints && safeData.comparisonPoints.length > 0)) && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.01, boxShadow: "0px 20px 40px -10px rgba(251, 146, 60, 0.3)" }}
+            className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-orange-400"
+          >
             {safeData.comparisonHeading && (
-              <h2 className="text-2xl font-bold  text-gray-800 mb-4 text-center">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
                 {safeData.comparisonHeading}
               </h2>
             )}
 
-            {/* Intro Description */}
             {safeData.comparisonDescription && (
-              <div className="text-gray-700 mb-6  text-lg leading-relaxed whitespace-pre-wrap">
+              <div className="text-gray-700 mb-6 text-lg leading-relaxed whitespace-pre-wrap">
                 {safeData.comparisonDescription}
               </div>
             )}
 
-            {/* Bullet Points */}
             <ul className="list-disc list-inside space-y-3 text-gray-700 bg-orange-50 p-6 text-lg rounded-lg">
-              {safeData.comparisonPoints &&
-                safeData.comparisonPoints.map((point, index) =>
-                  point ? (
-                    <li key={index} className="leading-relaxed">
-                      {point}
-                    </li>
-                  ) : null
-                )}
+              {safeData.comparisonPoints && safeData.comparisonPoints.map((point, index) =>
+                point ? (
+                  <motion.li 
+                    key={index} 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="leading-relaxed"
+                  >
+                    {point}
+                  </motion.li>
+                ) : null
+              )}
             </ul>
-          </div>
+          </motion.div>
         )}
 
-        {/* ================= 5. QUICK FACTS (NEW SECTION) ================= */}
-       
-
-        {/* ================= 6. SCORING ================= */}
+        {/* ================= 6. SCORING (Staggered Cards) ================= */}
         <div className="bg-white py-10 px-6 rounded-2xl shadow-xl">
-          <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-10">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-extrabold text-center text-gray-800 mb-10"
+          >
             {safeData.scoringHeading || "How is the SSAT scored?"}
-          </h2>
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {safeData.scoringCards && safeData.scoringCards.length > 0 ? (
               safeData.scoringCards.map((card, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="bg-blue-50 p-6 rounded-xl border border-blue-100 hover:shadow-xl transition"
+                  variants={fadeInUp}
+                  whileHover={{ y: -10, boxShadow: "0px 15px 30px rgba(59, 130, 246, 0.2)" }}
+                  className="bg-blue-50 p-6 rounded-xl border border-blue-100 transition cursor-pointer"
                 >
                   <h3 className="font-bold text-lg text-blue-700 mb-3 uppercase border-b border-blue-200 pb-2">
                     {card.title}
@@ -433,52 +882,62 @@ const SsatTestPrep = () => {
                   <p className="text-gray-700 whitespace-pre-wrap font-medium text-sm leading-6">
                     {card.content}
                   </p>
-                </div>
+                </motion.div>
               ))
             ) : (
-              <div className="col-span-3 text-center text-gray-500">
-                Scoring info not added.
-              </div>
+              <div className="col-span-3 text-center text-gray-500">Scoring info not added.</div>
             )}
-          </div>
+          </motion.div>
 
           <div className="mt-8 text-center text-gray-600 italic">
             {safeData.scoringFooter}
           </div>
         </div>
- {(safeData.factsHeading || safeData.factsContent) && (
-          <div className="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-teal-500">
+
+        {/* FACTS SECTION */}
+        {(safeData.factsHeading || safeData.factsContent) && (
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-teal-500"
+          >
             <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
               {safeData.factsHeading || "SSAT Quick Facts"}
             </h2>
-
-            {/* The pre-wrap class ensures new lines from admin text area show up as lines here */}
             <div className="text-gray-700 text-lg leading-8 whitespace-pre-wrap font-medium">
               {safeData.factsContent}
             </div>
-
             {safeData.disclaimer && (
               <p className="mt-6 text-xs text-gray-400 italic border-t pt-2">
                 {safeData.disclaimer}
               </p>
             )}
-          </div>
+          </motion.div>
         )}
-        {/* ================= 7. TEST STRUCTURE TABLES ================= */}
-        {/* ================= 7. TEST STRUCTURE TABLES ================= */}
+
+        {/* ================= 7. TEST STRUCTURE TABLES (Slide Up) ================= */}
         <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-12">
             {safeData.structureHeading || "SSAT TEST STRUCTURE"}
           </h2>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+            
             {/* Middle Level */}
-            <div className="flex flex-col">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex flex-col"
+            >
               <h3 className="text-xl font-bold text-blue-700 mb-4 bg-blue-50 py-2 px-4 rounded-lg self-start">
                 Middle Level Test (5th-7th Grade)
               </h3>
               <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm flex-grow">
-                <table className="w-full  min-w-[600px] text-left bg-white">
+                <table className="w-full min-w-[600px] text-left bg-white">
                   <thead className="bg-blue-600 text-white">
                     <tr>
                       <th className="p-4 font-semibold">Section</th>
@@ -488,41 +947,31 @@ const SsatTestPrep = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {safeData.middleTable &&
-                      safeData.middleTable.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-blue-50">
-                          <td className="p-4 text-gray-700">{row.section}</td>
-                          <td className="p-4 text-gray-600 whitespace-nowrap">
-                            {row.time}
-                          </td>
-                          <td className="p-4 text-gray-600 whitespace-nowrap">
-                            {row.questions}
-                          </td>
-
-                          {/* ADDED DOWNLOAD CELL HERE */}
-                          <td className="p-4">
-                            {row.download ? (
-                              <a
-                                href={row.download}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 font-bold hover:underline"
-                              >
-                                Download
-                              </a>
-                            ) : (
-                              <span className="text-gray-400 text-sm">-</span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
+                    {safeData.middleTable && safeData.middleTable.map((row, idx) => (
+                      <tr key={idx} className="hover:bg-blue-50 transition-colors">
+                        <td className="p-4 text-gray-700">{row.section}</td>
+                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.time}</td>
+                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.questions}</td>
+                        <td className="p-4">
+                          {row.download ? (
+                            <a href={row.download} target="_blank" rel="noopener noreferrer" className="text-blue-600 font-bold hover:underline">Download</a>
+                          ) : <span className="text-gray-400 text-sm">-</span>}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
-            </div>
+            </motion.div>
 
             {/* Upper Level */}
-            <div className="flex flex-col">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="flex flex-col"
+            >
               <h3 className="text-xl font-bold text-green-700 mb-4 bg-green-50 py-2 px-4 rounded-lg self-start">
                 Upper Level Test (8th-11th Grade)
               </h3>
@@ -537,44 +986,33 @@ const SsatTestPrep = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {safeData.upperTable &&
-                      safeData.upperTable.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-green-50">
-                          <td className="p-4 text-gray-700">{row.section}</td>
-                          <td className="p-4 text-gray-600 whitespace-nowrap">
-                            {row.time}
-                          </td>
-                          <td className="p-4 text-gray-600 whitespace-nowrap">
-                            {row.questions}
-                          </td>
-
-                          {/* ADDED DOWNLOAD CELL HERE */}
-                          <td className="p-4">
-                            {row.download ? (
-                              <a
-                                href={row.download}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-green-600 font-bold hover:underline"
-                              >
-                                Download
-                              </a>
-                            ) : (
-                              <span className="text-gray-400 text-sm">-</span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
+                    {safeData.upperTable && safeData.upperTable.map((row, idx) => (
+                      <tr key={idx} className="hover:bg-green-50 transition-colors">
+                        <td className="p-4 text-gray-700">{row.section}</td>
+                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.time}</td>
+                        <td className="p-4 text-gray-600 whitespace-nowrap">{row.questions}</td>
+                        <td className="p-4">
+                          {row.download ? (
+                            <a href={row.download} target="_blank" rel="noopener noreferrer" className="text-green-600 font-bold hover:underline">Download</a>
+                          ) : <span className="text-gray-400 text-sm">-</span>}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* ================= 8. GOOD SCORE & FOOTER (Updated to show all data) ================= */}
-        <div className="bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-lg text-center border-b-8 border-red-500 space-y-8">
-          {/* Heading & Intro */}
+        {/* ================= 8. GOOD SCORE & FOOTER (Animated) ================= */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-lg text-center border-b-8 border-red-500 space-y-8"
+        >
           <div>
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               {safeData.goodScoreHeading || "Ready to start?"}
@@ -584,31 +1022,22 @@ const SsatTestPrep = () => {
             </p>
           </div>
 
-          {/* Scaled Scores & Percentiles (PREVIOUSLY MISSING) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
             {safeData.scaledScoresContent && (
               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
                 <h3 className="font-bold text-lg text-red-800 mb-2">Scaled Scores</h3>
-                <p className="text-gray-700 whitespace-pre-wrap text-md">
-                  {safeData.scaledScoresContent}
-                </p>
+                <p className="text-gray-700 whitespace-pre-wrap text-md">{safeData.scaledScoresContent}</p>
               </div>
             )}
-
             {safeData.percentileRanksContent && (
               <div className="bg-red-50 p-6 rounded-lg border border-red-100">
-                <h3 className="font-bold text-lg text-red-800 mb-2">
-                  Percentile Ranks
-                </h3>
-                <p className="text-gray-700 whitespace-pre-wrap text-md">
-                  {safeData.percentileRanksContent}
-                </p>
+                <h3 className="font-bold text-lg text-red-800 mb-2">Percentile Ranks</h3>
+                <p className="text-gray-700 whitespace-pre-wrap text-md">{safeData.percentileRanksContent}</p>
               </div>
             )}
           </div>
 
-          {/* CTA Button */}
-          <button className="mt-4  text-xl font-semibold py-1 px-12  ">
+          <button className="mt-4 text-xl font-semibold py-1 px-12">
             {safeData.footerCtaText || "Click here for Free Trial Class"}
           </button>
 
@@ -616,14 +1045,16 @@ const SsatTestPrep = () => {
             <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-6 tracking-wide">
               Ready to start your SSAT preparation?
             </h2>
-            <button
+            <motion.button
               onClick={handleNavigate}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg transition transform "
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-12 rounded-lg transition transform"
             >
               Click here for Free Trial Class
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

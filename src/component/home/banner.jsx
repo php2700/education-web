@@ -13,7 +13,7 @@ export const Banner = () => {
                  
                   </div>
                          <div className="text-3xl font-bold text-white">
-                              Personalized Online
+                              Personalized Online prateek
                         </div>
                         <div className="text-3xl font-bold text-white">
                               Tutoring Anytime
