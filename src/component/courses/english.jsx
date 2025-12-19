@@ -404,13 +404,13 @@ export const EnglishCourse = () => {
 
             {/* Right Column */}
             <div className="flex flex-col gap-4">
-              <motion.div variants={fadeInUp} className="bg-purple-100 text-gray-800 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-purple-100 text-gray-600 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
                 {languageData?.property3}
               </motion.div>
-              <motion.div variants={fadeInUp} className="bg-pink-100 text-gray-800 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-pink-100 text-gray-600 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
                 {languageData?.property4}
               </motion.div>
-              <motion.div variants={fadeInUp} className="bg-green-100 text-gray-800 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-green-100 text-gray-600 p-5 rounded-xl text-sm sm:text-base font-medium shadow-sm flex-1 hover:shadow-md transition-shadow">
                 {languageData?.property5}
               </motion.div>
             </div>
@@ -432,7 +432,7 @@ export const EnglishCourse = () => {
               ABOUT COMMON CORE – ELA
             </h2>
             {aboutCoreData?.coreDescription?.map((ele, i) => (
-              <p key={i} className="text-lg mx-auto text-justify leading-relaxed text-gray-700">
+              <p key={i} className="text-lg mx-auto text-justify leading-relaxed text-gray-600">
                 {ele}
               </p>
             ))}

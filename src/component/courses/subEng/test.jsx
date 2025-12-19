@@ -192,7 +192,7 @@ export const TestPage = () => {
           </motion.div>
           
           {measureData?.title?.slice(0, 1)?.map((ele, index) => (
-            <motion.p key={index} variants={fadeInUp} className="text-lg mt-2 leading-relaxed">
+            <motion.p key={index} variants={fadeInUp} className="text-lg mt-2 text-gray-600 leading-relaxed">
               {ele}
             </motion.p>
           ))}
@@ -233,7 +233,7 @@ export const TestPage = () => {
             variants={staggerContainer}
           >
             {measureData?.title?.slice(1)?.map((ele, index) => (
-              <motion.p key={index} variants={fadeInUp} className="text-lg mb-1 leading-relaxed">
+              <motion.p key={index} variants={fadeInUp} className="text-lg mb-1 text-gray-600 leading-relaxed">
                 {ele}
               </motion.p>
             ))}
@@ -313,7 +313,7 @@ export const TestPage = () => {
                   className="bg-white rounded-2xl shadow-md p-6 border border-blue-100 cursor-default"
                 >
                   <h3 className="text-xl font-bold mb-3">{item?.heading}:</h3>
-                  <p className="text-lg text-gray-700">{item?.description}</p>
+                  <p className="text-lg text-gray-600">{item?.description}</p>
                 </motion.div>
               ))}
             </motion.div>
