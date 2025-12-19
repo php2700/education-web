@@ -331,7 +331,7 @@ export const Management = () => {
         <h1 ref={headingRef} className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
           Meet the Management Team
         </h1>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+        <p className="mt-4 max-w-2xl text-xl text-gray-700 text-lg mx-auto">
           Visionaries guiding our path to excellence.
         </p>
       </motion.div>
@@ -392,7 +392,7 @@ export const Management = () => {
                 {member.role}
               </p>
 
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-words">
+              <p className="text-gray-700 text-lg leading-relaxed text-sm md:text-base text-justify whitespace-pre-line break-words">
                 {member.description}
               </p>
             </div>

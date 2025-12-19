@@ -228,13 +228,13 @@ export const AboutInfoPage = () => {
       >
         <motion.p 
           variants={fadeInUp}
-          className="text-lg text-gray-800 leading-relaxed"
+          className="text-lg text-gray-600 leading-relaxed"
         >
           {aboutData?.description}
         </motion.p>
 
         <motion.div variants={fadeInUp} className="text-start mt-4">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-600">
             {aboutData?.heading}
           </h2>
         </motion.div>
@@ -245,7 +245,7 @@ export const AboutInfoPage = () => {
             Who takes this test?
           </h3>
           <div 
-            className="text-lg leading-relaxed" 
+            className="text-lg leading-relaxed text-gray-600" 
             dangerouslySetInnerHTML={{__html:aboutData?.whoTake}}
           ></div>
         </motion.section>
@@ -279,7 +279,7 @@ export const AboutInfoPage = () => {
                   exit="exit"
                   transition={{ duration: 0.5 }}
                 >
-                  <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+                  <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-600 mb-8">
                     {aboutData?.questionType?.[current]?.title}
                   </h3>
 

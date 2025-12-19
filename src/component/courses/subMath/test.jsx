@@ -288,7 +288,7 @@ export const TestStructure = () => {
             <motion.p 
               key={index} 
               variants={fadeInUp} 
-              className="my-4 text-[18px]"
+              className="my-4  text-gray-500 text-[18px]"
             >
               {ele}
             </motion.p>
@@ -367,7 +367,7 @@ export const TestStructure = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="mt-2 text-[18px] font-semibold text-center"
+          className="mt-2 text-[18px]  font-semibold text-center"
         >
           We have the best content and specialized tutors available for Math
           Kangaroo.

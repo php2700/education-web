@@ -543,7 +543,7 @@ export const TopicPage = () => {
           <motion.div variants={fadeInUp} className="text-4xl font-semibold text-center my-4">
             ABOUT COMMON CORE – SCIENCE
           </motion.div>
-          <motion.p variants={fadeInUp} className="my-2 text-lg">
+          <motion.p variants={fadeInUp} className="my-2  text-gray-500 text-lg">
             {commonScienceData?.description}
           </motion.p>
           <motion.div variants={fadeInUp} className="text-center">
@@ -590,7 +590,7 @@ export const TopicPage = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-gray-700 leading-relaxed"
+              className="text-lg text-gray-500 leading-relaxed"
             >
               {commonScienceData?.tutorDescription}
             </motion.p>
@@ -617,7 +617,7 @@ export const TopicPage = () => {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center mb-4">
-                    <h2 className="text-2xl font-bold">{ele.title}</h2>
+                    <h2 className="text-2xl   font-bold">{ele.title}</h2>
                   </div>
                   <DescriptionItem text={ele.description} wordLimit={40} />
                 </motion.div>
@@ -658,7 +658,7 @@ export const TopicPage = () => {
               viewport={{ once: true }}
               variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
             >
-              <motion.p variants={fadeInUp} className="text-lg font-semibold text-gray-700 leading-relaxed">
+              <motion.p variants={fadeInUp} className="text-lg font-semibold text-gray-500 leading-relaxed">
                 Experience has shown time and time again that students who spend
                 time in our tutoring centers see an overall increase in their
                 science grades. This is because of our customized approach to

@@ -349,7 +349,7 @@ const PsatTestPrep = () => {
             variants={staggerContainer}
           >
             {data.heroTitle && (
-              <motion.h1 variants={fadeInUp} className="text-3xl text-center md:text-5xl font-bold text-gray-800 mb-4">
+              <motion.h1 variants={fadeInUp} className="text-3xl text-center md:text-5xl font-bold text-gray-700 mb-4">
                 {data.heroTitle}
               </motion.h1>
             )}
@@ -415,7 +415,7 @@ const PsatTestPrep = () => {
             }}
           >
             {data.aboutHeading && (
-              <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+              <h2 className="text-3xl font-bold mb-6 text-center text-gray-700">
                 {data.aboutHeading}
               </h2>
             )}
