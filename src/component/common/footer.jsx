@@ -432,11 +432,7 @@ const Footer = () => {
     navigate("/");
   };
 
-  const handleGmail = () => {
-    const to = "info@mygges.com";
-    const gmailUrl = `https://mail.google.com`;
-    window.open(gmailUrl, "_blank");
-  };
+   const handleGmail = () => { window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=info@mygges.com`, "_blank"); };
 
   const handleCall = () => {
     window.location.href = "tel:+918860296060";
@@ -614,7 +610,7 @@ const Footer = () => {
                 className="flex items-center gap-2 justify-center md:justify-start cursor-pointer group"
               >
                 <img src={mail} alt="Mail" className="w-4 h-4 opacity-80 group-hover:opacity-100" />
-                <span className="hover:text-blue-200 transition">info@mygges.com</span>
+                <span onClick={handleGmail} className="hover:text-blue-200 transition">info@mygges.com</span>
               </motion.li>
               
               <motion.li 

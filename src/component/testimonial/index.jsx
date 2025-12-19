@@ -509,7 +509,7 @@ export const Testimonial = () => {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                          className="absolute inset-[-3px] rounded-full bg-[conic-gradient(from_0deg,#2563eb_0%,#06b6d4_25%,#fbbf24_50%,#8b5cf6_75%,#2563eb_100%)] shadow-[0_0_10px_rgba(37,99,235,0.4)]"
+                          className="absolute inset-[-0.1px] rounded-full bg-[conic-gradient(from_0deg,#2563eb_0%,#06b6d4_25%,#fbbf24_50%,#8b5cf6_75%,#2563eb_100%)] shadow-[0_0_10px_rgba(37,99,235,0.4)]"
                         />
                         
                         {/* 2. Image Container */}
