@@ -3261,6 +3261,8 @@
 //     </>
 //   );
 // };
+
+
 import heroBanner from "../../assets/home-2.jpg";
 import arrow from "../../assets/arrow_forward.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -3484,7 +3486,7 @@ export const HeaderBanner = () => {
               transition={{ delay: 0.5 }}
               className="mt-8 text-white text-2xl font-bold tracking-widest uppercase"
             >
-              Loading Education...
+              Loading GGES...
             </motion.h2>
           </motion.div>
         )}
@@ -3494,7 +3496,8 @@ export const HeaderBanner = () => {
       <div className="relative w-full overflow-visible">
         
         {/* 1. HERO BANNER (Visible on ALL Pages Now) */}
-        <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-hidden"> */}
+        <div className={`relative w-full max-h-[80vh] flex items-center justify-center ${menuOpen ? "overflow-visible" : "overflow-hidden"}`}>
           
           {/* 🔥 3D Zoom Animation on Banner */}
           {!isLoading && (
